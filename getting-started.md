@@ -24,6 +24,7 @@ In this short tutorial, we introduce the {{site.data.keyword.conversationshort}}
 {: shortdesc}
 
 ## Step 1: Log in, create the service instance, and launch the tool
+Skip this step if you've already created the service instance. To launch tool, click **Manage** in the left hand menu, and click the **Launch tool** button. 
 
 1.  Go to the [{{site.data.keyword.conversationshort}} service](https://console.{DomainName}/catalog/services/conversation/) and either sign up for a free {{site.data.keyword.Bluemix_notm}} account or log in.
 1.  After you log in, type `conversation-tutorial` in the **Service name** field of the {{site.data.keyword.conversationshort}} page, click **Create**, and then click **Launch tool**.
