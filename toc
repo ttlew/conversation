@@ -6,25 +6,31 @@ Conversation
 
     {: .navgroup id="learn"}
     getting-started.md
+    index.md
     show-me.md
+    tool-overview.md
     [Demo: Car Dashboard](https://conversation-demo.mybluemix.net/)
-
-    {: .topicgroup}
-    Additional resources
-        [Blog](https://developer.ibm.com/watson/blog/)
-        [Webinars](http://www.ibm.com/watson/building-with-watson-webinar.html)
-        [Watson videos](https://www.youtube.com/user/IBMWatsonSolutions)
+    resources.md
     {: .navgroup-end}
 
     {: .navgroup id="reference"}
     [API reference](https://www.ibm.com/watson/developercloud/conversation/api/v1/)
+    lang-support.md
+    supported-timezones.md
+    system-entities.md
+
+    {: .topicgroup}
+    Expression language
+        expression-language.md
+        dialog-shorthand.md
+    dialog-methods.md
+    filter-reference.md
 
     {: .topicgroup}
     Sample apps
-        [Cloud Insurance Co. Web](https://github.com/IBM-Bluemix/cloudco-insurance)
-        [WatBot](https://github.com/IBM-Bluemix/chatbot-watson-android) 
         [Simple chat app](http://conversation-simple.mybluemix.net/)
-        [Text message chatbot](https://text-bot.mybluemix.net/)
+        [Conversation and car dashboard UI](https://conversation-demo.mybluemix.net/)
+        [Text message weather bot](https://text-bot.mybluemix.net/)
         [Conversation and Discovery](https://conversation-with-discovery-within-ui.mybluemix.net/)
         [Conversation and Tone Analyzer](https://food-coach.mybluemix.net/)
 
@@ -33,23 +39,40 @@ Conversation
         [Java SDK](https://github.com/watson-developer-cloud/java-sdk)
         [Node.js SDK](https://github.com/watson-developer-cloud/node-sdk)
         [Python SDK](https://github.com/watson-developer-cloud/python-sdk)
+        [.NET SDK](https://github.com/watson-developer-cloud/dotnet-standard-sdk)
         [Swift SDK](https://github.com/watson-developer-cloud/ios-sdk)
         [Unity SDK](https://github.com/watson-developer-cloud/unity-sdk)
-
     [Watson GitHub repos](https://github.com/watson-developer-cloud/)
     {: .navgroup-end}
 
     {: .navgroup id="howto"}
+    configure-workspace.md
+
     {: .topicgroup}
-    External docs
-        [About](https://www.ibm.com/watson/developercloud/doc/conversation/index.html)
-        [Defining intents](https://www.ibm.com/watson/developercloud/doc/conversation/intents.html)
-        [Defining entities](https://www.ibm.com/watson/developercloud/doc/conversation/entities.html)
-        [Building a dialog](https://www.ibm.com/watson/developercloud/doc/conversation/dialog-build.html)
+    Defining intents and entities
+        intents-entities.md
+        intents.md
+        entities.md
+    dialog-build.md
+
+    {: .topicgroup}
+    Deploying
+        develop-app.md
+        integrations.md
+    tutorial.md
+
+    {: .topicgroup}
+    Improving understanding
+        logs.md
+        logs_oview.md
+        logs_convo.md
+        logs_recommend.md
+
+    plan-upgrade.md
     {: .navgroup-end}
 
     {: .navgroup id="help"}
-    [Release notes](https://www.ibm.com/watson/developercloud/doc/conversation/release-notes.html)
+    release-notes.md
 
     {: .topicgroup}
     Developer community
