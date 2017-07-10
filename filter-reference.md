@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-06"
+lastupdated: "2017-07-10"
 
 ---
 
@@ -17,9 +17,9 @@ lastupdated: "2017-07-06"
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Filter query
+# Filter query syntax
 
-The {{site.data.keyword.conversationshort}} service REST API offers powerful log search capabilities through filter queries. You can use the /logs API `filter` parameter to search your workspace log for events that match a specified query. 
+The {{site.data.keyword.conversationshort}} service REST API offers powerful log search capabilities through filter queries. You can use the /logs API `filter` parameter to search your workspace log for events that match a specified query.
 {: shortdesc}
 
 The `filter` parameter is a cacheable query that limits the results to those matching the specified filter. You can filter on any object that is part of the JSON response model (for example, the user input text, the detected intents and entities, or the confidence score).
@@ -48,4 +48,3 @@ Operators are the separators between different parts of a query. Theses are the 
 | `,` | Boolean operator for "and". | `[response.intents:intent::order,response.entities:entity::beverage]` |
 | `<=, >=, >, <` | Comparison operators. | `response.intents:confidence>0.8` |
 | `*` | Wildcard that matches any sequence of characters. | `request.input.text:IBM*` |
-

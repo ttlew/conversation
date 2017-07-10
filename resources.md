@@ -17,7 +17,7 @@ lastupdated: "2017-07-06"
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Related videos, blogs, tutorials, and webinars
+# Additional resources
 
 Videos and articles to help you get started faster.
 {: shortdesc}
