@@ -25,14 +25,7 @@ Conversation
         dialog-shorthand.md
     dialog-methods.md
     filter-reference.md
-
-    {: .topicgroup}
-    Sample apps
-        [Simple chat app](http://conversation-simple.mybluemix.net/)
-        [Conversation and car dashboard UI](https://conversation-demo.mybluemix.net/)
-        [Text message weather bot](https://text-bot.mybluemix.net/)
-        [Conversation and Discovery](https://conversation-with-discovery-within-ui.mybluemix.net/)
-        [Conversation and Tone Analyzer](https://food-coach.mybluemix.net/)
+    sample-applications.md
 
     {: .topicgroup}
     Watson SDKs
