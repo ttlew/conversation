@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-07"
+lastupdated: "2017-07-11"
 
 ---
 
@@ -341,6 +341,10 @@ Optionally review the **Car Dashboard - Sample** workspace to see this same use 
 {: #deploy}
 
 Now that you have built and tested your workspace, you can deploy it by connecting it to a user interface. There are several ways you can do this.
+
+### Test in Slack
+
+You can use the test deployment tool to [deploy your workspace](test-deploy.html) as a chat bot in a Slack channel in just a few steps. This option is the fastest and easiest way to deploy your workspace for testing, but it has limitations.
 
 ### Build your own front-end application
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-06"
+lastupdated: "2017-07-11"
 
 ---
 
@@ -158,4 +158,5 @@ Open the sample workspace to see intents similar to the ones you just created pl
 This tutorial is built around a simple example. For a real application, you'll need to define some more interesting intents, some entities, and a more complex dialog.
 
 - Try the advanced [tutorial](tutorial.html) to add entities and clarify a user's purpose.
-- See [Developing your application](develop-app.html) to integrate this dialog into an application.
+- [Deploy](deploy.html) your workspace by connecting it to a front-end user interface, social media, or a messaging channel.
+- Check out the [sample apps](sample-applications.html).

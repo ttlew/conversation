@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-06"
+lastupdated: "2017-07-11"
 
 ---
 
@@ -17,15 +17,11 @@ lastupdated: "2017-07-06"
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Integrations
+# Building a bot with BotKit
 
-Explore these integrations with the {{site.data.keyword.conversationshort}} service.
-{: shortdesc}
+If you want customers to be able to communicate with your workspace through social media and messaging channels, you can use the [Botkit ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://howdy.ai/botkit){: new_window} middleware plugin.
 
-## Conversation channels
+This plugin enables developers to easily integrate a {{site.data.keyword.conversationshort}} workspace with multiple social channels, including Slack, Facebook, and Twilio. After these integrations are established, customers can have simultaneous, independent conversations with your {{site.data.keyword.conversationshort}} workspace through different channels.
 
-More and more, users expect to be able to communicate with businesses through social media and messaging channels. You can enable customers to interact with your company in this way.
-
-A middleware plugin for [Botkit ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://howdy.ai/botkit){: new_window} enables developers to easily integrate a {{site.data.keyword.conversationshort}} workspace with multiple social channels, including Slack, Facebook, and Twilio. After these integrations are established, customers can have simultaneous, independent conversations with your {site.data.keyword.conversationshort}} workspace through different channels.
-
-[Get started with integrations ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/botkit-middleware){: new_window}
+To use the Botkit middleware plugin, clone or download the 
+[GitHub repository ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/botkit-middleware){: new_window}.
