@@ -27,17 +27,19 @@ The test deployment tool uses the {{site.data.keyword.openwhisk}} service to dep
 
 Note that the test deployment tool has some limitations:
 
- - You cannot use this tool to publish an application for other teams to use.
- - If you use this method to deploy more than one workspace to the same team, all of the workspaces will respond to the `@ibmwatson_bot` user name. It is recommended that you use this tool to deploy only one workspace at a time to each Slack team.
- - The prebuilt Slack application is for testing purposes only, and might not be available at all times.
- - Because of {{site.data.keyword.openwhisk_short}} restrictions, this tool is currently available only for the Bluemix US South region.
+- You cannot use this tool to publish an application for other teams to use.
+- If you use this method to deploy more than one workspace to the same team, all of the workspaces will respond to the `@ibmwatson_bot` user name. It is recommended that you use this tool to deploy only one workspace at a time to each Slack team.
+- The prebuilt Slack application is for testing purposes only, and might not be available at all times.
+- Because of {{site.data.keyword.openwhisk_short}} restrictions, this tool is currently available only for the Bluemix US South region.
 
 To install your application as a bot user:
 
 1. In the {{site.data.keyword.conversationshort}} tool, open the workspace you want to test in Slack.
 1. Click the menu icon in the upper left corner, and then select **Deploy**. The Deploy Options page opens.
+
    ![Quick deploy menu option](images/deploy_menu_testdeploy.png)
 1. Under **Deploy with OpenWhisk**, click **Test in Slack** and follow the instructions.
+
    ![Create Slack test button](images/testdeploy_testinslack.png)
 
 ## Chatting with the bot

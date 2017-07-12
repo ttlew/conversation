@@ -23,5 +23,4 @@ If you want customers to be able to communicate with your workspace through soci
 
 This plugin enables developers to easily integrate a {{site.data.keyword.conversationshort}} workspace with multiple social channels, including Slack, Facebook, and Twilio. After these integrations are established, customers can have simultaneous, independent conversations with your {{site.data.keyword.conversationshort}} workspace through different channels.
 
-To use the Botkit middleware plugin, clone or download the 
-[GitHub repository ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/botkit-middleware){: new_window}.
+To use the Botkit middleware plugin, clone or download the [GitHub repository ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/botkit-middleware){: new_window}.
