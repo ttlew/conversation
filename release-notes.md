@@ -46,9 +46,14 @@ Existing models that you have trained will not be immediately impacted, but expi
 
 The following new features and changes to the service are available.
 
+### 12 July 2017
+
+- **Support for Czech** - Czech language support has been introduced; please see the [Supported languages](lang-support.html) topic for additional details.
+
 ### 11 July 2017
 
 - **Test in Slack** - You can use the new **Test in Slack** tool to quickly deploy your workspace as a Slack bot user for testing purposes. This tool is available only for the Bluemix US South region. For more information, see [Testing in Slack](test-deploy.html).
+
 - **Updates to Arabic** - Arabic language support has been enhanced to include absolute scoring per intent, and the ability to mark intents as irrelevant; please see the [Supported languages](lang-support.html) topic for additional details. Note that the {{site.data.keyword.conversationshort}} service learning models may have been updated as part of this enhancement, and when you retrain your model any changes will be applied; see [Updated models](release-notes.html#updated-models) for more information.
 
 ### 23 June 2017
