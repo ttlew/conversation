@@ -50,6 +50,8 @@ Conversation
 
     {: .topicgroup}
     Deploying
+        deploy.md
+        test-deploy.md
         develop-app.md
         integrations.md
     tutorial.md

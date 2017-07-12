@@ -31,7 +31,7 @@ In the following table, the level of language and feature support is indicated b
 |                  | **[Defining intents](intents.html)**, **[entities](entities.html)**, and **[dialog](dialog-build.html)** | **[Absolute scoring and 'Mark as irrelevant'](intents.html#mark-irrelevant)** | **System entities ([number](system-entities.html#sys-number), [currency](system-entities.html#sys-currency), [percentage](system-entities.html#sys-percentage), [date, time](system-entities.html#sys-datetime))** | **[Entity fuzzy matching](entities.html#fuzzy-matching)** |
 |:---|:---:|:---:|:---:|:---:|
 | **English (en)**                   | GA | GA | GA </br> Beta ([location](system-entities.html#sys-location), [person](system-entities.html#sys-person)) | Beta (Stemming, misspelling) |
-| **Arabic (ar)**                    | GA |  | Beta |  |
+| **Arabic (ar)**                    | GA | Beta | Beta |  |
 | **Chinese (Simplified) (zh-cn)**   | Ex | Beta |  |  |
 | **Chinese (Traditional) (zh-tw)**  | Ex | Beta |  |  |
 | **Dutch (nl)**                     | Ex | Beta |  |  |
