@@ -709,7 +709,7 @@ To create a dialog, complete the following steps:
 1.  Test the dialog as you build it.
    See [Testing your dialog](#test) for more information.
 
-### Gathering information with slots
+## Gathering information with slots
 {: #slots}
 
 Add slots to a dialog node to gather multiple pieces of information from a user within that node. Slots collect information at the users' pace. Details they provide upfront are saved, and the bot asks only for the details they do not.
@@ -1013,7 +1013,7 @@ As you make changes to your dialog, you can test it at any time to see how it re
     - To find and resubmit a test utterance, you can press the Up key to cycle through your recent inputs.
     - To remove prior test utterances from the chat pane and start over, click the **Clear** link. Not only are the test utterances and responses removed, but this action also clears the values of any context variables that were set as a result of your interactions with the dialog. Context variable values that you explicitly set or change are not cleared.
 
-## What to do next
+### What to do next
 
 If you determine that the wrong intents or entities are being recognized, you might need to modify your intent or entity definitions.
 
