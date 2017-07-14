@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-06"
+lastupdated: "2017-07-14"
 
 ---
 
@@ -647,6 +647,8 @@ The number of dialog nodes you can create depends on your service plan.
 | Standard/Premium |                    100,000 |
 | Lite             |                     25,000 |
 
+Tree depth limit: Service supports 2,000 dialog node descendants; tooling performs best with 20 or fewer.
+
 ### Procedure
 
 To create a dialog, complete the following steps:
@@ -718,7 +720,7 @@ You can think of slots as the chat bot version of a web form in which users must
 
 <iframe class="embed-responsive-item" id="youtubeplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/3unhxZUKZtk?rel=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
-#### How slots work
+### How slots work
 
 You define a slot for each piece of information that you want to collect, and write a prompt to display to users that elicits it. The service cycles through each prompt to ask for the missing information, and saves the answers as they are provided.
 
@@ -919,14 +921,14 @@ Consider these suggested approaches for handling common tasks.
 
         For example, you groom all animals except cats. For the Animal slot, you might be tempted to use the following slot condition to prevent `cat` from being saved in the Animal slot:
 
-        ```
+        ```json
         Check for @animal && !@animal:cat, then save it as $animal.
         ```
         {: codeblock}
 
         And to let users know that you do not accept cats, you might specify the following value in the Not Found condition of the Animal slot:
 
-        ```
+        ```json
         If @animal && !@animal:cat then, "I'm sorry. We do not groom cats."
 
         ```
@@ -934,14 +936,14 @@ Consider these suggested approaches for handling common tasks.
 
         While logical, if you also define a node-level exit request handler, then - given the order of condition evaluation - this Not Found condition will likely never get triggered. Instead, you can use this slot condition:
 
-        ```
+        ```json
         Check for @animal, then save it as $animal.
         ```
         {: codeblock}
 
         And to deal with a possible `cat` response, add this value to the Found condition:
 
-        ```
+        ```josn
         If @animal:cat then, "I'm sorry. We do not groom cats."
         ```
         {: codeblock}
