@@ -28,7 +28,6 @@ These videos are available in the documentation and on YouTube.
 
 - Navigation pane:
     - Video: Tool overview for Conversation
-    - Video: Show me how to use Conversation
 - "Defining intents" page: [Working with intents](intents.html)
 - "Defining entities" page: [Working with entities](entities.html)
 - "Building a dialog" page:
@@ -54,6 +53,7 @@ From an IBM technical deep-dive series. These recordings provide step-by-step in
 
 Additional videos created by IBMers.
 
+- [Show me how to use Conversation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/1rTl1WEbg5U){: new_window}: A 3-minute overview of the service
 - [Introducing Watson Conversation service ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/A96nLYSMltA){: new_window}: A 1-minute introduction
 - [Walkthrough of Watson Conversation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/ELwWhJGE2P8){: new_window}: A 14-minute technical walkthrough
 
