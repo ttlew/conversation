@@ -26,8 +26,7 @@ Videos and articles to help you get started faster.
 
 These videos are available in the documentation and on YouTube.
 
-- Navigation pane:
-    - Video: Tool overview for Conversation
+- Navigation pane video: Tool overview for Conversation
 - "Defining intents" page: [Working with intents](intents.html)
 - "Defining entities" page: [Working with entities](entities.html)
 - "Building a dialog" page:
