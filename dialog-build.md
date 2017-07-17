@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-14"
+lastupdated: "2017-07-17"
 
 ---
 
@@ -714,23 +714,17 @@ To create a dialog, complete the following steps:
 ## Gathering information with slots
 {: #slots}
 
-Add slots to a dialog node to gather multiple pieces of information from a user within that node. Slots collect information at the users' pace. Details they provide upfront are saved, and the bot asks only for the details they do not.
-
-You can think of slots as the chat bot version of a web form in which users must fill out  required fields before they can submit the form. Similarly, slots prevent the flow of conversation from moving on to a new subject until the required values are provided.
+Add slots to a dialog node to gather multiple pieces of information from a user within that node. Slots collect information at the users' pace. Details the user provides upfront are saved, and the bot asks only for the details they do not.
 
 <iframe class="embed-responsive-item" id="youtubeplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/3unhxZUKZtk?rel=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
 ### How slots work
 
-You define a slot for each piece of information that you want to collect, and write a prompt to display to users that elicits it. The service cycles through each prompt to ask for the missing information, and saves the answers as they are provided.
+You define a slot for each piece of information that you want to collect. Write a prompt that elicits the piece of the information from the user. The service cycles through the prompts for each slot to ask for the missing information, and saves the answers as they are provided.
 
-Use a slot to get information you need before you can respond accurately to the user. For example, if users ask about operating hours, but the hours differ by store location, you could ask a follow-up question about which store location they plan to visit before you answer. You can then add response conditions that take the provided location information into account.
+Use slots to get the information you need before you can respond accurately to the user. For example, if users ask about operating hours, but the hours differ by store location, you could ask a follow-up question about which store location they plan to visit before you answer. You can then add response conditions that take the provided location information into account.
 
 ![Asks for location information before answering the question, When do you open?.](images/op-hours.png)
-
-Slots make it possible for the bot to answer follow-up questions without having to re-establish the user's goal. For example, a user might ask for a weather forecast, then ask a follow-up question about weather in another location or on a different day. If you save the required forecast variables, such as location and day, in slots, then if a user asks a follow-up question with new variable values, you can overwrite the slot values with the new values provided, and give a response that reflects the new information.
-
-![Shows someone asking for a weather forecast, and then following up with a question about weather for a different location and time.](images/follow-up.png)
 
 Slots can help you to collect multiple pieces of information that you need to complete a complex task for a user, such as making a dinner reservation.
 
@@ -739,6 +733,10 @@ Slots can help you to collect multiple pieces of information that you need to co
 The user might provide values for mutliple slots at once. For example, the input might include the information, "There will be 6 of us dining at 7 PM." This one input contains two of the missing required values: the number of guests and time of the reservation. The service recognizes and stores both of them, each one in its corresponding slot. It then displays the prompt that is associated with the next empty slot.
 
 ![Shows that two slots are filled, and the bot prompts for the remaining one.](images/pass-in-info.png)
+
+Slots make it possible for the bot to answer follow-up questions without having to re-establish the user's goal. For example, a user might ask for a weather forecast, then ask a follow-up question about weather in another location or on a different day. If you save the required forecast variables, such as location and day, in slots, then if a user asks a follow-up question with new variable values, you can overwrite the slot values with the new values provided, and give a response that reflects the new information.
+
+![Shows someone asking for a weather forecast, and then following up with a question about weather for a different location and time.](images/follow-up.png)
 
 Using slots produces a more natural dialog flow between the user and the bot, and is easier for you to manage than trying to collect the information by using many separate nodes.
 
@@ -800,14 +798,6 @@ Using slots produces a more natural dialog flow between the user and the bot, an
 
     If you make a slot optional, only reference its context variable in response text if you can word it such that it makes sense even if no value is provided for the slot. For example, you might word a summary statement like this, "I am ordering a $dietary $size pizza for delivery at $time." The resulting text still makes sense if the dietary restruction information, such as `gluten-free` or `dairy-free` is not provided, "I am ordering a large pizza for delivery at 3:00PM."
     {: tip}
-1.  **Ask for everything at once**.
-    Include an initial prompt for the whole node that clearly tells users which units of information you want them to provide. Displaying this prompt first gives users the opportunity to provide all the details at once and not have to wait to be prompted for each piece of information one at a time.
-
-    For example, when the node is triggered because a customer wants to order a pizza, you can respond with the preliminary prompt, "I can take your pizza order. Tell me what size pizza you want and the time that you want it delivered."
-
-    If the user provides even one piece of this information in their initial request, then the prompt is not displayed. For example, the initial input might be, "I want to order a large pizza." When the service analyzes the input, it recognizes "large" as the pizza size and fills the **Size** slot with the value provided. Because one of the slots is filled, it skips displaying the initial prompt to avoid asking for the pizza size information again. Instead, it displays the prompts for any remaining slots with missing information.
-
-    Select the **Prompt for everything** checkbox to enable the intial prompt.
 1.  **Keep users on track**.
     You can optionally define node-level handlers that provide responses to questions users might ask during the interaction that are tangential to the purpose of the node.
 
@@ -824,6 +814,14 @@ Using slots produces a more natural dialog flow between the user and the bot, an
 #### Tips for using slots
 
 Consider these suggested approaches for handling common tasks.
+
+- **Ask for everything at once**: Include an initial prompt for the whole node that clearly tells users which units of information you want them to provide. Displaying this prompt first gives users the opportunity to provide all the details at once and not have to wait to be prompted for each piece of information one at a time.
+
+    For example, when the node is triggered because a customer wants to order a pizza, you can respond with the preliminary prompt, "I can take your pizza order. Tell me what size pizza you want and the time that you want it delivered."
+
+    If the user provides even one piece of this information in their initial request, then the prompt is not displayed. For example, the initial input might be, "I want to order a large pizza." When the service analyzes the input, it recognizes "large" as the pizza size and fills the **Size** slot with the value provided. Because one of the slots is filled, it skips displaying the initial prompt to avoid asking for the pizza size information again. Instead, it displays the prompts for any remaining slots with missing information.
+
+    From the Customize pane where you enabled the Slots feature, select the **Prompt for everything** checkbox to enable the intial prompt.
 
 - **Capturing multiple values**: You can ask for a list of items and save them in one slot.
 
@@ -865,7 +863,7 @@ Consider these suggested approaches for handling common tasks.
 
     See [Methods to process values](dialog-methods.html) for other reformatting ideas.
 
-- **Getting confirmation**: Add a slot below the others that asks the user to confirm that the information you have collected is accurate and complete.
+- **Getting confirmation**: Add a slot below the others that asks the user to confirm that the information you have collected is accurate and complete. The slot can look for responses that match the #yes intent.
 
     <table>
     <tr>
@@ -885,6 +883,12 @@ Consider these suggested approaches for handling common tasks.
       <td>see below</td>
     </tr>
     </table>
+
+    **Tip**: Because users might include affirmative statements at other times during the dialog, use the `slot_in_focus` property to make it clear in the slot condition that you are looking for a Yes response to the prompt for this slot only, not in response to any other slot in the dialog node.
+
+    ```json
+    #yes && slot_in_focus
+    ```
 
     In the **Not Found** prompt, ask for the information all over again and reset the context variables that you saved earlier.
 
@@ -907,7 +911,11 @@ Consider these suggested approaches for handling common tasks.
 
 - **Avoid number confusion**: Some values that are provided by users can be identified as more than one entity type.
 
-    For example, when a user provides a currency, it is recognized as both a sys-currency and sys-number entity type. Do some testing in the "Try it out" pane to understand how the system will interpret different user inputs, and build logic into your conditions to prevent possible misinterpretations.
+    You might have two slots that store the same type of value, such as an arrival date and departure date, for example. Build logic into your slot conditions to distinguish such similar values from one another.
+
+    In addition, the service can recognize multiple entity types in a single user input. For example, when a user provides a currency, it is recognized as both a @sys-currency and @sys-number entity type. Do some testing in the "Try it out" pane to understand how the system will interpret different user inputs, and build logic into your conditions to prevent possible misinterpretations.
+
+    **Tip**: In logic that is unique to the slots feature, when two entities are recognized in a single user input, the one with the larger span is used. For example, if the user enters *May 2*, even though the Conversation service recognizes both @sys-date (05022017) and @sys-number (2) entities in the text, only the entity with the longer span (@sys-date) is registered and applied to a slot, if applicable.
 
 - **Handle requests to exit the process**: Add at least one node-level handler that can recognize it when a user wants to exit the node.
 
