@@ -18,7 +18,7 @@ lastupdated: "2017-07-07"
 {:swift: .ph data-hd-programlang='swift'}
 
 # Recommendations
-This page presents recommendations for recommends ways to improve your system.
+This page presents recommendations for ways to improve your system.
 {: shortdesc}
 
 This feature is Beta only.
@@ -39,7 +39,7 @@ This recommendation involves taking individual phrases entered by users, that th
 Click **Start** to begin identifying intents.
 ![Improve existing intents page](images/rec_improve_intent.png)
 
-When you enter or exit **Improve existing intents**, the progress bar shows how many phrases you have acted on in the current session, out of the total phrasess left for the day. Note that if you exit and reenter, the progress bar will start from "empty" again, but that does not mean your previous work was lost - it just won’t count towards the progress of the current session.
+When you enter or exit **Improve existing intents**, the progress bar shows how many phrases you have acted on in the current session, out of the total phrases left for the day. Note that if you exit and reenter, the progress bar will start from "empty" again, but that does not mean your previous work was lost - it just won’t count towards the progress of the current session.
 
 Select the best intent for a phrase from the list provided, or select *Mark as irrelevant*. The phrases are added to intents as examples (added as training data) as soon as you click **Save**.
 
