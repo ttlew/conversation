@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-11"
+lastupdated: "2017-07-19
 
 ---
 
@@ -45,6 +45,14 @@ Existing models that you have trained will not be immediately impacted, but expi
 {: #change-log}
 
 The following new features and changes to the service are available.
+
+### 19 July 2017
+
+- The {{site.data.keyword.conversationshort}} REST API now supports access to dialog nodes. For more information, see the [API Reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/conversation/api/v1/#dialog_nodes){: new_window}.
+
+### 14 July 2017
+
+- The slots functionality of dialogs was enhanced. For example, a *slot_in_focus* property was added that you can use to define a condition that applies to a single slot only. See [Gathering information with slots](/docs/services/conversation/dialog-build.html#slots) for details.
 
 ### 12 July 2017
 
@@ -174,7 +182,7 @@ For more information, see the [API Reference ![External link icon](../../icons/l
 ### 3 February 2017
 
 - In this release, we change how intents are scored and add the ability to mark input as irrelevant to your application. [For details, see Defining intents](intents.html#mark-irrelevant) and search for "Mark as irrelevant".
-    - These features are available in the tooling by [upgrading your workspace ![External link icon](../../icons/launch-glyph.svg "External link icon")](upgrading.html){: new_window}.
+    - These features are available in the tooling by [upgrading your workspace](upgrading.html).
     - These features are available for your application by changing the message API call to use **2017-02-03.**
 - The processing of **Jump to** actions has been changed to prevent loops that can occur under certain conditions.
 
