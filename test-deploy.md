@@ -38,6 +38,7 @@ To install your application as a bot user:
 1. Click the menu icon in the upper left corner, and then select **Deploy**. The Deploy Options page opens.
 
    ![Quick deploy menu option](images/deploy_menu_testdeploy.png)
+
 1. Under **Deploy with OpenWhisk**, click **Test in Slack** and follow the instructions.
 
    ![Create Slack test button](images/testdeploy_testinslack.png)
