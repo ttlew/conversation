@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-06"
+lastupdated: "2017-07-20"
 
 ---
 
@@ -17,7 +17,7 @@ lastupdated: "2017-07-06"
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# System entities
+# System entity details
 
 This reference section provides complete information about the available system entities. For more information about system entities and how to use them, refer to [Defining entities](entities.html#enable_system_entities) and search for "Enabling system entities".
 {: shortdesc}

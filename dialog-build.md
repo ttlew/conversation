@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-17"
+lastupdated: "2017-07-20"
 
 ---
 
@@ -694,14 +694,19 @@ To create a dialog, complete the following steps:
 
     If you want to apply an `OR` operator to the multiple conditions instead of `AND`, click the `and` that is displayed between the fields to change the operator type.
 
+    The condition you define must be under 500 characters in length.
+
     For more information about how to test for values in conditions, see [Conditions](#conditions).
 1.  **Optional**: If you want to collect multiple pieces of information from the user in this node, then click **Customize** and enable **Slots**. See [Gathering information with slots](#slots) for more details.
 1.  Enter a response.
     - Add the text that you want the bot to display to the user as a response.
     - For information about conditional responses, how to add variety to responses, or how to specify what should happen after the node is triggered, see [Responses](#responses).
-1.  **Optional**: Name the node.
+1.  **Optional**: Name the node. 
+
+    The dialog node name can contain letters (in Unicode), numbers, spaces, underscores, hyphens, and periods.
 
     Naming the node makes it easier for you to remember its purpose and to locate the node when it is minimized. If you don't provide a name, the node condition is used as the name.
+
 1.  To add more nodes, select a node in the tree, and then click the **More** ![More icon](images/kabob.png) icon.
     - To create a peer node that is checked next if the condition for the existing node is not met, select **Add node below**.
     - To create a peer node that is checked before the condition for the existing node is checked, select **Add node above**.
@@ -777,7 +782,7 @@ Using slots produces a more natural dialog flow between the user and the bot, an
     </tr>
     </table>
 
-    **Optional slots**: If a slot is optional, do not specify a prompt for it.
+    **Optional slots**: If you want to add a slot that captures information but is optional, do not specify a prompt for it.
 
     For example, you might add a slot that captures dietary restriction informations in case the user specifies any. However, you don't want to ask all users for dietary information since it is irrelevant in most cases.
 
@@ -877,19 +882,20 @@ Consider these suggested approaches for handling common tasks.
     <tr>
       <td>Confirmation</td>
       <td>#yes</td>
-      <td>$order-confirmed</td>
+      <td>$confirmation</td>
       <td>"I'm going to order you a `$size` pizza for delivery at `$time`. Should I go ahead?"</td>
       <td>"Your pizza is on its way!"</td>
       <td>see below</td>
     </tr>
     </table>
 
-    **Tip**: Because users might include affirmative statements at other times during the dialog, use the `slot_in_focus` property to make it clear in the slot condition that you are looking for a Yes response to the prompt for this slot only, not in response to any other slot in the dialog node.
+    Because users might include affirmative statements at other times during the dialog (*Oh yes, we want the pizza delivered at 5pm*), use the `slot_in_focus` property to make it clear in the slot condition that you are looking for a Yes response to the prompt for this slot only.
 
     ```json
     #yes && slot_in_focus
     ```
-
+    The `slot_in_focus` property always evaluates to a Boolean (true or false) value. Only include it in a condition for which you want a boolean result. Do not use it in slot conditions that checks for an entity type and then save the entity value, for example.
+    {: tip}
     In the **Not Found** prompt, ask for the information all over again and reset the context variables that you saved earlier.
 
     ```json

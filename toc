@@ -15,17 +15,23 @@ Conversation
 
     {: .navgroup id="reference"}
     [API reference](https://www.ibm.com/watson/developercloud/conversation/api/v1/)
-    lang-support.md
-    supported-timezones.md
-    system-entities.md
 
     {: .topicgroup}
     Expression language
         expression-language.md
         dialog-shorthand.md
         dialog-methods.md
+
     filter-reference.md
     sample-applications.md
+    lang-support.md
+
+    {: .topicgroup}
+    System entities
+        system-entities.md
+        supported-timezones.md
+
+    [Watson GitHub repos](https://github.com/watson-developer-cloud/)
 
     {: .topicgroup}
     Watson SDKs
@@ -35,7 +41,6 @@ Conversation
         [.NET SDK](https://github.com/watson-developer-cloud/dotnet-standard-sdk)
         [Swift SDK](https://github.com/watson-developer-cloud/ios-sdk)
         [Unity SDK](https://github.com/watson-developer-cloud/unity-sdk)
-    [Watson GitHub repos](https://github.com/watson-developer-cloud/)
     {: .navgroup-end}
 
     {: .navgroup id="howto"}

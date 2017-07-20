@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-03"
+lastupdated: "2017-07-20"
 
 ---
 
@@ -17,7 +17,7 @@ lastupdated: "2017-07-03"
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Supported time zones
+# Time zones supported by system entities
 
 This list of supported time zones can be used with the time zone functions related to the [@sys-date and @sys-time entities](system-entities.html#sys-datetime).
 {: shortdesc}
