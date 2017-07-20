@@ -7,7 +7,6 @@ Conversation
     {: .navgroup id="learn"}
     getting-started.md
     index.md
-    show-me.md
     tool-overview.md
     [Demo: Car Dashboard](https://conversation-demo.mybluemix.net/)
     resources.md
