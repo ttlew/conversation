@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-18"
+lastupdated: "2017-07-20"
 
 ---
 
@@ -693,6 +693,8 @@ To create a dialog, complete the following steps:
     ![Shows the user clicking the plus sign (Add condition) icon after the first condition, which adds another field where the user can add another condition.](images/add-condition.gif)
 
     If you want to apply an `OR` operator to the multiple conditions instead of `AND`, click the `and` that is displayed between the fields to change the operator type.
+
+    The condition you define must be under 500 characters in length.
 
     For more information about how to test for values in conditions, see [Conditions](#conditions).
 1.  **Optional**: If you want to collect multiple pieces of information from the user in this node, then click **Customize** and enable **Slots**. See [Gathering information with slots](#slots) for more details.
