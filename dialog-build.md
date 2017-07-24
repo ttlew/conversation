@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-20"
+lastupdated: "2017-07-21"
 
 ---
 
@@ -723,9 +723,7 @@ Add slots to a dialog node to gather multiple pieces of information from a user 
 
 <iframe class="embed-responsive-item" id="youtubeplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/3unhxZUKZtk?rel=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
-### How slots work
-
-You define a slot for each piece of information that you want to collect. Write a prompt that elicits the piece of the information from the user. The service cycles through the prompts for each slot to ask for the missing information, and saves the answers as they are provided.
+### Why add slots?
 
 Use slots to get the information you need before you can respond accurately to the user. For example, if users ask about operating hours, but the hours differ by store location, you could ask a follow-up question about which store location they plan to visit before you answer. You can then add response conditions that take the provided location information into account.
 
@@ -745,6 +743,20 @@ Slots make it possible for the bot to answer follow-up questions without having 
 
 Using slots produces a more natural dialog flow between the user and the bot, and is easier for you to manage than trying to collect the information by using many separate nodes.
 
+### How slots work
+
+Here's what you do:
+
+- Add a slot for each piece of information that you want to collect.
+- Write a prompt that elicits the piece of the information from the user.
+- Identify the type of information you want to extract from the user's answer.
+- Provide a name for the context variable in which the user's answer will be stored.
+- Provide a Found response that is displayed when the user answers the question as expected.
+- Provide a Not found response that is displayed when the user does not answer the question as expected. Here, you can clarify what you need.
+- Add a node-level response that indicates that you have received all the information you need.
+
+The service cycles through the prompts for each slot to ask for the missing information, and saves the answers as they are provided. It repeats the process until all of the slots are filled, meaning that all of the slot context variables contain valid values.
+
 #### Adding slots
 
 1.  Identify the units of information that you want to collect. For example, to order a pizza for someone, you might want to collect the following information:
@@ -753,7 +765,7 @@ Using slots produces a more natural dialog flow between the user and the bot, an
 1.  From the dialog node edit view, click **Customize**, and then select the **Slots** checkbox.
 1.  **Add a slot for each unit of required information**.
 
-    For each slot, specify what to look for in the user input, how to save the slot value when it is provided, and the text to display to users to prompt them to provide the information you need. You can also specify follow-up statements to display both when the value is provided and when it is not.
+    For each slot, specify what to look for in the user input, how to save the slot value when it is provided, and the text to display to users to prompt them to provide the information you need. You can also specify follow-up statements to display both when the value you want is provided and when it is not.
 
     <table>
     <tr>
@@ -815,6 +827,12 @@ Using slots produces a more natural dialog flow between the user and the bot, an
     This condition is triggered if the user provides input that matches the handler conditions at any time during the dialog node flow up until the final response is displayed.
 1.  **Add a node-level response**.
     The node response can summarize the information you collected. For example, "A `$size` pizza is scheduled for delivery at `$time`. Enjoy!"
+
+1.  **Add logic that resets the slot context variables**.
+    As you collect answers from the user per slot, they are saved in context variables. You can use the context variables to pass the information to another node or to an application or external service for use. However, after passing the information, you must set the context variables to null to reset the node so it can start collecting information again. You cannot null the context variables within the current node because the service will not exit the node until the required slots are filled. Instead, consider using one of the following methods:
+    - Add processing to the external application that nulls the variables.
+    - Add a child node that nulls the variables.
+    - Insert a parent node that nulls the variables, and then jumps to the node with slots.
 
 #### Tips for using slots
 
@@ -922,6 +940,10 @@ Consider these suggested approaches for handling common tasks.
     In addition, the service can recognize multiple entity types in a single user input. For example, when a user provides a currency, it is recognized as both a @sys-currency and @sys-number entity type. Do some testing in the "Try it out" pane to understand how the system will interpret different user inputs, and build logic into your conditions to prevent possible misinterpretations.
 
     **Tip**: In logic that is unique to the slots feature, when two entities are recognized in a single user input, the one with the larger span is used. For example, if the user enters *May 2*, even though the Conversation service recognizes both @sys-date (05022017) and @sys-number (2) entities in the text, only the entity with the longer span (@sys-date) is registered and applied to a slot, if applicable.
+
+- **Prevent a Found response from displaying when it's not needed**: If you specify Found responses for multiple slots, then if a user provides values for multiple slots at once, the Found response for at least one of the slots will be displayed. You probably want either the Found response for all of them or none of them to be returned. To prevent just one of the Found responses from being displayed, you can do one of the following things:
+    - Set the `all_slots_filled` property to true. This setting forces the service to exit the node, and skips over displaying the Found responses for any of the individual slots. Do not use this approach if you are including a confirmation slot or the confirmation slot will never be triggered.
+    - Add a condition to the Found response that prevents it from being displayed if more than one slot value is filled. For example, you can add `!($size && $time)` as the condition to prevent the response from being displayed if the $size and $time context variables are both provided.
 
 - **Handle requests to exit the process**: Add at least one node-level handler that can recognize it when a user wants to exit the node.
 
