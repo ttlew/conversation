@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-03"
+lastupdated: "2017-07-24"
 
 ---
 
@@ -17,7 +17,7 @@ lastupdated: "2017-07-03"
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Developing your application
+# Building a client application
 
 So you have a working dialog. Now you want to develop the application that will interact with your users and communicate with the {{site.data.keyword.conversationfull}} service.
 {: shortdesc}
