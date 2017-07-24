@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-03"
+lastupdated: "2017-07-21"
 
 ---
 
@@ -37,10 +37,21 @@ This diagram shows the overall architecture of a complete solution:![Flow diagra
 
 ### Implementation
 
-You complete these steps to implement your application:
+Here's how you will implement your application:
 
-- **Configure a workspace.** With the easy-to-use graphical environment, you set up the dialog flow and training data for your application.
-- **Develop your application.** You code your application to connect to the {{site.data.keyword.conversationshort}} workspace through API calls. You then integrate your app with other systems that you need, including back-end systems and third-party services such as chat services or social media.
+- **Configure a workspace.** With the easy-to-use graphical environment, set up the training data and dialog for your application.
+
+    The training data consists of the following artifacts:
+    - Intents: Goals that you anticipate your users will have when they interact with the service. Define one intent for each goal that can be identified in a user's input. For example, you might define an intent named *store_hours* that answers questions about store hours. For each intent, you add sample utterances that reflect the input customers might use to ask for the information they need, such as, "What time do you open?"
+    - Entities: An entity represents a term or object that provides context for an intent. For example, an entity might be a city name that helps your dialog to distinguish which store the user wants to know store hours for.
+
+      As you add training data, a natural language classifier is automatically added to the workspace, and is trained to understand the types of requests that you have indicated the service should listen for and respond to.
+
+    Use the dialog tool to build a dialog flow that incorporates your intents and entities. The dialog flow is represented graphically in the tool as a tree. You can add a branch to process each of the intents that you want the service to handle. You can then add branch nodes that handle the many possible permutations of a request based on other factors, such as the entities found in the user input or information that is passed to the service from your application or another external service.
+
+    See [Configuring a Conversation workspace](configure-workspace.html) for more information.
+
+- **Deploy your workspace.** Deploy the configured workspace to users by connecting it to a front-end user interface, social media, or a messaging channel. See [Deploying](deploy.html) for details.
 
 ## Language support
 

@@ -112,7 +112,7 @@ You can test your dialog at any time to verify the dialog. Let's test it now.
 
 ### Adding nodes to handle intents
 
-Now let's add nodes to handle our intents between the `conversation_start` node and the `anything_else` node.
+Now let's add nodes to handle our intents between the `Welcome` node and the `Anything else` node.
 
 1.  Click the More icon ![More options](images/kabob.png) on the **Welcome** node, and then select **Add node below**.
 1.  Type `#hello` in the **Enter a condition** field of this node. Then select the **#hello** option.
