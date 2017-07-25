@@ -12,6 +12,34 @@ Conversation
     resources.md
     {: .navgroup-end}
 
+    {: .navgroup id="howto"}
+    configure-workspace.md
+
+    {: .topicgroup}
+    Defining intents and entities
+        intents-entities.md
+        intents.md
+        entities.md
+    dialog-build.md
+
+    {: .topicgroup}
+    Deploying
+        deploy.md
+        test-deploy.md
+        develop-app.md
+        integrations.md
+    tutorial.md
+
+    {: .topicgroup}
+    Improving understanding
+        logs.md
+        logs_oview.md
+        logs_convo.md
+        logs_recommend.md
+
+    plan-upgrade.md
+    {: .navgroup-end}
+
     {: .navgroup id="reference"}
     [API reference](https://www.ibm.com/watson/developercloud/conversation/api/v1/)
 
@@ -40,34 +68,6 @@ Conversation
         [.NET SDK](https://github.com/watson-developer-cloud/dotnet-standard-sdk)
         [Swift SDK](https://github.com/watson-developer-cloud/ios-sdk)
         [Unity SDK](https://github.com/watson-developer-cloud/unity-sdk)
-    {: .navgroup-end}
-
-    {: .navgroup id="howto"}
-    configure-workspace.md
-
-    {: .topicgroup}
-    Defining intents and entities
-        intents-entities.md
-        intents.md
-        entities.md
-    dialog-build.md
-
-    {: .topicgroup}
-    Deploying
-        deploy.md
-        test-deploy.md
-        develop-app.md
-        integrations.md
-    tutorial.md
-
-    {: .topicgroup}
-    Improving understanding
-        logs.md
-        logs_oview.md
-        logs_convo.md
-        logs_recommend.md
-
-    plan-upgrade.md
     {: .navgroup-end}
 
     {: .navgroup id="help"}

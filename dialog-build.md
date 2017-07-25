@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-24"
+lastupdated: "2017-07-25"
 
 ---
 
@@ -30,7 +30,7 @@ The response might be the answer to a question such as `Where can I get some gas
 ## Dialog overview
 {: #overview}
 
-Your dialog is represented graphically in the tool as a tree. Create a branch to process each intent that you want your bot to handle. A branch is composed of multiple nodes.
+Your dialog is represented graphically in the tool as a tree. Create a branch to process each intent that you want your conversation to handle. A branch is composed of multiple nodes.
 
 ### Dialog nodes
 
@@ -39,15 +39,15 @@ Each dialog node contains, at a minimum, a condition and a response.
 ![Shows user input going to a box that contains the statement If: CONDITION, Then: RESPONSE](images/node1-empty.png)
 
 - Condition: Specifies the information that must be present in the user input for this node in the dialog to be triggered. The information might be a specific intent, an entity value, or a context variable value. See [Conditions](#conditions) for more information.
-- Response: The utterance that the bot uses to respond to the user. The response can also be configured to trigger programmatic actions. See [Responses](#responses) for more information.
+- Response: The utterance that the service uses to respond to the user. The response can also be configured to trigger programmatic actions. See [Responses](#responses) for more information.
 
 You can think of the node as having an if/then construction: if this condition is true, then return this response.
 
-For example, the following node is triggered if the natural language processing function of the service determines that the user input contains the `#cupcake-menu` intent. As a result of the node being triggered, the bot responds with an appropriate answer.
+For example, the following node is triggered if the natural language processing function of the service determines that the user input contains the `#cupcake-menu` intent. As a result of the node being triggered, the service responds with an appropriate answer.
 
 ![Shows the user asking about cupcake flavors. the If condition is #cupcake-menu and the Then response is a list of cupcake flavors.](images/node1-simple.png)
 
-A single node with one condition and response can handle simple user requests. But, more often than not, users have more sophisticated questions or want help with more complex tasks. You can add child nodes that ask the user to provide any additional information that the bot needs.
+A single node with one condition and response can handle simple user requests. But, more often than not, users have more sophisticated questions or want help with more complex tasks. You can add child nodes that ask the user to provide any additional information that the service needs.
 
 ![Shows that the first node in the dialog asks which type of cupcake the user wants, gluten-free or regular, and has two child nodes that provide a different response depending on the user's answer.](images/node1-children.png)
 
@@ -147,18 +147,18 @@ You can reply with one of these response types:
 ### Simple text response
 {: #simple-text}
 
-If you want to provide a text response, simply enter the text that you want the bot to display to the user.
+If you want to provide a text response, simply enter the text that you want the service to display to the user.
 
 ![Shows a node that shows a user ask, "Where are you located" and the dialog response is, "We have no brick and mortar stores! But, with an internet connection, you can shop us from anywhere"](images/response-simple.png)
 
 #### Adding variety
 {: #variety}
 
-If your users return to your bot frequently, they might be bored to hear the same greetings and responses every time.  You can add *variations* to your responses so that your bot can respond to the same condition in different ways.
+If your users return to your conversation service frequently, they might be bored to hear the same greetings and responses every time.  You can add *variations* to your responses so that your conversation can respond to the same condition in different ways.
 
 <iframe class="embed-responsive-item" id="youtubeplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/nAlIW3YPrAs?rel=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
-In this example, the answer that the bot provides in response to questions about store locations differs from one interaction to the next:
+In this example, the answer that the service provides in response to questions about store locations differs from one interaction to the next:
 
 ![Shows a node that shows a user ask, "Where are you located" and the dialog has three different responses defined"](images/variety.png)
 
@@ -173,7 +173,7 @@ A single dialog node can provide different responses, each one triggered by a di
 
 The node still has a main condition, which is the condition for using the node and processing the conditions and responses that it contains.
 
-In this example, the bot uses information that it collected earlier about the user's location to tailor its response, and provide information about the store nearest the user.
+In this example, the service uses information that it collected earlier about the user's location to tailor its response, and provide information about the store nearest the user.
 
 ![Shows a node that shows a user ask, "Where are you located" and the dialog has three different responses depending on conditions that use info from the $state context variable to specify locations in those states"](images/multiple-responses.png)
 
@@ -266,9 +266,9 @@ To specify a more complex response, you can use the JSON editor to specify the r
 ### Defining what to do next
 {: #jump-to}
 
-After making the specified response, you can instruct the bot to do one of the following things:
+After making the specified response, you can instruct the service to do one of the following things:
 
-- **Wait for user input**: The bot waits for the user to provide new input that the response elicits. For example, the response might ask the user a yes or no question. The dialog will not progress until the user provides more input.
+- **Wait for user input**: The service waits for the user to provide new input that the response elicits. For example, the response might ask the user a yes or no question. The dialog will not progress until the user provides more input.
 - **Jump to another dialog node**: Use this option when you want to bypass waiting for user input and want the conversation to go directly to child nodes or to an entirely different dialog node. You can use a Jump to action to route the flow to a common dialog node from multiple locations in the tree, for example.
   >Note: The target node that you want to jump to must exist before you can configure the jump to action to use it.
 
@@ -656,8 +656,8 @@ To create a dialog, complete the following steps:
 1.  Open the **Build** page from the navigation bar, click the **Dialog** tab, and then click **Create**.
 
     When you open the dialog builder for the first time, the following nodes are created for you:
-    - **Welcome**: The first node. It contains a greeting that is displayed to your users when they first engage with the bot. You can edit the greeting.
-    - **Anything else**: The final node. It contains phrases that are used to reply to users when their input is not recognized. You can replace the responses that are provided or add more responses with a similar meaning to add variety to the conversation. You can also choose whether you want the bot to return each response that is defined in turn or return them in random order.
+    - **Welcome**: The first node. It contains a greeting that is displayed to your users when they first engage with the service. You can edit the greeting.
+    - **Anything else**: The final node. It contains phrases that are used to reply to users when their input is not recognized. You can replace the responses that are provided or add more responses with a similar meaning to add variety to the conversation. You can also choose whether you want the service to return each response that is defined in turn or return them in random order.
 1.  To add more nodes to the dialog tree, click the **More** ![More icon](images/kabob.png) icon on the **Welcome** node, and then select **Add node below**.
 1.  Enter a condition that, when met, triggers the service to process the node.
 
@@ -699,7 +699,7 @@ To create a dialog, complete the following steps:
     For more information about how to test for values in conditions, see [Conditions](#conditions).
 1.  **Optional**: If you want to collect multiple pieces of information from the user in this node, then click **Customize** and enable **Slots**. See [Gathering information with slots](#slots) for more details.
 1.  Enter a response.
-    - Add the text that you want the bot to display to the user as a response.
+    - Add the text that you want the service to display to the user as a response.
     - For information about conditional responses, how to add variety to responses, or how to specify what should happen after the node is triggered, see [Responses](#responses).
 1.  **Optional**: Name the node. 
 
@@ -719,7 +719,7 @@ To create a dialog, complete the following steps:
 ## Gathering information with slots
 {: #slots}
 
-Add slots to a dialog node to gather multiple pieces of information from a user within that node. Slots collect information at the users' pace. Details the user provides upfront are saved, and the bot asks only for the details they do not.
+Add slots to a dialog node to gather multiple pieces of information from a user within that node. Slots collect information at the users' pace. Details the user provides upfront are saved, and the service asks only for the details they do not.
 
 <iframe class="embed-responsive-item" id="youtubeplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/3unhxZUKZtk?rel=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
@@ -735,13 +735,13 @@ Slots can help you to collect multiple pieces of information that you need to co
 
 The user might provide values for mutliple slots at once. For example, the input might include the information, "There will be 6 of us dining at 7 PM." This one input contains two of the missing required values: the number of guests and time of the reservation. The service recognizes and stores both of them, each one in its corresponding slot. It then displays the prompt that is associated with the next empty slot.
 
-![Shows that two slots are filled, and the bot prompts for the remaining one.](images/pass-in-info.png)
+![Shows that two slots are filled, and the service prompts for the remaining one.](images/pass-in-info.png)
 
-Slots make it possible for the bot to answer follow-up questions without having to re-establish the user's goal. For example, a user might ask for a weather forecast, then ask a follow-up question about weather in another location or on a different day. If you save the required forecast variables, such as location and day, in slots, then if a user asks a follow-up question with new variable values, you can overwrite the slot values with the new values provided, and give a response that reflects the new information.
+Slots make it possible for the service to answer follow-up questions without having to re-establish the user's goal. For example, a user might ask for a weather forecast, then ask a follow-up question about weather in another location or on a different day. If you save the required forecast variables, such as location and day, in slots, then if a user asks a follow-up question with new variable values, you can overwrite the slot values with the new values provided, and give a response that reflects the new information.
 
 ![Shows someone asking for a weather forecast, and then following up with a question about weather for a different location and time.](images/follow-up.png)
 
-Using slots produces a more natural dialog flow between the user and the bot, and is easier for you to manage than trying to collect the information by using many separate nodes.
+Using slots produces a more natural dialog flow between the user and the service, and is easier for you to manage than trying to collect the information by using many separate nodes.
 
 ### How slots work
 
