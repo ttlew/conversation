@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-25"
+lastupdated: "2017-07-26"
 
 ---
 
@@ -941,9 +941,9 @@ Consider these suggested approaches for handling common tasks.
 
     **Tip**: In logic that is unique to the slots feature, when two entities are recognized in a single user input, the one with the larger span is used. For example, if the user enters *May 2*, even though the Conversation service recognizes both @sys-date (05022017) and @sys-number (2) entities in the text, only the entity with the longer span (@sys-date) is registered and applied to a slot, if applicable.
 
-- **Prevent a Found response from displaying when it's not needed**: If you specify Found responses for multiple slots, then if a user provides values for multiple slots at once, the Found response for at least one of the slots will be displayed. You probably want either the Found response for all of them or none of them to be returned. To prevent just one of the Found responses from being displayed, you can do one of the following things:
-    - Set the `all_slots_filled` property to true. This setting forces the service to exit the node, and skips over displaying the Found responses for any of the individual slots. Do not use this approach if you are including a confirmation slot or the confirmation slot will never be triggered.
-    - Add a condition to the Found response that prevents it from being displayed if more than one slot value is filled. For example, you can add `!($size && $time)` as the condition to prevent the response from being displayed if the $size and $time context variables are both provided.
+- **Prevent a Found response from displaying when it's not needed**: If you specify Found responses for multiple slots, then if a user provides values for multiple slots at once, the Found response for at least one of the slots will be displayed. You probably want either the Found response for all of them or none of them to be returned.
+
+To prevent just one of the Found responses from being displayed, you can add a condition to the Found response that prevents it from being displayed if more than one slot value is filled. For example, you can add `!($size && $time)` as the condition to prevent the response from being displayed if the $size and $time context variables are both provided.
 
 - **Handle requests to exit the process**: Add at least one node-level handler that can recognize it when a user wants to exit the node.
 
