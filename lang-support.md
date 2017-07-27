@@ -34,7 +34,7 @@ In the following table, the level of language and feature support is indicated b
 | **Arabic (ar)**                    | GA | Beta | Beta |  |
 | **Chinese (Simplified) (zh-cn)**   | Ex | Beta |  |  |
 | **Chinese (Traditional) (zh-tw)**  | Ex | Beta |  |  |
-| **Czech (cs)**                     | Ex | Beta | Beta | Beta |
+| **Czech (cs)**                     | Ex | Beta | Beta | Beta (Misspelling only) |
 | **Dutch (nl)**                     | Ex | Beta |  |  |
 | **French (fr)**                    | GA | GA | GA | Beta (Misspelling only) |
 | **German (de)**                    | GA | GA | GA | Beta (Misspelling only) |
