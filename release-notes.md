@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-19"
+lastupdated: "2017-07-27"
 
 ---
 
@@ -45,6 +45,13 @@ Existing models that you have trained will not be immediately impacted, but expi
 {: #change-log}
 
 The following new features and changes to the service are available.
+
+### 27 July 2017
+{: #27July2017}
+
+- When you set bidirectional preferences for the tooling, you can now specify the graphical user interface direction.
+
+- The color scheme of the tooling was updated to be consistent with other Watson services and products.
 
 ### 19 July 2017
 {: #19July2017}
