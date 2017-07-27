@@ -54,8 +54,8 @@ Here's how you will implement your conversation:
 Follow these links to read more:
 
 - [Planning your intents and entities](intents-entities.html#planning-your-entities)
-- [Dialogs](dialog-build.html#overview)
-- [Deploying the conversation for use](deploy.html)
+- [Dialog overview](dialog-build.html#overview)
+- [Deployment overview](deploy.html)
 
 ## Language support
 
