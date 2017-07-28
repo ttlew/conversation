@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-11"
+lastupdated: "2017-07-27"
 
 ---
 
@@ -200,8 +200,8 @@ Create a dialog and add a node:
 
 In this complex dialog, you will create dialog branches that handle the #turn_on intent you defined earlier.
 
-### Add a root-level node for #turn_on
-Create a dialog branch to respond to the #turn_on intent. Start by creating the root-level node:
+### Add a base node for #turn_on
+Create a dialog branch to respond to the #turn_on intent. Start by creating the base node:
 
 1.  Click the More icon ![More options](images/kabob.png) on the **#greeting** node, and then select **Add node below**.
 1.  Start typing `#turn_on` in the condition field, and then select it from the list.

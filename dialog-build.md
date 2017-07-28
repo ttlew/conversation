@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-26"
+lastupdated: "2017-07-27"
 
 ---
 
@@ -753,7 +753,6 @@ Here's what you do:
 - Provide a name for the context variable in which the user's answer will be stored.
 - Provide a Found response that is displayed when the user answers the question as expected.
 - Provide a Not found response that is displayed when the user does not answer the question as expected. Here, you can clarify what you need.
-- Add a node-level response that indicates that you have received all the information you need.
 
 The service cycles through the prompts for each slot to ask for the missing information, and saves the answers as they are provided. It repeats the process until all of the slots are filled, meaning that all of the slot context variables contain valid values.
 
@@ -813,7 +812,7 @@ The service cycles through the prompts for each slot to ask for the missing info
 
     When you add a slot without a prompt, the service treats the slot as optional.
 
-    If you make a slot optional, only reference its context variable in response text if you can word it such that it makes sense even if no value is provided for the slot. For example, you might word a summary statement like this, "I am ordering a $dietary $size pizza for delivery at $time." The resulting text still makes sense if the dietary restruction information, such as `gluten-free` or `dairy-free` is not provided, "I am ordering a large pizza for delivery at 3:00PM."
+    If you make a slot optional, only reference its context variable in the node-level response text if you can word it such that it makes sense even if no value is provided for the slot. For example, you might word a summary statement like this, "I am ordering a $dietary $size pizza for delivery at $time." The resulting text still makes sense if the dietary restruction information, such as `gluten-free` or `dairy-free` is not provided, "I am ordering a large pizza for delivery at 3:00PM."
     {: tip}
 1.  **Keep users on track**.
     You can optionally define node-level handlers that provide responses to questions users might ask during the interaction that are tangential to the purpose of the node.
@@ -824,9 +823,9 @@ The service cycles through the prompts for each slot to ask for the missing info
 
     After responding to the digression, the prompt associated with the next empty slot is displayed.
 
-    This condition is triggered if the user provides input that matches the handler conditions at any time during the dialog node flow up until the final response is displayed.
+    This condition is triggered if the user provides input that matches the handler conditions at any time during the dialog node flow up until the node-level response is displayed.
 1.  **Add a node-level response**.
-    The node response can summarize the information you collected. For example, "A `$size` pizza is scheduled for delivery at `$time`. Enjoy!"
+    The node-level response can summarize the information you collected. For example, "A `$size` pizza is scheduled for delivery at `$time`. Enjoy!"
 
 1.  **Add logic that resets the slot context variables**.
     As you collect answers from the user per slot, they are saved in context variables. You can use the context variables to pass the information to another node or to an application or external service for use. However, after passing the information, you must set the context variables to null to reset the node so it can start collecting information again. You cannot null the context variables within the current node because the service will not exit the node until the required slots are filled. Instead, consider using one of the following methods:
@@ -943,7 +942,7 @@ Consider these suggested approaches for handling common tasks.
 
 - **Prevent a Found response from displaying when it's not needed**: If you specify Found responses for multiple slots, then if a user provides values for multiple slots at once, the Found response for at least one of the slots will be displayed. You probably want either the Found response for all of them or none of them to be returned.
 
-To prevent just one of the Found responses from being displayed, you can add a condition to the Found response that prevents it from being displayed if more than one slot value is filled. For example, you can add `!($size && $time)` as the condition to prevent the response from being displayed if the $size and $time context variables are both provided.
+    To prevent just one of the Found responses from being displayed, you can add a condition to the Found response that prevents it from being displayed if more than one slot value is filled. For example, you can add `!($size && $time)` as the condition. This condition prevents the response from being displayed if the $size and $time context variables are both provided.
 
 - **Handle requests to exit the process**: Add at least one node-level handler that can recognize it when a user wants to exit the node.
 
@@ -1005,6 +1004,8 @@ To prevent just one of the Found responses from being displayed, you can add a c
 #### Slots examples
 
 To access JSON files that implement different common slot usage scenarios, go to the community [conversation repo ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/community/tree/master/conversation){: new_window} in GitHub.
+
+To explore an example, download an example JSON file, and then import it as a new workspace. Go to the Dialog tab, and review the dialog nodes to see how slots were implemented to address different use cases.
 
 ### Moving a dialog node
 
