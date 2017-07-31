@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-27"
+lastupdated: "2017-07-31"
 
 ---
 
@@ -751,10 +751,11 @@ Here's what you do:
 - Write a prompt that elicits the piece of the information from the user.
 - Identify the type of information you want to extract from the user's answer.
 - Provide a name for the context variable in which the user's answer will be stored.
-- Provide a Found response that is displayed when the user answers the question as expected.
-- Provide a Not found response that is displayed when the user does not answer the question as expected. Here, you can clarify what you need.
+- Define responses that are executed after the user provides input as a result of the prompt. The responses must cover these cases:
+    - Found:  Triggered when the user answers the question as expected.
+    - Not found: Triggered when the user does not answer the question as expected. Here, you can clarify the type of information you need from the user.
 
-The service cycles through the prompts for each slot to ask for the missing information, and saves the answers as they are provided. It repeats the process until all of the slots are filled, meaning that all of the slot context variables contain valid values.
+The service cycles through the prompts for each slot to ask for the missing information, and saves the answers as they are provided. It repeats the process - starting from the first empty slot - until all of the slots are filled, meaning that all of the slot context variables contain valid values. It then executes the node-level response.
 
 #### Adding slots
 
@@ -821,11 +822,11 @@ The service cycles through the prompts for each slot to ask for the missing info
 
     ![Shows a user ask about the sauce recipe. The response is, I'll take it to my grave'.](images/sauce.png)
 
-    After responding to the digression, the prompt associated with the next empty slot is displayed.
+    After responding to the digression, the prompt associated with the current empty slot is displayed.
 
     This condition is triggered if the user provides input that matches the handler conditions at any time during the dialog node flow up until the node-level response is displayed.
 1.  **Add a node-level response**.
-    The node-level response can summarize the information you collected. For example, "A `$size` pizza is scheduled for delivery at `$time`. Enjoy!"
+    This node-level response is not executed until after all of the required slots are filled. You can add a response that summarizes the information you collected. For example, "A `$size` pizza is scheduled for delivery at `$time`. Enjoy!"
 
 1.  **Add logic that resets the slot context variables**.
     As you collect answers from the user per slot, they are saved in context variables. You can use the context variables to pass the information to another node or to an application or external service for use. However, after passing the information, you must set the context variables to null to reset the node so it can start collecting information again. You cannot null the context variables within the current node because the service will not exit the node until the required slots are filled. Instead, consider using one of the following methods:

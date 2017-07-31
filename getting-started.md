@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-24"
+lastupdated: "2017-07-31"
 
 ---
 
@@ -32,6 +32,8 @@ If you already created a service instance, you're all set with these prerequisit
 1.  Go to the [{{site.data.keyword.conversationshort}} service ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.{DomainName}/catalog/services/conversation/){: new_window} and either sign up for a free {{site.data.keyword.Bluemix_notm}} account or log in.
 1.  After you log in, type `conversation-tutorial` in the **Service name** field of the {{site.data.keyword.conversationshort}} page and click **Create**.
 
+![Shows IBM Bluemix Catalog page where you create the conversation service](images/gs-create-conversation-service.png)
+
 ## Step 1: Launch the tool
 {: #launch-tool}
 
@@ -39,15 +41,24 @@ After you create the service instance, you'll land on the dashboard for the inst
 
 Click **Manage**, then **Launch tool**.
 
+![Shows the IBM Bluemix Watson Manage page where you launch the tool](images/gs-launch-tool.png)
+
+You might be prompted to log in to the tool separately. If so, provide your IBM Bluemix credentials to log in.
+
 ## Step 2: Create a workspace
 {: #create-workspace}
 
 Your first step in the {{site.data.keyword.conversationshort}} tool is to create a workspace.
 
-A [*workspace*](configure-workspace.html) is a container for the artifacts that define the conversation flow for an application.
+A [*workspace*](configure-workspace.html) is a container for the artifacts that define the conversation flow.
 
 1.  In the {{site.data.keyword.conversationshort}} tool, click **Create**.
-1.  Give your workspace the name `Conversation example` and click **Create**. Youʼll land on the **Intents** tab of your new workspace.
+1.  Give your workspace the name `Conversation tutorial` and click **Create**. Youʼll land on the **Intents** tab of your new workspace.
+
+[![Shows a screen shot of the workspaces page](images/gs-create-workspace-animated-cover.png)![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.{DomainName}/docs/services/conversation/gs-create-workspace-animated.html)
+
+Click the image above to see how to create a workspace.
+{: tip}
 
 ## Step 3: Create intents
 {: #create-intents}
@@ -61,14 +72,18 @@ For this example, we're going to keep things simple and define only two intents:
 1.  Name the intent `hello`.
 1.  Type `hello` as a **User example** and press Enter.
 
-   *Examples* tell the {{site.data.keyword.conversationshort}} service what kinds of user input you want to match the intent. The more examples you provide, the more accurate the service can be at recognizing user intents.
-1.  Add four more examples and click **Create** to finish creating the #hello intent:
+   *Examples* tell the {{site.data.keyword.conversationshort}} service what kinds of user input you want to match to the intent. The more examples you provide, the more accurate the service can be at recognizing user intents.
+1.  Add four more examples and click **Done** to finish creating the #hello intent:
     - `good morning`
     - `greetings`
     - `hi`
     - `howdy`
 
-   ![Create an intent](images/tool-conversation-create-intent.gif)
+   [![Shows a screen shot of the empty workspace Intents page](images/gs-add-intents-animated-cover.png)![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.{DomainName}/docs/services/conversation/gs-add-intents-animated.html)
+
+Click the image above to see how to add intents.
+{: tip}
+
 1.  Create another intent named #goodbye with these five examples:
     - `bye`
     - `farewell`
@@ -80,7 +95,7 @@ For this example, we're going to keep things simple and define only two intents:
 
 You've created two intents, #hello and #goodbye, and provided example user input to train {{site.data.keyword.watson}} to recognize these intents in your users' input.
 
-![tool-intents-list-fullscreen.png](images/tool-conversation-intents-list.png)
+![Shows Intents page listing the #goodbye and #hello intents](images/gs-add-intents-result.png)
 
 ## Step 4: Build a dialog
 {: #build-dialog}
@@ -95,8 +110,13 @@ We'll create a simple dialog that handles our #hello and #goodbye intents, each 
 1.  Click **Create**. You'll see two nodes:
     - **Welcome**: Contains a greeting that is displayed to your users when they first engage with the bot.
     - **Anything else**: Contains phrases that are used to reply to users when their input is not recognized.
+
+    ![Shows the dialog tree with the Welcome and Anything else nodes](images/gs-add-dialog-node-animated-cover.png)
 1.  Click the **Welcome** node to open it in the edit view.
-1.  Replace the default response with the text, `Welcome to the Conversation example!`. Click ![Close](images/close.png) to close the edit view.
+1.  Replace the default response with the text, `Welcome to the Conversation tutorial!`.
+
+    ![Shows the Welcome node open in edit view](images/gs-edit-welcome-node.png)
+1.  Click ![Close](images/close.png) to close the edit view.
 
 ### Result
 
@@ -108,7 +128,7 @@ You can test your dialog at any time to verify the dialog. Let's test it now.
 
 - Click the ![Ask Watson](images/ask_watson.png) icon to open the "Try it out" pane. You should see your welcome message.
 
-    ![Testing the dialog node](images/tool-conversation-dialog-start-try.png)
+    ![Testing the dialog node](images/gs-tryitout-welcome-node.png)
 
 ### Adding nodes to handle intents
 
@@ -116,11 +136,16 @@ Now let's add nodes to handle our intents between the `Welcome` node and the `An
 
 1.  Click the More icon ![More options](images/kabob.png) on the **Welcome** node, and then select **Add node below**.
 1.  Type `#hello` in the **Enter a condition** field of this node. Then select the **#hello** option.
-1.  Add the response, `Good day to you.`.
+1.  Add the response, `Good day to you.`
 1.  Click ![Close](images/close.png) to close the edit view.
-1.  Click the More icon ![More options](images/kabob.png) on this node, and then select **Add node below** to create a peer node. In the peer node, specify `#goodbye` as the condition, and `OK! See you later.` as the response.
 
-    ![Adding nodes for intents](images/tool-conversation-dialog-intent-nodes.png)
+    Click the image below to see how to add a node.
+    {: tip}
+
+   [![Shows a screen shot of the dialog node with Welcome and Anything else nodes only](images/gs-add-dialog-node-animated-cover.png)![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.{DomainName}/docs/services/conversation/gs-add-dialog-node-animated.html)
+1.  Click the More icon ![More options](images/kabob.png) on this node, and then select **Add node below** to create a peer node. In the peer node, specify `#goodbye` as the condition, and `OK. See you later!` as the response.
+
+    ![Adding nodes for intents](images/gs-add-dialog-nodes-result.png)
 
 ### Testing intent recognition
 
@@ -129,13 +154,16 @@ You  built a simple dialog to recognize and respond to both hello and goodbye in
 1.  Click the ![Ask Watson](images/ask_watson.png) icon to open the "Try it out" pane. There's that reassuring welcome message.
 1.  At the bottom of the pane, type `Hello` and press Enter. The output indicates that the #hello intent was recognized, and the appropriate response (`Good day to you.`) appears.
 1.  Try the following input:
-    - `goodbye`
+    - `bye`
     - `howdy`
     - `see ya`
     - `good morning`
     - `sayonara`
 
-    ![Testing the final dialog](images/tool-conversation-dialog-intents-try.gif)
+   [![Shows a screen shot of the Try it out panel where you can test your dialog](images/gs-test-dialog-animated-cover.png)![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.{DomainName}/docs/services/conversation/gs-test-dialog-animated.html)
+
+   Click the image above to see how to test the dialog.
+    {: tip}
 
 {{site.data.keyword.watson}} can recognize your intents even when your input doesn't exactly match the examples you included. The dialog uses intents to identify the purpose of the user's input regardless of the precise wording used, and then responds in the way you specify.
 
@@ -151,6 +179,8 @@ Open the sample workspace to see intents similar to the ones you just created pl
 1.  Go back to the Workspaces page.
    You can click the ![Back to workspaces button](images/workspaces-button.png) button from the navigation menu.
 1.  On the **Car Dashboard - Sample** workspace tile, click the **Edit sample** button.
+
+    ![Shows the car dashboard sample tile on the Workspaces page](images/gs-workspace-car-sample.png)
 
 ## What to do next
 {: #next-steps}
