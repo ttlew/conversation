@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-27"
+lastupdated: "2017-07-28"
 
 ---
 
@@ -46,11 +46,10 @@ Existing models that you have trained will not be immediately impacted, but expi
 
 The following new features and changes to the service are available.
 
-### 27 July 2017
-{: #27July2017}
+### 28 July 2017
+{: #28July2017}
 
 - When you set bidirectional preferences for the tooling, you can now specify the graphical user interface direction.
-
 - The color scheme of the tooling was updated to be consistent with other Watson services and products.
 
 ### 19 July 2017
@@ -72,7 +71,6 @@ The following new features and changes to the service are available.
 {: #11July2017}
 
 - **Test in Slack** - You can use the new **Test in Slack** tool to quickly deploy your workspace as a Slack bot user for testing purposes. This tool is available only for the Bluemix US South region. For more information, see [Testing in Slack](test-deploy.html).
-
 - **Updates to Arabic** - Arabic language support has been enhanced to include absolute scoring per intent, and the ability to mark intents as irrelevant; please see the [Supported languages](lang-support.html) topic for additional details. Note that the {{site.data.keyword.conversationshort}} service learning models may have been updated as part of this enhancement, and when you retrain your model any changes will be applied; see [Updated models](release-notes.html#updated-models) for more information.
 
 ### 23 June 2017
