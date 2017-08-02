@@ -30,8 +30,8 @@ In the following table, the level of language and feature support is indicated b
 
 |                  | **[Defining intents](intents.html)**, **[entities](entities.html)**, and **[dialog](dialog-build.html)** | **[Absolute scoring and 'Mark as irrelevant'](intents.html#mark-irrelevant)** | **System entities ([number](system-entities.html#sys-number), [currency](system-entities.html#sys-currency), [percentage](system-entities.html#sys-percentage), [date, time](system-entities.html#sys-datetime))** | **[Entity fuzzy matching](entities.html#fuzzy-matching)** |
 |:---|:---:|:---:|:---:|:---:|
-| **English (en)**                   | GA | GA | GA </br> Beta ([location](system-entities.html#sys-location), [person](system-entities.html#sys-person)) | Beta (Stemming, misspelling) |
-| **Arabic (ar)**                    | GA | Beta | Beta |  |
+| **English (en)**                   | GA | GA | GA </br> Beta ([location](system-entities.html#sys-location), [person](system-entities.html#sys-person)) | Beta (Stemming, misspelling, and partial match) |
+| **Arabic (ar)**                    | GA | Beta | Beta | Beta (Misspelling only) |
 | **Chinese (Simplified) (zh-cn)**   | Ex | Beta |  |  |
 | **Chinese (Traditional) (zh-tw)**  | Ex | Beta |  |  |
 | **Czech (cs)**                     | Ex | Beta | Beta | Beta (Misspelling only) |
@@ -39,8 +39,8 @@ In the following table, the level of language and feature support is indicated b
 | **French (fr)**                    | GA | GA | GA | Beta (Misspelling only) |
 | **German (de)**                    | GA | GA | GA | Beta (Misspelling only) |
 | **Italian (it)**                   | GA | GA | GA | Beta (Misspelling only) |
-| **Japanese (ja)**                  | GA | GA | GA |  |
-| **Korean (ko)**                    | GA | GA | Beta |  |
+| **Japanese (ja)**                  | GA | GA | GA | Beta (Misspelling only) |
+| **Korean (ko)**                    | GA | GA | Beta | Beta (Misspelling only) |
 | **Portuguese (Brazilian) (pt-br)** | GA | GA | GA | Beta (Misspelling only) |
 | **Spanish (es)**                   | GA | GA | GA | Beta (Misspelling only) ||
 
