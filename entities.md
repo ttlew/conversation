@@ -60,9 +60,12 @@ Use the {{site.data.keyword.conversationshort}} tool to create entities.
     You can turn on fuzzy matching to improve the ability of the service to recognize user input terms with syntax that is similar to the entity, but without requiring an exact match. There are two components to fuzzy matching - stemming and misspelling:
     - *Stemming* - The feature recognizes the stem form of entity values that have several grammatical forms. For example, the stem of 'bananas' would be 'banana', while the stem of 'running' would be 'run'.
     - *Misspelling* - The feature is able to map user input to the appropriate corresponding entity despite the presence of misspellings or slight syntactical differences. For example, if you define "giraffe" as a synonym for an animal entity, and the user input contains the terms "giraffes" or "girafe", the fuzzy match is able to map the term to the animal entity correctly.
+    - *Partial match* - With partial matching, the feature automatically suggests substring-based synonyms present in the user-defined entities, and assigns a lower confidence score as compared to the exact entity match.
 1.  In the **Value** field, type the text of a possible value for the entity. An entity value can be any string up to 64 characters in length.
 
-    > **Important:** Don't include sensitive or personal information in entity names or values. The names and values can be exposed in URLs in an app.  In the **Synonyms** field, type any synonyms for the entity value. A synonym can be any string up to 64 characters in length.
+    > **Important:** Don't include sensitive or personal information in entity names or values. The names and values can be exposed in URLs in an app.
+    
+1. In the **Synonyms** field, type any synonyms for the entity value. A synonym can be any string up to 64 characters in length.
 
     ![Screen capture of defining an entity](images/define_entity.png)
 1.  Click **+** and repeat the process to add more entity values.
@@ -135,7 +138,7 @@ You can select a number of entities for deletion.
 
 1.  On the Entities tab, select ![Delete icon](images/DeleteIcon.png)
 
-    ![Export and Delete options](images/ExportEntity1.png)
+    ![Export and Delete options](images/DeleteEntity.png)
 
 1.  Select the entities you want to delete, and click the **Delete** button. **Note**: The delete feature supports bulk delete of entities.
 
