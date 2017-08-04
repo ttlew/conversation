@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-06"
+lastupdated: "2017-08-04"
 
 ---
 
@@ -462,6 +462,37 @@ For information about system entities that extract date and time values, see [@s
 ## Numbers
 {: #numbers}
 
+### Random()
+
+Returns a random number. Use one of the following syntax options:
+
+- To return a random boolean value (true or false), use `<?new Random().nextBoolean()?>`.
+- To return a random double number between 0 (included) and 1 (excluded), use `<?new Random().nextDouble()?>`
+- To return a random integer between 0 (included) and a number you specify, use `<?new Random().nextInt(n)?>`  where n is the top of the number range you want + 1. 
+  For example, if you want to return a random number between 0 and 10, specify `<?new Random().nextInt(11)?>`.
+- To return a random integer from the full Integer value range (-2147483648 to 2147483648), use `<?new Random().nextInt()?>`.
+
+For example, you might create a dialog node that is triggered by the #random_number intent. The first response condition might look like this:
+
+```json
+Condition = @sys-number
+{
+  "context": {
+    "upper": "<? @sys-number.numeric_value + 1?>",
+    "answer": "<? new Random().nextInt($upper) ?>"
+  },
+  "output": {
+    "text": {
+      "values": [
+        "I can get you a random integer between 0 and @sys-number.literal. It's $answer."
+      ],
+      "selection_policy": "sequential"
+    }
+  }
+}
+```
+{: codeblock}
+
 ### toDouble()
 
   Converts the object or field to the Double number type. You can call this method on any object or field. If the conversion fails, *null* is returned.
@@ -592,6 +623,28 @@ Results in this output:
 }
 ```
 {: screen}
+
+### String.contains(string)
+
+This method returns true if the input contains the passed string.
+
+For this input:
+
+```
+"Yes, I'd like to go".
+```
+{: codeblock}
+
+This syntax:
+
+```json
+{
+  "conditions": "input.text.contains('Yes')"
+}
+```
+{: codeblock}
+
+Results: The condition is `true`.
 
 ### String.endsWith(string)
 
