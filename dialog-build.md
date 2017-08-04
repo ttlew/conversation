@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-31"
+lastupdated: "2017-08-04"
 
 ---
 
@@ -844,7 +844,7 @@ Consider these suggested approaches for handling common tasks.
 
     If the user provides even one piece of this information in their initial request, then the prompt is not displayed. For example, the initial input might be, "I want to order a large pizza." When the service analyzes the input, it recognizes "large" as the pizza size and fills the **Size** slot with the value provided. Because one of the slots is filled, it skips displaying the initial prompt to avoid asking for the pizza size information again. Instead, it displays the prompts for any remaining slots with missing information.
 
-    From the Customize pane where you enabled the Slots feature, select the **Prompt for everything** checkbox to enable the intial prompt.
+    From the Customize pane where you enabled the Slots feature, select the **Prompt for everything** checkbox to enable the intial prompt. This setting adds the **If no slots are pre-filled, ask this first** field to the node, where you can specify the text that prompts the user for everything.
 
 - **Capturing multiple values**: You can ask for a list of items and save them in one slot.
 
@@ -943,7 +943,12 @@ Consider these suggested approaches for handling common tasks.
 
 - **Prevent a Found response from displaying when it's not needed**: If you specify Found responses for multiple slots, then if a user provides values for multiple slots at once, the Found response for at least one of the slots will be displayed. You probably want either the Found response for all of them or none of them to be returned.
 
-    To prevent just one of the Found responses from being displayed, you can add a condition to the Found response that prevents it from being displayed if more than one slot value is filled. For example, you can add `!($size && $time)` as the condition. This condition prevents the response from being displayed if the $size and $time context variables are both provided.
+    To prevent just one of the Found responses from being displayed, you can add a condition to the Found response that prevents it from being displayed if more than one slot value is filled. For example, use the JSON editor to add the following condition to the last slot with a Found response:
+    ```json
+    "conditions": "!($size && $time)"
+    ```
+
+    This condition prevents the response from being displayed if the $size and $time context variables are both provided.
 
 - **Handle requests to exit the process**: Add at least one node-level handler that can recognize it when a user wants to exit the node.
 
@@ -1001,6 +1006,27 @@ Consider these suggested approaches for handling common tasks.
         }
         ```
         {: codeblock}
+
+    Here's a sample of JSON that defines a node-level handler for the pizza example:
+
+    ```json
+    {
+    "conditions": "#cancel",
+    "output": {
+      "text": {
+        "values": [
+          "Ok, we'll stop there. No pizza delivery will be scheduled."
+        ],
+    "selection_policy": "sequential"
+    }
+    },
+    "context": {
+      "time": "12:00:00",
+      "size": "large",
+      "confirmation":"true"
+    }
+    }
+    ```
 
 #### Slots examples
 
