@@ -21,6 +21,7 @@ Conversation
         intents.md
         entities.md
     dialog-build.md
+    dialog-api.md
 
     {: .topicgroup}
     Deploying
