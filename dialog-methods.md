@@ -484,7 +484,7 @@ Condition = @sys-number
   "output": {
     "text": {
       "values": [
-        "I can get you a random integer between 0 and @sys-number.literal. It's $answer."
+        "Here's a random number between 0 and @sys-number.literal: $answer."
       ],
       "selection_policy": "sequential"
     }
