@@ -626,14 +626,9 @@ Results in this output:
 
 ### String.contains(string)
 
-This method returns true if the input contains the passed string.
+This method returns true if the string contains the input substring.
 
-For this input:
-
-```
-"Yes, I'd like to go".
-```
-{: codeblock}
+Input: "Yes, I'd like to go."
 
 This syntax:
 
