@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-04"
+lastupdated: "2017-08-07"
 
 ---
 
@@ -40,7 +40,24 @@ The following global variables are available:
 
 ## Accessing entities
 
-The entities array contains one or more entities. Each entity has a set of properties associate with it. You can access information about an entity through its properties.
+The entities array contains one or more entities.
+
+While testing your dialog, you can see details of the entities that are recognized in user input by specifying this expression in a dialog node response:
+
+```json
+<? entities ?>
+```
+{: codeblock}
+
+For the user input, *Hello now*, the service recognizes the @sys-date and @sys-time system entities, so the response contains these entity objects:
+
+```json
+[{"entity":"sys-date","location":[6,9],"value":"2017-08-07","confidence":1,"metadata":{"calendar_type":"GREGORIAN","timezone":"America/New_York"}},
+{"entity":"sys-time","location":[6,9],"value":"15:01:00","confidence":1,"metadata":{"calendar_type":"GREGORIAN","timezone":"America/New_York"}}]
+```
+{: codeblock}
+
+Each entity has a set of properties associated with it. You can access information about an entity through its properties.
 
 ### Table 2. Entity properties
 
@@ -53,13 +70,13 @@ The entities array contains one or more entities. Each entity has a set of prope
 ### Entity property usage examples
 The following example shows how to make use of property values:
 
-- To return a specific response if the 'JFK' entity is recognized in the user input, you could add this equation to the response condition:
+- To return a specific response if the 'JFK' entity is recognized in the user input, you could add this expression to the response condition:
   `entities.airport[0].value == 'JFK'`
 - To return the entity name as it was specified by the user in the dialog response, use the .literal property because the input might have matched against one of the synonyms defined for the JFK entity:
   `So you want to go to <?entities.airport[0].literal?>...`
 
   It might evaluate to something like `So you want to go to Kennedy Airport...' in the response.
-- To be more restrictive about which terms are identified as cities in the input when fuzzy matching is enabled, you can specify this equation in a node condition, for example: `@city && @city.confidence > 0.7`. The node will only execute if the service is 70% confident that the input text contains a city reference.
+- To be more restrictive about which terms are identified as cities in the input when fuzzy matching is enabled, you can specify this expression in a node condition, for example: `@city && @city.confidence > 0.7`. The node will only execute if the service is 70% confident that the input text contains a city reference.
 
 ## Accessing input
 
@@ -69,7 +86,7 @@ The input JSON object contains one property only: the text property. The text pr
 
 The following example shows how to access input:
 
-- To execute a node if the user input is "Yes", add this equation to the node condition:
+- To execute a node if the user input is "Yes", add this expression to the node condition:
   `input.text == 'Yes'`
 
 You can use any of the [String methods](/docs/services/conversation/dialog-methods.html#strings) to evaluate or manipulate text from the user input. For example:
@@ -82,7 +99,23 @@ You can use any of the [String methods](/docs/services/conversation/dialog-metho
 
 The intents array contains one or more intents that were recognized in the user input, sorted in descending order of confidence. Each intent has one property only: the confidence property. The confidence property is a decimal percentage that represents the service's confidence in the recognized intent.
 
-The following examples show how to access intents:
+While testing your dialog, you can see details of the intents that are recognized in user input by specifying this expression in a dialog node response:
+
+```json
+<? intents ?>
+```
+{: codeblock}
+
+For the user input, *Hello now*, the service is confident that #greeting intent is the best match for the user input, so lists the #greeting intent object details first. The response also includes all the other intents that are defined in the workspace, even though its confidence in them is so low it rounds to 0.
+
+```json
+[{"intent":"greeting","confidence":1},
+{"intent":"yes","confidence":0},
+{"intent":"pizza-order","confidence":0}]
+```
+{: codeblock}
+
+The following examples show how to check for an intent value:
 
 - `intents[0] == 'Help'`
 - `intents == 'Help'`
@@ -99,3 +132,23 @@ To expand variable values inside other variables, or apply methods to variables,
     - `"output":{"number":"<? output.number + 1 ?>"}`
 - **Invoking methods, such as append, on properties and global objects**
     - `"context":{"toppings": "<? context.toppings.append( 'onions' ) ?>"}`
+
+If you specify one SpEL expression in a condition, the information is returned in object format so the resulting value can retain its data type and be used in equations or other expressions. If you specify more than one SpEL expression in a condition, the information is returned in String format instead. For example, you can add this expression to a dialog node response to return the entities and intents that are recognized in the user input:
+
+```json
+<? entities ?> <? intents ?>
+```
+{: codeblock}
+
+If the user specifies *Hello now* as the input, the entity and intent information is provided in String format.
+
+```json
+2017-08-07, 15:09:49 [{"intent":"greeting","confidence":0.9331061244010925},
+{"intent":"yes","confidence":0.06050306558609009},
+{"intent":"pizza-order","confidence":0.052069634199142456},
+...
+]
+```
+{: codeblock}
+
+where 2017-08-07 is the @sys-date and 15:09:49 is the @sys-time.

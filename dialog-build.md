@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-04"
+lastupdated: "2017-08-07"
 
 ---
 
@@ -173,7 +173,7 @@ A single dialog node can provide different responses, each one triggered by a di
 
 The node still has a main condition, which is the condition for using the node and processing the conditions and responses that it contains.
 
-In this example, the service uses information that it collected earlier about the user's location to tailor its response, and provide information about the store nearest the user.
+In this example, the service uses information that it collected earlier about the user's location to tailor its response, and provide information about the store nearest the user. See [Context variables](#context) for more information about how to store information collected from the user.
 
 ![Shows a node that shows a user ask, "Where are you located" and the dialog has three different responses depending on conditions that use info from the $state context variable to specify locations in those states"](images/multiple-responses.png)
 
