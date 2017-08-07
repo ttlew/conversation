@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-27"
+lastupdated: "2017-08-08"
 
 ---
 
@@ -17,43 +17,33 @@ lastupdated: "2017-07-27"
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Tutorial
+# Tutorial: Building a complex dialog
 {: #tutorial}
 
 In this tutorial, you will use the {{site.data.keyword.conversationshort}} service to create a dialog that helps users interact with a cognitive car dashboard.
 {: shortdesc}
 
-## Duration
-Steps 1-6 of this tutorial will take approximately 1 to 2 hours to complete.
-Step 7 might take many hours to complete, depending on the method you choose to use to deploy the workspace.
+## Learning objectives
 
-## Step 1: Create the service
-{: #login}
+By the time you finish the tutorial, you will understand:
 
-To begin the tutorial, you need to create a new instance of the {{site.data.keyword.conversationshort}} service and launch the tool.
+- How to define entities.
+- How to plan a dialog.
+- How to use node and response conditions in a dialog.
 
-1.  Log in to {{site.data.keyword.Bluemix}} and navigate to the {{site.data.keyword.conversationshort}} service on {{site.data.keyword.Bluemix}}:
-    - Don't have a {{site.data.keyword.Bluemix_notm}} account? [Start free ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.ng.bluemix.net/registration/?target=/catalog/services/conversation/){: new_window}.
-    - Have a {{site.data.keyword.Bluemix_notm}} account? [Log in ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.ng.bluemix.net/catalog/services/conversation){: new_window}.
-1.  In the **Service name** field, specify `Conversation-tutorial`.
-1.  Click **Create**.
-1.  On the "Service Details" page, click **Launch tool**.
+### Duration
+This tutorial will take approximately 1 to 2 hours to complete.
 
-    ![Launch tool](images/launch_tool.png)
+### Prerequisite
 
-## Step 2: Create a workspace
-{: #workspace}
+Before you begin, complete the [Getting Started tutorial](getting-started.html). 
 
-A *workspace* is a container for all the artifacts that define the behavior of your service.
+You will use the Conversation tutorial workspace that you created, and add nodes to the simple dialog that you built as part of the getting started exercise.
 
-1.  On the Create workspace page, click **Create**.
-1.  In the **Name** field, type `Car tutorial`.
-1.  Select **Create**. The new workspace is displayed as a tile on your dashboard.
-
-## Step 3: Add intents and examples
+## Step 1: Add intents and examples
 {: #intents}
 
-Add some intents on the Intents tab. An intent is the purpose or goal expressed in user input.
+Add an intent on the Intents tab. An intent is the purpose or goal expressed in user input.
 
 1.  On the Intents page of the Car tutorial workspace, click **Create new**.
 1.  Add the following intent name, and then press Enter:
@@ -85,21 +75,9 @@ Add some intents on the Intents tab. An intent is the purpose or goal expressed 
 
 1.  Click **Done** to add the intent.
 
-1.  Repeat steps 2-5 to create a `#greeting` intent with these utterances:
+You now have three intents, `#turn_on`, `#greeting`, and `#goodbye`, all with example utterances. These examples help train Watson to recognize the intents in user input.
 
-    ```
-    Hello
-    Hi
-    Good morning
-    Good afternoon
-    Good evening
-    Howdy
-    ```
-    {: codeblock}
-
-You defined two intents, `#turn_on` and `#greeting`, with example utterances. These examples help train Watson to recognize the intents in user input.
-
-## Step 4: Add entities
+## Step 2: Add entities
 {: #entities}
 
 An entity definition includes a set of entity *values* that can be used to trigger different responses. Each entity value can have multiple *synonyms*, which define different ways that the same value might be specified in user input.
@@ -147,55 +125,7 @@ You defined two entities: `@appliance` (representing an appliance the bot can tu
 
 When the user's input is received, the {{site.data.keyword.conversationshort}} service identifies both the intents and entities. You can now define a dialog that uses intents and entities to choose the correct response.
 
-## Step 5: Create a simple dialog
-{: #dialog}
-
-A dialog is a set of conversational nodes that are contained in a workspace. Together the set of nodes makes a dialog tree, on which every branch is a conversation that can be had with a user.
-
-### Start the dialog
-Create a dialog and add a node:
-
-1.  On the Car tutorial workspace page, click the **Dialog** tab.
-1.  Click **Create**. A dialog is created with the following nodes:
-    - **Welcome**: Contains a greeting that is displayed to your users when they first engage with the bot. You can edit the greeting.
-    - **Anything else**: Contains phrases that are used to reply to users when their input is not recognized. You can replace the responses that are provided or add more responses with a similar meaning to the list.
-1.  Click the **Welcome** node to open it in edit view.
-1.  Replace the existing response (Hello. How can I help you?) with the text, `Welcome to the car tutorial!`
-1.  Click ![Close](images/close.png) to close the node edit view.
-1.  Click the More icon ![More options](images/kabob.png) on the **Welcome** node, and select **Add node below**.
-1.  In the edit view, specify the condition and response for this node of the conversation.
-
-    1.  In the condition field, start typing `#greeting`, and then select it from the list.
-
-    1.  In the response field, enter the following text:
-
-        ```
-        Hi, there. What can I do for you?
-        ```
-        {: codeblock}
-
-        Your bot will show this response when the specified condition is true (in this case, when someone greets the bot).
-
-1.  Click ![Close](images/close.png) to close the node edit view.
-
-    The tree view now shows the node you added.
-
-    ![Dialog nodes](images/tut-dialog-greeting.png)
-
-### Test the simple dialog
-
-1.  Select the ![Ask Watson](images/ask_watson.png) icon.
-    In the chat pane, you should see the bot welcome message, `Welcome to the car tutorial!`.
-1.  Type a greeting, such as "Hi", and then press Enter.
-    The output shows that the #greeting intent is recognized, and the appropriate response is displayed.
-
-    ![Shows a greeting and response in Try it out pane](images/tut-first-chat.png)
-
-    Congratulations! You have had a successful first chat with your bot.
-
-1.  Close the chat pane.
-
-## Step 6: Create a complex dialog
+## Step 3: Create a complex dialog
 {: #complex-dialog}
 
 In this complex dialog, you will create dialog branches that handle the #turn_on intent you defined earlier.
@@ -337,7 +267,7 @@ Optionally review the **Car Dashboard - Sample** workspace to see this same use 
 
 1.  On the **Car Dashboard - Sample** tile, click **Edit sample**.
 
-## Step 7: Deploy the tutorial workspace
+## Step 4: Deploy the tutorial workspace
 {: #deploy}
 
 Now that you have built and tested your workspace, you can deploy it by connecting it to a user interface. There are several ways you can do this.
