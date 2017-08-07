@@ -23,7 +23,7 @@ lastupdated: "2017-07-18"
 To open a list of conversations between users and your bot, select **User conversations** in the navigation bar. If **User conversations** is not visible, use the ![Menu](images/Menu_16.png) menu to open the page.
 {: shortdesc}
 
-When you open the **User conversations** page, the default view lists results for the last 90 days, with the newest results first. The top intent (#intent) and any recognized entity (@entity) values used in the message, and the message text are available. For intents that are not recognized, or if an entity is not recognized or has not been provided, the value shown is *Irrelevant*.
+When you open the **User conversations** page, the default view lists results for the last day, with the newest results first. The top intent (#intent) and any recognized entity (@entity) values used in the message, and the message text are available. For intents that are not recognized, or if an entity is not recognized or has not been provided, the value shown is *Irrelevant*.
 ![Logs default page](images/logs_page1.png)
 
 ## Log limits
@@ -33,7 +33,8 @@ The length of time for which chat messages are retained depends on your {{site.d
 
   Service plan                         | Chat log retention
   ------------------------------------ | ------------------------------------
-  Standard/Premium                     | Last 30 days
+  Premium                              | Last 90 days
+  Standard                             | Last 30 days
   Free                                 | Last 7 days
 
 ## Filtering chat messages
@@ -41,7 +42,7 @@ You can filter chat messages by *Search user statements*, *Intents*, *Entities*,
 
 *Search user statements* - Type a word in the search bar. This searches the user's inputs, but not your bot's replies.
 
-*Intents* - Select the drop-down menu and type an intent in the input field, or choose from the populated list. You can select more than one intent, which filters the results using any of the    selected intents.
+*Intents* - Select the drop-down menu and type an intent in the input field, or choose from the populated list. You can select more than one intent, which filters the results using any of the selected intents.
 
 ![Intents drop-down menu](images/intents_filter.png)
 
