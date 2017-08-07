@@ -57,7 +57,7 @@ For the user input, *Hello now*, the service recognizes the @sys-date and @sys-t
 ```
 {: codeblock}
 
-Each entity has a set of properties associate with it. You can access information about an entity through its properties.
+Each entity has a set of properties associated with it. You can access information about an entity through its properties.
 
 ### Table 2. Entity properties
 
