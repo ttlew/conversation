@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-03"
+lastupdated: "2017-08-07"
 
 ---
 
@@ -46,8 +46,13 @@ Existing models that you have trained will not be immediately impacted, but expi
 
 The following new features and changes to the service are available.
 
-### 3 August 2017
-{: #3August2017}
+### 7 August 2017
+{: #7August2017}
+
+- **`Next` and `last` date interpretation** - The Conversation service treats "last" and "next" dates as referring to the most immediate last or next day referenced, which may be in either the same or a previous week. See the [system entities](system-entities.html#sys-datetime) topic for additional information.
+
+### 2 August 2017
+{: #2August2017}
 
 - **Fuzzy matching for additional languages (Beta)** - Fuzzy matching for entities is now available for additional languages, as noted in the [Supported languages](lang-support.html) topic.
 - **Partial match (Beta - English only)** - Fuzzy matching will now automatically suggest substring-based synonyms present in user-defined entities, and assign a lower confidence score as compared to the exact entity match. See [Fuzzy matching](entities.html#fuzzy-matching) for details.

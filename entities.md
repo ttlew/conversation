@@ -43,8 +43,8 @@ Use the {{site.data.keyword.conversationshort}} tool to create entities.
 1.  In the {{site.data.keyword.conversationshort}} tool, open your workspace and then click the **Entities** tab. If **Entities** is not visible, use the ![Menu](images/Menu_16.png) menu to open the page.
 1.  Click **Create new**.
 
-    You can also click **Use System Entities** to select from a list of common entities, provided by {{site.data.keyword.IBM_notm}}, that can be applied to any use case. See [Enabling system entities](#enable_system_entities) for more detail. In the **Add the entity name** field, type a descriptive name for the entity.
-    {: tip}
+    You can also click **Use System Entities** to select from a list of common entities, provided by {{site.data.keyword.IBM_notm}}, that can be applied to any use case. See [Enabling system entities](#enable_system_entities) for more detail.
+1. In the **Add the entity name** field, type a descriptive name for the entity.
 
     The entity name can contain letters (in Unicode), numbers, underscores, and hyphens. For example:
     - `@location`
