@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-04"
+lastupdated: "2017-08-07"
 
 ---
 
@@ -90,6 +90,8 @@ Dialog node output:
 
 Result: `True` because the array contains the element ham.
 
+**Note**: You cannot use the contains method to check for a value in the array within the same node in which you set the array values.
+
 ### JSONArray.get(integer)
 
 This method returns the input index from the JSONArray.
@@ -119,6 +121,20 @@ Dialog node output:
 
 Result:
 `True` because the nested array contains `one` as a value.
+
+Response:
+
+```json
+"output": {
+    "text": {
+      "values": [
+        "The first item in the array is <?$nested.array.get(0)?>"
+      ],
+      "selection_policy": "sequential"
+    }
+  }
+```
+{: codeblock}
 
 ### JSONArray.getRandomItem()
 
