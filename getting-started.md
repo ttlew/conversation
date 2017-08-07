@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-31"
+lastupdated: "2017-08-07"
 
 ---
 
@@ -55,7 +55,7 @@ A [*workspace*](configure-workspace.html) is a container for the artifacts that 
 1.  In the {{site.data.keyword.conversationshort}} tool, click **Create**.
 1.  Give your workspace the name `Conversation tutorial` and click **Create**. Youʼll land on the **Intents** tab of your new workspace.
 
-[![Shows an animation of a user creating a Conversation tutorial workspace.](images/gs-create-workspace-animated.gif)
+![Shows an animation of a user creating a Conversation tutorial workspace.](images/gs-create-workspace-animated.gif)
 
 ## Step 3: Create intents
 {: #create-intents}
@@ -76,7 +76,7 @@ For this example, we're going to keep things simple and define only two intents:
     - `hi`
     - `howdy`
 
-   [![Shows an animation of a user creating a #hello intent with example utterances.](images/gs-add-intents-animated.gif)
+   ![Shows an animation of a user creating a #hello intent with example utterances.](images/gs-add-intents-animated.gif)
 
 1.  Create another intent named #goodbye with these five examples:
     - `bye`
@@ -133,7 +133,7 @@ Now let's add nodes to handle our intents between the `Welcome` node and the `An
 1.  Add the response, `Good day to you.`
 1.  Click ![Close](images/close.png) to close the edit view.
 
-   [![Shows an animation of a user adding a hello node to the dialog.](images/gs-add-dialog-node-animated.gif)
+   ![Shows an animation of a user adding a hello node to the dialog.](images/gs-add-dialog-node-animated.gif)
 1.  Click the More icon ![More options](images/kabob.png) on this node, and then select **Add node below** to create a peer node. In the peer node, specify `#goodbye` as the condition, and `OK. See you later!` as the response.
 
     ![Adding nodes for intents](images/gs-add-dialog-nodes-result.png)
@@ -151,7 +151,7 @@ You  built a simple dialog to recognize and respond to both hello and goodbye in
     - `good morning`
     - `sayonara`
 
-   [![Shows an animation of the user testing the dialog in the Try it out panel](images/gs-test-dialog-animated.gif)
+   ![Shows an animation of the user testing the dialog in the Try it out panel](images/gs-test-dialog-animated.gif)
 
 {{site.data.keyword.watson}} can recognize your intents even when your input doesn't exactly match the examples you included. The dialog uses intents to identify the purpose of the user's input regardless of the precise wording used, and then responds in the way you specify.
 
