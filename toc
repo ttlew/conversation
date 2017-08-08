@@ -47,7 +47,6 @@ Conversation
     {: .topicgroup}
     Expression language
         expression-language.md
-        dialog-shorthand.md
         dialog-methods.md
 
     filter-reference.md
