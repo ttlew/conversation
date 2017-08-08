@@ -25,14 +25,14 @@ In this tutorial, you will use the {{site.data.keyword.conversationshort}} servi
 
 ## Learning objectives
 
-By the time you finish the tutorial, you will understand:
+By the time you finish the tutorial, you will understand how to:
 
-- How to define entities.
-- How to plan a dialog.
-- How to use node and response conditions in a dialog.
+- Define entities
+- Plan a dialog
+- Use node and response conditions in a dialog
 
 ### Duration
-This tutorial will take approximately 1 to 2 hours to complete.
+This tutorial will take approximately 2 to 3 hours to complete.
 
 ### Prerequisite
 

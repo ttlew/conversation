@@ -27,6 +27,8 @@ Use these methods to process values extracted from user utterances that you want
 ## Arrays
 {: #arrays}
 
+You cannot use these methods to check for a value in an array in a node condition or response condition within the same node in which you set the array values.
+
 ### JSONArray.append(object)
 
 This method appends a new value to the JSONArray and returns the modified JSONArray.
@@ -79,24 +81,20 @@ For this Dialog runtime context which is set by a previous node or external appl
 ```
 {: codeblock}
 
-Dialog node condition:
+Dialog node or response condition:
 
 ```json
-{
-  "conditions": "$toppings_array.contains('ham')"
-}
+$toppings_array.contains('ham')
 ```
 {: codeblock}
 
 Result: `True` because the array contains the element ham.
 
-**Note**: You cannot use the .contains method to check for a value in the array within the same node in which you set the array values.
-
 ### JSONArray.get(integer)
 
 This method returns the input index from the JSONArray.
 
-For this Dialog runtime context:
+For this Dialog runtime context which is set by a previous node or external application:
 
 ```json
 {
@@ -110,12 +108,10 @@ For this Dialog runtime context:
 ```
 {: codeblock}
 
-Dialog node output:
+Dialog node or response condition:
 
 ```json
-{
-  "conditions": "$nested.array.get(0).getAsString().contains('one')"
-}
+$nested.array.get(0).getAsString().contains('one')
 ```
 {: codeblock}
 
@@ -164,7 +160,7 @@ Dialog node output:
 
 Result: `"ham is a great choice!"` or `"onion is a great choice!"` or `"olives is a great choice!"`
 
-**Note:** The resulting output text will be randomly chosen:
+**Note:** The resulting output text is randomly chosen.
 
 ### JSONArray.join(string delimiter)
 
@@ -194,7 +190,7 @@ Dialog node output:
 
 Result:
 
-```
+```json
 This is the array: onion;olives;ham;
 ```
 {: screen}
