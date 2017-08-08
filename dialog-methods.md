@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-07"
+lastupdated: "2017-08-08"
 
 ---
 
@@ -68,7 +68,7 @@ Result:
 
 This method returns true if the input JSONArray contains the input value.
 
-For this Dialog runtime context:
+For this Dialog runtime context which is set by a previous node or external application:
 
 ```json
 {
@@ -79,7 +79,7 @@ For this Dialog runtime context:
 ```
 {: codeblock}
 
-Dialog node output:
+Dialog node condition:
 
 ```json
 {
@@ -90,7 +90,7 @@ Dialog node output:
 
 Result: `True` because the array contains the element ham.
 
-**Note**: You cannot use the contains method to check for a value in the array within the same node in which you set the array values.
+**Note**: You cannot use the .contains method to check for a value in the array within the same node in which you set the array values.
 
 ### JSONArray.get(integer)
 
@@ -494,8 +494,7 @@ For example, you might create a dialog node that is triggered by the #random_num
 Condition = @sys-number
 {
   "context": {
-    "upper": "<? @sys-number.numeric_value + 1?>",
-    "answer": "<? new Random().nextInt($upper) ?>"
+    "answer": "<? new Random().nextInt(@sys-number.numeric_value + 1) ?>"
   },
   "output": {
     "text": {

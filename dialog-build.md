@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-07"
+lastupdated: "2017-08-08"
 
 ---
 
@@ -123,7 +123,7 @@ Use one of these syntax options to create valid expressions in conditions:
 
 - Spring Expression (SpEL) language, which is an expression language that supports querying and manipulating an object graph at runtime. See [Spring Expression Language (SpEL) language ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html){: new_window} for more information.
 
-- Shorthand notations to refer to intents, entities, and context variables. See [Shorthand syntax](dialog-shorthand.html).
+- Shorthand notations to refer to intents, entities, and context variables. See [Accessing and evaluating objects](expression-language.html).
 
 Use regular expressions to check for values to condition against.  To find a matching string, for example, you can use the `String.find` method. See  [Methods](dialog-methods.html) for more details.
 
