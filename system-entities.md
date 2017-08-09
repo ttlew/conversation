@@ -92,13 +92,15 @@ Multi-word date-time mentions such as `on Monday at 4pm` are also extracted as t
 
 Mentions of a date range such as `the weekend`, `next week`, or `from Monday to Friday` are extracted as a pair of `@sys-date` entity mentions that show the start and end of the range. Similarly, mentions of time ranges such as `from 2 to 3` are extracted as two `@sys-time` entities, showing the start and end times. The two entities in the pair share a literal string that corresponds to the full date or time range mention.
 
-### `Last` and `Next` dates
+### `Last` and `Next` dates and times
 
 In some locales, a phrase like "last Monday" is used to specify the Monday of the previous week only. In contrast, other locales use "last Monday" to specify the last day which was a Monday, but which may have been either in the same week or the previous week.
 
 As an example, for Friday June 16, in some locales "last Monday" could refer to either June 12 or to June 5, while in other locales it refers only to June 5 (the previous week). This same logic holds true for a phrase like "next Monday".
 
 The Conversation service treats "last" and "next" dates as referring to the most immediate last or next day referenced, which may be in either the same or a previous week.
+
+For time phrases like "for the last 3 days" or "in the next 4 hours", the logic is equivalent. For example, in the case of "in the next 4 hours", this results in two `@sys-time` entities: one of the current time, and one of the time four hours later than the current time.
 
 ### Time zones
 
@@ -252,7 +254,9 @@ You get equivalent results for other supported languages.
 
 - Percentage values are recognized as instances of @sys-number entities as well. If you are using separate conditions to check for both percentage values and numbers, place the condition that checks for a percentage above the one that checks for a number.
 
-- If you use the @sys-percentage entity as a node condition and the user specifies `0%` as the value, the value is recognized as a percentage properly, but the condition is evaluated to the number zero not the percentage 0%. Therefor it does not return the expected response. To check for percentages in a way that handles zero percentages properly, use the syntax `entities['sys-percentage']` in the node condition instead.
+- If you use the @sys-percentage entity as a node condition and the user specifies `0%` as the value, the value is recognized as a percentage properly, but the condition is evaluated to the number zero not the percentage 0%. Therefore, it does not return the expected response. To check for percentages in a way that handles zero percentages properly, use the syntax `entities['sys-percentage']` in the node condition instead.
+
+- If you input a value like `1-2%`, the values `1%` and `2%` are returned as system entities. The index will be the whole range between 1% and 2%, and both entities will have the same index.
 
 ## @sys-person entity
 {: #sys-person}
