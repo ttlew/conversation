@@ -331,7 +331,7 @@ In this example, the system entity @sys-person is used to extract the user's nam
 
 Define a context variable by adding a `name` and `value` pair to the `{context}` section of the JSON dialog node definition. The pair must meet these requirements:
 
-- The `name` can contain any upper- and lower-case alphabetic characters, numeric characters (0-9), and underscores.
+- The `name` can contain any upper- and lower-case alphabetic characters, numeric characters (0-9), underscores, and periods.
 
 - The `value` can be any supported JSON type, such as a simple string variable, a number, a JSON array, or a JSON object.
 
@@ -692,7 +692,8 @@ To create a dialog, complete the following steps:
 
     ![Shows the user clicking the plus sign (Add condition) icon after the first condition, which adds another field where the user can add another condition.](images/add-condition.gif)
 
-    If you want to apply an `OR` operator to the multiple conditions instead of `AND`, click the `and` that is displayed between the fields to change the operator type.
+    If you want to apply an `OR` operator to the multiple conditions instead of `AND`, click the `and` that is displayed between the fields to change the operator type. AND operations are executed before OR operations, but you can change the order by using parentheses. For example:
+    `$isMember:true AND ($memberlevel:silver OR $memberlevel:gold)`
 
     The condition you define must be under 500 characters in length.
 
