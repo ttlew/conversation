@@ -22,13 +22,9 @@ lastupdated: "2017-08-08"
 Valid expressions in conditions are written in the Spring Expression (SpEL) language. For more information, see [Spring Expression Language (SpEL) language ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html){: new_window}.
 {: shortdesc}
 
-When you use the full SpEL syntax in the dialog response, enclose the expression in `<?` and `?>` to render it in String format.  When you use the full SpEL syntax in a condition, do not include the surrounding `<? ?>` syntax.
-
 ## Built-in global variables
 
 The following global variables are available:
-
-### Table 1. Built-in global variables
 
 | Global variable      | Definition |
 |----------------------|------------|
@@ -149,7 +145,7 @@ The following examples show how to check for an intent value:
 
 ### Shorthand syntax for intents
 
-The following table shows examples of the shorthand syntax that you can use.
+The following table shows examples of the shorthand syntax that you can use when referring to intents.
 
 | Shorthand syntax        | Full syntax in SpEL |
 |-------------------------|---------------------|
@@ -157,6 +153,32 @@ The following table shows examples of the shorthand syntax that you can use.
 | `! #help`               | `intent != 'help'`  |
 | `NOT #help`             | `intent != 'help'`  |
 | `#help` or `#i_am_lost` | <code>(intent == 'help' &#124;&#124; intent == 'I_am_lost')</code> |
+
+## Accessing input
+
+The input JSON object contains one property only: the text property. The text property represents the text of the user input.
+
+### Input property usage examples
+
+The following example shows how to access input:
+
+- To execute a node if the user input is "Yes", add this expression to the node condition:
+  `input.text == 'Yes'`
+
+You can use any of the [String methods](/docs/services/conversation/dialog-methods.html#strings) to evaluate or manipulate text from the user input. For example:
+
+- To check whether the user input contains "Yes", use: `input.text.contains( 'Yes' )`.
+- Returns true if the user input is a number: `input.text.matches( '[0-9]+' )`.
+- To check whether the input string contains ten characters, use: `input.text.length() == 10`.
+
+## Shorthand syntax for context variables
+
+The following table shows examples of the shorthand syntax that you can use to write context variables in condition expressions.
+
+| Shorthand syntax           | Full syntax in SpEL                     |
+|----------------------------|-----------------------------------------|
+| `$card_type:VISA`          | `context['card_type'] == 'VISA'`        |
+| `$card_type:(MASTER CARD)` | `context['card_type'] == 'MASTER CARD'` |
 
 ## Evaluation
 
@@ -172,6 +194,9 @@ To expand variable values inside other variables, or apply methods to variables,
     - `"context":{"toppings": "<? context.toppings.append( 'onions' ) ?>"}`
 
 ### JSON Object or String format
+
+When you use the full SpEL syntax in the dialog response, enclose the expression in `<?` and `?>` to render it in String format.  When you use the full SpEL syntax in a condition, do not include the surrounding `<? ?>` syntax.
+
 If you specify one SpEL expression in a condition, the information is returned in object format so the resulting value can retain its data type and be used in equations or other expressions. If you specify more than one SpEL expression in a condition or include the expression as part of a string, then the information is returned in String format instead. 
 
 For example, you can add this expression to a dialog node response to return the entities that are recognized in the user input:
@@ -206,29 +231,3 @@ The intents are [
 ]
 ```
 {: codeblock}
-
-## Accessing input
-
-The input JSON object contains one property only: the text property. The text property represents the text of the user input.
-
-### Input property usage examples
-
-The following example shows how to access input:
-
-- To execute a node if the user input is "Yes", add this expression to the node condition:
-  `input.text == 'Yes'`
-
-You can use any of the [String methods](/docs/services/conversation/dialog-methods.html#strings) to evaluate or manipulate text from the user input. For example:
-
-- To check whether the user input contains "Yes", use: `input.text.contains( 'Yes' )`.
-- Returns true if the user input is a number: `input.text.matches( '[0-9]+' )`.
-- To check whether the input string contains ten characters, use: `input.text.length() == 10`.
-
-## Shorthand syntax for context variables
-
-The following table shows examples of the shorthand syntax that you can use to write context variables in condition expressions.
-
-| Shorthand syntax           | Full syntax in SpEL                     |
-|----------------------------|-----------------------------------------|
-| `$card_type:VISA`          | `context['card_type'] == 'VISA'`        |
-| `$card_type:(MASTER CARD)` | `context['card_type'] == 'MASTER CARD'` |
