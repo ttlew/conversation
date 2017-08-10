@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-08"
+lastupdated: "2017-08-10"
 
 ---
 
@@ -71,7 +71,11 @@ When you start to build the dialog, you must determine the branches to include, 
 A node condition determines whether that node is used in the conversation. Response conditions determine which response to display to a user.
 You can use one or more of the following artifacts in any combination to define a condition:
 
-- **Context variable**: The node is used if the context variable equation that you specify is true. Use the syntax `$variable_name:value` or `$variable_name == 'value'`. See [Context variables](#context).
+- **Context variable**: The node is used if the context variable expression that you specify is true. Use the syntax `$variable_name:value` or `$variable_name == 'value'`. See [Context variables](#context).
+
+  Do not define a node or response condition based on the value of a context variable in the same dialog node in which you set the context variable value.
+  {: tip}
+
 - **Entity**: The node is used when any value or synonym for the entity is recognized in the user input. Use the syntax `@{entity_name}`.
 
   Be sure to create a peer node to handle the case where none of the entity's values or synonyms are recognized.
@@ -288,14 +292,6 @@ If you choose to jump to another node, you must specify whether the action targe
 
 > Note: The processing of **Jump to** actions changed with the February 3, 2017 release. See [Upgrading your workspace ![External link icon](../../icons/launch-glyph.svg "External link icon")](upgrading.html){: new_window} for more details.
 
-#### Processing order
-
-The service processes the following functions in this order, regardless of the order in which you specify them.
-
-1.  Updates the dialog context.
-1.  Provides a text response to the user.
-1.  Routes the conversation as directed by waiting for a user response or following a **Jump to** action.
-
 #### More information
 
 For information about the expression language used by dialog, plus methods, system entities, and other useful details, see the Reference section in the Navigation pane.
@@ -305,7 +301,9 @@ For information about the expression language used by dialog, plus methods, syst
 
 The dialog is stateless, meaning that it does not retain information from one interchange with the user to the next. Your application is responsible for maintaining any continuing information that it needs. However, the application can pass information to the dialog, and the dialog can update this information and pass it back to the application. It does so by using context variables.
 
-A context variable is a variable that you define in a node, and optionally specify a default value for. Other nodes or application logic can subsequently set or change the value of the context variable. You can use context variable values within a dialog as node conditions that show different reponses depending on a value provided by the user.
+A context variable is a variable that you define in a node, and optionally specify a default value for. Other nodes or application logic can subsequently set or change the value of the context variable. 
+
+You can condition against context variable values by referencing a context variable from a dialog node condition to determine whether to execute a node. And you can reference a context variable from dialog node response conditions to show different reponses depending on a value provided by an external service or by the user.
 
 ### Passing context from the application
 
@@ -410,6 +408,28 @@ Other common tasks include:
     }
     ```
     {: codeblock}
+
+### Order of operation
+{: #order-of-context-var-ops}
+
+The order in which you define the context variables does not determine the order in which they are evaluated by the service. The service evaluates the variables, which are defined as JSON name and value pairs, in random order. Do not set a value in the first context variable and expect to be able to use it in the second, because there is no guarantee that the first context variable in your list will be executed before the second one in your list. For example, do not use two context variables to implement logic that returns a random number between zero and some higher value that is passed to the node.
+
+```json
+"context": {
+    "upper": "<? @sys-number.numeric_value + 1?>",
+    "answer": "<? new Random().nextInt($upper) ?>"
+}
+```
+{: codeblock}
+
+Use a slightly more complex expression to avoid having to rely on the value of the $upper context variable being evaluated before the $answer context variable is evaluated.
+
+```json
+"context": {
+    "answer": "<? new Random().nextInt(@sys-number.numeric_value + 1) ?>"
+}
+```
+{: codeblock}
 
 ### Updating a context variable value
 {: #updating-a-context-variable-value}
@@ -915,6 +935,7 @@ Consider these suggested approaches for handling common tasks.
     ```
     The `slot_in_focus` property always evaluates to a Boolean (true or false) value. Only include it in a condition for which you want a boolean result. Do not use it in slot conditions that checks for an entity type and then save the entity value, for example.
     {: tip}
+
     In the **Not Found** prompt, ask for the information all over again and reset the context variables that you saved earlier.
 
     ```json
