@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-07"
+lastupdated: "2017-08-10"
 
 ---
 
@@ -31,8 +31,6 @@ If you already created a service instance, you're all set with these prerequisit
 
 1.  Go to the [{{site.data.keyword.conversationshort}} service ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.{DomainName}/catalog/services/conversation/){: new_window} and either sign up for a free {{site.data.keyword.Bluemix_notm}} account or log in.
 1.  After you log in, type `conversation-tutorial` in the **Service name** field of the {{site.data.keyword.conversationshort}} page and click **Create**.
-
-![Shows IBM Bluemix Catalog page where you create the conversation service](images/gs-create-conversation-service.png)
 
 ## Step 1: Launch the tool
 {: #launch-tool}
@@ -85,8 +83,6 @@ For this example, we're going to keep things simple and define only two intents:
     - `I'm done`
     - `see you later`
 
-### Result
-
 You've created two intents, #hello and #goodbye, and provided example user input to train {{site.data.keyword.watson}} to recognize these intents in your users' input.
 
 ![Shows Intents page listing the #goodbye and #hello intents](images/gs-add-intents-result.png)
@@ -111,8 +107,6 @@ We'll create a simple dialog that handles our #hello and #goodbye intents, each 
 
     ![Shows the Welcome node open in edit view](images/gs-edit-welcome-node.png)
 1.  Click ![Close](images/close.png) to close the edit view.
-
-### Result
 
 You created a dialog node that is triggered by the `welcome` condition, which is a special condition that indicates that the user has started a new conversation. Your node specifies that when a new conversation starts, the system should respond with the welcome message.
 
@@ -155,7 +149,7 @@ You  built a simple dialog to recognize and respond to both hello and goodbye in
 
 {{site.data.keyword.watson}} can recognize your intents even when your input doesn't exactly match the examples you included. The dialog uses intents to identify the purpose of the user's input regardless of the precise wording used, and then responds in the way you specify.
 
-### Result
+### Result of building a dialog
 
 That's it. You created a simple conversation with two intents and a dialog to recognize them.
 
