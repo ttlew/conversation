@@ -149,7 +149,7 @@ You  built a simple dialog to recognize and respond to both hello and goodbye in
 
 {{site.data.keyword.watson}} can recognize your intents even when your input doesn't exactly match the examples you included. The dialog uses intents to identify the purpose of the user's input regardless of the precise wording used, and then responds in the way you specify.
 
-### Buiding a dialog results
+### Result of building a dialog
 
 That's it. You created a simple conversation with two intents and a dialog to recognize them.
 
