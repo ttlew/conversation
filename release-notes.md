@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-07"
+lastupdated: "2017-08-10"
 
 ---
 
@@ -45,6 +45,17 @@ Existing models that you have trained will not be immediately impacted, but expi
 {: #change-log}
 
 The following new features and changes to the service are available.
+
+### 10 August 2017
+{: #10August2017}
+
+- **Accent normalization:** In a conversational setting, users may or may not use accents while interacting with the Conversation service. As such, an update has been made to the algorithm so that accented and non-accented versions of words are treated the same for intent detection and entity recognition.
+
+  However for some languages, like Spanish, some accents can alter the meaning of the entity. Thus, for entity detection, although the original entity may implicitly have an accent, the service also matches the non-accented version of the same entity, but with a slightly lower confidence score. For example, for the word "Uña", which has an accent, the service will also match the word "Una", but with a slightly lower confidence.
+
+  **Note:** Accent normalization is enabled for Portuguese, Spanish, French, and Czech.
+
+- **Workspace opt-out flag:** The {{site.data.keyword.conversationshort}} REST API now supports an opt-out flag for workspaces. This flag indicates that workspace training data such as intents and entities are not to be used by IBM for general service improvements. For more information, see the [API Reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/conversation/api/v1/#data-collection){: new_window}
 
 ### 7 August 2017
 {: #7August2017}
