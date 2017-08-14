@@ -51,7 +51,11 @@ The following new features and changes to the service are available.
 
 - **Accent normalization:** In a conversational setting, users may or may not use accents while interacting with the Conversation service. As such, an update has been made to the algorithm so that accented and non-accented versions of words are treated the same for intent detection and entity recognition.
 
-  However for some languages, like Spanish, some accents can alter the meaning of the entity. Thus, for entity detection, although the original entity may implicitly have an accent, the service also matches the non-accented version of the same entity, but with a slightly lower confidence score. For example, for the word "Uña", which has an accent, the service will also match the word "Una", but with a slightly lower confidence.
+  However for some languages, like Spanish, some accents can alter the meaning of the entity. Thus, for entity detection, although the original entity may implicitly have an accent, the service also matches the non-accented version of the same entity, but with a slightly lower confidence score.
+
+  For example, for the word "barrió", which has an accent and corresponds to the past tense of the verb "barrer" (to sweep), the service will also match the word "barrio" (neighborhood), but with a slightly lower confidence.
+
+  Although not an accent mark, the same applies to words using, for example, the Spanish letter `ñ` vs. the letter `n`, such as "uña" vs. "una". In this case the letter `ñ` is not simply an `n` with an accent; it is a unique, Spanish-specific letter.
 
   **Note:** Accent normalization is enabled for Portuguese, Spanish, French, and Czech.
 
