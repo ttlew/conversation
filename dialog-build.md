@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-10"
+lastupdated: "2017-08-14"
 
 ---
 
@@ -191,7 +191,7 @@ The conditions within a node are evaluated in order, just as nodes are.  Be sure
 
 To specify a more complex response, you can use the JSON editor to specify the response in the `"output":{}` property.
 
-- To include a context variable value in the response, use the syntax `$variable-name` to specify it. See [Context variables](#context) for more information.
+To include a context variable value in the response, use the syntax `$variable-name` to specify it. See [Context variables](#context) for more information.
 
     ```json
     {
@@ -202,7 +202,7 @@ To specify a more complex response, you can use the JSON editor to specify the r
     ```
     {: codeblock}
 
-- To specify more than one statement that you want to display on separate lines, define the output as a JSON array.
+To specify more than one statement that you want to display on separate lines, define the output as a JSON array.
 
     ```json
     {
@@ -214,42 +214,43 @@ To specify a more complex response, you can use the JSON editor to specify the r
     {: codeblock}
     The first sentence is displayed on one line, and the second sentence is displayed as a new line below it.
 
-- To implement more complex behavior, you can define the output text as a complex JSON object. For example, you can use a complex object in the JSON output to mimic the behavior of adding response variations to the node.
+To implement more complex behavior, you can define the output text as a complex JSON object. For example, you can use a complex object in the JSON output to mimic the behavior of adding response variations to the node. You can include the following properties in the complex object:
 
-  You can include the following properties in the complex object:
+- **values**: A JSON array of strings that holds multiple versions of output text that this dialog node can return. The order in which values in the array are returned depends on the attribute `selection_policy`.
 
-    - **values**: A JSON array of strings that holds multiple versions of output text that this dialog node can return. The order in which values in the array are returned depends on the attribute `selection_policy`.
-    - **selection_policy**: The following values are valid:
-        - **random**: The system randomly selects output text from the `values` array and does not repeat them consecutively. For example, consider output.text that contains three values. For the first three times, a random value is selected but not repeated another time. After all the output values are given, the system randomly selects another value and repeats the process.
+- **selection_policy**: The following values are valid:
 
-            ```json
-            {
-                "output":{
-                    "text":{
-                        "values":["Hello.","Hi.","Howdy!"],
-                        "selection_policy":"random"
-                    }
+    - **random**: The system randomly selects output text from the `values` array and does not repeat them consecutively. For example, consider output.text that contains three values. For the first three times, a random value is selected but not repeated another time. After all the output values are given, the system randomly selects another value and repeats the process.
+
+        ```json
+        {
+            "output":{
+                "text":{
+                    "values":["Hello.","Hi.","Howdy!"],
+                    "selection_policy":"random"
                 }
             }
-            ```
-            {: codeblock}
+        }
+        ```
+        {: codeblock}
 
-            The system returns one greeting from these three options that it picks at random. The next time the response is triggered, another greeting from the list is displayed. The greeting is again chosen at random, except the previously used greeting is intentionally not repeated.
-        - **sequential**: The system returns the first output text the first time the dialog node is triggered, the second output text the second time the node is triggered, and so on.
+    The system returns one greeting from these three options that it picks at random. The next time the response is triggered, another greeting from the list is displayed. The greeting is again chosen at random, except the previously used greeting is intentionally not repeated.
 
-            ```json
-            {
-                "output":{
-                    "text":{
-                        "values":["Hello.", "Hi.", "Howdy!"],
-                        "selection_policy":"sequential"
-                    }
+    - **sequential**: The system returns the first output text the first time the dialog node is triggered, the second output text the second time the node is triggered, and so on.
+
+        ```json
+        {
+            "output":{
+                "text":{
+                    "values":["Hello.", "Hi.", "Howdy!"],
+                    "selection_policy":"sequential"
                 }
             }
-            ```
-            {: codeblock}
+        }
+        ```
+        {: codeblock}
 
-    - **append**: Specifies whether to append a value to an array or overwrite the values in the array with the new value or values. When set to false, the output collected in previously executed dialog nodes is overwritten by the text value specified in this particular node.
+- **append**: Specifies whether to append a value to an array or overwrite the values in the array with the new value or values. When set to false, the output collected in previously executed dialog nodes is overwritten by the text value specified in this particular node.
 
     ```json
     {
@@ -265,7 +266,7 @@ To specify a more complex response, you can use the JSON editor to specify the r
 
     In this case, all other output text is overwritten by this output text.
 
-  The default behavior assumes `selection_policy = random` and `append = true`. When the values array contains more than one item, the output text is randomly selected from its elements.
+The default behavior assumes `selection_policy = random` and `append = true`. When the values array contains more than one item, the output text is randomly selected from its elements.
 
 ### Defining what to do next
 {: #jump-to}
@@ -290,7 +291,7 @@ If you choose to jump to another node, you must specify whether the action targe
 
     Targeting the condition is useful for chaining the conditions of dialog nodes. For example, you might want to first check whether the input contains an intent, such as `#turn_on`, and if it does, you might want to check whether the input contains entities, such as `@lights`, `@radio`, or `@wipers`. Chaining conditions helps to structure larger dialog trees.
 
-> Note: The processing of **Jump to** actions changed with the February 3, 2017 release. See [Upgrading your workspace ![External link icon](../../icons/launch-glyph.svg "External link icon")](upgrading.html){: new_window} for more details.
+**Note**: The processing of **Jump to** actions changed with the February 3, 2017 release. See [Upgrading your workspace ![External link icon](../../icons/launch-glyph.svg "External link icon")](upgrading.html){: new_window} for more details.
 
 #### More information
 
