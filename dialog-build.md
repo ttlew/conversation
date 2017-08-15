@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-14"
+lastupdated: "2017-08-15"
 
 ---
 
@@ -193,26 +193,27 @@ To specify a more complex response, you can use the JSON editor to specify the r
 
 To include a context variable value in the response, use the syntax `$variable-name` to specify it. See [Context variables](#context) for more information.
 
-    ```json
-    {
-      "output": {
-        "text": "Hello $user"
-      }
-    }
-    ```
-    {: codeblock}
+```json
+{
+  "output": {
+    "text": "Hello $user"
+  }
+}
+```
+{: codeblock}
 
 To specify more than one statement that you want to display on separate lines, define the output as a JSON array.
 
-    ```json
-    {
-      "output": {
-        "text": ["Hello there.", "How are you?"]
-      }
-    }
-    ```
-    {: codeblock}
-    The first sentence is displayed on one line, and the second sentence is displayed as a new line below it.
+```json
+{
+  "output": {
+    "text": ["Hello there.", "How are you?"]
+  }
+}
+```
+{: codeblock}
+
+The first sentence is displayed on one line, and the second sentence is displayed as a new line below it.
 
 To implement more complex behavior, you can define the output text as a complex JSON object. For example, you can use a complex object in the JSON output to mimic the behavior of adding response variations to the node. You can include the following properties in the complex object:
 
