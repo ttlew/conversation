@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-15"
+lastupdated: "2017-08-18"
 
 ---
 
@@ -640,7 +640,7 @@ Choose one of these actions to update the array. In each case, we see the array 
       "one",
       "two"
     ],
-    "string_array": "string array: $array"
+    "array_in_string": "this is my array: $array"
   }
 )
 ```
@@ -650,9 +650,9 @@ If you check the values of these context variables in the Try it out pane, you w
 
 **$array** : `["one","two"]`
 
-**$string_array** : `"string array: [\"one\",\"two\"]"`
+**$array_in_string** : `"this is my array: [\"one\",\"two\"]"`
 
-You can subsequently perform array methods on the $array variable, such as `<? $array.removeValue('two') ?>` but not the $string_array variable.
+You can subsequently perform array methods on the $array variable, such as `<? $array.removeValue('two') ?>` but not the $array_in_string variable.
 
 ## Creating a dialog
 {: #create}
