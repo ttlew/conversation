@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-27"
+lastupdated: "2017-08-23"
 
 ---
 
@@ -24,7 +24,6 @@ The {{site.data.keyword.conversationshort}} service supports the languages liste
 In the following table, the level of language and feature support is indicated by these codes:
 
 - **GA** - The feature is generally available and supported for this language. Note that features may continue to be updated even after they are generally available.
-- **Ex** - Language support is only Experimental.
 - **Beta** - The feature is supported only as a Beta release, and is still undergoing testing before it is made generally available in this language.
 - **Blank** - Absence of any code indicates that a feature is not available in this language.
 
@@ -32,10 +31,10 @@ In the following table, the level of language and feature support is indicated b
 |:---|:---:|:---:|:---:|:---:|
 | **English (en)**                   | GA | GA | GA </br> Beta ([location](system-entities.html#sys-location), [person](system-entities.html#sys-person)) | Beta (Stemming, misspelling, and partial match) |
 | **Arabic (ar)**                    | GA | Beta | Beta | Beta (Misspelling only) |
-| **Chinese (Simplified) (zh-cn)**   | Ex | Beta |  |  |
-| **Chinese (Traditional) (zh-tw)**  | Ex | Beta |  |  |
-| **Czech (cs)**                     | Ex | Beta | Beta | Beta (Misspelling only) |
-| **Dutch (nl)**                     | Ex | Beta |  |  |
+| **Chinese (Simplified) (zh-cn)**   | Beta | Beta |  |  |
+| **Chinese (Traditional) (zh-tw)**  | Beta | Beta |  |  |
+| **Czech (cs)**                     | Beta | Beta | Beta | Beta (Misspelling only) |
+| **Dutch (nl)**                     | Beta | Beta |  |  |
 | **French (fr)**                    | GA | GA | GA | Beta (Misspelling only) |
 | **German (de)**                    | GA | GA | GA | Beta (Misspelling only) |
 | **Italian (it)**                   | GA | GA | GA | Beta (Misspelling only) |
@@ -69,3 +68,20 @@ Select from the following options for your workspace:
 ![Bidi options](images/bidi_opts.png)
 
 When finished making selections, click **Update** to save and return to the workspace tab.
+
+## Working with accented characters
+{: #working-with-accents}
+
+In a conversational setting, users may or may not use accents while interacting with the Conversation service. As such, both accented and non-accented versions of words may be treated the same for intent detection and entity recognition.
+
+However for some languages, like Spanish, some accents can alter the meaning of the entity. Thus, for entity detection, although the original entity may implicitly have an accent, the service can also match the non-accented version of the same entity, but with a slightly lower confidence score.
+
+For example, for the word "barrió", which has an accent and corresponds to the past tense of the verb "barrer" (to sweep), the service can also match the word "barrio" (neighborhood), but with a slightly lower confidence.
+
+The system will provide the highest confidence scores in entities with exact matches. For example, `barrio` will not be detected if `barrió` is in the training set; and `barrió` will not be detected if `barrio` is in the training set.
+
+You are expected to train the system with the proper characters and accents. For example, if you are expecting `barrió` as a response, then you should put `barrió` into the training set.
+
+Although not an accent mark, the same applies to words using, for example, the Spanish letter `ñ` vs. the letter `n`, such as "uña" vs. "una". In this case the letter `ñ` is not simply an `n` with an accent; it is a unique, Spanish-specific letter.
+
+You can enable fuzzy matching if you think your customers will not use the appropriate accents, or misspell words (including, for example, putting a `n` instead of a `ñ`), or you can explicitly include them in the training examples.
