@@ -38,7 +38,7 @@ Before continuing with this example, you need to set up the required {{site.data
 
 To access the {{site.data.keyword.conversationshort}} service REST APIs, your application needs to be able to authenticate with {{site.data.keyword.Bluemix}} and connect to the right {{site.data.keyword.conversationshort}} workspace. You'll need to copy the service credentials and workspace ID and paste them into your application code.
 
-You can access the service credentials and the workspace ID from your workspace by selecting the ![Menu](images/Menu_16.png) menu and choosing **Credentials**.
+To access the service credentials and the workspace ID from your workspace, select the ![Menu](images/Menu_16.png) menu, choose **Deploy**, and then go to the **Credentials** tab.
 
 You can also access the service credentials from your Bluemix dashboard.
 
