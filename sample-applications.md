@@ -42,7 +42,7 @@ This app demonstrates how {{site.data.keyword.conversationshort}} can be used wi
 
 ## Conversation and Discovery
 
-This app demonstrates the combination of {{site.data.keyword.conversationshort}} and {{site.data.keyword.discoveryshort}}. First, users pose questions to the {{site.data.keyword.conversationshort}} service. If {{site.data.keyword.conversationshort}} is not able to answer confidently, {{site.data.keyword.conversationshort}} Enhanced executes a call to {{site.data.keyword.discoveryshort}}y to provide the user with a list of helpful answers.
+This app demonstrates the combination of {{site.data.keyword.conversationshort}} and {{site.data.keyword.discoveryshort}}. First, users pose questions to the {{site.data.keyword.conversationshort}} service. If {{site.data.keyword.conversationshort}} is not able to answer confidently, {{site.data.keyword.conversationshort}} Enhanced executes a call to {{site.data.keyword.discoveryshort}} to provide the user with a list of helpful answers.
 
 [See the demo ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://conversation-with-discovery-within-ui.mybluemix.net/){: new_window} or [fork the code ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/conversation-enhanced){: new_window}.
 
