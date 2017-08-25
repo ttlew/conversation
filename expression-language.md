@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-08"
+lastupdated: "2017-08-25"
 
 ---
 
@@ -97,10 +97,10 @@ Each entity has a set of properties associated with it. You can access informati
 |-----------------------|------------|------------|
 | *confidence*          | A decimal percentage that represents the service's confidence in the recognized entity. The confidence of an entity is either 0 or 1, unless you have activated fuzzy matching of entities. When fuzzy matching is enabled, the default confidence level threshold is 0.3. Whether or not fuzzy matching is enabled, system entities always have a confidence level of 1.0. | You can use this property in a condition to have it return false if the confidence level is not higher than a percent you specify. |
 | *location*            | A zero-based character offsets that indicates where the detected entity values begin and end in the input text. | Use `.literal` to extract the span of text between start and end index values that are stored in the location property. |
-| *value*               | The entity value identified in the input. | This property returns the entity value as defined in the training data, even if the match was made against one of its associated synonyms.
+| *value*               | The entity value identified in the input. | This property returns the entity value as defined in the training data, even if the match was made against one of its associated synonyms. You can use `.values` to capture multiple occurrences of an entity that might be present in user input. |
 
 ### Entity property usage examples
-In the following examples, the workspace contains an airport entity with a value of JFK, and the synonym 'Kennedy Airport". The user input is *I want to go to Kennedy Aiport*.
+In the following examples, the workspace contains an airport entity that includes a value of JFK, and the synonym 'Kennedy Airport". The user input is *I want to go to Kennedy Aiport*.
 
 - To return a specific response if the 'JFK' entity is recognized in the user input, you could add this expression to the response condition:
   `entities.airport[0].value == 'JFK'`
@@ -112,9 +112,24 @@ In the following examples, the workspace contains an airport entity with a value
   `So you want to go to @airport.literal ...`
 
   Both formats evaluate to `So you want to go to Kennedy Airport...' in the response.
-  
+
 - Expressions like `@airport:(JFK)` or `@airport.contains('JFK')` always refer to the **value** of the entity (`JFK` in this example).
 - To be more restrictive about which terms are identified as airports in the input when fuzzy matching is enabled, you can specify this expression in a node condition, for example: `@airport && @airport.confidence > 0.7`. The node will only execute if the service is 70% confident that the input text contains an airport reference.
+
+In this example, the user input is *Are there places to exchange currency at JFK, Logan, and O'Hare?*
+
+- To capture multiple occurrences of an entity type in user input, use syntax like this:
+
+    ```json
+    "context":{
+      "airports":"@airport.values"
+    }
+    ```
+
+  To later refer to the captured list in a dialog response, use this syntax:
+  `You asked about these airports: <? $airports.join(', ') ?>.`
+  It is displayed like this:
+  `You asked about these airports: JFK, Logan, O'Hare.`
 
 ## Accessing intents
 

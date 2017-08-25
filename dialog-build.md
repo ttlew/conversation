@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-18"
+lastupdated: "2017-08-25"
 
 ---
 
@@ -747,6 +747,7 @@ Add slots to a dialog node to gather multiple pieces of information from a user 
 <iframe class="embed-responsive-item" id="youtubeplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/3unhxZUKZtk?rel=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
 ### Why add slots?
+{: #why-add-slots}
 
 Use slots to get the information you need before you can respond accurately to the user. For example, if users ask about operating hours, but the hours differ by store location, you could ask a follow-up question about which store location they plan to visit before you answer. You can then add response conditions that take the provided location information into account.
 
@@ -766,21 +767,8 @@ Slots make it possible for the service to answer follow-up questions without hav
 
 Using slots produces a more natural dialog flow between the user and the service, and is easier for you to manage than trying to collect the information by using many separate nodes.
 
-### How slots work
-
-Here's what you do:
-
-- Add a slot for each piece of information that you want to collect.
-- Write a prompt that elicits the piece of the information from the user.
-- Identify the type of information you want to extract from the user's answer.
-- Provide a name for the context variable in which the user's answer will be stored.
-- Define responses that are executed after the user provides input as a result of the prompt. The responses must cover these cases:
-    - Found:  Triggered when the user answers the question as expected.
-    - Not found: Triggered when the user does not answer the question as expected. Here, you can clarify the type of information you need from the user.
-
-The service cycles through the prompts for each slot to ask for the missing information, and saves the answers as they are provided. It repeats the process - starting from the first empty slot - until all of the slots are filled, meaning that all of the slot context variables contain valid values. It then executes the node-level response.
-
 #### Adding slots
+{: #add-slots}
 
 1.  Identify the units of information that you want to collect. For example, to order a pizza for someone, you might want to collect the following information:
     - Delivery time
@@ -788,11 +776,26 @@ The service cycles through the prompts for each slot to ask for the missing info
 1.  From the dialog node edit view, click **Customize**, and then select the **Slots** checkbox.
 1.  **Add a slot for each unit of required information**.
 
-    For each slot, specify what to look for in the user input, how to save the slot value when it is provided, and the text to display to users to prompt them to provide the information you need. You can also specify follow-up statements to display both when the value you want is provided and when it is not.
+    For each slot, specify these details:
+
+    - **Check for**: Identify the type of information you want to extract from the user's response to the slot prompt. In most cases, you check for entity values, but you can also check for an intent. You can use AND and OR operators here to define more complex conditions.
+
+      Avoid checking for context variable values. The *Check for* value is first used as a condition, but then becomes the value of the context variable that you name in the *Save as* field. If you use a context variable in the condition, it can lead to unexpected behavior when it gets used in the context.
+      {: tip}
+
+    - **Save as**: Provide a name for the context variable in which to store the value of interest from the user's response to the slot prompt. Do not specify a context variable that is used earlier in the dialog, and therefor might have a value. It is only when the context variable for the slot is null that the prompt for the slot is displayed.
+
+    - **Prompt**: Write a statement that elicits the piece of the information you need from the user. After displaying this prompt, the conversation pauses and the service waits for the user to respond.
+
+    - If you edit the slot, you can also define responses to show after the user responds to the slot prompt.
+      - **Found**: Executed after the user provides the expected information.
+      - **Not found**: Executed if the information you want to collect is not provided by the user as expected. The text you specify here can more explicitly state the type of information you need the user to provide.
+
+    This table shows example slot values for a node that helps users place a pizza order.
 
     <table>
     <tr>
-      <td>Information</td>
+      <td>Necessary information</td>
       <td>Check for</td>
       <td>Save as</td>
       <td>Prompt</td>
@@ -836,7 +839,7 @@ The service cycles through the prompts for each slot to ask for the missing info
 
     When you add a slot without a prompt, the service treats the slot as optional.
 
-    If you make a slot optional, only reference its context variable in the node-level response text if you can word it such that it makes sense even if no value is provided for the slot. For example, you might word a summary statement like this, "I am ordering a $dietary $size pizza for delivery at $time." The resulting text still makes sense if the dietary restruction information, such as `gluten-free` or `dairy-free` is not provided, "I am ordering a large pizza for delivery at 3:00PM."
+    If you make a slot optional, only reference its context variable in the node-level response text if you can word it such that it makes sense even if no value is provided for the slot. For example, you might word a summary statement like this, "I am ordering a $size $dietary pizza for delivery at $time." The resulting text still makes sense if the dietary restriction information, such as `gluten-free` or `dairy-free` is not provided, "I am ordering a large pizza for delivery at 3:00PM."
     {: tip}
 1.  **Keep users on track**.
     You can optionally define node-level handlers that provide responses to questions users might ask during the interaction that are tangential to the purpose of the node.
@@ -858,6 +861,7 @@ The service cycles through the prompts for each slot to ask for the missing info
     - Insert a parent node that nulls the variables, and then jumps to the node with slots.
 
 #### Tips for using slots
+{: #slots-tips}
 
 Consider these suggested approaches for handling common tasks.
 
@@ -1056,9 +1060,10 @@ Consider these suggested approaches for handling common tasks.
 
 To access JSON files that implement different common slot usage scenarios, go to the community [conversation repo ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/community/tree/master/conversation){: new_window} in GitHub.
 
-To explore an example, download an example JSON file, and then import it as a new workspace. Go to the Dialog tab, and review the dialog nodes to see how slots were implemented to address different use cases.
+To explore an example, download an example JSON file, and then import it as a new workspace. From the Dialog tab, you can review the dialog nodes to see how slots were implemented to address different use cases.
 
 ### Moving a dialog node
+{: #move-node}
 
 Each node that you create can be moved elsewhere in the dialog tree.
 
