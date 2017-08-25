@@ -795,7 +795,7 @@ Using slots produces a more natural dialog flow between the user and the service
 
     <table>
     <tr>
-      <td>Necessary information</td>
+      <td>Information</td>
       <td>Check for</td>
       <td>Save as</td>
       <td>Prompt</td>
