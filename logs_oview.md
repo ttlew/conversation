@@ -47,12 +47,11 @@ While viewing the graph, you can click on an individual data point to see the nu
 
 You can use the **View logs** link to open the User conversations page with the date range filtered to match the data point.
 
-In addition to the graph, four statistics related to the displayed data are shown:
+In addition to the graph, statistics related to the displayed data are shown:
 
 1.  The total number of conversations that took place during this time period
-1.  The average number of conversations per data point, for example, per day if a week's data is shown
 1.  The maximum number of conversations for a single data point within the time period
-1.  The minimum number of conversations for a single data point within the time period
+1.  The number of conversations with weak understanding. These conversations are not classified by an intent, and do not contain any known entities. These can be useful in identifying potential dialog problems.
 
 You can also view the intents and entities that were recognized most often during the specified time period.  By default you see the top three of each, but you can change that to a larger number.
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-07"
+lastupdated: "2017-07-27"
 
 ---
 
@@ -44,7 +44,7 @@ Use the {{site.data.keyword.conversationshort}} tool to create entities.
 1.  Click **Create new**.
 
     You can also click **Use System Entities** to select from a list of common entities, provided by {{site.data.keyword.IBM_notm}}, that can be applied to any use case. See [Enabling system entities](#enable_system_entities) for more detail.
-1. In the **Add the entity name** field, type a descriptive name for the entity.
+1.  In the **Add the entity name** field, type a descriptive name for the entity.
 
     The entity name can contain letters (in Unicode), numbers, underscores, and hyphens. For example:
     - `@location`
@@ -55,7 +55,7 @@ Use the {{site.data.keyword.conversationshort}} tool to create entities.
     {: tip}
 
 1.  For **Fuzzy Matching**, click the button to select either on or off; fuzzy matching is off by default. This feature is available for languages noted in the [Supported languages](lang-support.html) topic.
-{: #fuzzy-matching}
+ {: #fuzzy-matching}
 
     You can turn on fuzzy matching to improve the ability of the service to recognize user input terms with syntax that is similar to the entity, but without requiring an exact match. There are two components to fuzzy matching - stemming and misspelling:
     - *Stemming* - The feature recognizes the stem form of entity values that have several grammatical forms. For example, the stem of 'bananas' would be 'banana', while the stem of 'running' would be 'run'.
@@ -64,12 +64,11 @@ Use the {{site.data.keyword.conversationshort}} tool to create entities.
 1.  In the **Value** field, type the text of a possible value for the entity. An entity value can be any string up to 64 characters in length.
 
     > **Important:** Don't include sensitive or personal information in entity names or values. The names and values can be exposed in URLs in an app.
-    
-1. In the **Synonyms** field, type any synonyms for the entity value. A synonym can be any string up to 64 characters in length.
+1.  In the **Synonyms** field, type any synonyms for the entity value. A synonym can be any string up to 64 characters in length.
 
     ![Screen capture of defining an entity](images/define_entity.png)
 1.  Click **+** and repeat the process to add more entity values.
-1.  When you are finished adding values and synonyms, click **Create**.
+1.  When you are finished adding values and synonyms, click **Done**.
 
 ### Results
 
