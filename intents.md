@@ -41,7 +41,7 @@ Use the {{site.data.keyword.conversationshort}} tool to create intents.
 
 1.  In the {{site.data.keyword.conversationshort}} tool, open your workspace and then select the **Intents** tab in the navigation bar. If **Intents** is not visible, use the ![Menu](images/Menu_16.png) menu to open the page.
 1.  Select **Create new**.
-1.  In the Intent name field, type a descriptive name for the intent.
+1.  In the **Intent name** field, type a descriptive name for the intent.
     - The intent name can contain letters (in Unicode), numbers, underscores, hyphens, and periods.
     - The name cannot consist of `..` or any other string of only periods.
     - Intent names cannot contain spaces and must not exceed 128 characters. The following are examples of intent names:
@@ -67,7 +67,7 @@ Use the {{site.data.keyword.conversationshort}} tool to create intents.
 1.  Repeat the same process to add more examples. You can tab between each example. Provide at least 5 examples for each intent. The more examples you provide, the more accurate your application can be.
 
     ![Screen capture showing intent definition](images/define_intent.png)
-1.  When you have finished adding examples, select **Create** to finish creating the intent.
+1.  When you have finished adding examples, select **Done** to finish creating the intent.
 
 ### Results
 
@@ -143,7 +143,7 @@ You can select a number of intents for deletion.
 
 1.  On the Intents tab, select ![Delete icon](images/DeleteIcon.png)
 
-    ![Export and Delete options](images/ExportIntent1.png)
+    ![Export and Delete options](images/ExportIntent3.png)
 
 1.  Select the intents you want to delete, and click the **Delete** button. **Note**: The delete feature supports bulk delete of intents.
 
