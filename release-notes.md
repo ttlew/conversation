@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-23"
+lastupdated: "2017-08-31"
 
 ---
 
@@ -46,8 +46,14 @@ Existing models that you have trained will not be immediately impacted, but expi
 
 The following new features and changes to the service are available.
 
-### 17 August 2017
-{: #17August2017}
+### 31 August 2017
+{: #31August2017}
+
+- **Improve section rollback** - The median conversation time metric, and corresponding filters, are being temporarily removed from the Overview page of the Improve section. This removal will prevent the calculation of certain metrics from causing the median conversation time metric, and the conversations over time graph, to display inaccurate information. IBM regrets removing functionality from the tool, but is committed to ensuring that we are communicating accurate information to users.
+- **Dialog node names** - You can now assign any name to a dialog node; it does not need to be unique. And you can subsequently change the node name without impacting how the node is referenced internally. The name you specify is saved as a title attribute of the node in the workspace JSON file and the system uses a unique ID that is stored in the name attribute to reference the node.
+
+### 23 August 2017
+{: #23August2017}
 
 - **Updates to Korean, Japanese, and Italian** - Language support has been enhanced for Korean, Japanese, and Italian. Note that the {{site.data.keyword.conversationshort}} service learning models may have been updated as part of this enhancement, and when you retrain your model any changes will be applied; see [Updated models](release-notes.html#updated-models) for more information.
 
