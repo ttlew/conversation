@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-18"
+lastupdated: "2017-08-30"
 
 ---
 
@@ -20,7 +20,7 @@ lastupdated: "2017-07-18"
 # Working with conversations
 {: #logs_convo}
 
-To open a list of conversations between users and your bot, select **User conversations** in the navigation bar. If **User conversations** is not visible, use the ![Menu](images/Menu_16.png) menu to open the page.
+To open a list of interactions between users and your bot, select **User conversations** in the navigation bar. If **User conversations** is not visible, use the ![Menu](images/Menu_16.png) menu to open the page.
 {: shortdesc}
 
 When you open the **User conversations** page, the default view lists results for the last day, with the newest results first. The top intent (#intent) and any recognized entity (@entity) values used in the message, and the message text are available. For intents that are not recognized, the value shown is *Irrelevant*. If an entity is not recognized, or has not been provided, the value shown is *No entities found*.
@@ -37,10 +37,13 @@ The length of time for which chat messages are retained depends on your {{site.d
   Standard                             | Last 30 days
   Free                                 | Last 7 days
 
-## Filtering chat messages
-You can filter chat messages by *Search user statements*, *Intents*, *Entities*, and *Last* n *days*:
+## Filtering utterances
 
-*Search user statements* - Type a word in the search bar. This searches the user's inputs, but not your bot's replies.
+It is important to note that the **User conversations** page displays the total number of *utterances* between users and your bot. An utterance is a single message the user sends to the bot. Each conversation maybe made up of multiple utterances. Thus, the number of results on this **User conversations** page is different than the number of conversations shown on the [Overview](logs_oview.html) page.
+
+You can filter utterances by *Search user statements*, *Intents*, *Entities*, and *Last* n *days*:
+
+*Search user statements* - Type a word in the search bar. This searches the users' inputs, but not your bot's replies.
 
 *Intents* - Select the drop-down menu and type an intent in the input field, or choose from the populated list. You can select more than one intent, which filters the results using any of the selected intents, including *Irrelevant*.
 
@@ -50,14 +53,14 @@ You can filter chat messages by *Search user statements*, *Intents*, *Entities*,
 
 ![Entities drop-down menu](images/entities_filter.png)
 
-Chat messages may take some time to update. Allow at least 30 minutes after a user's interaction with your bot before attempting to filter for that content.
+Utterances may take some time to update. Allow at least 30 minutes after a user's interaction with your bot before attempting to filter for that content.
 
-## Viewing an individual conversation
-You can expand each conversation entry to see what the user said in the whole conversation, and how your bot answered. To do this, select **Open conversation**. You are automatically taken to the message you selected within that conversation.
+## Viewing an individual utterance
+You can expand each utterance entry to see what the user said in the whole conversation, and how your bot answered. To do this, select **Open conversation**. You are automatically taken to the utterance you selected within that conversation.
 
 ![Open conversation panel](images/open_convo.png)
 
-You can then choose to show the classification(s) for the message you selected.
+You can then choose to show the classification(s) for the utterance you selected.
 
 ![Open conversation panel with classifications](images/open_convo_classes.png)
 
