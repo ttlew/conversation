@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-25"
+lastupdated: "2017-09-06"
 
 ---
 
@@ -156,7 +156,7 @@ The following examples show how to check for an intent value:
 - `intents[0] == 'Help'`
 - `intent == 'Help'`
 
-`intent == 'help'` differs from `intents[0] == 'help'` because `intent == 'help'` does not throw an exception if no entity is detected. It is evaluated as true only if the intent confidence exceeds a threshold.  If you want to, you can specify a custom confidence level for a condition, for example, `intents.size() > 0 && intents[0] == 'help' && intents[0].confidence > 0.1`
+`intent == 'help'` differs from `intents[0] == 'help'` because `intent == 'help'` does not throw an exception if no intent is detected. It is evaluated as true only if the intent confidence exceeds a threshold.  If you want to, you can specify a custom confidence level for a condition, for example, `intents.size() > 0 && intents[0] == 'help' && intents[0].confidence > 0.1`
 
 ### Shorthand syntax for intents
 
