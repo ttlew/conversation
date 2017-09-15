@@ -168,7 +168,7 @@ In this example, the answer that the service provides in response to questions a
 
 You can choose to rotate through the response variations sequentially or in random order. By default, responses are rotated sequentially, as if they were chosen from an ordered list.
 
-### Multiple conditioned responses
+### Conditioned responses
 {: #multiple}
 
 A single dialog node can provide different responses, each one triggered by a different condition.  Use this approach to address multiple scenarios in a single node.
@@ -331,12 +331,12 @@ In this example, the system entity @sys-person is used to extract the user's nam
 
 Define a context variable by adding a `name` and `value` pair to the `{context}` section of the JSON dialog node definition. The pair must meet these requirements:
 
-- The `name` can contain any upper- and lower-case alphabetic characters, numeric characters (0-9), and underscores.
+- The `name` can contain any upper- and lowercase alphabetic characters, numeric characters (0-9), and underscores.
 
-  **Note**: You can include other characters, such as periods and dashes, in the name. However, if you do, then you must use one of the following approaches to reference the variable:
+  **Note**: You can include other characters, such as periods and hyphens, in the name. However, if you do, then you must use one of the following approaches to reference the variable:
   - context['variable-name']: The full SpEL expression syntax.
-  or
-  - $(variable-name): Shorthand syntax with the variable name enclosed in round brackets.
+  - $(variable-name): Shorthand syntax with the variable name enclosed in parentheses.
+
   See [Accessing and evaluating objects](expression-language.html#shorthand-syntax-for-context-variables) for more details.
 
 - The `value` can be any supported JSON type, such as a simple string variable, a number, a JSON array, or a JSON object.

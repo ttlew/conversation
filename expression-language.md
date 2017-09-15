@@ -197,9 +197,9 @@ The following table shows examples of the shorthand syntax that you can use to w
 | `$card_type:VISA`          | `context['card_type'] == 'VISA'`        |
 | `$card_type:(MASTER CARD)` | `context['card_type'] == 'MASTER CARD'` |
 
-You can include special characters, such as dashes or periods, in context variable names. However, doing so can lead to problems when the SpEL expression is evaluated. The dash could be interpreted as a minus sign, for example. To avoid such problems, reference the variable by using either the full expression syntax or the shorthand syntax `$(variable-name)` and do not use the following special characters in the name:
+You can include special characters, such as hyphens or periods, in context variable names. However, doing so can lead to problems when the SpEL expression is evaluated. The hyphen could be interpreted as a minus sign, for example. To avoid such problems, reference the variable by using either the full expression syntax or the shorthand syntax `$(variable-name)` and do not use the following special characters in the name:
 
-- Round brackets ()
+- Parentheses ()
 - More than one apostrophe ''
 - Quotation marks "
 
