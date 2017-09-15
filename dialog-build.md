@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-25"
+lastupdated: "2017-09-15"
 
 ---
 
@@ -25,7 +25,7 @@ The dialog uses the intents and entities that are identified in the user's input
 
 The response might be the answer to a question such as `Where can I get some gas?` or the execution of a command, such as turning on the radio. The intent and entity might be enough information to identify the correct response, or the dialog might ask the user for more input that is needed to respond correctly. For example, if a user asks, "Where can I get some food?" you might want to clarify whether they want a restaurant or a grocery store, to dine in or take out, and so on. You can ask for more details in a text response and create one or more child nodes to process the new input.
 
-<iframe class="embed-responsive-item" id="youtubeplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/3HSaVfr3ty0?rel=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+<iframe class="embed-responsive-item" id="youtubeplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/oQUpejt6d84?rel=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
 ## Dialog overview
 {: #overview}
@@ -331,7 +331,13 @@ In this example, the system entity @sys-person is used to extract the user's nam
 
 Define a context variable by adding a `name` and `value` pair to the `{context}` section of the JSON dialog node definition. The pair must meet these requirements:
 
-- The `name` can contain any upper- and lower-case alphabetic characters, numeric characters (0-9), underscores, and periods.
+- The `name` can contain any upper- and lower-case alphabetic characters, numeric characters (0-9), and underscores.
+
+  **Note**: You can include other characters, such as periods and dashes, in the name. However, if you do, then you must use one of the following approaches to reference the variable:
+  - context['variable-name']: The full SpEL expression syntax.
+  or
+  - $(variable-name): Shorthand syntax with the variable name enclosed in round brackets.
+  See [Accessing and evaluating objects](expression-language.html#shorthand-syntax-for-context-variables) for more details.
 
 - The `value` can be any supported JSON type, such as a simple string variable, a number, a JSON array, or a JSON object.
 
@@ -744,7 +750,7 @@ To create a dialog, complete the following steps:
 
 Add slots to a dialog node to gather multiple pieces of information from a user within that node. Slots collect information at the users' pace. Details the user provides upfront are saved, and the service asks only for the details they do not.
 
-<iframe class="embed-responsive-item" id="youtubeplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/3unhxZUKZtk?rel=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+<iframe class="embed-responsive-item" id="youtubeplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/ES4GHcDsSCI?rel=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
 ### Why add slots?
 {: #why-add-slots}
@@ -1050,7 +1056,7 @@ Consider these suggested approaches for handling common tasks.
     },
     "context": {
       "time": "12:00:00",
-      "size": "large",
+      "size": "dummy",
       "confirmation":"true"
     }
     }
