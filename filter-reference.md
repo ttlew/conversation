@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-09-13"
+lastupdated: "2017-09-18"
 
 ---
 
@@ -25,7 +25,7 @@ The `filter` parameter is a cacheable query that limits the results to those mat
 
 To see examples of various kinds of filter queries, see [Examples](#examples).
 
-For more information about the /logs `GET` method and its response model, refer to the [API Reference](../../conversation/api/v1/#get_logs).
+For more information about the /logs `GET` method and its response model, refer to the [API Reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/conversation/api/v1/#get_logs){: new_window}.
 
 ## Filter query syntax
 
@@ -121,3 +121,4 @@ The following examples illustrate various types of queries using this syntax.
 | An intent name in the response exactly matches either `hello` or `goodbye`. | <code>response.intents:intent::(hello&#124;goodbye)</code> |
 | An intent in the response has the name `hello` and a confidence value equal to or greater than 0.8. | `response.intents:(intent:hello,confidence>=0.8)` |
 | An intent name in the response exactly matches `order`, and an entity name in the response exactly matches `beverage`. | `[response.intents:intent::order,response.entities:entity::beverage]` |
+<!-- -->
