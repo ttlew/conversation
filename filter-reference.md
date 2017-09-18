@@ -121,4 +121,3 @@ The following examples illustrate various types of queries using this syntax.
 | An intent name in the response exactly matches either `hello` or `goodbye`. | <code>response.intents:intent::(hello&#124;goodbye)</code> |
 | An intent in the response has the name `hello` and a confidence value equal to or greater than 0.8. | `response.intents:(intent:hello,confidence>=0.8)` |
 | An intent name in the response exactly matches `order`, and an entity name in the response exactly matches `beverage`. | `[response.intents:intent::order,response.entities:entity::beverage]` |
-<!-- -->
