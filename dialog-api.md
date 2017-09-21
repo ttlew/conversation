@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-04"
+lastupdated: "2017-08-02"
 
 ---
 
@@ -56,7 +56,7 @@ The dialog now looks like this:
 
 ![Example dialog 2](images/dialog_api_2.png)
 
-Because **node_8** was created without specifying a value for `parent` or `previous_sibling`, it is now the first node in the dialog. Note that in addition to creating the new dialog, the service also modified **node_1** so that its `previous_sibling` property points to the new node.
+Because **node_8** was created without specifying a value for `parent` or `previous_sibling`, it is now the first node in the dialog. Note that in addition to creating **node_8**, the service also modified **node_1** so that its `previous_sibling` property points to the new node.
 
 You can create a node somewhere else in the dialog by specifying the parent and previous sibling:
 
@@ -102,7 +102,7 @@ This results in the following changed structure:
 ![Example dialog 4](images/dialog_api_4.png)
 
 Several things have happened here:
-- When **node_5** moved to its new parent, **node_7** went with it (its `parent` value did not change). When you move a node, all descendants of that node stay with it.
+- When **node_5** moved to its new parent, **node_7** went with it (because the `parent` value for **node_7** did not change). When you move a node, all descendants of that node stay with it.
 - Because we did not specify a `previous_sibling` value for **node_5**, it is now the first sibling under **node_1**.
 - The `previous_sibling` property of **node_4** was updated to `node_5`.
 - The `previous_sibling` property of **node_9** was updated to `null`, because it is now the first sibling under **node_2**.
@@ -127,7 +127,7 @@ The structure changes as follows:
 
 ![Example dialog 5](images/dialog_api_5.png)
 
-Note that once again, **node_7** stays with its parent. In addition, **node_4** is modified so that its `previous_sibling` is null, because it is now the first sibling.
+Note that once again, **node_7** stays with its parent. In addition, **node_4** is modified so that its `previous_sibling` is `null`, because it is now the first sibling.
 
 ## Deleting a node
 {: #delete-node}
@@ -138,7 +138,7 @@ The result is this:
 
 ![Example dialog 6](images/dialog_api_6.png)
 
-Note that **node_1**, **node_4**, **node_5**, and **node_7** were all deleted. When you delete a node, any descendants of that node are deleted as well. Therefore, if you delete a base node, you are actually deleting an entire branch of the dialog tree. Any other references to the deleted node (such as `next_step` references) are changed to `null`.
+Note that **node_1**, **node_4**, **node_5**, and **node_7** were all deleted. When you delete a node, all descendants of that node are deleted as well. Therefore, if you delete a base node, you are actually deleting an entire branch of the dialog tree. Any other references to the deleted node (such as `next_step` references) are changed to `null`.
 
 In addition, **node_2** is updated to point to **node_8** as its new previous sibling.
 
