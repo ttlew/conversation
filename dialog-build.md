@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-09-15"
+lastupdated: "2017-09-22"
 
 ---
 
@@ -406,6 +406,17 @@ Other common tasks include:
     ```
     {: codeblock}
 
+- To store the value of a pattern entity in a context variable, append .literal to the entity name. Using this syntax ensures that the exact span of text from user input that matched the specified pattern is stored.
+
+    ```json
+    {
+      "context": {
+        "email": "@email.literal"
+      }
+    }
+    ```
+    {: codeblock}
+
 - To store in a context variable the value of a string that you extract from the user's input by using a regular expression, use this syntax:
 
     ```json
@@ -689,7 +700,7 @@ To create a dialog, complete the following steps:
 1.  To add more nodes to the dialog tree, click the **More** ![More icon](images/kabob.png) icon on the **Welcome** node, and then select **Add node below**.
 1.  Enter a condition that, when met, triggers the service to process the node.
 
-    The condition builder helps you find valid values to specify. To use it, enter one of the following characters, and then pick a value from the list of options that is displayed.
+    As you begin to define a condition, a box is displayed that shows you your options. You can enter one of the following characters, and then pick a value from the list of options that is displayed.
 
     <table>
     <tr>
@@ -708,29 +719,25 @@ To create a dialog, complete the following steps:
       <td>`@{entity-name}:`</td>
       <td>{entity-name} values</td>
     </tr>
+    <tr>
+      <td>`$:`</td>
+      <td>context-variables that you defined or referenced elsewhere in the dialog</td>
+    </tr>
     </table>
-
-    > Note: The condition builder cannot show a list of defined context variables when you enter the `$` character.
-
-    Even though the condition builder cannot show a list of them, you can use context variables in the condition.
 
     You can create a new intent, entity, entity value, or context variable by defining a new condition that uses it. If you create an artifact this way, be sure to go back and complete any other steps that are necessary for the artifact to be created completely, such as defining sample utterances for an intent.
 
-    To define a node that triggers based on more than one condition, enter one condition, and then click the plus sign (+) icon next to it.
-
-    ![Shows the user clicking the plus sign (Add condition) icon after the first condition, which adds another field where the user can add another condition.](images/add-condition.gif)
-
-    If you want to apply an `OR` operator to the multiple conditions instead of `AND`, click the `and` that is displayed between the fields to change the operator type. AND operations are executed before OR operations, but you can change the order by using parentheses. For example:
+    To define a node that triggers based on more than one condition, enter one condition, and then click the plus sign (+) icon next to it. If you want to apply an `OR` operator to the multiple conditions instead of `AND`, click the `and` that is displayed between the fields to change the operator type. AND operations are executed before OR operations, but you can change the order by using parentheses. For example:
     `$isMember:true AND ($memberlevel:silver OR $memberlevel:gold)`
 
-    The condition you define must be under 500 characters in length.
+    The condition you define must be less than 500 characters in length.
 
     For more information about how to test for values in conditions, see [Conditions](#conditions).
 1.  **Optional**: If you want to collect multiple pieces of information from the user in this node, then click **Customize** and enable **Slots**. See [Gathering information with slots](#slots) for more details.
 1.  Enter a response.
     - Add the text that you want the service to display to the user as a response.
     - For information about conditional responses, how to add variety to responses, or how to specify what should happen after the node is triggered, see [Responses](#responses).
-1.  **Optional**: Name the node. 
+1.  **Optional**: Name the node.
 
     The dialog node name can contain letters (in Unicode), numbers, spaces, underscores, hyphens, and periods.
 
@@ -977,12 +984,9 @@ Consider these suggested approaches for handling common tasks.
 
 - **Prevent a Found response from displaying when it's not needed**: If you specify Found responses for multiple slots, then if a user provides values for multiple slots at once, the Found response for at least one of the slots will be displayed. You probably want either the Found response for all of them or none of them to be returned.
 
-    To prevent just one of the Found responses from being displayed, you can add a condition to the Found response that prevents it from being displayed if more than one slot value is filled. For example, use the JSON editor to add the following condition to the last slot with a Found response:
-    ```json
-    "conditions": "!($size && $time)"
-    ```
-
-    This condition prevents the response from being displayed if the $size and $time context variables are both provided.
+    To prevent Found responses from being displayed, you can do one of the following things to each Found response:
+    - Add a condition to the response that prevents it from being displayed if particular slots are filled. For example, you can add a condition, like `!($size && $time)`, that prevents the response from being displayed if the $size and $time context variables are both provided.
+    - Add the `!all_slots_filled` condition to the response. This setting prevents the response from being displayed if all of the slots are filled. Do not use this approach if you are including a confirmation slot. The confirmation slot is also a slot, and you typically want to prevent the Found responses from being displayed before the confirmation slot itself is filled.
 
 - **Handle requests to exit the process**: Add at least one node-level handler that can recognize it when a user wants to exit the node.
 
