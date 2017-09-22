@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-31"
+lastupdated: "2017-09-22"
 
 ---
 
@@ -45,6 +45,19 @@ Existing models that you have trained will not be immediately impacted, but expi
 {: #change-log}
 
 The following new features and changes to the service are available.
+
+### 22 September 2017
+{: #22September2017}
+
+- **Pattern-defined entities (Beta)**: You can now define specific patterns for an entity, using regular expressions. This can help you identify entities that follow a defined pattern, for example SKU or part numbers, phone numbers, or email addresses. See [Pattern-defined entities](entities.html#pattern-entities) for additional details.
+    - You can add either synonyms or patterns for a single entity value; you cannot add both.
+    - For each entity value, there can be a maximum of up to 5 patterns.
+    - Each pattern (regular expression) is limited to 128 characters.
+    - Importing or exporting via a CSV file does not currently support patterns.
+    - The REST API does not support direct access to patterns, but you can retrieve or modify patterns using the `/values` endpoint.
+
+- **New `/logs` API**: The REST API now supports listing log events from all workspaces in a service instance. For more information, see the [API Reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/conversation/api/v1/#get_all_logs){: new_window}
+- **Condition builder updates**: The control that is displayed to help you define a condition in a dialog node has been updated. Enhancements include support for listing available context variable names after you enter the $ to begin adding a context variable.
 
 ### 31 August 2017
 {: #31August2017}

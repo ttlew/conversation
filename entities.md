@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-27"
+lastupdated: "2017-09-22"
 
 ---
 
@@ -64,11 +64,51 @@ Use the {{site.data.keyword.conversationshort}} tool to create entities.
 1.  In the **Value** field, type the text of a possible value for the entity. An entity value can be any string up to 64 characters in length.
 
     > **Important:** Don't include sensitive or personal information in entity names or values. The names and values can be exposed in URLs in an app.
+
+    Once you have entered an entity value, you can then add any synonyms, or define specific patterns, for that entity value by selecting either `Synonyms` or `Patterns` from the *Type* drop-down menu.
+
+    ![Type selector for Value](images/value_type.png)
+
+    > **Note:** You can add *either* synonyms or patterns for a single entity value, you cannot add both.
+
 1.  In the **Synonyms** field, type any synonyms for the entity value. A synonym can be any string up to 64 characters in length.
 
     ![Screen capture of defining an entity](images/define_entity.png)
+1.  The **Patterns** field lets you define specific patterns for an entity value. A pattern **must** be entered as a regular expression in the field.
+  {: #pattern-entities}
+
+    ![Screen capture of defining a pattern entity](images/patternents1.png)
+
+    As in this example, for entity "ContactInfo", the patterns for phone, email, and website values can be defined as follows:
+    - Phone
+      - `localPhone`: `(\d{3})-(\d{4})`, e.g. 426-4968
+      - `fullUSphone`: `(\d{3})-(\d{3})-(\d{4})`, e.g. 800-426-4968
+      - `internationalPhone`: `^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$`, e.g., +44 1962 815000
+    - `email`: `\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b`, e.g. name@ibm.com
+    - `website`: `(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$`, e.g. https://www.ibm.com
+
+    Often when using pattern entities, it will be necessary to store the text that matches the pattern in a context variable (or action variable), from within your dialog tree.
+
+    Imagine a case where you are asking a user for their email address. The dialog node condition will contain a condition similar to `@contactInfo.email`. In order to assign the user-entered email as a context variable, the following syntax can be used to capture the pattern match within the dialog node's response section:
+
+    ```
+    {
+        "context" : {
+            "email": "@contactInfo.literal"
+        }
+    }
+    ```
+    {: screen}
+
+    The pattern matching engine employed by the {{site.data.keyword.conversationshort}} service has some syntax limitations, which are necessary in order to avoid performance concerns which can occur when using other regular expression engines. Notably, entity patterns may not contain:
+      - Positive repetitions (e.g., `x*+`)
+      - Backreferences (e.g., `\g1`)
+      - Conditional branches (e.g., `(?(cond)true))`
+
+    The regular expression engine is loosely based on the Java regular expression engine. The {{site.data.keyword.conversationshort}} service will produce an error if you try to upload an unsupported pattern, either via the API or from within the {{site.data.keyword.conversationshort}} service Tooling UI.
+
 1.  Click **+** and repeat the process to add more entity values.
-1.  When you are finished adding values and synonyms, click **Done**.
+1.  When you are finished adding entity values, click **Done**.
 
 ### Results
 
@@ -76,11 +116,13 @@ The entity you created is added to the **Entities** tab, and the system begins t
 
 ## Editing entities
 
-You can click any entity in the list to open it for editing. You can rename or delete entities, and you can add, edit, or delete values and synonyms.
+You can click any entity in the list to open it for editing. You can rename or delete entities, and you can add, edit, or delete values, synonyms, or patterns.
 
 ## Importing entities
 
 If you have a large number of entities, you might find it easier to import them from a comma-separated value (CSV) file than to define them one by one in the {{site.data.keyword.conversationshort}} tool.
+
+**Note:** Importing a CSV file does not currently support patterns.
 
 1.  Collect the entities into a CSV file, or export them from a spreadsheet to a CSV file. The required format for each line in the file is as follows:
 
@@ -120,6 +162,8 @@ You can view the imported entities on the Entities tab. You might need to refres
 
 You can export a number of entities to a CSV file, so you can then import and reuse them for another Conversation application.
 
+**Note:** Exporting a CSV file does not currently support patterns.
+
 1.  On the Entities tab, select ![Export icon](images/ExportIcon.png)
 
     ![Export and Delete options](images/ExportEntity1.png)
@@ -133,7 +177,7 @@ You can export a number of entities to a CSV file, so you can then import and re
 
 You can select a number of entities for deletion.
 
-**IMPORTANT**: By deleting entities you are also deleting all associated values, and synonyms, and these items cannot be retrieved later. All dialog nodes that reference these entities or values must be updated manually to no longer reference the deleted content.
+**IMPORTANT**: By deleting entities you are also deleting all associated values, synonyms, or patterns, and these items cannot be retrieved later. All dialog nodes that reference these entities or values must be updated manually to no longer reference the deleted content.
 
 1.  On the Entities tab, select ![Delete icon](images/DeleteIcon.png)
 
