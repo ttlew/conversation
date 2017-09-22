@@ -406,17 +406,6 @@ Other common tasks include:
     ```
     {: codeblock}
 
-- To store the value of a pattern entity in a context variable, append .literal to the entity name. Using this syntax ensures that the exact span of text from user input that matched the specified pattern is stored.
-
-    ```json
-    {
-      "context": {
-        "email": "@email.literal"
-      }
-    }
-    ```
-    {: codeblock}
-
 - To store in a context variable the value of a string that you extract from the user's input by using a regular expression, use this syntax:
 
     ```json
@@ -718,10 +707,6 @@ To create a dialog, complete the following steps:
     <tr>
       <td>`@{entity-name}:`</td>
       <td>{entity-name} values</td>
-    </tr>
-    <tr>
-      <td>`$:`</td>
-      <td>context-variables that you defined or referenced elsewhere in the dialog</td>
     </tr>
     </table>
 
