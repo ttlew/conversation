@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-09-22"
+lastupdated: "2017-09-27"
 
 ---
 
@@ -707,6 +707,10 @@ To create a dialog, complete the following steps:
     <tr>
       <td>`@{entity-name}:`</td>
       <td>{entity-name} values</td>
+    </tr>
+    <tr>
+      <td>`$:`</td>
+      <td>context-variables that you defined or referenced elsewhere in the dialog</td>
     </tr>
     </table>
 
