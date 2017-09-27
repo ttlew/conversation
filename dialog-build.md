@@ -648,7 +648,7 @@ Choose one of these actions to update the array. In each case, we see the array 
     ],
     "array_in_string": "this is my array: $array"
   }
-)
+}
 ```
 {: codeblock}
 
@@ -709,7 +709,7 @@ To create a dialog, complete the following steps:
       <td>{entity-name} values</td>
     </tr>
     <tr>
-      <td>`$:`</td>
+      <td>`$`</td>
       <td>context-variables that you defined or referenced elsewhere in the dialog</td>
     </tr>
     </table>
