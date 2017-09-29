@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-09-27"
+lastupdated: "2017-09-29"
 
 ---
 
@@ -709,7 +709,7 @@ To create a dialog, complete the following steps:
       <td>{entity-name} values</td>
     </tr>
     <tr>
-      <td>`$`</td>
+      <td>`$:`</td>
       <td>context-variables that you defined or referenced elsewhere in the dialog</td>
     </tr>
     </table>
@@ -986,6 +986,9 @@ Consider these suggested approaches for handling common tasks.
         - Current slot level If Found conditions.
         - Node-level handlers in the order they are listed.
         - Current slot level If Not Found conditions.
+
+        Be careful about adding conditions that always evaluate to true (such as the special conditions, `true` or `anything_else`) as node-level handlers. Such conditions are always triggered after the slot's Found condition is evaluated and before the slot's Not found condition is triggered. Keep the order of evaluation in mind as you design the handler, and test it thoroughly to be sure you understand how it will behave it engages with  users.
+        {: #tip}
 
         For example, you groom all animals except cats. For the Animal slot, you might be tempted to use the following slot condition to prevent `cat` from being saved in the Animal slot:
 
