@@ -709,7 +709,7 @@ To create a dialog, complete the following steps:
       <td>{entity-name} values</td>
     </tr>
     <tr>
-      <td>`$:`</td>
+      <td>`$`</td>
       <td>context-variables that you defined or referenced elsewhere in the dialog</td>
     </tr>
     </table>
