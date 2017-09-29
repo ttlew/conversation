@@ -987,7 +987,7 @@ Consider these suggested approaches for handling common tasks.
         - Node-level handlers in the order they are listed.
         - Current slot level If Not Found conditions.
 
-        Be careful about adding conditions that always evaluate to true (such as the special conditions, `true` or `anything_else`) as node-level handlers. Such conditions are always triggered after the slot's Found condition is evaluated and before the slot's Not found condition is triggered. Keep the order of evaluation in mind as you design the handler, and test it thoroughly to be sure you understand how it will behave it engages with  users.
+        Be careful about adding conditions that always evaluate to true (such as the special conditions, `true` or `anything_else`) as node-level handlers. Such conditions are always triggered after the slot's Found condition is evaluated and before the slot's Not found condition is triggered. Keep the order of evaluation in mind as you design the handler, and test it thoroughly to be sure you understand how it will behave when it engages with users.
         {: #tip}
 
         For example, you groom all animals except cats. For the Animal slot, you might be tempted to use the following slot condition to prevent `cat` from being saved in the Animal slot:
