@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-09-27"
+lastupdated: "2017-10-02"
 
 ---
 
@@ -417,6 +417,17 @@ Other common tasks include:
     ```
     {: codeblock}
 
+- To store the value of a pattern entity in a context variable, append .literal to the entity name. Using this syntax ensures that the exact span of text from user input that matched the specified pattern is stored in the variable.
+
+    ```json
+    {
+      "context": {
+        "email": "@email.literal"
+      }
+    }
+    ```
+    {: codeblock}
+
 ### Order of operation
 {: #order-of-context-var-ops}
 
@@ -791,7 +802,7 @@ Using slots produces a more natural dialog flow between the user and the service
 
     - If you edit the slot, you can also define responses to show after the user responds to the slot prompt.
       - **Found**: Executed after the user provides the expected information.
-      - **Not found**: Executed if the information you want to collect is not provided by the user as expected. The text you specify here can more explicitly state the type of information you need the user to provide.
+      - **Not found**: Executed if the information provided by the user is not understood, or is not provided in the expected format. The text you specify here can more explicitly state the type of information you need the user to provide. If the slot is filled successfully, or the user input is understood and handled by a node-level handler, then this condition is never triggered.
 
     This table shows example slot values for a node that helps users place a pizza order.
 
@@ -986,6 +997,9 @@ Consider these suggested approaches for handling common tasks.
         - Current slot level If Found conditions.
         - Node-level handlers in the order they are listed.
         - Current slot level If Not Found conditions.
+
+        Be careful about adding conditions that always evaluate to true (such as the special conditions, `true` or `anything_else`) as node-level handlers. Per slot, if the node-level handler evaluates to true, then the If Not Found condition is skipped entirely. So, using a node-level handler that always evaluates to true effectively prevents the If Not Found condition for every slot from being evaluated.
+        {: #tip}
 
         For example, you groom all animals except cats. For the Animal slot, you might be tempted to use the following slot condition to prevent `cat` from being saved in the Animal slot:
 
