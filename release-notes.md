@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-09-27"
+lastupdated: "2017-10-02"
 
 ---
 
@@ -45,6 +45,16 @@ Existing models that you have trained will not be immediately impacted, but expi
 {: #change-log}
 
 The following new features and changes to the service are available.
+
+### 2 October 2017
+{: #2October2017}
+
+- **Pattern-defined entities (Beta)**: You can now define specific patterns for an entity, using regular expressions. This can help you identify entities that follow a defined pattern, for example SKU or part numbers, phone numbers, or email addresses. See [Pattern-defined entities](entities.html#pattern-entities) for additional details.
+    - You can add either synonyms or patterns for a single entity value; you cannot add both.
+    - For each entity value, there can be a maximum of up to 5 patterns.
+    - Each pattern (regular expression) is limited to 128 characters.
+    - Importing or exporting via a CSV file does not currently support patterns.
+    - The REST API does not support direct access to patterns, but you can retrieve or modify patterns using the `/values` endpoint.
 
 ### 27 September 2017
 {: #27September2017}
