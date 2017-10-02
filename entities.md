@@ -89,7 +89,7 @@ Use the {{site.data.keyword.conversationshort}} tool to create entities.
 
     Often when using pattern entities, it will be necessary to store the text that matches the pattern in a context variable (or action variable), from within your dialog tree.
 
-    Imagine a case where you are asking a user for their email address. The dialog node condition will contain a condition similar to `@contactInfo.email`. In order to assign the user-entered email as a context variable, the following syntax can be used to capture the pattern match within the dialog node's response section:
+    Imagine a case where you are asking a user for their email address. The dialog node condition will contain a condition similar to `@contactInfo:email`. In order to assign the user-entered email as a context variable, the following syntax can be used to capture the pattern match within the dialog node's response section:
 
     ```
     {
