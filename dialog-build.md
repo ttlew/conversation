@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-09-29"
+lastupdated: "2017-10-02"
 
 ---
 
@@ -412,6 +412,17 @@ Other common tasks include:
     {
       "context": {
          "number": "<?input.text.extract('^[^\\d]*[\\d]{11}[^\\d]*$',0)?>"
+      }
+    }
+    ```
+    {: codeblock}
+
+- To store the value of a pattern entity in a context variable, append .literal to the entity name. Using this syntax ensures that the exact span of text from user input that matched the specified pattern is stored in the variable.
+
+    ```json
+    {
+      "context": {
+        "email": "@email.literal"
       }
     }
     ```
@@ -987,7 +998,7 @@ Consider these suggested approaches for handling common tasks.
         - Node-level handlers in the order they are listed.
         - Current slot level If Not Found conditions.
 
-        Be careful about adding conditions that always evaluate to true (such as the special conditions, `true` or `anything_else`) as node-level handlers. Such conditions are always triggered after the slot's Found condition is evaluated and before the slot's Not found condition is triggered. Keep the order of evaluation in mind as you design the handler, and test it thoroughly to be sure you understand how it will behave when it engages with users.
+        Be careful about adding conditions that always evaluate to true (such as the special conditions, `true` or `anything_else`) as node-level handlers, because if the node-level handler evaluates to true, the Not found condition for the slot is skipped entirely. Do not use such a node-level condition unless you want it to effectively replace the Not found condition. If used, test the slot thoroughly to be sure you understand how it will behave when users interact with it.
         {: #tip}
 
         For example, you groom all animals except cats. For the Animal slot, you might be tempted to use the following slot condition to prevent `cat` from being saved in the Animal slot:
