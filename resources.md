@@ -47,6 +47,9 @@ From an IBM technical deep-dive series. These recordings provide step-by-step in
 
 - [Retail chat app ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/code/journey/create-cognitive-retail-chatbot/){: new_window}
 - [Investment management chat app ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/code/journey/create-an-investment-management-chatbot/){: new_window}
+- [Cognitive Banking chatbot ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/code/journey/create-cognitive-banking-chatbot/){: new_window}
+- [Pizza ordering chatbot using slots ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/code/journey/assemble-a-pizza-ordering-chatbot-dialog/){: new_window}
+
 
 ## Other videos
 
