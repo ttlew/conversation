@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-02"
+lastupdated: "2017-10-10"
 
 ---
 
@@ -46,8 +46,8 @@ Existing models that you have trained will not be immediately impacted, but expi
 
 The following new features and changes to the service are available.
 
-### 2 October 2017
-{: #2October2017}
+### 3 October 2017
+{: #3October2017}
 
 - **Pattern-defined entities (Beta)**: You can now define specific patterns for an entity, using regular expressions. This can help you identify entities that follow a defined pattern, for example SKU or part numbers, phone numbers, or email addresses. See [Pattern-defined entities](entities.html#pattern-entities) for additional details.
     - You can add either synonyms or patterns for a single entity value; you cannot add both.
@@ -55,6 +55,8 @@ The following new features and changes to the service are available.
     - Each pattern (regular expression) is limited to 128 characters.
     - Importing or exporting via a CSV file does not currently support patterns.
     - The REST API does not support direct access to patterns, but you can retrieve or modify patterns using the `/values` endpoint.
+
+- **Fuzzy matching filtered by dictionary (English only)**: An improved version of fuzzy matching for entities is now available, for English. This improvement prevents the capturing of some common, valid English words as fuzzy matches for a given entity. For example, fuzzy matching will not match the entity value `like` to `hike` or `bike`, which are valid English words, but will continue to match examples such as `lkie` or `oike`.
 
 ### 27 September 2017
 {: #27September2017}
