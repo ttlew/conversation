@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-10"
+lastupdated: "2017-10-11"
 
 ---
 
@@ -45,6 +45,11 @@ Existing models that you have trained will not be immediately impacted, but expi
 {: #change-log}
 
 The following new features and changes to the service are available.
+
+### 11 October 2017
+{: #11October2017}
+
+- **Updates to Korean** - Language support has been enhanced for Korean. Note that the {{site.data.keyword.conversationshort}} service learning models may have been updated as part of this enhancement, and when you retrain your model any changes will be applied; see [Updated models](release-notes.html#updated-models) for more information.
 
 ### 3 October 2017
 {: #3October2017}
