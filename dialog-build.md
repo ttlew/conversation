@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-02"
+lastupdated: "2017-10-13"
 
 ---
 
@@ -998,92 +998,81 @@ Consider these suggested approaches for handling common tasks.
         - Node-level handlers in the order they are listed.
         - Current slot level If Not Found conditions.
 
-        Be careful about adding conditions that always evaluate to true (such as the special conditions, `true` or `anything_else`) as node-level handlers. Per slot, if the node-level handler evaluates to true, then the If Not Found condition is skipped entirely. So, using a node-level handler that always evaluates to true effectively prevents the If Not Found condition for every slot from being evaluated.
-        {: #tip}
+    Be careful about adding conditions that always evaluate to true (such as the special conditions, `true` or `anything_else`) as node-level handlers. Per slot, if the node-level handler evaluates to true, then the If Not Found condition is skipped entirely. So, using a node-level handler that always evaluates to true effectively prevents the If Not Found condition for every slot from being evaluated.
+    {: #tip}
 
-        For example, you groom all animals except cats. For the Animal slot, you might be tempted to use the following slot condition to prevent `cat` from being saved in the Animal slot:
+    For example, you groom all animals except cats. For the Animal slot, you might be tempted to use the following slot condition to prevent `cat` from being saved in the Animal slot:
 
-        ```json
-        Check for @animal && !@animal:cat, then save it as $animal.
-        ```
-        {: codeblock}
+    ```json
+    Check for @animal && !@animal:cat, then save it as $animal.
+    ```
+    {: codeblock}
 
-        And to let users know that you do not accept cats, you might specify the following value in the Not Found condition of the Animal slot:
+    And to let users know that you do not accept cats, you might specify the following value in the Not Found condition of the Animal slot:
 
-        ```json
-        If @animal && !@animal:cat then, "I'm sorry. We do not groom cats."
+    ```json
+    If @animal && !@animal:cat then, "I'm sorry. We do not groom cats."
+    ```
+    {: codeblock}
 
-        ```
-        {: codeblock}
+    While logical, if you also define a node-level exit request handler, then - given the order of condition evaluation - this Not Found condition will likely never get triggered. Instead, you can use this slot condition:
 
-        While logical, if you also define a node-level exit request handler, then - given the order of condition evaluation - this Not Found condition will likely never get triggered. Instead, you can use this slot condition:
+    ```json
+    Check for @animal, then save it as $animal.
+    ```
+    {: codeblock}
 
-        ```json
-        Check for @animal, then save it as $animal.
-        ```
-        {: codeblock}
+    And to deal with a possible `cat` response, add this value to the Found condition:
 
-        And to deal with a possible `cat` response, add this value to the Found condition:
+    ```josn
+    If @animal:cat then, "I'm sorry. We do not groom cats."
+    ```
+    {: codeblock}
 
-        ```josn
-        If @animal:cat then, "I'm sorry. We do not groom cats."
-        ```
-        {: codeblock}
-
-        In the JSON editor for the Found condition, reset the value of the $animal context variable because it is currently set to cat and should not be.
-
-        ```json
-        {
-          "output":{
-            "text": {
-              "values": [
-                "I'm sorry. We do not groom cats."
-              ]
-            }
-          },
-          "context":{
-            "animal": null
-          }
-        }
-        ```
-        {: codeblock}
-
-    Here's a sample of JSON that defines a node-level handler for the pizza example:
+    In the JSON editor for the Found condition, reset the value of the $animal context variable because it is currently set to cat and should not be.
 
     ```json
     {
-    "conditions": "#cancel",
-    "output": {
-      "text": {
-        "values": [
-          "Ok, we'll stop there. No pizza delivery will be scheduled."
-        ],
-    "selection_policy": "sequential"
-    }
-    },
-    "context": {
-      "time": "12:00:00",
-      "size": "dummy",
-      "confirmation":"true"
-    }
+      "output":{
+        "text": {
+          "values": [
+            "I'm sorry. We do not groom cats."
+          ]
+        }
+      },
+      "context":{
+        "animal": null
+      }
     }
     ```
+    {: codeblock}
+
+Here's a sample of JSON that defines a node-level handler for the pizza example:
+
+```json
+{
+"conditions": "#cancel",
+ "output": {
+   "text": {
+     "values": [
+       "Ok, we'll stop there. No pizza delivery will be scheduled."
+     ],
+    "selection_policy": "sequential"
+    }
+  },
+"context": {
+   "time": "12:00:00",
+   "size": "dummy",
+   "confirmation":"true"
+}
+}
+```
 
 #### Slots examples
 
 To access JSON files that implement different common slot usage scenarios, go to the community [conversation repo ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/community/tree/master/conversation){: new_window} in GitHub.
 
-To explore an example, download an example JSON file, and then import it as a new workspace. From the Dialog tab, you can review the dialog nodes to see how slots were implemented to address different use cases.
-
-### Moving a dialog node
-{: #move-node}
-
-Each node that you create can be moved elsewhere in the dialog tree.
-
-You might want to move a previously created node to another area of the flow to change the conversation. You can move nodes to become siblings or peers in another branch.
-
-1.  On the node you want to move, click the **More** ![More icon](images/kabob.png) icon, and then select **Move**.
-1.  Select a target node that is located in the tree near where you want to move this node. Choose whether to place this node above or below the target node, or to make it a child of the target node.
+To explore an example, download one of the example JSON files, and then import it as a new workspace. From the Dialog tab, you can review the dialog nodes to see how slots were implemented to address different use cases.
 
 ## Testing your dialog
 {: #test}
@@ -1126,3 +1115,39 @@ As you make changes to your dialog, you can test it at any time to see how it re
 If you determine that the wrong intents or entities are being recognized, you might need to modify your intent or entity definitions.
 
 If the right intents and entities are being recognized, but the wrong nodes are being triggered in your dialog, make sure your conditions are written correctly.
+
+## Moving a dialog node
+{: #move-node}
+
+Each node that you create can be moved elsewhere in the dialog tree.
+
+You might want to move a previously created node to another area of the flow to change the conversation. You can move nodes to become siblings or peers in another branch.
+
+1.  On the node you want to move, click the **More** ![More icon](images/kabob.png) icon, and then select **Move**.
+1.  Select a target node that is located in the tree near where you want to move this node. Choose whether to place this node above or below the target node, or to make it a child of the target node.
+
+## Finding a dialog node by its node ID
+{: #get-node-id}
+
+You might want to find the dialog node that is associated with a known node ID for any of the following reasons:
+
+- You are reviewing logs, and the log refers to a section of the dialog by its node ID.
+- You want to map the node IDs listed in the `nodes_visited` property of the API message output to nodes that you can see in your dialog tree.
+- A dialog runtime error message informs you about a syntax error, and uses a node ID to identify the node you need to fix.
+
+To discover a node based on its node ID, complete the following steps:
+
+1.  From the Dialog tab of the tooling, select any node in your dialog tree.
+1.  Close the edit view if it is open for the current node.
+1.  In your web browser's location field, a URL should display that has the following syntax:
+
+    ```json
+    https://watson-conversation.ng.bluemix.net/space/instance-id/workspaces/workspace-id/build/dialog#node=node-id
+    ```
+
+1.  Edit the URL by replacing the current `node-id` value with the ID of the node that you want to find, and then submit the new URL.
+1.  If necessary, highlight the edited URL again, and resubmit it.
+
+The tooling refreshes, and shifts focus to the dialog node with the node ID that you specified.
+
+**Note**: You cannot use this method to find a slot, a slot handler, or a node-level handler currently. To find a node of these types by their ID, you must export the workspace, use a JSON editor to find the node-id in the JSON, and make a note of its title (if specified) or its condition. From the Dialog tab of the tooling, use the browser search function to search for the dialog node with that title or condition.
