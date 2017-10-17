@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-24"
+lastupdated: "2017-10-17"
 
 ---
 
@@ -31,7 +31,7 @@ Note that the test deployment tool has some limitations:
 - If you use this method to deploy more than one workspace to the same team, all of the workspaces will respond to the `@ibmwatson_bot` user name. It is recommended that you use this tool to deploy only one workspace at a time to each Slack team.
 - You must have permission to install apps to your Slack team. Check with your Slack administrator if you are not sure whether you have this permission.
 - The prebuilt Slack application is for testing purposes only, and might not be available at all times.
-- Because of {{site.data.keyword.openwhisk_short}} restrictions, this tool is currently available only for the Bluemix US South region.
+- Because of {{site.data.keyword.openwhisk_short}} restrictions, this tool is currently available only for the {{site.data.keyword.Bluemix_notm}} US South region.
 
 To install your application as a bot user:
 

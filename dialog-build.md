@@ -76,17 +76,17 @@ You can use one or more of the following artifacts in any combination to define 
   Do not define a node or response condition based on the value of a context variable in the same dialog node in which you set the context variable value.
   {: tip}
 
-- **Entity**: The node is used when any value or synonym for the entity is recognized in the user input. Use the syntax `@{entity_name}`.
+- **Entity**: The node is used when any value or synonym for the entity is recognized in the user input. Use the syntax `@entity_name`. For example `@city`.
 
   Be sure to create a peer node to handle the case where none of the entity's values or synonyms are recognized.
   {: tip}
 
-- **Entity value**: The node is used if the entity value is detected in the user input. Use the syntax `@{entity_name}:{value}`. Specify a defined value for the entity, not a synonym.
+- **Entity value**: The node is used if the entity value is detected in the user input. Use the syntax `@entity_name:value`. For example: `@city:Boston`. Specify a defined value for the entity, not a synonym.
 
-  If you check for the associated entity in a peer node, be sure to place the node that checks for this particular entity value above it.
+  If you check for the presence of the entity, without specifying a particular value for it, in a peer node, be sure to place the node that checks for this particular entity value above it.
 {: tip}
 
-- **Intent**: The simplest condition is a single intent. The node is used if the user's input maps to that intent. Use the sytnax `#{intent-name}`. For example, `#weather` checks if the intent detected in the user input is `weather`. If so, the node is processed.
+- **Intent**: The simplest condition is a single intent. The node is used if the user's input maps to that intent. Use the sytnax `#intent-name`. For example, `#weather` checks if the intent detected in the user input is `weather`. If so, the node is processed.
 
 - **Special condition**: Conditions that are provided with the service that you can use to perform common dialog functions.
 
@@ -999,7 +999,7 @@ Consider these suggested approaches for handling common tasks.
         - Current slot level If Not Found conditions.
 
     Be careful about adding conditions that always evaluate to true (such as the special conditions, `true` or `anything_else`) as node-level handlers. Per slot, if the node-level handler evaluates to true, then the If Not Found condition is skipped entirely. So, using a node-level handler that always evaluates to true effectively prevents the If Not Found condition for every slot from being evaluated.
-    {: #tip}
+    {: tip}
 
     For example, you groom all animals except cats. For the Animal slot, you might be tempted to use the following slot condition to prevent `cat` from being saved in the Animal slot:
 

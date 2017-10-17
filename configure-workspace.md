@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-06"
+lastupdated: "2017-10-17"
 
 ---
 
@@ -49,7 +49,7 @@ You can create a workspace from scratch, use the provided sample workspace, or i
 
 You use the {{site.data.keyword.conversationshort}} tool to create workspaces. Follow these steps to create a workspace:
 
-1.  If the "Service Details" page is not already open, click your {{site.data.keyword.conversationshort}} service instance on the Bluemix console. (When you create a service instance, the "Service Details" page is displayed.)
+1.  If the "Service Details" page is not already open, click your {{site.data.keyword.conversationshort}} service instance from the console. (When you create a service instance, the "Service Details" page is displayed.)
 
 1.  On the "Service Details" page, scroll down to **Conversation tooling** and click **Launch tool**.
 
@@ -58,12 +58,14 @@ You use the {{site.data.keyword.conversationshort}} tool to create workspaces. F
     - To use the sample as a starting point for your own workspace, edit the sample workspace. If you want to use it for multiple workspaces, then duplicate it instead.
     - To import a workspace from a JSON file, click the ![Import workspace](images/workspace_import.png) icon, and select the JSON file you want to import from.
 
-        > **Important:**
-        >  - The imported JSON file must use UTF-8 encoding.
-        > - The maximum size for a workspace JSON file is 10MB. If you need to import a larger workspace, consider importing the intents and entities separately after you have imported the workspace. (You can also import larger workspaces using the REST API. For more information, see the [API Reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/conversation/api/v1/#create_workspace){: new_window}.)
-        > - The JSON cannot contain tabs, newlines, or carriage returns.
+        **Important:**
+
+        - The imported JSON file must use UTF-8 encoding.
+        - The maximum size for a workspace JSON file is 10MB. If you need to import a larger workspace, consider importing the intents and entities separately after you have imported the workspace. (You can also import larger workspaces using the REST API. For more information, see the [API Reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/conversation/api/v1/#create_workspace){: new_window}.)
+        - The JSON cannot contain tabs, newlines, or carriage returns.
 
         Specify the data you want to include:
+
         - Select **Everything (Intents, Entities, and Dialog)** if you want to import a complete copy of the exported workspace, including the dialog.
         - Select **Intents and Entities** if you want to use the intents and entities from the exported workspace, but you plan to build a new dialog.
 
