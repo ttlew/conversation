@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-02"
+lastupdated: "2017-10-16"
 
 ---
 
@@ -57,10 +57,12 @@ Use the {{site.data.keyword.conversationshort}} tool to create entities.
 1.  For **Fuzzy Matching**, click the button to select either on or off; fuzzy matching is off by default. This feature is available for languages noted in the [Supported languages](lang-support.html) topic.
  {: #fuzzy-matching}
 
-    You can turn on fuzzy matching to improve the ability of the service to recognize user input terms with syntax that is similar to the entity, but without requiring an exact match. There are two components to fuzzy matching - stemming and misspelling:
+    You can turn on fuzzy matching to improve the ability of the service to recognize user input terms with syntax that is similar to the entity, but without requiring an exact match. There are three components to fuzzy matching - stemming, misspelling, and partial matching:
     - *Stemming* - The feature recognizes the stem form of entity values that have several grammatical forms. For example, the stem of 'bananas' would be 'banana', while the stem of 'running' would be 'run'.
     - *Misspelling* - The feature is able to map user input to the appropriate corresponding entity despite the presence of misspellings or slight syntactical differences. For example, if you define "giraffe" as a synonym for an animal entity, and the user input contains the terms "giraffes" or "girafe", the fuzzy match is able to map the term to the animal entity correctly.
     - *Partial match* - With partial matching, the feature automatically suggests substring-based synonyms present in the user-defined entities, and assigns a lower confidence score as compared to the exact entity match.
+
+    **Note** - For English, fuzzy matching prevents the capturing of some common, valid English words as fuzzy matches for a given entity. Currently, this feature uses only standard English dictionary words, and does not use synonyms defined by the user.
 1.  In the **Value** field, type the text of a possible value for the entity. An entity value can be any string up to 64 characters in length.
 
     > **Important:** Don't include sensitive or personal information in entity names or values. The names and values can be exposed in URLs in an app.
@@ -89,7 +91,7 @@ Use the {{site.data.keyword.conversationshort}} tool to create entities.
 
     Often when using pattern entities, it will be necessary to store the text that matches the pattern in a context variable (or action variable), from within your dialog tree.
 
-    Imagine a case where you are asking a user for their email address. The dialog node condition will contain a condition similar to `@contactInfo:email`. In order to assign the user-entered email as a context variable, the following syntax can be used to capture the pattern match within the dialog node's response section:
+    Imagine a case where you are asking a user for their email address. The dialog node condition will contain a condition similar to `@contactInfo.email`. In order to assign the user-entered email as a context variable, the following syntax can be used to capture the pattern match within the dialog node's response section:
 
     ```
     {
