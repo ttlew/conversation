@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-06"
+lastupdated: "2017-10-16"
 
 ---
 
@@ -23,6 +23,8 @@ lastupdated: "2017-07-06"
 To plan the *intents* for your application, you need to consider what your customers might want to do, and what you want your application to be able to handle. Choosing the correct intent for a user's input is the first step in providing a useful response. The intents you identify for your application will determine the dialog flows you need to create; they also might determine which back-end systems your application needs to integrate with in order to complete customer requests (such as customer databases or payment-processing systems).
 
 An *entity* represents a term or object in the user's input that provides clarification or specific context for a particular intent. If intents represent verbs (something a user wants to do), entities represent nouns (such as the object of, or the context for, an action). Entities make it possible for a single intent to represent multiple specific actions. An entity defines a class of objects, with specific values representing possible objects in that class.
+
+Essentially, if you want to capture a request, or perform an action, use an intent. If you want to capture information that may affect how you respond to a request or action, use an entity.
 
 As an example, suppose you want to create a cognitive car dashboard application that enables users to turn accessories on or off:
 
