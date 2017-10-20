@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-13"
+lastupdated: "2017-10-19"
 
 ---
 
@@ -784,14 +784,21 @@ Using slots produces a more natural dialog flow between the user and the service
 {: #add-slots}
 
 1.  Identify the units of information that you want to collect. For example, to order a pizza for someone, you might want to collect the following information:
+
     - Delivery time
     - Size
+
 1.  From the dialog node edit view, click **Customize**, and then select the **Slots** checkbox.
+
+    **Note**: For more information about the **Prompt for everything** field, see [Asking for everything at once](dialog-build.html#slots-prompt-for-everything).
+
 1.  **Add a slot for each unit of required information**.
 
     For each slot, specify these details:
 
     - **Check for**: Identify the type of information you want to extract from the user's response to the slot prompt. In most cases, you check for entity values, but you can also check for an intent. You can use AND and OR operators here to define more complex conditions.
+
+      **Note**: If the entity has patterns defined for it, then after adding the entity name, append `.literal` to it. For example, after you choose `@email` from the list of defined entities, edit the *Check for* field to contain `@email.literal`. By adding the `.literal` property, you indicate that you want to capture the exact text that was entered by the user, and that was identified as an email address based on its pattern.
 
       Avoid checking for context variable values. The *Check for* value is first used as a condition, but then becomes the value of the context variable that you name in the *Save as* field. If you use a context variable in the condition, it can lead to unexpected behavior when it gets used in the context.
       {: tip}
@@ -873,179 +880,220 @@ Using slots produces a more natural dialog flow between the user and the service
     - Add a child node that nulls the variables.
     - Insert a parent node that nulls the variables, and then jumps to the node with slots.
 
-#### Tips for using slots
-{: #slots-tips}
-
 Consider these suggested approaches for handling common tasks.
 
-- **Ask for everything at once**: Include an initial prompt for the whole node that clearly tells users which units of information you want them to provide. Displaying this prompt first gives users the opportunity to provide all the details at once and not have to wait to be prompted for each piece of information one at a time.
+#### Asking for everything at once
+{: #slots-prompt-for-everything}
 
-    For example, when the node is triggered because a customer wants to order a pizza, you can respond with the preliminary prompt, "I can take your pizza order. Tell me what size pizza you want and the time that you want it delivered."
+Include an initial prompt for the whole node that clearly tells users which units of information you want them to provide. Displaying this prompt first gives users the opportunity to provide all the details at once and not have to wait to be prompted for each piece of information one at a time.
 
-    If the user provides even one piece of this information in their initial request, then the prompt is not displayed. For example, the initial input might be, "I want to order a large pizza." When the service analyzes the input, it recognizes "large" as the pizza size and fills the **Size** slot with the value provided. Because one of the slots is filled, it skips displaying the initial prompt to avoid asking for the pizza size information again. Instead, it displays the prompts for any remaining slots with missing information.
+For example, when the node is triggered because a customer wants to order a pizza, you can respond with the preliminary prompt, "I can take your pizza order. Tell me what size pizza you want and the time that you want it delivered."
 
-    From the Customize pane where you enabled the Slots feature, select the **Prompt for everything** checkbox to enable the intial prompt. This setting adds the **If no slots are pre-filled, ask this first** field to the node, where you can specify the text that prompts the user for everything.
+If the user provides even one piece of this information in their initial request, then the prompt is not displayed. For example, the initial input might be, "I want to order a large pizza." When the service analyzes the input, it recognizes "large" as the pizza size and fills the **Size** slot with the value provided. Because one of the slots is filled, it skips displaying the initial prompt to avoid asking for the pizza size information again. Instead, it displays the prompts for any remaining slots with missing information.
 
-- **Capturing multiple values**: You can ask for a list of items and save them in one slot.
+From the Customize pane where you enabled the Slots feature, select the **Prompt for everything** checkbox to enable the intial prompt. This setting adds the **If no slots are pre-filled, ask this first** field to the node, where you can specify the text that prompts the user for everything.
 
-    For example, you might want to ask users whether they want toppings on their pizza. To do so define an entity (@toppings), and the accepted values for it (pepperoni, cheese, mushroom, and so on). Add a slot that asks the user about toppings. Use the values property of the entity type to capture multiple values, if provided.
+#### Capturing multiple values
+{: #slots-multiple-entity-values}
 
-    <table>
-    <tr>
-      <td>Information</td>
-      <td>Check for</td>
-      <td>Save as</td>
-      <td>Prompt</td>
-      <td>Follow-up if found</td>
-      <td>Follow-up if not found</td>
-    </tr>
-    <tr>
-      <td>Toppings</td>
-      <td>@toppings.values</td>
-      <td>$toppings</td>
-      <td>Any toppings on that?</td>
-      <td>"Great addition."</td>
-      <td>"What toppings would you like? We offer ..."</td>
-    </tr>
-    </table>
+You can ask for a list of items and save them in one slot.
 
-    To reference the user-specified toppings later, use the `<? $entity-name.join(',') ?>` syntax to list each item in the toppings array and separate the values with a comma. For example, "I am ordering you a $size pizza with `<? $toppings.join(',') ?>` that is scheduled for delivery by $time."
+For example, you might want to ask users whether they want toppings on their pizza. To do so define an entity (@toppings), and the accepted values for it (pepperoni, cheese, mushroom, and so on). Add a slot that asks the user about toppings. Use the values property of the entity type to capture multiple values, if provided.
 
-- **Reformatting values**: Because you are asking for information from the user and need to reference their input in responses, consider reformatting the values so you can display them in a friendlier format.
+<table>
+<tr>
+  <td>Information</td>
+  <td>Check for</td>
+  <td>Save as</td>
+  <td>Prompt</td>
+  <td>Follow-up if found</td>
+  <td>Follow-up if not found</td>
+</tr>
+<tr>
+  <td>Toppings</td>
+  <td>@toppings.values</td>
+  <td>$toppings</td>
+  <td>Any toppings on that?</td>
+  <td>"Great addition."</td>
+  <td>"What toppings would you like? We offer ..."</td>
+</tr>
+</table>
 
-    For example, time values are saved in the `hh:mm:ss` format. You can use the JSON editor for the slot to reformat the time value as you save it so it uses the `hour:minutes AM/PM` format instead:
+To reference the user-specified toppings later, use the `<? $entity-name.join(',') ?>` syntax to list each item in the toppings array and separate the values with a comma. For example, "I am ordering you a $size pizza with `<? $toppings.join(',') ?>` that is scheduled for delivery by $time."
 
-    ```json
-    {
-      "context":{
-        "time": "<? @sys-time.reformatDateTime('h:mm a') ?>"
-      }
+#### Reformatting values
+{: #slots-reformat-values}
+
+Because you are asking for information from the user and need to reference their input in responses, consider reformatting the values so you can display them in a friendlier format.
+
+For example, time values are saved in the `hh:mm:ss` format. You can use the JSON editor for the slot to reformat the time value as you save it so it uses the `hour:minutes AM/PM` format instead:
+
+```json
+{
+  "context":{
+    "time": "<? @sys-time.reformatDateTime('h:mm a') ?>"
+  }
+}
+```
+{: codeblock}
+
+See [Methods to process values](dialog-methods.html) for other reformatting ideas.
+
+#### Getting confirmation
+{: #slots-get-confirmation}
+
+Add a slot below the others that asks the user to confirm that the information you have collected is accurate and complete. The slot can look for responses that match the #yes intent.
+
+<table>
+<tr>
+  <td>Information</td>
+  <td>Check for</td>
+  <td>Save as</td>
+  <td>Prompt</td>
+  <td>Follow-up if found</td>
+  <td>Follow-up if not found</td>
+</tr>
+<tr>
+  <td>Confirmation</td>
+  <td>#yes</td>
+  <td>$confirmation</td>
+  <td>"I'm going to order you a `$size` pizza for delivery at `$time`. Should I go ahead?"</td>
+  <td>"Your pizza is on its way!"</td>
+  <td>see below</td>
+</tr>
+</table>
+
+Because users might include affirmative statements at other times during the dialog (*Oh yes, we want the pizza delivered at 5pm*), use the `slot_in_focus` property to make it clear in the slot condition that you are looking for a Yes response to the prompt for this slot only.
+
+```json
+#yes && slot_in_focus
+```
+The `slot_in_focus` property always evaluates to a Boolean (true or false) value. Only include it in a condition for which you want a boolean result. Do not use it in slot conditions that checks for an entity type and then save the entity value, for example.
+{: tip}
+
+In the **Not Found** prompt, ask for the information all over again and reset the context variables that you saved earlier.
+
+```json
+{
+  "output":{
+    "text": {
+      "values": [
+        "Let's try this again. Tell me what size pizza you want and the time..."
+      ]
     }
-    ```
-    {: codeblock}
+  },
+  "context":{
+    "size": null,
+    "time": null
+  }
+}
+```
+{: codeblock}
 
-    See [Methods to process values](dialog-methods.html) for other reformatting ideas.
+#### Replacing a slot context variable value
+{: #slots-found-handler-event-properties}
 
-- **Getting confirmation**: Add a slot below the others that asks the user to confirm that the information you have collected is accurate and complete. The slot can look for responses that match the #yes intent.
+If, at any time before the user exits a node with slots, the user provides a new value for a slot, then the new value is saved in the slot context variable, replacing the previously-specified value. Your dialog can acknowledge explicitly that this replacement has occurred by using special properties that are defined for the Found condition event handler:
 
-    <table>
-    <tr>
-      <td>Information</td>
-      <td>Check for</td>
-      <td>Save as</td>
-      <td>Prompt</td>
-      <td>Follow-up if found</td>
-      <td>Follow-up if not found</td>
-    </tr>
-    <tr>
-      <td>Confirmation</td>
-      <td>#yes</td>
-      <td>$confirmation</td>
-      <td>"I'm going to order you a `$size` pizza for delivery at `$time`. Should I go ahead?"</td>
-      <td>"Your pizza is on its way!"</td>
-      <td>see below</td>
-    </tr>
-    </table>
+- `event.previous_value`: Previous value of the context variable for this slot.
+- `event.current_value`: Current value of the context variable for this slot.
 
-    Because users might include affirmative statements at other times during the dialog (*Oh yes, we want the pizza delivered at 5pm*), use the `slot_in_focus` property to make it clear in the slot condition that you are looking for a Yes response to the prompt for this slot only.
+For example, your dialog asks for a destination city for a flight reservation. The user provides `Paris.` You set the $destination slot context variable to *Paris*. Then, the user says, `Oh wait. I want to fly to Madrid instead.` If you set up the Found condition as follows, then your dialog can handle this type of change gracefully.
 
-    ```json
-    #yes && slot_in_focus
-    ```
-    The `slot_in_focus` property always evaluates to a Boolean (true or false) value. Only include it in a condition for which you want a boolean result. Do not use it in slot conditions that checks for an entity type and then save the entity value, for example.
-    {: tip}
+```json
+When user responds, if @destination is found:
+Condition: event.previous_value != null
+    Response: Ok, updating destination from <? event.previous_value ?> to <? event.current_value ?>.
+Response: Ok, destination is $destination.literal.
+```
 
-    In the **Not Found** prompt, ask for the information all over again and reset the context variables that you saved earlier.
+This slot configuration enables your dialog to react to the user's change in destination by saying, `Ok, updating the destination from Paris to Madrid.`
 
-    ```json
-    {
-      "output":{
-        "text": {
-          "values": [
-            "Let's try this again. Tell me what size pizza you want and the time..."
-          ]
-        }
-      },
-      "context":{
-        "size": null,
-        "time": null
-      }
+#### Avoiding number confusion
+{: #slots-avoid-number-confusion}
+
+Some values that are provided by users can be identified as more than one entity type.
+
+You might have two slots that store the same type of value, such as an arrival date and departure date, for example. Build logic into your slot conditions to distinguish such similar values from one another.
+
+In addition, the service can recognize multiple entity types in a single user input. For example, when a user provides a currency, it is recognized as both a @sys-currency and @sys-number entity type. Do some testing in the "Try it out" pane to understand how the system will interpret different user inputs, and build logic into your conditions to prevent possible misinterpretations.
+
+In logic that is unique to the slots feature, when two entities are recognized in a single user input, the one with the larger span is used. For example, if the user enters *May 2*, even though the Conversation service recognizes both @sys-date (05022017) and @sys-number (2) entities in the text, only the entity with the longer span (@sys-date) is registered and applied to a slot, if applicable.
+{: tip}
+
+#### Preventing a Found response from displaying when it is not needed
+{: #slots-stifle-found-responses}
+
+If you specify Found responses for multiple slots, then if a user provides values for multiple slots at once, the Found response for at least one of the slots will be displayed. You probably want either the Found response for all of them or none of them to be returned.
+
+To prevent Found responses from being displayed, you can do one of the following things to each Found response:
+
+- Add a condition to the response that prevents it from being displayed if particular slots are filled. For example, you can add a condition, like `!($size && $time)`, that prevents the response from being displayed if the $size and $time context variables are both provided.
+- Add the `!all_slots_filled` condition to the response. This setting prevents the response from being displayed if all of the slots are filled. Do not use this approach if you are including a confirmation slot. The confirmation slot is also a slot, and you typically want to prevent the Found responses from being displayed before the confirmation slot itself is filled.
+
+#### Handling requests to exit the process
+{: #slots-node-level-handler}
+
+Add at least one node-level handler that can recognize it when a user wants to exit the node.
+
+For example, in a node that collects information to schedule a pet grooming appointment, you can add a node-level handler that conditions on the #cancel intent, which recognizes utterances such as, "Forget it. I changed my mind."
+
+1.  In the JSON editor for the handler, fill all of the slot context variables with dummy values to prevent the node from continuing to ask for any that are missing. And in the handler response, add a message such as, "Ok, we'll stop there. No appointment will be scheduled."
+1.  In the node-level response, add a condition that checks for a dummy value in one of the slot context variables. If found, show a final message such as, "If you decide to make an appointment later, I'm here to help." If not found, it displays the standard summary message for the node, such as "I am making a grooming appointment for your $animal at $time on $date."
+1.  Take into account the logic used in conditions that are evaluated before this node-level handler so you can build distinct conditions into them. When a user input is received, the conditions are evaluated in the following order:
+
+    - Current slot level If Found conditions.
+    - Node-level handlers in the order they are listed.
+    - Current slot level If Not Found conditions.
+
+Be careful about adding conditions that always evaluate to true (such as the special conditions, `true` or `anything_else`) as node-level handlers. Per slot, if the node-level handler evaluates to true, then the If Not Found condition is skipped entirely. So, using a node-level handler that always evaluates to true effectively prevents the If Not Found condition for every slot from being evaluated.
+{: tip}
+
+For example, you groom all animals except cats. For the Animal slot, you might be tempted to use the following slot condition to prevent `cat` from being saved in the Animal slot:
+
+```json
+Check for @animal && !@animal:cat, then save it as $animal.
+```
+{: codeblock}
+
+And to let users know that you do not accept cats, you might specify the following value in the Not Found condition of the Animal slot:
+
+```json
+If @animal && !@animal:cat then, "I'm sorry. We do not groom cats."
+```
+{: codeblock}
+
+While logical, if you also define a node-level exit request handler, then - given the order of condition evaluation - this Not Found condition will likely never get triggered. Instead, you can use this slot condition:
+
+```json
+Check for @animal, then save it as $animal.
+```
+{: codeblock}
+
+And to deal with a possible `cat` response, add this value to the Found condition:
+
+```josn
+If @animal:cat then, "I'm sorry. We do not groom cats."
+```
+{: codeblock}
+
+In the JSON editor for the Found condition, reset the value of the $animal context variable because it is currently set to cat and should not be.
+
+```json
+{
+  "output":{
+    "text": {
+      "values": [
+        "I'm sorry. We do not groom cats."
+      ]
     }
-    ```
-    {: codeblock}
-
-- **Avoid number confusion**: Some values that are provided by users can be identified as more than one entity type.
-
-    You might have two slots that store the same type of value, such as an arrival date and departure date, for example. Build logic into your slot conditions to distinguish such similar values from one another.
-
-    In addition, the service can recognize multiple entity types in a single user input. For example, when a user provides a currency, it is recognized as both a @sys-currency and @sys-number entity type. Do some testing in the "Try it out" pane to understand how the system will interpret different user inputs, and build logic into your conditions to prevent possible misinterpretations.
-
-    **Tip**: In logic that is unique to the slots feature, when two entities are recognized in a single user input, the one with the larger span is used. For example, if the user enters *May 2*, even though the Conversation service recognizes both @sys-date (05022017) and @sys-number (2) entities in the text, only the entity with the longer span (@sys-date) is registered and applied to a slot, if applicable.
-
-- **Prevent a Found response from displaying when it's not needed**: If you specify Found responses for multiple slots, then if a user provides values for multiple slots at once, the Found response for at least one of the slots will be displayed. You probably want either the Found response for all of them or none of them to be returned.
-
-    To prevent Found responses from being displayed, you can do one of the following things to each Found response:
-    - Add a condition to the response that prevents it from being displayed if particular slots are filled. For example, you can add a condition, like `!($size && $time)`, that prevents the response from being displayed if the $size and $time context variables are both provided.
-    - Add the `!all_slots_filled` condition to the response. This setting prevents the response from being displayed if all of the slots are filled. Do not use this approach if you are including a confirmation slot. The confirmation slot is also a slot, and you typically want to prevent the Found responses from being displayed before the confirmation slot itself is filled.
-
-- **Handle requests to exit the process**: Add at least one node-level handler that can recognize it when a user wants to exit the node.
-
-    For example, in a node that collects information to schedule a pet grooming appointment, you can add a node-level handler that conditions on the #cancel intent, which recognizes utterances such as, "Forget it. I changed my mind."
-    1.  In the JSON editor for the handler, fill all of the slot context variables with dummy values to prevent the node from continuing to ask for any that are missing. And in the handler response, add a message such as, "Ok, we'll stop there. No appointment will be scheduled."
-    1.  In the node-level response, add a condition that checks for a dummy value in one of the slot context variables. If found, show a final message such as, "If you decide to make an appointment later, I'm here to help." If not found, it displays the standard summary message for the node, such as "I am making a grooming appointment for your $animal at $time on $date."
-    1.  Take into account the logic used in conditions that are evaluated before this node-level handler so you can build distinct conditions into them. When a user input is received, the conditions are evaluated in the following order:
-        - Current slot level If Found conditions.
-        - Node-level handlers in the order they are listed.
-        - Current slot level If Not Found conditions.
-
-    Be careful about adding conditions that always evaluate to true (such as the special conditions, `true` or `anything_else`) as node-level handlers. Per slot, if the node-level handler evaluates to true, then the If Not Found condition is skipped entirely. So, using a node-level handler that always evaluates to true effectively prevents the If Not Found condition for every slot from being evaluated.
-    {: tip}
-
-    For example, you groom all animals except cats. For the Animal slot, you might be tempted to use the following slot condition to prevent `cat` from being saved in the Animal slot:
-
-    ```json
-    Check for @animal && !@animal:cat, then save it as $animal.
-    ```
-    {: codeblock}
-
-    And to let users know that you do not accept cats, you might specify the following value in the Not Found condition of the Animal slot:
-
-    ```json
-    If @animal && !@animal:cat then, "I'm sorry. We do not groom cats."
-    ```
-    {: codeblock}
-
-    While logical, if you also define a node-level exit request handler, then - given the order of condition evaluation - this Not Found condition will likely never get triggered. Instead, you can use this slot condition:
-
-    ```json
-    Check for @animal, then save it as $animal.
-    ```
-    {: codeblock}
-
-    And to deal with a possible `cat` response, add this value to the Found condition:
-
-    ```josn
-    If @animal:cat then, "I'm sorry. We do not groom cats."
-    ```
-    {: codeblock}
-
-    In the JSON editor for the Found condition, reset the value of the $animal context variable because it is currently set to cat and should not be.
-
-    ```json
-    {
-      "output":{
-        "text": {
-          "values": [
-            "I'm sorry. We do not groom cats."
-          ]
-        }
-      },
-      "context":{
-        "animal": null
-      }
-    }
-    ```
-    {: codeblock}
+  },
+  "context":{
+    "animal": null
+  }
+}
+```
+{: codeblock}
 
 Here's a sample of JSON that defines a node-level handler for the pizza example:
 
