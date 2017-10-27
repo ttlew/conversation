@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-02"
+lastupdated: "2017-10-27"
 
 ---
 
@@ -31,9 +31,9 @@ In the following table, the level of language and feature support is indicated b
 |:---|:---:|:---:|:---:|:---:|:---:|
 | **English (en)**                   | GA | GA | GA </br> Beta ([location](system-entities.html#sys-location), [person](system-entities.html#sys-person)) | Beta (Stemming, misspelling, and partial match) | Beta |
 | **Arabic (ar)**                    | GA | Beta | Beta | Beta (Misspelling only) | Beta |
-| **Chinese (Simplified) (zh-cn)**   | Beta | Beta |  |  | Beta |
+| **Chinese (Simplified) (zh-cn)**   | Beta | Beta | Beta |  | Beta |
 | **Chinese (Traditional) (zh-tw)**  | Beta | Beta |  |  | Beta |
-| **Czech (cs)**                     | Beta | Beta | Beta | Beta (Misspelling only) | Beta |
+| **Czech (cs)**                     | Beta | Beta | Beta | Beta (Misspelling only) | Beta
 | **Dutch (nl)**                     | Beta | Beta |  |  | Beta |
 | **French (fr)**                    | GA | GA | GA | Beta (Misspelling only) | Beta |
 | **German (de)**                    | GA | GA | GA | Beta (Misspelling only) | Beta |
