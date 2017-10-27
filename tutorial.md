@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-02"
+lastupdated: "2017-10-27"
 
 ---
 
@@ -193,8 +193,8 @@ Now add a node to process the type of music that the user requests.
 Add a node to respond when the user does not specify a recognized value for @genre.
 
 1.  Click the More icon ![More options](images/kabob.png) on the *@genre* node, and select **Add node below** to create a peer node.
-1.  Enter `true` in the condition field, and then select **true (create new condition)** from the list.
-    This condition specifies that if the dialog flow reaches this node, it should always evaluate as true. (If the user specifies a valid @genre value, this node will never be reached.)
+1.  Enter `true` in the condition field.
+    The true condition is a special condition. It specifies that if the dialog flow reaches this node, it should always evaluate as true. (If the user specifies a valid @genre value, this node will never be reached.)
 1.  Enter `I'm sorry, I don't understand. I can play classical, rhythm and blues, or rock music.` as the response.
 
 That takes care of all the cases where the user asks to turn on the music.
@@ -247,8 +247,8 @@ For the other values of @appliance, the bot doesn't need to ask for any more inp
 Now add a peer node that is triggered if the user does not specify a valid appliance type.
 
 1.  Click the More icon ![More options](images/kabob.png) on the **@appliance** node, and then select **Add node below** to create a peer node that is evaluated after the @appliance condition is evaluated.
-1.  Enter `true` in the condition field, and then select **true (create new condition)** from the list.
-    This condition specifies that if the dialog flow reaches this node, it should always evaluate as true. (If the user specifies a valid @appliance value, this node will never be reached.)
+1.  Enter `true` in the condition field.
+    (If the user specifies a valid @appliance value, this node will never be reached.)
 1.  Enter `I'm sorry, I'm not sure I understood you. I can turn on music, headlights, or air conditioning.` as the response.
 
 #### Test some more
