@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-17"
+lastupdated: "2017-10-27"
 
 ---
 
@@ -45,6 +45,12 @@ Existing models that you have trained will not be immediately impacted, but expi
 {: #change-log}
 
 The following new features and changes to the service are available.
+
+### 26 October 2017
+{: #26October2017}
+
+- **Updates to Simplified Chinese** - Language support has been enhanced for Simplified Chinese. This includes intent classification improvements using character-level word embeddings, and the availability of system entities. Note that the {{site.data.keyword.conversationshort}} service learning models may have been updated as part of this enhancement, and when you retrain your model any changes will be applied; see [Updated models](release-notes.html#updated-models) for more information.
+- **Updates to Spanish** - Improvements have been made to Spanish intent classification, for very large datasets.
 
 ### 11 October 2017
 {: #11October2017}
