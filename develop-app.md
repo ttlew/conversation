@@ -24,7 +24,7 @@ lastupdated: "2017-10-31"
 So you have a working dialog. Now you want to develop the application that will interact with your users and communicate with the {{site.data.keyword.conversationfull}} service.
 {: shortdesc}
 
-You can view this tutorial for either for Node.js (Javascript) or Python by selecting the language. For details about all supported languages, refer to the {{site.data.keyword.watson}} [SDKs ![External link icon](../../icons/launch-glyph.svg "External link icon")](/docs/services/watson/getting-started-sdks.html#sdks){: new_window}.
+You can view this tutorial for either Node.js (Javascript) or Python by selecting the language. For details about all supported languages, refer to the {{site.data.keyword.watson}} [SDKs ![External link icon](../../icons/launch-glyph.svg "External link icon")](/docs/services/watson/getting-started-sdks.html#sdks){: new_window}.
 {: tip }
 
 ## Setting up the Conversation service
