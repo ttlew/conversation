@@ -183,8 +183,6 @@ In this example, the service uses information that it collected earlier about th
 
 This single node now provides the equivalent function of four separate nodes.
 
-To add conditional responses to a node, click **Customize** and then click the **Multiple responses** toggle to turn it **On**.
-
 The conditions within a node are evaluated in order, just as nodes are.  Be sure that your conditions and responses are listed in the correct order.  If you need to change the order, select a condition and move it up or down in the list using the arrows that are displayed. If you want to update the context, you must do so in the JSON editor for each individual response.  There is not a common JSON editor for all responses. If you associated a **Jump to** action with the node, the jump does not occur until after any responses are processed.
 {: tip}
 
@@ -277,10 +275,6 @@ The default behavior assumes `selection_policy = random` and `append = true`. Wh
 After making the specified response, you can instruct the service to do one of the following things:
 
 - **Wait for user input**: The service waits for the user to provide new input that the response elicits. For example, the response might ask the user a yes or no question. The dialog will not progress until the user provides more input.
-- **Skip user input**:  Use this option when you want to bypass waiting for user input and go directly to the first child node of the current node instead.
-
-  **Note**: The current node must have at least one child node for this option to be available.
-
 - **Jump to another dialog node**: Use this option when you want to bypass waiting for user input and want the conversation to go directly to an entirely different dialog node. You can use a *Jump to* action to route the flow to a common dialog node from multiple locations in the tree, for example.
 
   **Note**: The target node that you want to jump to must exist before you can configure the jump to action to use it.
@@ -745,13 +739,11 @@ To create a dialog, complete the following steps:
 1.  **Optional**: If you want to collect multiple pieces of information from the user in this node, then click **Customize** and enable **Slots**. See [Gathering information with slots](#slots) for more details.
 1.  Enter a response.
     - Add the text that you want the service to display to the user as a response.
-    - If you want to define different responses based on certain conditions, then click **Customize** and enable **Multiple responses**.
     - For information about conditional responses or how to add variety to responses, see [Responses](#responses).
 
 1.  Specify what to do after the current node is processed. You can choose from the following options:
 
     - **Wait for user input**: The service pauses until new input is provided by the user.
-    - **Skip user input**: The service jumps directly to the first child node. This option is only available if the current node has at least one child node.
     - **Jump to**: The service continues the dialog by processing the node you specify. You can choose whether the service should evaluate the target node's condition or skip directly to the target node's response. See [Configuring the Jump to action](dialog-build.html#jump-to-config) for more details.
 
 1.  **Optional**: Name the node.
@@ -776,7 +768,6 @@ Add slots to a dialog node to gather multiple pieces of information from a user 
 
 <iframe class="embed-responsive-item" id="youtubeplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/ES4GHcDsSCI?rel=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
-Learn more:
 - [Why add slots?](dialog-build.html#why-add-slots)
 - [Adding slots](dialog-build.html#add-slots)
 - [Tips](dialog-build.html#slots-tips)
@@ -834,11 +825,6 @@ Using slots produces a more natural dialog flow between the user and the service
       - **Found**: Displayed after the user provides the expected information.
 
       - **Not found**: Displayed if the information provided by the user is not understood, or is not provided in the expected format. If the slot is filled successfully, or the user input is understood and handled by a node-level handler, then this statement is never displayed.
-
-      For information about how to define conditions and associated actions for Found and Not found responses, see [Adding conditions to Found and Not found responses](dialog-build.html#slot-handler-next-steps).
-
-   If you only want to require that a user provide information for a slot under certain conditions, then you can add a condition to the slot. To do so, edit the slot. From the **More** ![More icon](images/kabob.png) menu, select **Enable condition**. Define the condition that must be met for this slot to be required. You can condition on the value of a context variable from a previous required slot because the order in which the slots are listed is the order in which they are evaluated.
-    {: tip}
 
     This table shows example slot values for a node that helps users place a pizza order.
 
@@ -902,9 +888,6 @@ Using slots produces a more natural dialog flow between the user and the service
     This condition is triggered if the user provides input that matches the handler conditions at any time during the dialog node flow up until the node-level response is displayed. See [Handling requests to exit a process](dialog-build.html#slots-node-level-handler) for more ways to use the node-level handler.
 1.  **Add a node-level response**.
     The node-level response is not executed until after all of the required slots are filled. You can add a response that summarizes the information you collected. For example, "A `$size` pizza is scheduled for delivery at `$time`. Enjoy!"
-
-    If you want to define different responses based on certain conditions, click **Customize**, and then click the **Multiple responses** toggle to turn it **On**. For information about conditional responses, see [Conditional responses](dialog-build.html#multiple).
-
 1.  **Add logic that resets the slot context variables**.
     As you collect answers from the user per slot, they are saved in context variables. You can use the context variables to pass the information to another node or to an application or external service for use. However, after passing the information, you must set the context variables to null to reset the node so it can start collecting information again. You cannot null the context variables within the current node because the service will not exit the node until the required slots are filled. Instead, consider using one of the following methods:
     - Add processing to the external application that nulls the variables.
@@ -920,7 +903,6 @@ Consider these suggested approaches for handling common tasks.
 - [Getting confirmation](dialog-build.html#slots-get-confirmation)
 - [Replacing a slot context variable value](dialog-build.html#slots-found-handler-event-properties)
 - [Avoiding number confusion](dialog-build.html#slots-avoid-number-confusion)
-- [Adding conditions to Found and Not found responses](dialog-build.html#slot-handler-next-steps)
 - [Preventing a Found response from displaying when it is not needed](dialog-build.html#slots-stifle-found-responses)
 - [Handling requests to exit a process](dialog-build.html#slots-node-level-handler)
 
@@ -1066,45 +1048,6 @@ In addition, the service can recognize multiple entity types in a single user in
 In logic that is unique to the slots feature, when two entities are recognized in a single user input, the one with the larger span is used. For example, if the user enters *May 2*, even though the Conversation service recognizes both @sys-date (05022017) and @sys-number (2) entities in the text, only the entity with the longer span (@sys-date) is registered and applied to a slot.
 {: tip}
 
-#### Adding conditions to Found and Not found responses
-{: #slot-handler-next-steps}
-
-For each slot, you can use conditional responses with associated actions to help you extract the information you need from the user. To do so, follow these steps:
-
-1.  Click the **Edit slot** ![Edit slot](images/edit-slot.png) icon for the slot to which you want to add conditional Found and Not found responses.
-1.  From the **More** ![More icon](images/kabob.png) menu, select **Enable conditional responses**.
-1.  Enter the condition and the response to display if the condition is met.
-
-    **Found example**: The slot is expecting the time for a dinner reservation. You might use @sys-time in the *Check for* field to capture it. To prevent an invalid time from being saved, you can add a conditional response that checks whether the time provided is before the restaurant's last seating time, for example. `@sys-time.after('21:00:00')` The corresponding response might be something like, *Our last seating is at 9PM.*
-
-    **Not found example**: The slot is expecting a @location entity that accepts a specific set of cities where the restaurant chain has restaurants. The Not found condition might check for @sys-location in case the user specifies a valid city, but one in which the chain has no sites. The corresponding response might be, *We have no restaurants in that location.*
-
-1.  If you want to customize what happens next if the condition is met, then click the **Edit response** ![Edit response](images/edit-slot.png) icon.
-
-    For Found responses (that are displayed when the user provides a value that matches the value type specified in the Check for field), you can choose one of these actions to perform next:
-
-      - **Move on (Default)**: Instructs the service to move on to the next empty slot after displaying the response. In the associated response, assure the user that their input was understood. For example, *Ok. You want to schedule it for $date.*
-      - **Clear slot and prompt again**: If you are using an entity in the *Check for* field that could pick up the wrong value, add conditions that catch any likely misinterpretations, and use this action to clear the current slot value and prompt for the right value.
-      - **Skip to response**: If, when the condition you define is met, you no longer need to fill any of the remaining slots in this node, choose this action to skip the remaining slots and go directly to the node-level response next. For example, you could add a condition that checks whether the user's age is under 16. If so, you might skip the remaining slots which ask questions about the user's driving record.
-
-    For Not found responses that are displayed when the user does not provide a valid value, you can choose one of these actions to perform:
-
-      - **Wait for user input (Default)**: Pauses the conversation and the service waits for the user to respond. In the simplest case, the text you specify here can more explicitly state the type of information you need the user to provide. If you use this action with a conditional response, be sure to word the conditional response such that you clearly state what was wrong with the user's answer and what you expect them to provide instead.
-      - **Prompt again**: Displays the slot's Not found response again, and waits for the user to respond. If you use this action with a conditional response, the response can merely explain what was wrong about the answer the user provided. It does not need to reiterate the type of information you want the user to provide because the prompt typically explains that.
-
-        If you choose this option, consider adding at least one variation of the Not found response so that the user does not see the exact same text more than once. Take the opportunity to use different wording to explain to the user what information you need them to provide and in what format.
-        {: tip}
-
-      - **Skip this slot**: This option is useful in a slot where you ask a yes or no question. You can check for #No in the Not found response, and use this action to instruct the service to move on to show the prompt for the next empty slot. For example, the slot prompt might be *Do you want to sit outside?* If the user responds that they do not, you can use a slot response condition to catch the #No response, and say, *Ok, we will find you a table indoors.* Use this action with the Not found conditional response to keep the dialog moving.
-      - **Skip to response**: If, when the condition you define is met, you no longer need to fill any of the remaining slots in this node, choose this action to skip the remaining slots and go directly to the node-level response next. For example, if after capturing the one-way flight information, the slot prompt is, *Are you buying round-trip tickets?* the Not found condition can check for #No. If #No is found, use this option to skip the remaining slots that capture information about the return flight, and go straight to the node-level response instead.
-
-    Click **Back** to return to the edit view of the slot.
-1.  To add another conditional response, click **Add a response**, and then enter the condition and the response to display if the condition is met.
-
-    Be sure to add at least one response that will be displayed no matter what. You can leave the condition field blank for this catch all response. The service automatically populates the empty condition field with the `true` special condition.
-
-1.  Click **Save** to save your changes, close the edit view of the slot, and return to the edit view of the node.
-
 #### Preventing a Found response from displaying when it is not needed
 {: #slots-stifle-found-responses}
 
@@ -1123,12 +1066,6 @@ Add at least one node-level handler that can recognize it when a user wants to e
 For example, in a node that collects information to schedule a pet grooming appointment, you can add a node-level handler that conditions on the #cancel intent, which recognizes utterances such as, "Forget it. I changed my mind."
 
 1.  In the JSON editor for the handler, fill all of the slot context variables with dummy values to prevent the node from continuing to ask for any that are missing. And in the handler response, add a message such as, "Ok, we'll stop there. No appointment will be scheduled."
-1.  Choose what action you want the service to take next from the following options:
-
-    - **Prompt again (Default)**: Displays the prompt for the slot that the user was working with just before asking the off-topic question.
-    - **Skip current slot**: Displays the prompt associated with the slot that comes after the slot that the the user was working with just before asking the off-topic question.
-    - **Skip to response**: Skips the prompts for all remaining empty slots including the slot the user was working with just before asking the off-topic question.
-
 1.  In the node-level response, add a condition that checks for a dummy value in one of the slot context variables. If found, show a final message such as, "If you decide to make an appointment later, I'm here to help." If not found, it displays the standard summary message for the node, such as "I am making a grooming appointment for your $animal at $time on $date."
 1.  Take into account the logic used in conditions that are evaluated before this node-level handler so you can build distinct conditions into them. When a user input is received, the conditions are evaluated in the following order:
 
@@ -1286,6 +1223,6 @@ To discover a node based on its node ID, complete the following steps:
 1.  Edit the URL by replacing the current `node-id` value with the ID of the node you want to find, and then submit the new URL.
 1.  If necessary, highlight the edited URL again, and resubmit it.
 
-The tooling refreshes, and shifts focus to the dialog node with the node ID that you specified. If the node ID is for a slot, a slot handler, a node-level handler, or a conditional response, then the node in which the slot or conditional response is defined gets focus.
+The tooling refreshes, and shifts focus to the dialog node with the node ID that you specified.
 
-**Note**: If you still cannot identify the node, you can export the workspace, and use a JSON editor to find the node-id in the JSON. Look for the `type` that is associated with the node. It tells you what part of the node to look at, such as a slot, a slot's Found condition, a node-level conditional response, and so on.
+**Note**: Currently, if the node ID is for a slot, a slot handler, a node-level handler, or a conditional response, then you cannot use this approach to find it. You must export the workspace, and use a JSON editor to find the node-id in the JSON. Check for the node title, and then search for the node with that title in the tooling.
