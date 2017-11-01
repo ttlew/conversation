@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-31"
+lastupdated: "2017-11-01"
 
 ---
 
@@ -46,8 +46,8 @@ Existing models that you have trained will not be immediately impacted, but expi
 
 The following new features and changes to the service are available.
 
-### 31 October 2017
-{: #31October2017}
+### 1 November 2017
+{: #1November2017}
 
 - **Dialog updates**
 

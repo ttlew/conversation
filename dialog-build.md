@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-31"
+lastupdated: "2017-11-01"
 
 ---
 
@@ -812,7 +812,7 @@ Using slots produces a more natural dialog flow between the user and the service
 
 1.  From the dialog node edit view, click **Customize**, and then click the toggle next to **Slots** to turn it **On**.
 
-    **Note**: For more information about the **Prompt for everything** field, see [Asking for everything at once](dialog-build.html#slots-prompt-for-everything).
+    **Note**: For more information about the **Prompt for everything** checkbox, see [Asking for everything at once](dialog-build.html#slots-prompt-for-everything).
 
 1.  **Add a slot for each unit of required information**.
 
@@ -1020,7 +1020,8 @@ In the **Not found** prompt, ask for the information all over again and reset th
   "output":{
     "text": {
       "values": [
-        "Let's try this again. Tell me what size pizza you want and the time..."
+        "Let's try this again. Tell me what size pizza
+         you want and the time..."
       ]
     }
   },
@@ -1043,9 +1044,13 @@ If, at any time before the user exits a node with slots, the user provides a new
 For example, your dialog asks for a destination city for a flight reservation. The user provides `Paris.` You set the $destination slot context variable to *Paris*. Then, the user says, `Oh wait. I want to fly to Madrid instead.` If you set up the Found condition as follows, then your dialog can handle this type of change gracefully.
 
 When user responds, if @destination is found:
-Condition: `event.previous_value != null`
-    Response: `Ok, updating destination from <? event.previous_value ?> to <? event.current_value ?>.`
-Response: `Ok, destination is $destination.literal.`
+
+```json
+Condition: event.previous_value != null
+    Response: Ok, updating destination from
+    <? event.previous_value ?> to <? event.current_value ?>.
+Response: Ok, destination is $destination.literal.
+```
 
 This slot configuration enables your dialog to react to the user's change in destination by saying, `Ok, updating the destination from Paris to Madrid.`
 
