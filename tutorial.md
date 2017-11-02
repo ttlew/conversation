@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-27"
+lastupdated: "2017-11-02"
 
 ---
 
@@ -75,7 +75,7 @@ Add an intent on the Intents tab. An intent is the purpose or goal expressed in 
 
 1.  Click **Done** to add the intent.
 
-You now have three intents, `#turn_on`, `#greeting`, and `#goodbye`, all with example utterances. These examples help train Watson to recognize the intents in user input.
+You now have three intents, `#turn_on`, `#hello`, and `#goodbye`, all with example utterances. These examples help train Watson to recognize the intents in user input.
 
 ## Step 2: Add entities
 {: #entities}
@@ -133,7 +133,7 @@ In this complex dialog, you will create dialog branches that handle the #turn_on
 ### Add a base node for #turn_on
 Create a dialog branch to respond to the #turn_on intent. Start by creating the base node:
 
-1.  Click the More icon ![More options](images/kabob.png) on the **#greeting** node, and then select **Add node below**.
+1.  Click the More icon ![More options](images/kabob.png) on the **#hello** node, and then select **Add node below**.
 1.  Start typing `#turn_on` in the condition field, and then select it from the list.
     This condition is triggered by any input that matches the #turn_on intent.
 1.  Do not enter a response in this node. Click ![Close](images/close.png) to close the node edit view.
