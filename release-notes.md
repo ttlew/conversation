@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-25"
+lastupdated: "2017-11-03"
 
 ---
 
@@ -46,16 +46,33 @@ Existing models that you have trained will not be immediately impacted, but expi
 
 The following new features and changes to the service are available.
 
+### 3 November 2017
+{: #3November2017}
+
+- **Dialog updates**: The following updates make is easier for you to build a dialog. (See [Building a dialog](dialog-build.html) for details.)
+
+    - You can add a condition to a slot to make it required only if certain conditions are met. For example, you can make a slot that asks for the name of a spouse required only if a previous (required) slot that asks for martial status indicates that the user is married.
+
+    - You can now choose **Skip user input** as the next step for a node. When you choose this option, after processing the current node, the service jumps directly to the first child node of the current node. This option is similar to the existing *Jump to* next step option, except that it allows for more flexibility. You do not need to specify the exact node to jump to. At run time, the service always jumps to whichever node is the first child node, even if the child nodes are reordered or new nodes are added after the next step behavior is defined.
+
+    - You can add conditional responses for slots. For both Found and Not found responses, you can customize how the service responds based on whether certain conditions are met. This feature enables you to check for possible misinterpretations and correct them before saving the value provided by the user in the slot's context variable. For example, if the slot saves the user's age, and uses `@sys-number` in the *Check for* field to capture it, you can add a condition that checks for numbers over 100, and responds with something like, *Please provide a valid age in years.* See [Adding conditions to Found and Not found responses](dialog-build.html#slot-handler-next-steps) for more details.
+
+    - The interface you use to add conditional responses to a node has been redesigned to make it easier to list each condition and its response. To add node-level conditional responses, click **Customize**, and then enable the **Multiple responses** option.
+
+     **Note**: The **Multiple responses** toggle sets the feature on or off for the node-level response only. It does not control the ability to define conditional responses for a slot. The slot multiple response setting is controlled separately.
+
+    - To keep the page where you edit a slot simple, you now select menu options to a.) add a condition that must be met for the slot to be processed, and b.) add conditional responses for the Found and Not found conditions for a slot. Unless you choose to add this extra functionality, the slot condition and multiple conditioned response fields are not displayed, which declutters the page and makes it easier to use.
+
 ### 25 October 2017
 {: #25October2017}
 
-- **Updates to Simplified Chinese** - Language support has been enhanced for Simplified Chinese. This includes intent classification improvements using character-level word embeddings, and the availability of system entities. Note that the {{site.data.keyword.conversationshort}} service learning models may have been updated as part of this enhancement, and when you retrain your model any changes will be applied; see [Updated models](release-notes.html#updated-models) for more information.
+- **Updates to Simplified Chinese**: Language support has been enhanced for Simplified Chinese. This includes intent classification improvements using character-level word embeddings, and the availability of system entities. Note that the {{site.data.keyword.conversationshort}} service learning models may have been updated as part of this enhancement, and when you retrain your model any changes will be applied; see [Updated models](release-notes.html#updated-models) for more information.
 - **Updates to Spanish** - Improvements have been made to Spanish intent classification, for very large datasets.
 
 ### 11 October 2017
 {: #11October2017}
 
-- **Updates to Korean** - Language support has been enhanced for Korean. Note that the {{site.data.keyword.conversationshort}} service learning models may have been updated as part of this enhancement, and when you retrain your model any changes will be applied; see [Updated models](release-notes.html#updated-models) for more information.
+- **Updates to Korean**: Language support has been enhanced for Korean. Note that the {{site.data.keyword.conversationshort}} service learning models may have been updated as part of this enhancement, and when you retrain your model any changes will be applied; see [Updated models](release-notes.html#updated-models) for more information.
 
 ### 3 October 2017
 {: #3October2017}
@@ -77,18 +94,18 @@ The following new features and changes to the service are available.
 ### 31 August 2017
 {: #31August2017}
 
-- **Improve section rollback** - The median conversation time metric, and corresponding filters, are being temporarily removed from the Overview page of the Improve section. This removal will prevent the calculation of certain metrics from causing the median conversation time metric, and the conversations over time graph, to display inaccurate information. IBM regrets removing functionality from the tool, but is committed to ensuring that we are communicating accurate information to users.
-- **Dialog node names** - You can now assign any name to a dialog node; it does not need to be unique. And you can subsequently change the node name without impacting how the node is referenced internally. The name you specify is saved as a title attribute of the node in the workspace JSON file and the system uses a unique ID that is stored in the name attribute to reference the node.
+- **Improve section rollback**: The median conversation time metric, and corresponding filters, are being temporarily removed from the Overview page of the Improve section. This removal will prevent the calculation of certain metrics from causing the median conversation time metric, and the conversations over time graph, to display inaccurate information. IBM regrets removing functionality from the tool, but is committed to ensuring that we are communicating accurate information to users.
+- **Dialog node names**: You can now assign any name to a dialog node; it does not need to be unique. And you can subsequently change the node name without impacting how the node is referenced internally. The name you specify is saved as a title attribute of the node in the workspace JSON file and the system uses a unique ID that is stored in the name attribute to reference the node.
 
 ### 23 August 2017
 {: #23August2017}
 
-- **Updates to Korean, Japanese, and Italian** - Language support has been enhanced for Korean, Japanese, and Italian. Note that the {{site.data.keyword.conversationshort}} service learning models may have been updated as part of this enhancement, and when you retrain your model any changes will be applied; see [Updated models](release-notes.html#updated-models) for more information.
+- **Updates to Korean, Japanese, and Italian**: Language support has been enhanced for Korean, Japanese, and Italian. Note that the {{site.data.keyword.conversationshort}} service learning models may have been updated as part of this enhancement, and when you retrain your model any changes will be applied; see [Updated models](release-notes.html#updated-models) for more information.
 
 ### 10 August 2017
 {: #10August2017}
 
-- **Accent normalization:** In a conversational setting, users may or may not use accents while interacting with the Conversation service. As such, an update has been made to the algorithm so that accented and non-accented versions of words are treated the same for intent detection and entity recognition.
+- **Accent normalization**: In a conversational setting, users may or may not use accents while interacting with the Conversation service. As such, an update has been made to the algorithm so that accented and non-accented versions of words are treated the same for intent detection and entity recognition.
 
   However for some languages, like Spanish, some accents can alter the meaning of the entity. Thus, for entity detection, although the original entity may implicitly have an accent, the service can also match the non-accented version of the same entity, but with a slightly lower confidence score.
 
@@ -104,18 +121,18 @@ The following new features and changes to the service are available.
 
   **Note:** Accent normalization is enabled for Portuguese, Spanish, French, and Czech.
 
-- **Workspace opt-out flag:** The {{site.data.keyword.conversationshort}} REST API now supports an opt-out flag for workspaces. This flag indicates that workspace training data such as intents and entities are not to be used by IBM for general service improvements. For more information, see the [API Reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/conversation/api/v1/#data-collection){: new_window}
+- **Workspace opt-out flag**: The {{site.data.keyword.conversationshort}} REST API now supports an opt-out flag for workspaces. This flag indicates that workspace training data such as intents and entities are not to be used by IBM for general service improvements. For more information, see the [API Reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/conversation/api/v1/#data-collection){: new_window}
 
 ### 7 August 2017
 {: #7August2017}
 
-- **`Next` and `last` date interpretation** - The Conversation service treats "last" and "next" dates as referring to the most immediate last or next day referenced, which may be in either the same or a previous week. See the [system entities](system-entities.html#sys-datetime) topic for additional information.
+- **`Next` and `last` date interpretation**: The Conversation service treats "last" and "next" dates as referring to the most immediate last or next day referenced, which may be in either the same or a previous week. See the [system entities](system-entities.html#sys-datetime) topic for additional information.
 
 ### 3 August 2017
 {: #3August2017}
 
-- **Fuzzy matching for additional languages (Beta)** - Fuzzy matching for entities is now available for additional languages, as noted in the [Supported languages](lang-support.html) topic.
-- **Partial match (Beta - English only)** - Fuzzy matching will now automatically suggest substring-based synonyms present in user-defined entities, and assign a lower confidence score as compared to the exact entity match. See [Fuzzy matching](entities.html#fuzzy-matching) for details.
+- **Fuzzy matching for additional languages (Beta)**: Fuzzy matching for entities is now available for additional languages, as noted in the [Supported languages](lang-support.html) topic.
+- **Partial match (Beta - English only)**: Fuzzy matching will now automatically suggest substring-based synonyms present in user-defined entities, and assign a lower confidence score as compared to the exact entity match. See [Fuzzy matching](entities.html#fuzzy-matching) for details.
 
 ### 28 July 2017
 {: #28July2017}
@@ -136,46 +153,46 @@ The following new features and changes to the service are available.
 ### 12 July 2017
 {: #12July2017}
 
-- **Support for Czech** - Czech language support has been introduced; please see the [Supported languages](lang-support.html) topic for additional details.
+- **Support for Czech**: Czech language support has been introduced; please see the [Supported languages](lang-support.html) topic for additional details.
 
 ### 11 July 2017
 {: #11July2017}
 
-- **Test in Slack** - You can use the new **Test in Slack** tool to quickly deploy your workspace as a Slack bot user for testing purposes. This tool is available only for the {{site.data.keyword.Bluemix_notm}} US South region. For more information, see [Testing in Slack](test-deploy.html).
-- **Updates to Arabic** - Arabic language support has been enhanced to include absolute scoring per intent, and the ability to mark intents as irrelevant; please see the [Supported languages](lang-support.html) topic for additional details. Note that the {{site.data.keyword.conversationshort}} service learning models may have been updated as part of this enhancement, and when you retrain your model any changes will be applied; see [Updated models](release-notes.html#updated-models) for more information.
+- **Test in Slack**: You can use the new **Test in Slack** tool to quickly deploy your workspace as a Slack bot user for testing purposes. This tool is available only for the {{site.data.keyword.Bluemix_notm}} US South region. For more information, see [Testing in Slack](test-deploy.html).
+- **Updates to Arabic**: Arabic language support has been enhanced to include absolute scoring per intent, and the ability to mark intents as irrelevant; please see the [Supported languages](lang-support.html) topic for additional details. Note that the {{site.data.keyword.conversationshort}} service learning models may have been updated as part of this enhancement, and when you retrain your model any changes will be applied; see [Updated models](release-notes.html#updated-models) for more information.
 
 ### 23 June 2017
 {: #23June2017}
 
-- **Updates to Korean** - Korean language support has been enhanced; please see the [Supported languages](lang-support.html) topic for additional details. Note that the {{site.data.keyword.conversationshort}} service learning models may have been updated as part of this enhancement, and when you retrain your model any changes will be applied; see [Updated models](release-notes.html#updated-models) for more information.
+- **Updates to Korean**: Korean language support has been enhanced; please see the [Supported languages](lang-support.html) topic for additional details. Note that the {{site.data.keyword.conversationshort}} service learning models may have been updated as part of this enhancement, and when you retrain your model any changes will be applied; see [Updated models](release-notes.html#updated-models) for more information.
 
 ### 22 June 2017
 {: #22June2017}
 
-- **Introducing slots** - It is now easier to collect multiple pieces of information from a user in a single node by adding slots. Previously, you had to create several dialog nodes to cover all the possible combinations of ways that users might provide the information. With slots, you can configure a single node that saves any information that the user provides, and prompts for any required details that the user does not. See [Gathering information with slots](dialog-build.html#slots) for more details.
+- **Introducing slots**: It is now easier to collect multiple pieces of information from a user in a single node by adding slots. Previously, you had to create several dialog nodes to cover all the possible combinations of ways that users might provide the information. With slots, you can configure a single node that saves any information that the user provides, and prompts for any required details that the user does not. See [Gathering information with slots](dialog-build.html#slots) for more details.
 - **Simplified dialog tree** - The dialog tree has been redesigned to improve its usability. The tree view is more compact so it is easier to see where you are within it. And the links between nodes are represented in a way that makes it easier to understand the relationships between the nodes.
 
 ### 21 June 2017
 {: #21June2017}
 
-- **Arabic support** - Language support for Arabic is now generally available. For details, see [Configuring bi-directional languages](lang-support.html#configuring-bi-directional).
-- **Language updates** - The {{site.data.keyword.conversationshort}} service algorithms have been updated to improve overall language support. See the [Supported languages](lang-support.html) topic for details.
+- **Arabic support**: Language support for Arabic is now generally available. For details, see [Configuring bi-directional languages](lang-support.html#configuring-bi-directional).
+- **Language updates**: The {{site.data.keyword.conversationshort}} service algorithms have been updated to improve overall language support. See the [Supported languages](lang-support.html) topic for details.
 
 ### 16 June 2017
 {: #16June2017}
 
-- **Recommendations (Beta - Premium users only)** - The Improve panel also includes a **Recommendations** page that recommends ways to improve your system by analyzing the conversations that users have with your chatbot, and taking into account your system's current training data and response certainty.
+- **Recommendations (Beta - Premium users only)**: The Improve panel also includes a **Recommendations** page that recommends ways to improve your system by analyzing the conversations that users have with your chatbot, and taking into account your system's current training data and response certainty.
 
 ### 14 June 2017
 {: #14June2017}
 
-- **Fuzzy matching for additional languages (Beta)** - Fuzzy matching for entities is now available for additional languages, as noted in the [Supported languages](lang-support.html) topic. You can turn on fuzzy matching per entity to improve the ability of the service to recognize terms in user input with syntax that is similar to the entity, without requiring an exact match. The feature is able to map user input to the appropriate corresponding entity despite the presence of misspellings or slight syntactical differences. For example, if you define giraffe as a synonym for an animal entity, and the user input contains the terms giraffes or girafe, the fuzzy match is able to map the term to the animal entity correctly. See [Fuzzy matching](entities.html#fuzzy-matching) for details.
+- **Fuzzy matching for additional languages (Beta)**: Fuzzy matching for entities is now available for additional languages, as noted in the [Supported languages](lang-support.html) topic. You can turn on fuzzy matching per entity to improve the ability of the service to recognize terms in user input with syntax that is similar to the entity, without requiring an exact match. The feature is able to map user input to the appropriate corresponding entity despite the presence of misspellings or slight syntactical differences. For example, if you define giraffe as a synonym for an animal entity, and the user input contains the terms giraffes or girafe, the fuzzy match is able to map the term to the animal entity correctly. See [Fuzzy matching](entities.html#fuzzy-matching) for details.
 
 ### 13 June 2017
 {: #13June2017}
 
-- **User conversations** - The Improve panel now includes a **User conversations** page, which provides a list of user interactions with your chatbot that can be filtered by keyword, intent, entity, or number of days. You can open individual conversations to correct intents, or to add entity values or synonyms.
-- **Regex change** - The regular expressions that are supported by SpEL functions like find, matches, extract, replaceFirst, replaceAll and split have changed. A group of regular expression constructs are no longer allowed, including look-ahead, look-behind, possessive repetition and backreference constructs. This change was necessary to avoid a security exposure in the original regular expression library.
+- **User conversations**: The Improve panel now includes a **User conversations** page, which provides a list of user interactions with your chatbot that can be filtered by keyword, intent, entity, or number of days. You can open individual conversations to correct intents, or to add entity values or synonyms.
+- **Regex change**: The regular expressions that are supported by SpEL functions like find, matches, extract, replaceFirst, replaceAll and split have changed. A group of regular expression constructs are no longer allowed, including look-ahead, look-behind, possessive repetition and backreference constructs. This change was necessary to avoid a security exposure in the original regular expression library.
 
 ### 12 June 2017
 {: #12June2017}
@@ -187,13 +204,13 @@ The following new features and changes to the service are available.
 ### 6 June 2017
 {: #6June2017}
 
-- **Learn** - A new *Learn about {{site.data.keyword.watson}} {{site.data.keyword.conversationshort}}* page is available that provides getting started information and links to service documentation and other useful resources. To open the page, click the ![i for information.](images/info.png) icon in the page header.
-- **Bulk export and delete** - You can now simultaneously export a number of intents or entities to a CSV file, so you can then import and reuse them for another {{site.data.keyword.conversationshort}} application. You can also simultaneously select a number of entities or intents for deletion in bulk.
-- **Updates to Korean** - Korean tokenizers have been updated to address informal language support. IBM continues to work on improvements to entity recognition and classification.
-- **Emoji support** - Emojis added to intent examples, or as entity values, will now be correctly classified/extracted. **Note**: Only emojis that are included in your training data will be correctly and consistently identified; emoji support may not correctly classify similar emojis with different color tones or other variations.
-- **Entity stemming (Beta - English only)** - The fuzzy matching beta feature recognizes entities and matches them based on the stem form of the entity value. For example, this feature correctly recognizes 'bananas' as being similar to 'banana', and 'run' being similar to 'running' as they share a common stem form. For more information, see [Fuzzy matching](entities.html#fuzzy-matching).
-- **Workspace import progress** - When you import a workspace from a JSON file, a tile for the workspace is displayed immediately, in which information about the progress of the import is displayed.
-- **Reduced training time** - Multiple models are now trained in parallel, which noticeably reduces the training time for large workspaces.
+- **Learn**: A new *Learn about {{site.data.keyword.watson}} {{site.data.keyword.conversationshort}}* page is available that provides getting started information and links to service documentation and other useful resources. To open the page, click the ![i for information.](images/info.png) icon in the page header.
+- **Bulk export and delete**: You can now simultaneously export a number of intents or entities to a CSV file, so you can then import and reuse them for another {{site.data.keyword.conversationshort}} application. You can also simultaneously select a number of entities or intents for deletion in bulk.
+- **Updates to Korean**: Korean tokenizers have been updated to address informal language support. IBM continues to work on improvements to entity recognition and classification.
+- **Emoji support**: Emojis added to intent examples, or as entity values, will now be correctly classified/extracted. **Note**: Only emojis that are included in your training data will be correctly and consistently identified; emoji support may not correctly classify similar emojis with different color tones or other variations.
+- **Entity stemming (Beta - English only)**: The fuzzy matching beta feature recognizes entities and matches them based on the stem form of the entity value. For example, this feature correctly recognizes 'bananas' as being similar to 'banana', and 'run' being similar to 'running' as they share a common stem form. For more information, see [Fuzzy matching](entities.html#fuzzy-matching).
+- **Workspace import progress**: When you import a workspace from a JSON file, a tile for the workspace is displayed immediately, in which information about the progress of the import is displayed.
+- **Reduced training time**: Multiple models are now trained in parallel, which noticeably reduces the training time for large workspaces.
 
 ### 26 May 2017
 {: #26May2017}
