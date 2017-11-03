@@ -51,7 +51,7 @@ The following new features and changes to the service are available.
 
 - **Dialog updates**: The following updates make is easier for you to build a dialog. (See [Building a dialog](dialog-build.html) for details.)
 
-    - You can add a condition to a slot to make it required only if certain conditions are met. For example, you can make a slot that asks for the name of a spouse required only if a previous (required) slot that asks for martial status indicates that the user is married.
+    - You can add a condition to a slot to make it required only if certain conditions are met. For example, you can make a slot that asks for the name of a spouse required only if a previous (required) slot that asks for marital status indicates that the user is married.
 
     - You can now choose **Skip user input** as the next step for a node. When you choose this option, after processing the current node, the service jumps directly to the first child node of the current node. This option is similar to the existing *Jump to* next step option, except that it allows for more flexibility. You do not need to specify the exact node to jump to. At run time, the service always jumps to whichever node is the first child node, even if the child nodes are reordered or new nodes are added after the next step behavior is defined.
 
@@ -61,7 +61,7 @@ The following new features and changes to the service are available.
 
      **Note**: The **Multiple responses** toggle sets the feature on or off for the node-level response only. It does not control the ability to define conditional responses for a slot. The slot multiple response setting is controlled separately.
 
-    - To keep the page where you edit a slot simple, you now select menu options to a.) add a condition that must be met for the slot to be processed, and b.) add conditional responses for the Found and Not found conditions for a slot. Unless you choose to add this extra functionality, the slot condition and multiple conditioned response fields are not displayed, which declutters the page and makes it easier to use.
+    - To keep the page where you edit a slot simple, you now select menu options to a.) add a condition that must be met for the slot to be processed, and b.) add conditional responses for the Found and Not found conditions for a slot. Unless you choose to add this extra functionality, the slot condition and multiple responses fields are not displayed, which declutters the page and makes it easier to use.
 
 ### 25 October 2017
 {: #25October2017}
