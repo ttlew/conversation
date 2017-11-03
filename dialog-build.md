@@ -980,7 +980,7 @@ See [Methods to process values](dialog-methods.html) for other reformatting idea
 #### Getting confirmation
 {: #slots-get-confirmation}
 
-Add a slot below the others that asks the user to confirm that the information you have collected is accurate and complete. The slot can look for responses that match the #yes intent.
+Add a slot below the others that asks the user to confirm that the information you have collected is accurate and complete. The slot can look for responses that match the #yes or #no intent.
 
 <table>
 <tr>
@@ -993,7 +993,7 @@ Add a slot below the others that asks the user to confirm that the information y
 </tr>
 <tr>
   <td>Confirmation</td>
-  <td>#yes</td>
+  <td>#yes || #no</td>
   <td>$confirmation</td>
   <td>"I'm going to order you a `$size` pizza for delivery at `$time`. Should I go ahead?"</td>
   <td>"Your pizza is on its way!"</td>
