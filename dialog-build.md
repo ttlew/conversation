@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-03"
+lastupdated: "2017-11-07"
 
 ---
 
@@ -916,7 +916,7 @@ Consider these suggested approaches for handling common tasks.
 - [Replacing a slot context variable value](dialog-build.html#slots-found-handler-event-properties)
 - [Avoiding number confusion](dialog-build.html#slots-avoid-number-confusion)
 - [Adding conditions to Found and Not found responses](dialog-build.html#slot-handler-next-steps)
-- [Moving on after multiple failed attempts](dialog-build.htnl#slots-stop-trying-after-3)
+- [Moving on after multiple failed attempts](dialog-build.html#slots-stop-trying-after-3)
 - [Preventing a Found response from displaying when it is not needed](dialog-build.html#slots-stifle-found-responses)
 - [Handling requests to exit a process](dialog-build.html#slots-node-level-handler)
 
