@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-03"
+lastupdated: "2017-11-08"
 
 ---
 
@@ -45,6 +45,11 @@ Existing models that you have trained will not be immediately impacted, but expi
 {: #change-log}
 
 The following new features and changes to the service are available.
+
+### 8 November 2017
+{: #8November2017}
+
+- **Conversation connector**: You can use the new Conversation connector tool to connect your workspace to a Slack or Facebook Messenger app that you own, making it available as a chat bot that Slack or Facebook Messenger users can interact with. This tool is available only for the {{site.data.keyword.Bluemix_notm}} US South region. For more information, see [Deploying to a channel with the Conversation connector](conversation-connector.html).
 
 ### 3 November 2017
 {: #3November2017}
