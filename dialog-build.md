@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-07"
+lastupdated: "2017-11-08"
 
 ---
 
@@ -365,9 +365,21 @@ The following JSON sample defines values for the $dessert string, $toppings_arra
 
 To define a context variable, complete the following steps:
 
-1.  From the edit view of the node, open the JSON editor by clicking the ![Advanced response](images/kabob.png) icon, and then selecting **JSON**.
+1.  You define the context variable in a JSON editor.
 
-1.  In front of the `"output":{}` block, add a `"context":{}` block if one is not present.
+    The editor is surfaced in multiple places in the dialog node edit view. Where it surfaces reflects the time at which the variable will be set during dialog node evaluation.
+
+    -To add a context variable that is processed after the node response is processed, click the **Edit response** ![Edit response](images/edit-slot.png) icon. Click the **Options**  ![Advanced response](images/kabob.png) icon that is displayed in the response section, and then click **Open JSON editor**.
+
+    If the **Multiple responses** setting is disabled for the node, then you do not need to click the **Edit response** icon first.
+    {:tip}
+    -To add a context variable that is processed after a slot condition is met, click the **Edit slot** ![Edit response](images/edit-slot.png) icon. From the *Configure slot* view header, click the **Options** ![Advanced response](images/kabob.png) icon, and then click **Open JSON editor**. (For more information about slots, see [Gathering information with slots](dialog-build.html#slots).)
+    -To add a context variable that is processed after a slot response condition is met, click the **Edit slot** ![Edit response](images/edit-slot.png) icon. Click the **Options** ![Advanced response](images/kabob.png) icon in the response section, and then click **Open JSON editor**.
+
+    If the **Enable conditional responses** setting is enabled for the slot, then you must click the **Edit response** ![Edit response](images/edit-slot.png) icon before you will see the **Options** ![Advanced response](images/kabob.png) icon in the response section.
+    {: tip}
+
+1.  Add a `"context":{}` block if one is not present.
 
     ```json
     {
@@ -389,11 +401,22 @@ To define a context variable, complete the following steps:
     ```
     {: codeblock}
 
-  To subsequently reference the context variable, use the syntax `$name` where *name* is the name of the context variable that you defined.
+    In this example, a variable named `new_variable` is added to a context block that already contains a variable.
+    ```json
+    {
+      "context":{
+        "existing_variable": "value",
+        "new_variable":"value"
+    }
+    }
+    ```
+    {: codeblock}
+
+  To subsequently reference the context variable, use the syntax `$name` where *name* is the name of the context variable that you defined. For example, `$new_variable`.
 
 Other common tasks include:
 
-- To store the entire string that was input by the user, use `input.text`:
+- To store the entire string that was provided by the user as input, use `input.text`:
 
     ```json
     {
