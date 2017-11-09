@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-25"
+lastupdated: "2017-11-09"
 
 ---
 
@@ -59,14 +59,24 @@ Use the {{site.data.keyword.conversationshort}} tool to create intents.
     - `Pay my account balance`
     - `make a payment`
 
-    If you have defined or plan to define entities that correspond to this intent, refer to the entities or their associated synonyms in some of the examples. Doing so helps to establish a relationship between the intent and entities.
+    *Referencing entities and synonyms* - If you have defined or plan to define entities that correspond to this intent, refer to the entities or their associated synonyms in some of the examples. Doing so helps to establish a relationship between the intent and entities.
 
+    ![Screen capture showing intent definition](images/define_intent.png)
+    { :#entity-as-example}
+
+    *Entity as example* - You can also directly reference entities in your intent examples. For instance, say you have an entity called `@PhoneModelName`, which contains values "Galaxy S8", "Moto Z2", "LG G6", and "Google Pixel 2". When you create an intent, for example `#order_phone`, you could then provide training data as follows:
+    - Can I get a `@PhoneModelName`?
+    - Help me order a `@PhoneModelName`.
+    - Is the `@PhoneModelName` in stock?
+    - Add a `@PhoneModelName` to my order.
+
+    ![Screen capture showing intent definition](images/define_intent_entity.png)
+
+    **Note**: Currently, you can only directly reference closed entities that you define. You cannot directly reference [pattern entities](entities.html#pattern-entities) or [system entities](system-entities.html). Additionally, if you use an example as an entity (`@PhoneModelName`) anywhere in your training data it cancels out the value of using a direct reference ("Galaxy S8") in a sample utterance.
     > **Important:** Intent names and example text can be exposed in URLs when an application interacts with the service. Do not include sensitive or personal information in these artifacts.
 
     Press Enter or select **+** to save the example.
 1.  Repeat the same process to add more examples. You can tab between each example. Provide at least 5 examples for each intent. The more examples you provide, the more accurate your application can be.
-
-    ![Screen capture showing intent definition](images/define_intent.png)
 1.  When you have finished adding examples, select **Done** to finish creating the intent.
 
 ### Results
