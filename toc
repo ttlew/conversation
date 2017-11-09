@@ -27,6 +27,7 @@ Conversation
     Deploying
         deploy.md
         test-deploy.md
+        conversation-connector.md
         develop-app.md
         integrations.md
     tutorial.md
