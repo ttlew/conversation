@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-10"
+lastupdated: "2017-11-09"
 
 ---
 
@@ -16,6 +16,7 @@ lastupdated: "2017-08-10"
 {:java: .ph data-hd-programlang='java'}
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
+{:download: .download}
 
 # Getting started tutorial
 {: #gettingstarted}
@@ -26,22 +27,44 @@ In this short tutorial, we introduce the {{site.data.keyword.conversationshort}}
 ## Before you begin
 {: #prerequisites}
 
-If you already created a service instance, you're all set with these prerequisites. Move on to Step 1.
-{: tip}
+You'll need a service instance to start.
 
-1.  Go to the [{{site.data.keyword.conversationshort}} service ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.{DomainName}/catalog/services/conversation/){: new_window} and either sign up for a free {{site.data.keyword.Bluemix_notm}} account or log in.
-1.  After you log in, type `conversation-tutorial` in the **Service name** field of the {{site.data.keyword.conversationshort}} page and click **Create**.
+<!-- Remove the text marked `download` after there's no g-s tab in the catalog dashboard -->
+
+You created your service instance. Click **Manage**, then **Launch Tool**. Go to Step 2.
+{: download tip}
+
+If you created a project with the {{site.data.keyword.conversationshort}} service, you're all set with these prerequisites. Go to Step 1.
+
+1.  Go to the {{site.data.keyword.watson}} Developer Console [Services ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.{DomainName}/developer/watson/services){: new_window} page.
+1.  Select {{site.data.keyword.conversationshort}}, click **Add Services**, and either sign up for a free {{site.data.keyword.Bluemix_notm}} account or log in.
+1.  Type `conversation-tutorial` as the project name and click **Create Project**.
+
+<!-- Remove this text after dedicated instances have the developer console: begin -->
+
+If you use {{site.data.keyword.Bluemix_dedicated_notm}}, create your service instance from the [{{site.data.keyword.conversationshort}} ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.{DomainName}/catalog/services/conversation/){: new_window} page in the Catalog.
+
+<!-- Remove this text after dedicated instances have the developer console: end -->
 
 ## Step 1: Launch the tool
 {: #launch-tool}
 
-After you create the service instance, you'll land on the dashboard for the instance. Launch the  {{site.data.keyword.conversationshort}} tool from here.
+After you create a project that includes the {{site.data.keyword.conversationshort}} service, you'll land on the project details page. Launch the  {{site.data.keyword.conversationshort}} tool from here.
 
-Click **Manage**, then **Launch tool**.
+Click **Launch Tool** for Conversation under **Services**.
 
-![Shows the IBM Bluemix Watson Manage page where you launch the tool](images/gs-launch-tool.png)
+<!-- To do: Add screenshot for developer console -->
 
-You might be prompted to log in to the tool separately. If so, provide your IBM Bluemix credentials to log in.
+If you're prompted to log into the tool, provide your {{site.data.keyword.Bluemix_notm}} credentials.
+
+If you're not at a project details page for the {{site.data.keyword.conversationshort}} service, go to the {{site.data.keyword.watson}} Developer Console [Projects ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.{DomainName}/developer/watson/projects) page and select the project.
+{: tip}
+
+<!-- Remove this text after dedicated instances have the developer console: begin -->
+
+{{site.data.keyword.Bluemix_dedicated_notm}}: Select your service instance from the Dashboard to launch the tooling.
+
+<!-- Remove this text after dedicated instances have the Developer Console: end -->
 
 ## Step 2: Create a workspace
 {: #create-workspace}
