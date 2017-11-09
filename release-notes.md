@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-08"
+lastupdated: "2017-11-09"
 
 ---
 
@@ -45,6 +45,13 @@ Existing models that you have trained will not be immediately impacted, but expi
 {: #change-log}
 
 The following new features and changes to the service are available.
+
+### 9 November 2017
+{: #9November2017}
+
+- **Intent examples can directly reference entities**: You can now specify an entity reference directly in an intent example. That entity reference, along with all its values or synonyms, is used by the Conversation service classifier for training the intent. For more information, see [*Entity as example*](intents.html#entity-as-example) in the [Intents](intents.html) topic.
+
+  **Note**: Currently, you can only directly reference closed entities that you define. You cannot directly reference [pattern entities](entities.html#pattern-entities) or [system entities](system-entities.html).
 
 ### 8 November 2017
 {: #8November2017}
