@@ -62,7 +62,7 @@ Use the {{site.data.keyword.conversationshort}} tool to create intents.
     *Referencing entities and synonyms* - If you have defined or plan to define entities that correspond to this intent, refer to the entities or their associated synonyms in some of the examples. Doing so helps to establish a relationship between the intent and entities.
 
     ![Screen capture showing intent definition](images/define_intent.png)
-    { :#entity-as-example}
+    {: #entity-as-example}
 
     *Entity as example* - You can also directly reference entities in your intent examples. For instance, say you have an entity called `@PhoneModelName`, which contains values "Galaxy S8", "Moto Z2", "LG G6", and "Google Pixel 2". When you create an intent, for example `#order_phone`, you could then provide training data as follows:
     - Can I get a `@PhoneModelName`?
