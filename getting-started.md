@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-09"
+lastupdated: "2017-11-11"
 
 ---
 
@@ -74,7 +74,7 @@ Your first step in the {{site.data.keyword.conversationshort}} tool is to create
 A [*workspace*](configure-workspace.html) is a container for the artifacts that define the conversation flow.
 
 1.  In the {{site.data.keyword.conversationshort}} tool, click **Create**.
-1.  Give your workspace the name `Conversation tutorial` and click **Create**. Youʼll land on the **Intents** tab of your new workspace.
+1.  Give your workspace the name `Conversation tutorial`. If the dialog you plan to build will use a language other than English, then choose the appropriate language from the list. Click **Create**. Youʼll land on the **Intents** tab of your new workspace.
 
 ![Shows an animation of a user creating a Conversation tutorial workspace.](images/gs-create-workspace-animated.gif)
 
