@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-13"
+lastupdated: "2017-11-14"
 
 ---
 
@@ -1084,7 +1084,8 @@ For example, your dialog asks for a destination city for a flight reservation. T
 When user responds, if @destination is found:
 
 ```json
-Condition: event.previous_value != null
+Condition: (event.previous_value != null) &&
+           (event.previous_value != event.current_value)
     Response: Ok, updating destination from
     <? event.previous_value ?> to <? event.current_value ?>.
 Response: Ok, destination is $destination.
