@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-09"
+lastupdated: "2017-11-14"
 
 ---
 
@@ -313,7 +313,7 @@ For more information, see the [API Reference ![External link icon](../../icons/l
     - These features are available for your application by changing the message API call to use **2017-02-03.**
 - The processing of **Jump to** actions has been changed to prevent loops that can occur under certain conditions.
 
-    See [Jump to actions](dialog-build.html#jump-to) for details.
+    See [Jump to actions](dialog-overview.html#jump-to) for details.
 
 ### 11 January 2017
 {: #11January2017}
@@ -331,7 +331,7 @@ For more information, see the [API Reference ![External link icon](../../icons/l
 Several changes make the dialog builder easier and more intuitive to use:
 
 - A larger editing view makes it easier to view all the details of a node as you work on it.
-- A node can contain multiple responses, each triggered by a separate condition. For more information see [Multiple responses](dialog-build.html#responses).
+- A node can contain multiple responses, each triggered by a separate condition. For more information see [Multiple responses](dialog-overview.html#responses).
 
 ### 5 December 2016
 {: #5December2016}
@@ -358,7 +358,7 @@ To take advantage of the changes in a new version, change the value of the `vers
 ### 29 August 2016
 {: #29August2016}
 
-- You can move dialog nodes from one branch to another, as siblings or peers. For details, see [Building a dialog](dialog-build.html) and search for "Moving a dialog node".
+- You can move dialog nodes from one branch to another, as siblings or peers. For details, see [Moving a dialog node](dialog-build.html#move-node).
 - You can expand the JSON editor window.
 - You can view chat logs of your bot's conversations to help you understand it's behavior. You can filter by intents, entities, date, and time. For details, see [Improving understanding](logs.html)
 

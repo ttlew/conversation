@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-30"
+lastupdated: "2017-11-14"
 
 ---
 
@@ -30,9 +30,9 @@ These videos are available in the documentation and on YouTube.
 - "Defining intents" page: [Working with intents](intents.html)
 - "Defining entities" page: [Working with entities](entities.html)
 - "Building a dialog" page:
-    - [Working with dialog](dialog-build.html)
-    - [Working with conditional responses](dialog-build.html#multiple)
-    - [Adding response variations](dialog-build.html#variety)
+    - [Working with dialog](dialog-overview.html)
+    - [Working with conditional responses](dialog-overview.html#multiple)
+    - [Adding response variations](dialog-overview.html#variety)
     - [Watson Conversation Slots](dialog-build.html#slots)
 
 ## Building with Watson videos

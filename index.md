@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-27"
+lastupdated: "2017-11-14"
 
 ---
 
@@ -54,7 +54,7 @@ Here's how you will implement your conversation:
 Follow these links to read more:
 
 - [Planning your intents and entities](intents-entities.html#planning-your-entities)
-- [Dialog overview](dialog-build.html#overview)
+- [Dialog overview](dialog-overview.html)
 - [Deployment overview](deploy.html)
 
 ## Language support
