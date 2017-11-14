@@ -53,8 +53,8 @@ The following new features and changes to the service are available.
 
   **Note**: Currently, you can only directly reference closed entities that you define. You cannot directly reference [pattern entities](entities.html#pattern-entities) or [system entities](system-entities.html).
 
-### 7 November 2017
-{: #7November2017}
+### 8 November 2017
+{: #8November2017}
 
 - **Conversation connector**: You can use the new Conversation connector tool to connect your workspace to a Slack or Facebook Messenger app that you own, making it available as a chat bot that Slack or Facebook Messenger users can interact with. This tool is available only for the {{site.data.keyword.Bluemix_notm}} US South region. For more information, see [Deploying to a channel with the Conversation connector](conversation-connector.html).
 
