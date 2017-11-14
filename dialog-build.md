@@ -79,12 +79,12 @@ To create a dialog, complete the following steps:
 
     The condition you define must be less than 500 characters in length.
 
-    For more information about how to test for values in conditions, see [Conditions](#conditions).
+    For more information about how to test for values in conditions, see [Conditions](dialog-overview.html#conditions).
 1.  **Optional**: If you want to collect multiple pieces of information from the user in this node, then click **Customize** and enable **Slots**. See [Gathering information with slots](#slots) for more details.
 1.  Enter a response.
     - Add the text that you want the service to display to the user as a response.
     - If you want to define different responses based on certain conditions, then click **Customize** and enable **Multiple responses**.
-    - For information about conditional responses or how to add variety to responses, see [Responses](#responses).
+    - For information about conditional responses or how to add variety to responses, see [Responses](dialog-overview.html##responses).
 
 1.  Specify what to do after the current node is processed. You can choose from the following options:
 
@@ -103,7 +103,7 @@ To create a dialog, complete the following steps:
     - To create a peer node that is checked before the condition for the existing node is checked, select **Add node above**.
     - To create a child node to the selected node, select **Add child node**. A child node is processed after its parent node.
 
-    For more information about the order in which dialog nodes are processed, see [Dialog overview](#overview).
+    For more information about the order in which dialog nodes are processed, see [Dialog overview](dialog-overview.html#dialog-flow).
 1.  Test the dialog as you build it.
    See [Testing your dialog](#test) for more information.
 
@@ -640,7 +640,7 @@ As you make changes to your dialog, you can test it at any time to see how it re
     1.  To add a context variable, specify the variable name, and press **Enter**.
     1.  To define a default value for the context variable, find the context variable you added in the list, and then specify a value for it.
 
-    See [Context variables](#context) for more information.
+    See [Context variables](dialog-overview.html#context) for more information.
 
 1.  Continue to interact with the dialog to see how the conversation flows through it.
     - To find and resubmit a test utterance, you can press the Up key to cycle through your recent inputs.
