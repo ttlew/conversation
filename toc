@@ -20,7 +20,11 @@ Conversation
         intents-entities.md
         intents.md
         entities.md
-    dialog-build.md
+
+    {: .topicgroup}
+    Building a dialog
+        dialog-overview.md
+        dialog-build.md
     dialog-api.md
 
     {: .topicgroup}
