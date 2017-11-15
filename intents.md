@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-09"
+lastupdated: "2017-11-14"
 
 ---
 
@@ -59,12 +59,12 @@ Use the {{site.data.keyword.conversationshort}} tool to create intents.
     - `Pay my account balance`
     - `make a payment`
 
-    *Referencing entities and synonyms* - If you have defined or plan to define entities that correspond to this intent, refer to the entities or their associated synonyms in some of the examples. Doing so helps to establish a relationship between the intent and entities.
+    *Referencing entities and synonyms as intent examples* - If you have defined or plan to define entities that correspond to this intent, refer to the entities or their associated synonyms in some of the examples. Doing so helps to establish a relationship between the intent and entities.
 
     ![Screen capture showing intent definition](images/define_intent.png)
     {: #entity-as-example}
 
-    *Entity as example* - You can also directly reference entities in your intent examples. For instance, say you have an entity called `@PhoneModelName`, which contains values "Galaxy S8", "Moto Z2", "LG G6", and "Google Pixel 2". When you create an intent, for example `#order_phone`, you could then provide training data as follows:
+    *Directly referencing an @Entity as an intent example* - You may also choose to directly reference entities in your intent examples. For instance, say you have an entity called `@PhoneModelName`, which contains values "Galaxy S8", "Moto Z2", "LG G6", and "Google Pixel 2". When you create an intent, for example `#order_phone`, you could then provide training data as follows:
     - Can I get a `@PhoneModelName`?
     - Help me order a `@PhoneModelName`.
     - Is the `@PhoneModelName` in stock?
@@ -72,7 +72,14 @@ Use the {{site.data.keyword.conversationshort}} tool to create intents.
 
     ![Screen capture showing intent definition](images/define_intent_entity.png)
 
-    **Note**: Currently, you can only directly reference closed entities that you define. You cannot directly reference [pattern entities](entities.html#pattern-entities) or [system entities](system-entities.html). Additionally, if you use an example as an entity (`@PhoneModelName`) anywhere in your training data it cancels out the value of using a direct reference ("Galaxy S8") in a sample utterance.
+    **Note**: Currently, you can only directly reference closed entities that you define. You cannot directly reference [pattern entities](entities.html#pattern-entities) or [system entities](system-entities.html).
+
+    If you choose to reference an entity as an intent example (`@PhoneModelName`) *anywhere* in your training data it cancels out the value of using a direct reference ("Galaxy S8") in an intent example anywhere else. All intents will then use the entity-as-an-intent-example approach; you cannot select this approach for a specific intent only.
+
+    In practice, this means that if you have previously trained most of your intents based on direct references ("Galaxy S8"), and you now use entity references (`@PhoneModelName`) for just one intent, that would impact all your previous training. If you do choose to use `@Entity` references, you need to be careful to replace all previous direct references with `@Entity` references.
+
+    **Note**: Defining one example intent with an `@Entity` that has 10 values defined for it **does not** equate to specifying that example intent 10 times. The {{site.data.keyword.conversationshort}} does not give that much weight to that one example intent syntax.
+
     > **Important:** Intent names and example text can be exposed in URLs when an application interacts with the service. Do not include sensitive or personal information in these artifacts.
 
     Press Enter or select **+** to save the example.

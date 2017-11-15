@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-30"
+lastupdated: "2017-11-14"
 
 ---
 
@@ -75,6 +75,7 @@ You can then choose to show the classification(s) for the utterance you selected
 1.  Select **Save**.
 
     ![Save intent](images/save_intent.png)
+  **Note**: The {{site.data.keyword.conversationshort}} service supports adding user input as an example to an intent *as-is*. User input cannot be modified to use an `@Entity` refererence. For more information, see [Directly referencing an @Entity as an intent example](intent.html#entity-as-example).
 
 ## Adding an entity value or synonym
 
