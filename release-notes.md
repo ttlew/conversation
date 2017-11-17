@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-14"
+lastupdated: "2017-11-17"
 
 ---
 
@@ -28,9 +28,11 @@ Send the version parameter with every API request. The service uses the API vers
 
 The current version is `2017-05-26`.
 
+The "Try it out" pane in the Conversation tooling uses the latest API version.
+
 ## Beta features
 
-IBM will release services, features, and language support that are classified as in beta (formerly _experimental_). These services may be unstable, may change frequently, and may be discontinued with short notice. Beta features will be supported via our {{site.data.keyword.Bluemix_notm}} forum only.
+IBM releases services, features, and language support for your evaluation that are classified as beta. These features might be unstable, might change frequently, and might be discontinued with short notice. Beta features also might not provide the same level of performance or compatibility that generally available features provide and are not intended for use in a production environment. Beta features are supported only on the [IBM developerWorks forum](https://developer.ibm.com/answers/topics/watson-conversation/).
 
 ## Updated models
 {: #updated-models}
