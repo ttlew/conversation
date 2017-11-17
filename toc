@@ -25,7 +25,7 @@ Conversation
     Building a dialog
         dialog-overview.md
         dialog-build.md
-    dialog-api.md
+        dialog-api.md
 
     {: .topicgroup}
     Deploying
