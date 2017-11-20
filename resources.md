@@ -56,7 +56,7 @@ From an IBM technical deep-dive series. These recordings provide step-by-step in
 Additional videos created by IBMers.
 
 - [Watson Conversation Integrations Tutorial  ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.youtube.com/watch?v=O3silvVBaC8&t=3s){: new_window}: A 10-minute tutorial you can follow to connect Watson Conversation with Twilio using Botkit to create a SMS chatbot
-- [Show me how to use Conversation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/1rTl1WEbg5U){: new_window}: A 3-minute overview of the service
+- [Show me how to use Conversation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/tUkLIUOm550){: new_window}: A 3-minute overview of the service
 - [Introducing Watson Conversation service ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/A96nLYSMltA){: new_window}: A 1-minute introduction
 - [Walkthrough of Watson Conversation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/ELwWhJGE2P8){: new_window}: A 14-minute technical walkthrough
 
