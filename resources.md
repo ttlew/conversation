@@ -74,3 +74,6 @@ A set of posts by Simon Burns, User Experience Developer at {{site.data.keyword.
 - [The Bots Are Coming ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://medium.com/@snrubnomis/the-bots-are-coming-b0fa71475381#.jq8md0zg7){: new_window}
 - [Conversation Patterns with IBM Watson ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://medium.com/@snrubnomis/conversation-patterns-with-ibm-watson-6c4be05e2fe5#.eorkk7crm){: new_window}
 - [Seriously, what do I need a bot for? ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://medium.com/@snrubnomis/seriously-what-do-i-need-a-bot-for-8b91a5ffac1a#.ipvv6ixru){: new_window}
+- [Purple Brain ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://medium.com/@snrubnomis/purple-brain-2eb1f93fce5){: new_window}
+- [Conversational Design ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://chatbotslife.com/conversational-design-d4abe8cce157){: new_window}
+- [Bot Feedback with IBM Watson ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://chatbotslife.com/bot-feedback-with-ibm-watson-eb1104df7e7c){: new_window}
