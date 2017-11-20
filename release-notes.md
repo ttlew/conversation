@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-17"
+lastupdated: "2017-11-20"
 
 ---
 
@@ -28,7 +28,7 @@ Send the version parameter with every API request. The service uses the API vers
 
 The current version is `2017-05-26`.
 
-The "Try it out" pane in the Conversation tooling uses the latest API version.
+The *Try it out* pane in the Conversation tooling uses the latest API version.
 
 ## Beta features
 
@@ -236,7 +236,7 @@ The following new features and changes to the service are available.
 ### 25 May 2017
 {: #25May2017}
 
-- You can now manage context variables in the "Try it out" pane. Click the **Manage context** link to open a new pane where you can set and check the values of context variables as you test the dialog. See [Testing your dialog](dialog-test.html) for more information.
+- You can now manage context variables in the *Try it out* pane. Click the **Manage context** link to open a new pane where you can set and check the values of context variables as you test the dialog. See [Testing your dialog](dialog-test.html) for more information.
 
 ### 16 May 2017
 {: #16May2017}
@@ -244,7 +244,7 @@ The following new features and changes to the service are available.
 - A **Car Dashboard** sample workspace is now available when you open the tool. To use the sample as a starting point for your own workspace, edit the workspace. If you want to use it for multiple workspaces, then duplicate it instead. The sample workspace does not count toward your subscription workspace total unless you use it.
 - It is now easier to navigate the tool. The navigation menu options are available from the side of the main page instead of the top. At the top of the page, Breadcrumb links display that show you where you are. You can now switch between service instances from the Workspaces page. To get there quickly, click **Back to workspaces** from the navigation menu. If you have multiple service instances, the name of the current instance is displayed. You can click the **Change** link beside it to choose another instance.
 - When you create a dialog, two nodes are now added to it for you: 1) a **Welcome** node at the top of the dialog tree that contains the greeting to display to the user and 2) an **Anything else** node at the bottom of the tree that catches any user inquiries that are not recognized by other nodes in the dialog and responds to them. See [Creating a dialog](dialog-create.html) for more details.
-- When you are testing a dialog in the "Try it out" pane, you can now find and resubmit a recent test utterance by pressing the Up key to cycle through your previous inputs.
+- When you are testing a dialog in the *Try it out* pane, you can now find and resubmit a recent test utterance by pressing the Up key to cycle through your previous inputs.
 - Experimental Korean language support for 5 system entities (`@sys-date`, `@sys-time`, `@sys-currency`, `@sys-number`, `@sys-percentage`) is now available. There are known issues for some of the numeric entities, and limited support for informal language input.
 - An Overview page is available from the Improve tab. The page provides a summary of interactions with your bot. You can view the amount of traffic for a given time period, as well as the intents and entities that were recognized most often in user conversations. For additional information, see [Using the Overview page](logs_oview.html).
 
