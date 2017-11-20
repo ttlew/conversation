@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-11"
+lastupdated: "2017-11-20"
 
 ---
 
@@ -137,7 +137,7 @@ You created a dialog node that is triggered by the `welcome` condition, which is
 
 You can test your dialog at any time to verify the dialog. Let's test it now.
 
-- Click the ![Ask Watson](images/ask_watson.png) icon to open the "Try it out" pane. You should see your welcome message.
+- Click the ![Ask Watson](images/ask_watson.png) icon to open the *Try it out* pane. You should see your welcome message.
 
     ![Testing the dialog node](images/gs-tryitout-welcome-node.png)
 
@@ -159,7 +159,7 @@ Now let's add nodes to handle our intents between the `Welcome` node and the `An
 
 You  built a simple dialog to recognize and respond to both hello and goodbye inputs. Let's see how well it works.
 
-1.  Click the ![Ask Watson](images/ask_watson.png) icon to open the "Try it out" pane. There's that reassuring welcome message.
+1.  Click the ![Ask Watson](images/ask_watson.png) icon to open the *Try it out* pane. There's that reassuring welcome message.
 1.  At the bottom of the pane, type `Hello` and press Enter. The output indicates that the #hello intent was recognized, and the appropriate response (`Good day to you.`) appears.
 1.  Try the following input:
     - `bye`
@@ -168,7 +168,7 @@ You  built a simple dialog to recognize and respond to both hello and goodbye in
     - `good morning`
     - `sayonara`
 
-   ![Shows an animation of the user testing the dialog in the Try it out panel](images/gs-test-dialog-animated.gif)
+   ![Shows an animation of the user testing the dialog in the Try it out pane.](images/gs-test-dialog-animated.gif)
 
 {{site.data.keyword.watson}} can recognize your intents even when your input doesn't exactly match the examples you included. The dialog uses intents to identify the purpose of the user's input regardless of the precise wording used, and then responds in the way you specify.
 

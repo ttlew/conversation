@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-14"
+lastupdated: "2017-11-20"
 
 ---
 
@@ -171,7 +171,7 @@ After you have finished creating new intents, you can test the system to see if 
 
 1.  In the {{site.data.keyword.conversationshort}} tool, select the ![Ask Watson](images/ask_watson.png) icon.
 
-1.  In the Try it out panel, enter a question or other text string and press Enter to see which intent is recognized. If the wrong intent is recognized, you can improve your model by adding this text as an example to the correct intent.
+1.  In the *Try it out* pane, enter a question or other text string and press Enter to see which intent is recognized. If the wrong intent is recognized, you can improve your model by adding this text as an example to the correct intent.
 
     If you have recently made changes in your workspace, you might see a message indicating that the system is still retraining. If you see this message, wait until training completes before testing:
     {: tip}
@@ -211,10 +211,11 @@ As intent confidence scores change, your dialogs may need restructuring. For exa
 
 You can refer to [supported languages](lang-support.html) for the availability of this feature.
 
-After you upgrade your workspace, you can [test input](#testing-your-intents) in the Try it out panel to see the changes. You can use "Mark as irrelevant" to indicate that the input is not related to your application.
+After you upgrade your workspace, you can [test input](#testing-your-intents) in the *Try it out* pane to see the changes. You can use "Mark as irrelevant" to indicate that the input is not related to your application.
 
 If you have an intent, such as #off_topic, for those inputs that are out of scope or off topic, delete the intent and test your workspace by marking the inputs are irrelevant.
 
-> **Important**: Inputs that are marked as irrelevant are stored in the workspace and are included as part of the training data. Be sure that you want to make this change.
-> - The inputs cannot be accessed or changed later in the tooling.
-> - The only way to remove the "Irrelevant" tag is to use the same input in the Try it out panel, and then change the intent.
+**Important**: Inputs that are marked as irrelevant are stored in the workspace and are included as part of the training data. Be sure that you want to make this change.
+
+- The inputs cannot be accessed or changed later in the tooling.
+- The only way to remove the "Irrelevant" tag is to use the same input in the *Try it out* pane, and then change the intent.

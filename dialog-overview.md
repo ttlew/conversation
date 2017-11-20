@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-14"
+lastupdated: "2017-11-20"
 
 ---
 
@@ -20,15 +20,14 @@ lastupdated: "2017-11-14"
 # Dialog overview
 {: #dialog-overview}
 
-
 The dialog uses the intents and entities that are identified in the user's input, plus context from the application, to interact with the user and ultimately provide a useful response.
 {: shortdesc}
 
-The response might be the answer to a question such as `Where can I get some gas?` or the execution of a command, such as turning on the radio. The intent and entity might be enough information to identify the correct response, or the dialog might ask the user for more input that is needed to respond correctly. For example, if a user asks, "Where can I get some food?" you might want to clarify whether they want a restaurant or a grocery store, to dine in or take out, and so on. You can ask for more details in a text response and create one or more child nodes to process the new input.
+The response might be the answer to a question such as `Where can I get some gas?` or the execution of a command, such as turning on the radio. The intent and entity might be enough information to identify the correct response, or the dialog might ask the user for more input that is needed to respond correctly. For example, if a user asks, `Where can I get some food?` you might want to clarify whether they want a restaurant or a grocery store, to dine in or take out, and so on. You can ask for more details in a text response and create one or more child nodes to process the new input.
 
 <iframe class="embed-responsive-item" id="youtubeplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/oQUpejt6d84?rel=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
-Your dialog is represented graphically in the tool as a tree. Create a branch to process each intent that you want your conversation to handle. A branch is composed of multiple nodes.
+The dialog is represented graphically in the {{site.data.keyword.conversationshort}} tool as a tree. Create a branch to process each intent that you want your conversation to handle. A branch is composed of multiple nodes.
 
 ## Dialog nodes
 
@@ -115,7 +114,7 @@ You can use one or more of the following artifacts in any combination to define 
   </tr>
   <tr>
     <td>welcome</td>
-    <td>This condition is evaluated as true during the first dialog turn (when the conversation starts), only if the initial request from the application does not contain any user input. It is evaluated as false in all subsequent dialog turns. The **Welcome** node is triggered by this condition. Typically, a node with this condition is used to greet the user, for example, to display a message such as "Welcome to our Pizza ordering app."</td>
+    <td>This condition is evaluated as true during the first dialog turn (when the conversation starts), only if the initial request from the application does not contain any user input. It is evaluated as false in all subsequent dialog turns. The **Welcome** node is triggered by this condition. Typically, a node with this condition is used to greet the user, for example, to display a message such as `Welcome to our Pizza ordering app.`</td>
   </tr>
   </table>
 
@@ -151,7 +150,7 @@ You can reply with one of these response types:
 
 If you want to provide a text response, simply enter the text that you want the service to display to the user.
 
-![Shows a node that shows a user ask, "Where are you located" and the dialog response is, "We have no brick and mortar stores! But, with an internet connection, you can shop us from anywhere"](images/response-simple.png)
+![Shows a node that shows a user ask, Where are you located, and the dialog response is, We have no brick and mortar stores! But, with an internet connection, you can shop us from anywhere.](images/response-simple.png)
 
 #### Adding variety
 {: #variety}
@@ -162,7 +161,7 @@ If your users return to your conversation service frequently, they might be bore
 
 In this example, the answer that the service provides in response to questions about store locations differs from one interaction to the next:
 
-![Shows a node that shows a user ask, "Where are you located" and the dialog has three different responses defined"](images/variety.png)
+![Shows a node that shows a user ask, Where are you located, and the dialog has three different responses defined.](images/variety.png)
 
 You can choose to rotate through the response variations sequentially or in random order. By default, responses are rotated sequentially, as if they were chosen from an ordered list.
 
@@ -177,7 +176,7 @@ The node still has a main condition, which is the condition for using the node a
 
 In this example, the service uses information that it collected earlier about the user's location to tailor its response, and provide information about the store nearest the user. See [Context variables](#context) for more information about how to store information collected from the user.
 
-![Shows a node that shows a user ask, "Where are you located" and the dialog has three different responses depending on conditions that use info from the $state context variable to specify locations in those states"](images/multiple-responses.png)
+![Shows a node that shows a user ask, Where are you located, and the dialog has three different responses depending on conditions that use info from the $state context variable to specify locations in those states.](images/multiple-responses.png)
 
 This single node now provides the equivalent function of four separate nodes.
 
