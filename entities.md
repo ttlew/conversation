@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-14"
+lastupdated: "2017-11-21"
 
 ---
 
@@ -96,7 +96,7 @@ Use the {{site.data.keyword.conversationshort}} tool to create entities.
     ```
     {
         "context" : {
-            "email": "@contactInfo.literal"
+            "email": "<? @contactInfo.literal ?>"
         }
     }
     ```

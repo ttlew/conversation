@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-20"
+lastupdated: "2017-11-21"
 
 ---
 
@@ -449,7 +449,7 @@ Other common tasks include:
     ```json
     {
       "context": {
-        "email": "@email.literal"
+        "email": "<? @email.literal ?>"
       }
     }
     ```
