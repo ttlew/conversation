@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-16"
+lastupdated: "2017-11-27"
 
 ---
 
@@ -38,7 +38,7 @@ As an example, suppose you want to create a cognitive car dashboard application 
     Do not make your intents too similar. Similar intents can be difficult for the {{site.data.keyword.conversationshort}} service to distinguish. If you find that you have several intents that are close in meaning, consider whether you could combine them into a single intent, and then use entities to provide multiple possible responses for that intent.
     {: tip}
 
-    Since the above examples all represent the same intent (to turn something off), you might call this category `#turn_off`.
+    Since the previous examples all represent the same intent (to turn something off), you might call this category `#turn_off`.
     Remember that a customer's input does not have to be an exact match for any of your examples; intents are recognized using natural-language processing.
     {: tip}
 1.  You would then use an entity to represent what the user wants to turn off. To do this, you might create an entity called `@accessory`, and give it the following possible values:
