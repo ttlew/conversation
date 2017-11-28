@@ -98,7 +98,7 @@ You can then choose to show the classification(s) for the utterance you selected
 
     ![Save intent](images/save_intent.png)
 
-    **Note**: The {{site.data.keyword.conversationshort}} service supports adding user input as an example to an intent *as-is*. User input cannot be modified to use an `@Entity` refererence. For more information, see [Directly referencing an @Entity as an intent example](intents.html#entity-as-example).
+    **Note**: The {{site.data.keyword.conversationshort}} service supports adding user input as an example to an intent *as-is*. If you are using @entity references as examples in your intent training data, and a user utterance that you want to save contains an entity value or synonym from your training data, then you must edit the utterance later. After you save it, edit the utterance from the Intents page to replace the entity that it references. For more information, see [Directly referencing an @Entity as an intent example](intents.html#entity-as-example).
 
 ## Adding an entity value or synonym
 
