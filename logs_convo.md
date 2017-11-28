@@ -58,7 +58,7 @@ The selected data source now displays.
 
 **Note:** While **Data source:** now shows the source of the utterances you are using to improve this workspace, the top of the page still shows the workspace you are applying changes to.
 
-In this example, the Improve page is populated with utterances that had the Deployment ID `HelpDesk-Production` included in their message API calls, but if the utterance *test input* is added to the intent "#No" by clicking **Save** then *test input* would be added as an example of "#No" in the workspace `HelpDesk-Development`.
+In this example, the Improve page is populated with utterances that had the Deployment ID `HelpDesk-Production` included in their message API calls, but if the utterance *test input* is added to the intent **#No** by clicking **Save** then *test input* would be added as an example of "#No" in the workspace `HelpDesk-Development`.
 ![Data source link](images/data_source_3.png)
 
 ## Filtering utterances
