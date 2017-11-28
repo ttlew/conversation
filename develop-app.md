@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-14"
+lastupdated: "2017-11-28"
 
 ---
 
@@ -98,7 +98,7 @@ workspace_id = 'WORKSPACE_ID' # replace with workspace ID
 # Start conversation with empty message.
 response = conversation.message(
   workspace_id = workspace_id,
-  message_input = {
+  input = {
     'text': ''
   }
 )
@@ -215,7 +215,7 @@ while True:
   # Send message to Conversation service.
   response = conversation.message(
     workspace_id = workspace_id,
-    message_input = {
+    input = {
       'text': user_input
     }
   )
@@ -340,7 +340,7 @@ while True:
   # Send message to Conversation service.
   response = conversation.message(
     workspace_id = workspace_id,
-    message_input = {
+    input = {
       'text': user_input
     },
     context = context
@@ -381,7 +381,7 @@ The only change from the previous example is that we are now storing the context
 ```python
   response = conversation.message(
     workspace_id = workspace_id,
-    message_input = {
+    input = {
       'text': user_input
     },
     context = context
@@ -499,7 +499,7 @@ while current_action != 'end_conversation':
   # Send message to Conversation service.
   response = conversation.message(
     workspace_id = workspace_id,
-    message_input = {
+    input = {
       'text': user_input
     },
     context = context
