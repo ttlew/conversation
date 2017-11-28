@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-27"
+lastupdated: "2017-11-14"
 
 ---
 
@@ -42,7 +42,7 @@ Here's how you will implement your conversation:
 - **Configure a workspace.** With the easy-to-use graphical environment, set up the training data and dialog for your conversation.
 
     The training data consists of the following artifacts:
-    - **Intents**: Goals that you anticipate your users will have when they interact with the service. Define one intent for each goal that can be identified in a user's input. For example, you might define an intent named *store_hours* that answers questions about store hours. For each intent, you add sample utterances that reflect the input customers might use to ask for the information they need, such as, "What time do you open?"
+    - **Intents**: Goals that you anticipate your users will have when they interact with the service. Define one intent for each goal that can be identified in a user's input. For example, you might define an intent named *store_hours* that answers questions about store hours. For each intent, you add sample utterances that reflect the input customers might use to ask for the information they need, such as, `What time do you open?`
     - **Entities**: An entity represents a term or object that provides context for an intent. For example, an entity might be a city name that helps your dialog to distinguish which store the user wants to know store hours for.
 
       As you add training data, a natural language classifier is automatically added to the workspace, and is trained to understand the types of requests that you have indicated the service should listen for and respond to.
@@ -54,7 +54,7 @@ Here's how you will implement your conversation:
 Follow these links to read more:
 
 - [Planning your intents and entities](intents-entities.html#planning-your-entities)
-- [Dialog overview](dialog-build.html#overview)
+- [Dialog overview](dialog-overview.html)
 - [Deployment overview](deploy.html)
 
 ## Language support

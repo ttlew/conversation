@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-09"
+lastupdated: "2017-11-20"
 
 ---
 
@@ -28,9 +28,11 @@ Send the version parameter with every API request. The service uses the API vers
 
 The current version is `2017-05-26`.
 
+The *Try it out* pane in the Conversation tooling uses the latest API version.
+
 ## Beta features
 
-IBM will release services, features, and language support that are classified as in beta (formerly _experimental_). These services may be unstable, may change frequently, and may be discontinued with short notice. Beta features will be supported via our {{site.data.keyword.Bluemix_notm}} forum only.
+IBM releases services, features, and language support for your evaluation that are classified as beta. These features might be unstable, might change frequently, and might be discontinued with short notice. Beta features also might not provide the same level of performance or compatibility that generally available features provide and are not intended for use in a production environment. Beta features are supported only on the [developerWorks Answers ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/answers/topics/watson-conversation/){: new_window}.
 
 ## Updated models
 {: #updated-models}
@@ -234,7 +236,7 @@ The following new features and changes to the service are available.
 ### 25 May 2017
 {: #25May2017}
 
-- You can now manage context variables in the "Try it out" pane. Click the **Manage context** link to open a new pane where you can set and check the values of context variables as you test the dialog. See [Testing your dialog](dialog-test.html) for more information.
+- You can now manage context variables in the *Try it out* pane. Click the **Manage context** link to open a new pane where you can set and check the values of context variables as you test the dialog. See [Testing your dialog](dialog-test.html) for more information.
 
 ### 16 May 2017
 {: #16May2017}
@@ -242,7 +244,7 @@ The following new features and changes to the service are available.
 - A **Car Dashboard** sample workspace is now available when you open the tool. To use the sample as a starting point for your own workspace, edit the workspace. If you want to use it for multiple workspaces, then duplicate it instead. The sample workspace does not count toward your subscription workspace total unless you use it.
 - It is now easier to navigate the tool. The navigation menu options are available from the side of the main page instead of the top. At the top of the page, Breadcrumb links display that show you where you are. You can now switch between service instances from the Workspaces page. To get there quickly, click **Back to workspaces** from the navigation menu. If you have multiple service instances, the name of the current instance is displayed. You can click the **Change** link beside it to choose another instance.
 - When you create a dialog, two nodes are now added to it for you: 1) a **Welcome** node at the top of the dialog tree that contains the greeting to display to the user and 2) an **Anything else** node at the bottom of the tree that catches any user inquiries that are not recognized by other nodes in the dialog and responds to them. See [Creating a dialog](dialog-create.html) for more details.
-- When you are testing a dialog in the "Try it out" pane, you can now find and resubmit a recent test utterance by pressing the Up key to cycle through your previous inputs.
+- When you are testing a dialog in the *Try it out* pane, you can now find and resubmit a recent test utterance by pressing the Up key to cycle through your previous inputs.
 - Experimental Korean language support for 5 system entities (`@sys-date`, `@sys-time`, `@sys-currency`, `@sys-number`, `@sys-percentage`) is now available. There are known issues for some of the numeric entities, and limited support for informal language input.
 - An Overview page is available from the Improve tab. The page provides a summary of interactions with your bot. You can view the amount of traffic for a given time period, as well as the intents and entities that were recognized most often in user conversations. For additional information, see [Using the Overview page](logs_oview.html).
 
@@ -313,7 +315,7 @@ For more information, see the [API Reference ![External link icon](../../icons/l
     - These features are available for your application by changing the message API call to use **2017-02-03.**
 - The processing of **Jump to** actions has been changed to prevent loops that can occur under certain conditions.
 
-    See [Jump to actions](dialog-build.html#jump-to) for details.
+    See [Jump to actions](dialog-overview.html#jump-to) for details.
 
 ### 11 January 2017
 {: #11January2017}
@@ -331,7 +333,7 @@ For more information, see the [API Reference ![External link icon](../../icons/l
 Several changes make the dialog builder easier and more intuitive to use:
 
 - A larger editing view makes it easier to view all the details of a node as you work on it.
-- A node can contain multiple responses, each triggered by a separate condition. For more information see [Multiple responses](dialog-build.html#responses).
+- A node can contain multiple responses, each triggered by a separate condition. For more information see [Multiple responses](dialog-overview.html#responses).
 
 ### 5 December 2016
 {: #5December2016}
@@ -358,7 +360,7 @@ To take advantage of the changes in a new version, change the value of the `vers
 ### 29 August 2016
 {: #29August2016}
 
-- You can move dialog nodes from one branch to another, as siblings or peers. For details, see [Building a dialog](dialog-build.html) and search for "Moving a dialog node".
+- You can move dialog nodes from one branch to another, as siblings or peers. For details, see [Moving a dialog node](dialog-build.html#move-node).
 - You can expand the JSON editor window.
 - You can view chat logs of your bot's conversations to help you understand it's behavior. You can filter by intents, entities, date, and time. For details, see [Improving understanding](logs.html)
 

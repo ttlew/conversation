@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-16"
+lastupdated: "2017-11-27"
 
 ---
 
@@ -59,7 +59,7 @@ Use the {{site.data.keyword.conversationshort}} tool to create entities.
 
     You can turn on fuzzy matching to improve the ability of the service to recognize user input terms with syntax that is similar to the entity, but without requiring an exact match. There are three components to fuzzy matching - stemming, misspelling, and partial matching:
     - *Stemming* - The feature recognizes the stem form of entity values that have several grammatical forms. For example, the stem of 'bananas' would be 'banana', while the stem of 'running' would be 'run'.
-    - *Misspelling* - The feature is able to map user input to the appropriate corresponding entity despite the presence of misspellings or slight syntactical differences. For example, if you define "giraffe" as a synonym for an animal entity, and the user input contains the terms "giraffes" or "girafe", the fuzzy match is able to map the term to the animal entity correctly.
+    - *Misspelling* - The feature is able to map user input to the appropriate corresponding entity despite the presence of misspellings or slight syntactical differences. For example, if you define *giraffe* as a synonym for an animal entity, and the user input contains the terms *giraffes* or *girafe*, the fuzzy match is able to map the term to the animal entity correctly.
     - *Partial match* - With partial matching, the feature automatically suggests substring-based synonyms present in the user-defined entities, and assigns a lower confidence score as compared to the exact entity match.
 
     **Note** - For English, fuzzy matching prevents the capturing of some common, valid English words as fuzzy matches for a given entity. Currently, this feature uses only standard English dictionary words, and does not use synonyms defined by the user.
@@ -81,7 +81,7 @@ Use the {{site.data.keyword.conversationshort}} tool to create entities.
 
     ![Screen capture of defining a pattern entity](images/patternents1.png)
 
-    As in this example, for entity "ContactInfo", the patterns for phone, email, and website values can be defined as follows:
+    As in this example, for entity *ContactInfo*, the patterns for phone, email, and website values can be defined as follows:
     - Phone
       - `localPhone`: `(\d{3})-(\d{4})`, e.g. 426-4968
       - `fullUSphone`: `(\d{3})-(\d{3})-(\d{4})`, e.g. 800-426-4968
@@ -91,12 +91,12 @@ Use the {{site.data.keyword.conversationshort}} tool to create entities.
 
     Often when using pattern entities, it will be necessary to store the text that matches the pattern in a context variable (or action variable), from within your dialog tree.
 
-    Imagine a case where you are asking a user for their email address. The dialog node condition will contain a condition similar to `@contactInfo.email`. In order to assign the user-entered email as a context variable, the following syntax can be used to capture the pattern match within the dialog node's response section:
+    Imagine a case where you are asking a user for their email address. The dialog node condition will contain a condition similar to `@contactInfo:email`. In order to assign the user-entered email as a context variable, the following syntax can be used to capture the pattern match within the dialog node's response section:
 
-    ```
+    ```json
     {
         "context" : {
-            "email": "@contactInfo.literal"
+            "email": "<? @contactInfo.literal ?>"
         }
     }
     ```
@@ -207,7 +207,7 @@ System entities are centrally maintained, so any updates are available automatic
 1.  Browse through the list of system entities to choose the ones that are useful for your application.
     - To see more information about a system entity, including examples of matching input, click the entity in the list.
     - For details about the available system entities, see [System entities](system-entities.html).
-1.  Click the toggle switch next to a system entity to enable or disable it. You can also enable or disable all system entities by clicking the **All toggle** switch at the top of the list.
+1.  Click the toggle switch next to a system entity to enable or disable it. You can also enable or disable all system entities by clicking the **All toggle** switch.
 
 ### Results
 

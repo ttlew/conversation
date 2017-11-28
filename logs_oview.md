@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-30"
+lastupdated: "2017-11-20"
 
 ---
 
@@ -22,7 +22,7 @@ lastupdated: "2017-08-30"
 The Overview page of the **Improve** panel provides a summary of interactions between users and your bot.  You can view the amount of traffic for a given time period, as well as the intents and entities that were recognized most often in user conversations.
 {: shortdesc}
 
-The statistics that are displayed on the Overview page cover a longer period of time than the period for which logs of user conversations are retained.  These statistics represent external traffic - users or API calls - that has interacted with your bot; they do not include interactions from the **Try it out** panel in the tool.
+The statistics that are displayed on the Overview page cover a longer period of time than the period for which logs of user conversations are retained.  These statistics represent external traffic - users or API calls - that has interacted with your bot; they do not include interactions from the *Try it out* pane in the tool.
 
 You can use the Overview page to answer questions like:
 

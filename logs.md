@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-18"
+lastupdated: "2017-11-20"
 
 ---
 
@@ -22,7 +22,7 @@ lastupdated: "2017-07-18"
 The Improve component of {{site.data.keyword.conversationshort}} provides a history of conversations with users of your bot. You can use this history to improve your bot's understanding of users' inputs.
 {: shortdesc}
 
-While you develop your workspace, you use the **Try it out** panel to verify that your bot recognizes the correct intents and entities in test inputs, and to make corrections as needed. In the **Improve** panel, you can view information about actual conversations with your users and make similar corrections to improve the accuracy with which intents and entities are recognized by your bot.
+While you develop your workspace, you use the *Try it out* pane to verify that your bot recognizes the correct intents and entities in test inputs, and to make corrections as needed. In the **Improve** panel, you can view information about actual conversations with your users and make similar corrections to improve the accuracy with which intents and entities are recognized by your bot.
 
 Sections of the **Improve** panel:
 

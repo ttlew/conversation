@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-30"
+lastupdated: "2017-11-27"
 
 ---
 
@@ -27,12 +27,13 @@ Videos and articles to help you get started faster.
 These videos are available in the documentation and on YouTube.
 
 - Navigation pane video: Tool overview for Conversation
-- "Defining intents" page: [Working with intents](intents.html)
-- "Defining entities" page: [Working with entities](entities.html)
-- "Building a dialog" page:
-    - [Working with dialog](dialog-build.html)
-    - [Working with conditional responses](dialog-build.html#multiple)
-    - [Adding response variations](dialog-build.html#variety)
+- *Defining intents* page: [Working with intents](intents.html)
+- *Defining entities* page: [Working with entities](entities.html)
+- *Dialog overview* page:
+    - [Working with dialog](dialog-overview.html)
+    - [Working with conditional responses](dialog-overview.html#multiple)
+    - [Adding response variations](dialog-overview.html#variety)
+- *Creating a dialog* page:
     - [Watson Conversation Slots](dialog-build.html#slots)
 
 ## Building with Watson videos
@@ -56,7 +57,7 @@ From an IBM technical deep-dive series. These recordings provide step-by-step in
 Additional videos created by IBMers.
 
 - [Watson Conversation Integrations Tutorial  ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.youtube.com/watch?v=O3silvVBaC8&t=3s){: new_window}: A 10-minute tutorial you can follow to connect Watson Conversation with Twilio using Botkit to create a SMS chatbot
-- [Show me how to use Conversation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/1rTl1WEbg5U){: new_window}: A 3-minute overview of the service
+- [Show me how to use Conversation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/tUkLIUOm550){: new_window}: A 3-minute overview of the service
 - [Introducing Watson Conversation service ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/A96nLYSMltA){: new_window}: A 1-minute introduction
 - [Walkthrough of Watson Conversation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/ELwWhJGE2P8){: new_window}: A 14-minute technical walkthrough
 
@@ -74,3 +75,6 @@ A set of posts by Simon Burns, User Experience Developer at {{site.data.keyword.
 - [The Bots Are Coming ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://medium.com/@snrubnomis/the-bots-are-coming-b0fa71475381#.jq8md0zg7){: new_window}
 - [Conversation Patterns with IBM Watson ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://medium.com/@snrubnomis/conversation-patterns-with-ibm-watson-6c4be05e2fe5#.eorkk7crm){: new_window}
 - [Seriously, what do I need a bot for? ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://medium.com/@snrubnomis/seriously-what-do-i-need-a-bot-for-8b91a5ffac1a#.ipvv6ixru){: new_window}
+- [Purple Brain ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://medium.com/@snrubnomis/purple-brain-2eb1f93fce5){: new_window}
+- [Conversational Design ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://chatbotslife.com/conversational-design-d4abe8cce157){: new_window}
+- [Bot Feedback with IBM Watson ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://chatbotslife.com/bot-feedback-with-ibm-watson-eb1104df7e7c){: new_window}

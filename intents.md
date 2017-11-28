@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-09"
+lastupdated: "2017-11-27"
 
 ---
 
@@ -59,12 +59,12 @@ Use the {{site.data.keyword.conversationshort}} tool to create intents.
     - `Pay my account balance`
     - `make a payment`
 
-    *Referencing entities and synonyms* - If you have defined or plan to define entities that correspond to this intent, refer to the entities or their associated synonyms in some of the examples. Doing so helps to establish a relationship between the intent and entities.
+    *Referencing entities and synonyms as intent examples* - If you have defined or plan to define entities that correspond to this intent, refer to the entities or their associated synonyms in some of the examples. Doing so helps to establish a relationship between the intent and entities.
 
     ![Screen capture showing intent definition](images/define_intent.png)
     {: #entity-as-example}
 
-    *Entity as example* - You can also directly reference entities in your intent examples. For instance, say you have an entity called `@PhoneModelName`, which contains values "Galaxy S8", "Moto Z2", "LG G6", and "Google Pixel 2". When you create an intent, for example `#order_phone`, you could then provide training data as follows:
+    *Directly referencing an @Entity as an intent example* - You may also choose to directly reference entities in your intent examples. For instance, say you have an entity called `@PhoneModelName`, which contains values *Galaxy S8*, *Moto Z2*, *LG G6*, and *Google Pixel 2*. When you create an intent, for example `#order_phone`, you could then provide training data as follows:
     - Can I get a `@PhoneModelName`?
     - Help me order a `@PhoneModelName`.
     - Is the `@PhoneModelName` in stock?
@@ -72,8 +72,15 @@ Use the {{site.data.keyword.conversationshort}} tool to create intents.
 
     ![Screen capture showing intent definition](images/define_intent_entity.png)
 
-    **Note**: Currently, you can only directly reference closed entities that you define. You cannot directly reference [pattern entities](entities.html#pattern-entities) or [system entities](system-entities.html). Additionally, if you use an example as an entity (`@PhoneModelName`) anywhere in your training data it cancels out the value of using a direct reference ("Galaxy S8") in a sample utterance.
-    > **Important:** Intent names and example text can be exposed in URLs when an application interacts with the service. Do not include sensitive or personal information in these artifacts.
+    **Note**: Currently, you can only directly reference closed entities that you define. You cannot directly reference [pattern entities](entities.html#pattern-entities) or [system entities](system-entities.html).
+
+    If you choose to reference an entity as an intent example (for example, `@PhoneModelName`) *anywhere* in your training data it cancels out the value of using a direct reference (for example, *Galaxy S8*) in an intent example anywhere else. All intents will then use the entity-as-an-intent-example approach; you cannot select this approach for a specific intent only.
+
+    In practice, this means that if you have previously trained most of your intents based on direct references (*Galaxy S8*), and you now use entity references (`@PhoneModelName`) for just one intent, that would impact all your previous training. If you do choose to use `@Entity` references, you need to be careful to replace all previous direct references with `@Entity` references.
+
+    **Note**: Defining one example intent with an `@Entity` that has 10 values defined for it **does not** equate to specifying that example intent 10 times. The {{site.data.keyword.conversationshort}} does not give that much weight to that one example intent syntax.
+
+    **Important**: Intent names and example text can be exposed in URLs when an application interacts with the service. Do not include sensitive or personal information in these artifacts.
 
     Press Enter or select **+** to save the example.
 1.  Repeat the same process to add more examples. You can tab between each example. Provide at least 5 examples for each intent. The more examples you provide, the more accurate your application can be.
@@ -164,7 +171,7 @@ After you have finished creating new intents, you can test the system to see if 
 
 1.  In the {{site.data.keyword.conversationshort}} tool, select the ![Ask Watson](images/ask_watson.png) icon.
 
-1.  In the Try it out panel, enter a question or other text string and press Enter to see which intent is recognized. If the wrong intent is recognized, you can improve your model by adding this text as an example to the correct intent.
+1.  In the *Try it out* pane, enter a question or other text string and press Enter to see which intent is recognized. If the wrong intent is recognized, you can improve your model by adding this text as an example to the correct intent.
 
     If you have recently made changes in your workspace, you might see a message indicating that the system is still retraining. If you see this message, wait until training completes before testing:
     {: tip}
@@ -191,7 +198,7 @@ If your intents are not being correctly recognized, consider making the followin
 
 ## Absolute scoring and Mark as irrelevant
 
-As of February 2017, there is a new algorithm for scoring intent confidence and returning intents. You can also mark inputs as "irrelevant". These changes might require you to [upgrade to your workspace ![External link icon](../../icons/launch-glyph.svg "External link icon")](upgrading.html){: new_window}.
+As of February 2017, there is a new algorithm for scoring intent confidence and returning intents. You can also mark inputs as *irrelevant*. These changes might require you to [upgrade to your workspace ![External link icon](../../icons/launch-glyph.svg "External link icon")](upgrading.html){: new_window}.
 
 ### Absolute scoring
 
@@ -204,10 +211,11 @@ As intent confidence scores change, your dialogs may need restructuring. For exa
 
 You can refer to [supported languages](lang-support.html) for the availability of this feature.
 
-After you upgrade your workspace, you can [test input](#testing-your-intents) in the Try it out panel to see the changes. You can use "Mark as irrelevant" to indicate that the input is not related to your application.
+After you upgrade your workspace, you can [test input](#testing-your-intents) in the *Try it out* pane to see the changes. You can use **Mark as irrelevant** to indicate that the input is not related to your application.
 
 If you have an intent, such as #off_topic, for those inputs that are out of scope or off topic, delete the intent and test your workspace by marking the inputs are irrelevant.
 
-> **Important**: Inputs that are marked as irrelevant are stored in the workspace and are included as part of the training data. Be sure that you want to make this change.
-> - The inputs cannot be accessed or changed later in the tooling.
-> - The only way to remove the "Irrelevant" tag is to use the same input in the Try it out panel, and then change the intent.
+**Important**: Inputs that are marked as irrelevant are stored in the workspace and are included as part of the training data. Be sure that you want to make this change.
+
+- The inputs cannot be accessed or changed later in the tooling.
+- The only way to remove the **Irrelevant** tag is to use the same input in the *Try it out* pane, and then change the intent.

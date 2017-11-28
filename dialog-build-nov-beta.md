@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-20"
+lastupdated: "2017-11-17"
 
 ---
 
@@ -18,7 +18,9 @@ lastupdated: "2017-11-20"
 {:swift: .ph data-hd-programlang='swift'}
 
 # Creating a dialog
-{: #dialog-build}
+{: #dialog-build-nov-beta}
+
+![Beta feature](images/beta.png) Some of the features described in this documentation are beta features that have been made available for your evaluation. Beta features might be unstable, might change frequently, and might be discontinued with short notice. Beta features also might not provide the same level of performance or compatibility that generally available features provide and are not intended for use in a production environment. Click [here](docs/services/conversation/dialog-build.html) to return to the generally available version of this topic.
 
 Use the {{site.data.keyword.conversationshort}} tool to create your dialog.
 {: shortdesc}
@@ -102,6 +104,7 @@ To create a dialog, complete the following steps:
     - To create a peer node that is checked next if the condition for the existing node is not met, select **Add node below**.
     - To create a peer node that is checked before the condition for the existing node is checked, select **Add node above**.
     - To create a child node to the selected node, select **Add child node**. A child node is processed after its parent node.
+    - To copy the current node, select **Duplicate**. ![Beta feature](images/beta.png)
 
     For more information about the order in which dialog nodes are processed, see [Dialog overview](dialog-overview.html#dialog-flow).
 1.  Test the dialog as you build it.
@@ -130,7 +133,7 @@ Slots can help you to collect multiple pieces of information that you need to co
 
 ![Shows four slots that prompt for the information needed to make a dinner reservation.](images/reservation.png)
 
-The user might provide values for mutliple slots at once. For example, the input might include the information, `There will be 6 of us dining at 7 PM.` This one input contains two of the missing required values: the number of guests and time of the reservation. The service recognizes and stores both of them, each one in its corresponding slot. It then displays the prompt that is associated with the next empty slot.
+The user might provide values for mutliple slots at once. For example, the input might include the information, "There will be 6 of us dining at 7 PM." This one input contains two of the missing required values: the number of guests and time of the reservation. The service recognizes and stores both of them, each one in its corresponding slot. It then displays the prompt that is associated with the next empty slot.
 
 ![Shows that two slots are filled, and the service prompts for the remaining one.](images/pass-in-info.png)
 
@@ -188,17 +191,17 @@ Using slots produces a more natural dialog flow between the user and the service
       <td>Size</td>
       <td>@size</td>
       <td>$size</td>
-      <td>What size pizza would you like?</td>
-      <td>$size it is.</td>
-      <td>What size did you want? We have small, medium, and large.</td>
+      <td>"What size pizza would you like?"</td>
+      <td>"$size it is."</td>
+      <td>"What size did you want? We have small, medium, and large."</td>
     </tr>
     <tr>
       <td>DeliverBy</td>
       <td>@sys-time</td>
       <td>$time</td>
-      <td>When do you need the pizza by?</td>
-      <td>For delivery by $time.</td>
-      <td>What time did you want it delivered? We need at least a half hour to prepare it.</td>
+      <td>"When do you need the pizza by?"</td>
+      <td>"For delivery by $time."</td>
+      <td>"What time did you want it delivered? We need at least a half hour to prepare it."</td>
     </tr>
     </table>
 
@@ -219,7 +222,7 @@ Using slots produces a more natural dialog flow between the user and the service
       </tr>
       </table>
 
-      If you make a slot optional, only reference its context variable in the node-level response text if you can word it such that it makes sense even if no value is provided for the slot. For example, you might word a summary statement like this, `I am ordering a $size $dietary pizza for delivery at $time.` The resulting text makes sense whether the dietary restriction information, such as `gluten-free` or `dairy-free`, is provided or not. The result is either, `I am ordering a large gluten-free pizza for delivery at 3:00PM.` or `I am ordering a large pizza for delivery at 3:00PM.`
+      If you make a slot optional, only reference its context variable in the node-level response text if you can word it such that it makes sense even if no value is provided for the slot. For example, you might word a summary statement like this, "I am ordering a $size $dietary pizza for delivery at $time." The resulting text makes sense whether the dietary restriction information, such as `gluten-free` or `dairy-free`, is provided or not. The result is either, "I am ordering a large gluten-free pizza for delivery at 3:00PM." or "I am ordering a large pizza for delivery at 3:00PM."
       {: tip}
 
     - **Conditional**: If you want a slot to be enabled only under certain conditions, then you can add a condition to it. For example, if slot 1 asks for a meeting start time, slot 2 captures the meeting duration, and slot 3 captures the end time, then you might want to enable slot 3 (and ask for the meeting end time) only if a value for slot 2 is not provided. To make a slot conditional, edit the slot, and then from the **More** ![More icon](images/kabob.png) menu, select **Enable condition**. Define the condition that must be met for the slot to be enabled.
@@ -235,7 +238,7 @@ Using slots produces a more natural dialog flow between the user and the service
     After responding to the digression, the prompt associated with the current empty slot is displayed.
 
     This condition is triggered if the user provides input that matches the handler conditions at any time during the dialog node flow up until the node-level response is displayed. See [Handling requests to exit a process](dialog-build.html#slots-node-level-handler) for more ways to use the node-level handler.
-1.  **Add a node-level response**. The node-level response is not executed until after all of the required slots are filled. You can add a response that summarizes the information you collected. For example, `A $size pizza is scheduled for delivery at $time. Enjoy!`
+1.  **Add a node-level response**. The node-level response is not executed until after all of the required slots are filled. You can add a response that summarizes the information you collected. For example, "A `$size` pizza is scheduled for delivery at `$time`. Enjoy!"
 
     If you want to define different responses based on certain conditions, click **Customize**, and then click the **Multiple responses** toggle to turn it **On**. For information about conditional responses, see [Conditional responses](dialog-overview.html#multiple).
 1.  **Add logic that resets the slot context variables**. As you collect answers from the user per slot, they are saved in context variables. You can use the context variables to pass the information to another node or to an application or external service for use. However, after passing the information, you must set the context variables to null to reset the node so it can start collecting information again. You cannot null the context variables within the current node because the service will not exit the node until the required slots are filled. Instead, consider using one of the following methods:
@@ -264,9 +267,9 @@ Consider these suggested approaches for handling common tasks.
 
 Include an initial prompt for the whole node that clearly tells users which units of information you want them to provide. Displaying this prompt first gives users the opportunity to provide all the details at once and not have to wait to be prompted for each piece of information one at a time.
 
-For example, when the node is triggered because a customer wants to order a pizza, you can respond with the preliminary prompt, `I can take your pizza order. Tell me what size pizza you want and the time that you want it delivered.`
+For example, when the node is triggered because a customer wants to order a pizza, you can respond with the preliminary prompt, "I can take your pizza order. Tell me what size pizza you want and the time that you want it delivered."
 
-If the user provides even one piece of this information in their initial request, then the prompt is not displayed. For example, the initial input might be, `I want to order a large pizza.` When the service analyzes the input, it recognizes `large` as the pizza size and fills the **Size** slot with the value provided. Because one of the slots is filled, it skips displaying the initial prompt to avoid asking for the pizza size information again. Instead, it displays the prompts for any remaining slots with missing information.
+If the user provides even one piece of this information in their initial request, then the prompt is not displayed. For example, the initial input might be, "I want to order a large pizza." When the service analyzes the input, it recognizes "large" as the pizza size and fills the **Size** slot with the value provided. Because one of the slots is filled, it skips displaying the initial prompt to avoid asking for the pizza size information again. Instead, it displays the prompts for any remaining slots with missing information.
 
 From the Customize pane where you enabled the Slots feature, select the **Prompt for everything** checkbox to enable the intial prompt. This setting adds the **If no slots are pre-filled, ask this first** field to the node, where you can specify the text that prompts the user for everything.
 
@@ -291,12 +294,12 @@ For example, you might want to ask users whether they want toppings on their piz
   <td>@toppings.values</td>
   <td>$toppings</td>
   <td>Any toppings on that?</td>
-  <td>Great addition.</td>
-  <td>What toppings would you like? We offer ...</td>
+  <td>"Great addition."</td>
+  <td>"What toppings would you like? We offer ..."</td>
 </tr>
 </table>
 
-To reference the user-specified toppings later, use the `<? $entity-name.join(',') ?>` syntax to list each item in the toppings array and separate the values with a comma. For example, `I am ordering you a $size pizza with <? $toppings.join(',') ?> for delivery by $time.`
+To reference the user-specified toppings later, use the `<? $entity-name.join(',') ?>` syntax to list each item in the toppings array and separate the values with a comma. For example, "I am ordering you a $size pizza with `<? $toppings.join(',') ?>` for delivery by $time."
 
 #### Reformatting values
 {: #slots-reformat-values}
@@ -334,8 +337,8 @@ Add a slot below the others that asks the user to confirm that the information y
   <td>Confirmation</td>
   <td>#yes || #no</td>
   <td>$confirmation</td>
-  <td>I'm going to order you a `$size` pizza for delivery at `$time`. Should I go ahead?</td>
-  <td>Your pizza is on its way!</td>
+  <td>"I'm going to order you a `$size` pizza for delivery at `$time`. Should I go ahead?"</td>
+  <td>"Your pizza is on its way!"</td>
   <td>see below</td>
 </tr>
 </table>
@@ -414,7 +417,7 @@ Some values that are provided by users can be identified as more than one entity
 
 You might have two slots that store the same type of value, such as an arrival date and departure date, for example. Build logic into your slot conditions to distinguish such similar values from one another.
 
-In addition, the service can recognize multiple entity types in a single user input. For example, when a user provides a currency, it is recognized as both a @sys-currency and @sys-number entity type. Do some testing in the *Try it out* pane to understand how the system will interpret different user inputs, and build logic into your conditions to prevent possible misinterpretations.
+In addition, the service can recognize multiple entity types in a single user input. For example, when a user provides a currency, it is recognized as both a @sys-currency and @sys-number entity type. Do some testing in the "Try it out" pane to understand how the system will interpret different user inputs, and build logic into your conditions to prevent possible misinterpretations.
 
 In logic that is unique to the slots feature, when two entities are recognized in a single user input, the one with the larger span is used. For example, if the user enters *May 2*, even though the Conversation service recognizes both @sys-date (05022017) and @sys-number (2) entities in the text, only the entity with the longer span (@sys-date) is registered and applied to a slot.
 {: tip}
@@ -517,16 +520,16 @@ To prevent Found responses from being displayed, you can do one of the following
 
 Add at least one node-level handler that can recognize it when a user wants to exit the node.
 
-For example, in a node that collects information to schedule a pet grooming appointment, you can add a node-level handler that conditions on the #cancel intent, which recognizes utterances such as, `Forget it. I changed my mind.`
+For example, in a node that collects information to schedule a pet grooming appointment, you can add a node-level handler that conditions on the #cancel intent, which recognizes utterances such as, "Forget it. I changed my mind."
 
-1.  In the JSON editor for the handler, fill all of the slot context variables with dummy values to prevent the node from continuing to ask for any that are missing. And in the handler response, add a message such as, `Ok, we'll stop there. No appointment will be scheduled.`
+1.  In the JSON editor for the handler, fill all of the slot context variables with dummy values to prevent the node from continuing to ask for any that are missing. And in the handler response, add a message such as, "Ok, we'll stop there. No appointment will be scheduled."
 1.  Choose what action you want the service to take next from the following options:
 
     - **Prompt again (Default)**: Displays the prompt for the slot that the user was working with just before asking the off-topic question.
     - **Skip current slot**: Displays the prompt associated with the slot that comes after the slot that the user was working with just before asking the off-topic question. And the service makes not further attempts to fill the skipped slot.
     - **Skip to response**: Skips the prompts for all remaining empty slots including the slot the user was working with just before asking the off-topic question.
 
-1.  In the node-level response, add a condition that checks for a dummy value in one of the slot context variables. If found, show a final message such as, `If you decide to make an appointment later, I'm here to help.` If not found, it displays the standard summary message for the node, such as `I am making a grooming appointment for your $animal at $time on $date.`
+1.  In the node-level response, add a condition that checks for a dummy value in one of the slot context variables. If found, show a final message such as, "If you decide to make an appointment later, I'm here to help." If not found, it displays the standard summary message for the node, such as "I am making a grooming appointment for your $animal at $time on $date."
 
 Here's a sample of JSON that defines a node-level handler for the pizza example. Note that, as described earlier, the context variables are all being set to dummy values. In fact, the `$size` context variable is being set to `dummy`. This $size value triggers the node-level response to show the appropriate message and exit the slots node.
 
@@ -633,7 +636,7 @@ As you make changes to your dialog, you can test it at any time to see how it re
 
     Any context variables that you defined in the dialog are displayed.
 
-    In addition, a `$timezone` context variable is listed. The *Try it out* pane user interface gets user locale information from the web browser and uses it to set the `$timezone` context variable. This context variable makes it easier to deal with time references in test dialog exchanges. Consider doing something similar in your user application. If not specified, Greenwich Mean Time (GMT) is used.
+    In addition, a `$timezone` context variable is listed. The "Try it out" pane user interface gets user locale information from the web browser and uses it to set the `$timezone` context variable. This context variable makes it easier to deal with time references in test dialog exchanges. Consider doing something similar in your user application. If not specified, Greenwich Mean Time (GMT) is used.
 
     You can add a variable and set its value to see how the dialog responds in the next test dialog turn. This capability is helpful if, for example, the dialog is set up to show different responses based on a context variable value that is provided by the user.
 
@@ -652,6 +655,60 @@ If you determine that the wrong intents or entities are being recognized, you mi
 
 If the right intents and entities are being recognized, but the wrong nodes are being triggered in your dialog, make sure your conditions are written correctly.
 
+## Supporting digressions ![Beta feature](images/beta.png)
+{: #digressions}
+
+Give your users more control over the flow of the conversation at run time by enabling digressions. A digression occurs when a user is in the middle of a dialog flow that is designed to address one goal, and switches topics to initiate a dialog flow that is designed to address a different goal. As you test your overall dialog, you can determine when and where it makes sense to allow digressions to take place.
+
+- Per node, you can choose whether users can digress away from the node before they reach the end of the current dialog branch. You can also stipulate whether the conversation must pick back up where it left off after the digression is finished.
+- You can control which dialog nodes users can digress into. For each base node, choose whether to allow users to digress into the node from a dialog flow that's in progress. Child nodes cannot be the targets of a digression, only base nodes.
+
+The following image shows how a user interacts with dialog nodes that are configured to allow digressions. The user starts to provide the information required to make a dinner reservation. In the middle of filling slots in the #reservation node, the user asks a question about vegetarian menu options. The dialog answers the user's off-topic question, and then returns to where it left off by showing the prompt for the next empty slot from the original dialog node.
+
+![Shows someone who is providing details about a dinner reservation ask about vegetarian options, get an answer, and then return to providing reservation details.](images/digression.gif)
+
+### Enabling digressions
+{: #enable-digressions}
+
+To give users the ability to switch from one dialog node to another mid-conversation, complete the following steps:
+
+1.  From the **Dialog** page, click **Settings**, and then select the **Enable digressions** checkbox.
+
+    This setting turns digressions on or off for the entire dialog.
+
+1.  Configure how digressions behave for an individual node by clicking the node to open its edit view. Click **Customize**, and then click the **Digressions** tab. The configuration options you can select differ depending on the node you are editing.
+
+    **Digressions away from this node**
+
+    - For all node types, choose whether to allow users to digress away from the current node.
+
+    - For nodes without slots, choose whether you want the conversation to come back to the current node after a digression if the current node's response has already been displayed.
+
+      For example, if the user asks, *Do you sell cupcakes?* and the response, *We offer cupcakes in a variety of flavors and sizes* has been displayed, and then the user changes subjects, you might not want the dialog to return to where it left off. However, if the node is configured to jump to a child node that asks a follow up question, such as, *Do you want to see a cupcake menu?* next, then you might want to force the conversation to return. You can turn on the **Return from digressions triggered after the node response** toggle to force the dialog to return to the current node and continue processing it. 
+      
+      **Note**: If the current node has no child nodes or its child nodes have only conditions that automatically evaluate to true, such as the special conditions `true` or `anything_else`, then this option is not available.
+
+    - For nodes with slots, you can specify whether you want to allow users to digress to nodes that do not bring users back to this node afterwards. Select the **Only digress from slots to nodes that allow returns** checkbox if you want to prevent users from being able to permanently leave a node with slots before they have finished filling the slots with required information.
+
+    **Digressions into this node**
+
+    - For base nodes only, which are top-level nodes that are defined along the trunk of the dialog tree, you can decide whether you want users to be able to digress into the node from another dialog node.
+
+    - If you enable digressions into the node, you can specify whether the dialog must go back to the dialog flow that it digressed away from after the dialog flow that starts with the current node is finished. To force the dialog to go back afterwards, select **Go back after digression**.
+
+1.  Click **Apply**.
+
+1.  Use the "Try it out" panel to test the digression behavior, and confirm that your dialog functions as expected.
+
+### Design considerations
+{: #digression-design-considerations}
+
+- **Digression chains**: If a user digresses away from the current node to another node that allows digressions, they could potentially digress away from that other node, and repeat this pattern one or more times again. If all the nodes in the digression chain are configured to go back after the digression, then the user will eventually be brought back to the current dialog node. Test scenarios that digress multiple times to determine whether individual nodes can hold up under the circumstances.
+
+- **Preventing digressions during slot-filling**: If you have designed an intricate dialog branch, or a complicated node, such as one with many slots, you might not want users to be able to switch focus away from it. That is a valid design choice. If you disable digressions away from a such a node, then any off-topic questions that the user asks while they interact with that dialog flow are ignored. However, for a node with slots, you can define node-level handlers to anticipate such questions and address them.
+
+- **When to use digressions instead of node-level handlers**: Use node-level handlers to address slightly off-topic questions that directly relate to the goal of the node with slots. For example, if the node with slots collects the information required to fill out an insurance claim, then you might want to add node-level handlers that address more general questions about insurance claims. Consider whether the intent might come up in multiple contexts. If it might, then address it with a base node that allows digressions into it. Intents that make good base nodes that users can digress into include ones that address requests for additional customer support, or for store location details, or that ask about the history of your company, for example.
+
 ## Moving a dialog node
 {: #move-node}
 
@@ -661,6 +718,16 @@ You might want to move a previously created node to another area of the flow to 
 
 1.  On the node you want to move, click the **More** ![More icon](images/kabob.png) icon, and then select **Move**.
 1.  Select a target node that is located in the tree near where you want to move this node. Choose whether to place this node above or below the target node, or to make it a child of the target node.
+
+## Copying a dialog node ![Beta feature](images/beta.png)
+{: #copy-node}
+
+You can duplicate a node to create an exact copy of it as a peer node directly below it in the dialog tree. The copied node itself is given the same name as the original node, but with `- copy`*`n`* appended to it, where *`n`* is a number that starts with 1. If you duplicate the same node more than once, then the *`n`* in the name increments by one for each copy to help you distinguish the copies from one another. If the node has no name, it is given the name `copy`*`n`*.
+
+When you duplicate a node that has child nodes, the child nodes are duplicated also. The copied child nodes have the exact same names as the original child nodes. The only way to distinguish a copied child node from an original child node is the `copy` reference in the parent node name.
+
+1.  On the node you want to copy, click the **More** ![More icon](images/kabob.png) icon, and then select **Duplicate**.
+1.  Consider renaming the copied nodes or editing their conditions to make them distinct.
 
 ## Finding a dialog node by its node ID
 {: #get-node-id}
