@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-20"
+lastupdated: "2017-11-27"
 
 ---
 
@@ -27,12 +27,13 @@ Videos and articles to help you get started faster.
 These videos are available in the documentation and on YouTube.
 
 - Navigation pane video: Tool overview for Conversation
-- "Defining intents" page: [Working with intents](intents.html)
-- "Defining entities" page: [Working with entities](entities.html)
-- "Building a dialog" page:
+- *Defining intents* page: [Working with intents](intents.html)
+- *Defining entities* page: [Working with entities](entities.html)
+- *Dialog overview* page:
     - [Working with dialog](dialog-overview.html)
     - [Working with conditional responses](dialog-overview.html#multiple)
     - [Adding response variations](dialog-overview.html#variety)
+- *Creating a dialog* page:
     - [Watson Conversation Slots](dialog-build.html#slots)
 
 ## Building with Watson videos
