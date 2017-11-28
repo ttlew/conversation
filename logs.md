@@ -43,7 +43,11 @@ In the **Improve** panel, you can view information about actual interactions wit
 
 For a {{site.data.keyword.conversationshort}} instance that includes mutiple workspaces, there may be times when it is useful to use utterance data from one workspace to improve another workspace within that same instance.
 
-As an example, say you have a {{site.data.keyword.conversationshort}} instance named *HelpDesk*. You may have both a Production workspace and a Development workspace in your HelpDesk instance. When working in the Development workspace, you can filter utterances based on the `Deployment ID` for the Production workspace, so that you are using Production workspace utterances to improve your Development workspace. Any edits you then make within the Development workspace will only affect the Development workspace, even if you’re using Production workspace utterances.
+As an example, say you have a {{site.data.keyword.conversationshort}} instance named *HelpDesk*. You may have both a Production workspace and a Development workspace in your HelpDesk instance. When working in the Development workspace, you can filter utterances based on the `Deployment ID` for the Production workspace, so that you are using Production workspace utterances to improve your Development workspace.
+
+![Data source link](images/data_source_1.png)
+
+Any edits you then make within the Development workspace will only affect the Development workspace, even if you’re using Production workspace utterances. See [Selecting a data source](logs_convo.html#select-source) for additional information.
 
 To specify the deployment ID for an utterance sent using the `/message` API, include the deployment property inside the metadata object in your [context ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/conversation/api/v1/#send_message){: new_window}, as in this example:
 {: #deploy_id}
