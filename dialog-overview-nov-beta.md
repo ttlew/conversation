@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-17"
+lastupdated: "2017-11-28"
 
 ---
 
@@ -20,7 +20,7 @@ lastupdated: "2017-11-17"
 # Dialog overview
 {: #dialog-overview-nov-beta}
 
-![Beta feature](images/beta.png) Some of the features described in this documentation are beta features that have been made available for your evaluation. Beta features might be unstable, might change frequently, and might be discontinued with short notice. Beta features also might not provide the same level of performance or compatibility that generally available features provide and are not intended for use in a production environment. Click [here](docs/services/conversation/dialog-overview.html) to return to the generally available version of this topic.
+**BETA**: Some of the features described in this documentation are beta features that have been made available for your evaluation. Beta features might be unstable, might change frequently, and might be discontinued with short notice. Beta features also might not provide the same level of performance or compatibility that generally available features provide and are not intended for use in a production environment. Click [here](docs/services/conversation/dialog-overview.html) to return to the generally available version of this topic.
 
 The dialog uses the intents and entities that are identified in the user's input, plus context from the application, to interact with the user and ultimately provide a useful response.
 {: shortdesc}
@@ -331,7 +331,7 @@ For example, in one node you might ask users for their name, and in a later node
 
 In this example, the system entity @sys-person is used to extract the user's name from the input if the user provides one. In the JSON editor, the username context variable is defined and set to the @sys-person value. In a subsequent node, the $username context variable is included in the response to address the user by name.
 
-### Defining a context variable ![Beta feature](images/beta.png)
+### Defining a context variable BETA
 
 Define a context variable by defining a name and value pair for the variable in one of the following editors:
 
@@ -489,7 +489,7 @@ To define a context variable, complete the following steps:
     ```json
     {
       "context": {
-        "email": "@email.literal"
+        "email": "<? @email.literal ?>"
       }
     }
     ```
