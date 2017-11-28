@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-17"
+lastupdated: "2017-11-28"
 
 ---
 
@@ -20,7 +20,7 @@ lastupdated: "2017-11-17"
 # Creating a dialog
 {: #dialog-build-nov-beta}
 
-![Beta feature](images/beta.png) Some of the features described in this documentation are beta features that have been made available for your evaluation. Beta features might be unstable, might change frequently, and might be discontinued with short notice. Beta features also might not provide the same level of performance or compatibility that generally available features provide and are not intended for use in a production environment. Click [here](docs/services/conversation/dialog-build.html) to return to the generally available version of this topic.
+**BETA** Some of the features described in this documentation are beta features that have been made available for your evaluation. Beta features might be unstable, might change frequently, and might be discontinued with short notice. Beta features also might not provide the same level of performance or compatibility that generally available features provide and are not intended for use in a production environment. Click [here](docs/services/conversation/dialog-build.html) to return to the generally available version of this topic.
 
 Use the {{site.data.keyword.conversationshort}} tool to create your dialog.
 {: shortdesc}
@@ -104,7 +104,7 @@ To create a dialog, complete the following steps:
     - To create a peer node that is checked next if the condition for the existing node is not met, select **Add node below**.
     - To create a peer node that is checked before the condition for the existing node is checked, select **Add node above**.
     - To create a child node to the selected node, select **Add child node**. A child node is processed after its parent node.
-    - To copy the current node, select **Duplicate**. ![Beta feature](images/beta.png)
+    - To copy the current node, select **Duplicate**. **BETA**
 
     For more information about the order in which dialog nodes are processed, see [Dialog overview](dialog-overview.html#dialog-flow).
 1.  Test the dialog as you build it.
@@ -655,7 +655,7 @@ If you determine that the wrong intents or entities are being recognized, you mi
 
 If the right intents and entities are being recognized, but the wrong nodes are being triggered in your dialog, make sure your conditions are written correctly.
 
-## Supporting digressions ![Beta feature](images/beta.png)
+## Supporting digressions BETA
 {: #digressions}
 
 Give your users more control over the flow of the conversation at run time by enabling digressions. A digression occurs when a user is in the middle of a dialog flow that is designed to address one goal, and switches topics to initiate a dialog flow that is designed to address a different goal. As you test your overall dialog, you can determine when and where it makes sense to allow digressions to take place.
@@ -719,7 +719,7 @@ You might want to move a previously created node to another area of the flow to 
 1.  On the node you want to move, click the **More** ![More icon](images/kabob.png) icon, and then select **Move**.
 1.  Select a target node that is located in the tree near where you want to move this node. Choose whether to place this node above or below the target node, or to make it a child of the target node.
 
-## Copying a dialog node ![Beta feature](images/beta.png)
+## Copying a dialog node BETA
 {: #copy-node}
 
 You can duplicate a node to create an exact copy of it as a peer node directly below it in the dialog tree. The copied node itself is given the same name as the original node, but with `- copy`*`n`* appended to it, where *`n`* is a number that starts with 1. If you duplicate the same node more than once, then the *`n`* in the name increments by one for each copy to help you distinguish the copies from one another. If the node has no name, it is given the name `copy`*`n`*.

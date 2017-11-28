@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-21"
+lastupdated: "2017-11-28"
 
 ---
 
@@ -50,17 +50,17 @@ A single node with one condition and response can handle simple user requests. B
 
 ## Dialog flow
 
-The dialog that you create is processed by the service from top to bottom.
+The dialog that you create is processed by the service from the first node in the tree to the last.
 
-![Arrow points down next to 3 nodes to show that dialog flows from top to bottom](images/node-flow-down.png)
+![Arrow points down next to 3 nodes to show that dialog flows from the first node to the last](images/node-flow-down.png)
 
-As it travels down the tree, if the service finds a condition that is met, it triggers that node. It then moves from left to right on the triggered node to check the user input against any child node conditions. As it checks the child nodes it moves again from top to bottom.
+As it travels down the tree, if the service finds a condition that is met, it triggers that node. It then moves along the triggered node to check the user input against any child node conditions. As it checks the child nodes it moves again from the first child node to the last.
 
-The services continues to work its way through the dialog tree from top to bottom, left to right, then top to bottom and left to right until it reaches the last node in the branch it is following.
+The services continues to work its way through the dialog tree from first to last node, along each triggered node, then from first to last child node, and along each triggered child node until it reaches the last node in the branch it is following.
 
-![Shows arrow 1 pointing from top to bottom, arrow 2 pointing from left to right, and arrow 3 pointing from top to bottom one node level over.](images/node-flow.png)
+![Shows arrow 1 pointing from the first base node to the last, arrow 2 pointing from along the length of a triggered node, and arrow 3 pointing from the first to the last child nodes of the triggered node.](images/node-flow.png)
 
-When you start to build the dialog, you must determine the branches to include, and where to place them. The order of the branches is important because nodes are evaluated from top to bottom. The first base node whose condition matches the input is used; any nodes that come lower in the tree are not triggered.
+When you start to build the dialog, you must determine the branches to include, and where to place them. The order of the branches is important because nodes are evaluated from first to last. The first base node whose condition matches the input is used; any nodes that come later in the tree are not triggered.
 
 ## Conditions
 {: #conditions}
@@ -80,43 +80,22 @@ You can use one or more of the following artifacts in any combination to define 
 
 - **Entity value**: The node is used if the entity value is detected in the user input. Use the syntax `@entity_name:value`. For example: `@city:Boston`. Specify a defined value for the entity, not a synonym.
 
-  If you check for the presence of the entity, without specifying a particular value for it, in a peer node, be sure to place the node that checks for this particular entity value above it.
+  If you check for the presence of the entity, without specifying a particular value for it, in a peer node, be sure to position this node (which checks for a particular entity value) before the peer node that checks only for the presence of the entity. Otherwise, this node will never be evaluated.
 {: tip}
 
 - **Intent**: The simplest condition is a single intent. The node is used if the user's input maps to that intent. Use the sytnax `#intent-name`. For example, `#weather` checks if the intent detected in the user input is `weather`. If so, the node is processed.
 
 - **Special condition**: Conditions that are provided with the service that you can use to perform common dialog functions.
 
-  <table>
-  <tr>
-    <td>Condition name</td>
-    <td>Description</td>
-  </tr>
-  <tr>
-    <td>anything_else</td>
-    <td>You can use this condition at the end of a dialog, to be processed when the user input does not match any other dialog nodes. The **Anything else** node is triggered by this condition.</td>
-  </tr>
-  <tr>
-    <td>conversation_start</td>
-    <td>Like **welcome**, this condition is evaluated as true during the first dialog turn. Unlike **welcome**, it is true whether or not the initial request from the application contains user input. A node with the **conversation_start** condition can be used to initialize context variables or perform other tasks at the beginning of the dialog.</td>
-  </tr>
-  <tr>
-    <td>false</td>
-    <td>This condition is always evaluated to false. You might use this at the top of a branch that is under development, to prevent it from being used, or as the condition for a node that provides a common function and is used only as the target of a **Jump to** action.</td>
-  </tr>
-  <tr>
-    <td>irrelevant</td>
-    <td>This condition will evaluate to true if the user’s input is determined to be irrelevant by the Conversation service.</td>
-  </tr>
-  <tr>
-    <td>true</td>
-    <td>This condition is always evaluated to true. You can use it at the end of a list of nodes or responses to catch any responses that did not match any of the previous conditions.</td>
-  </tr>
-  <tr>
-    <td>welcome</td>
-    <td>This condition is evaluated as true during the first dialog turn (when the conversation starts), only if the initial request from the application does not contain any user input. It is evaluated as false in all subsequent dialog turns. The **Welcome** node is triggered by this condition. Typically, a node with this condition is used to greet the user, for example, to display a message such as `Welcome to our Pizza ordering app.`</td>
-  </tr>
-  </table>
+| Condition name       | Description |
+|----------------------|-------------|
+| `anything_else`      | You can use this condition at the end of a dialog, to be processed when the user input does not match any other dialog nodes. The **Anything else** node is triggered by this condition. |
+| `conversation_start` | Like **welcome**, this condition is evaluated as true during the first dialog turn. Unlike **welcome**, it is true whether or not the initial request from the application contains user input. A node with the **conversation_start** condition can be used to initialize context variables or perform other tasks at the beginning of the dialog. |
+| `false`              | This condition is always evaluated to false. You might use this at the start of a branch that is under development, to prevent it from being used, or as the condition for a node that provides a common function and is used only as the target of a **Jump to** action. |
+| `irrelevant`         | This condition will evaluate to true if the user’s input is determined to be irrelevant by the Conversation service. |
+| `true`               | This condition is always evaluated to true. You can use it at the end of a list of nodes or responses to catch any responses that did not match any of the previous conditions. |
+| `welcome`            | This condition is evaluated as true during the first dialog turn (when the conversation starts), only if the initial request from the application does not contain any user input. It is evaluated as false in all subsequent dialog turns. The **Welcome** node is triggered by this condition. Typically, a node with this condition is used to greet the user, for example, to display a message such as `Welcome to our Pizza ordering app.`|
+
 
 ### Condition syntax
 
@@ -212,7 +191,7 @@ To specify more than one statement that you want to display on separate lines, d
 ```
 {: codeblock}
 
-The first sentence is displayed on one line, and the second sentence is displayed as a new line below it.
+The first sentence is displayed on one line, and the second sentence is displayed as a new line after it.
 
 To implement more complex behavior, you can define the output text as a complex JSON object. For example, you can use a complex object in the JSON output to mimic the behavior of adding response variations to the node. You can include the following properties in the complex object:
 

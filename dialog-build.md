@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-20"
+lastupdated: "2017-11-28"
 
 ---
 
@@ -32,6 +32,7 @@ The number of dialog nodes you can create depends on your service plan.
 |------------------|---------------------------:|
 | Standard/Premium |                    100,000 |
 | Lite             |                     25,000 |
+{: caption="Service plan details" caption-side="top"}
 
 Tree depth limit: Service supports 2,000 dialog node descendants; tooling performs best with 20 or fewer.
 
@@ -50,10 +51,10 @@ To create a dialog, complete the following steps:
     As you begin to define a condition, a box is displayed that shows you your options. You can enter one of the following characters, and then pick a value from the list of options that is displayed.
 
     <table>
-    <tr>
+    <th>
       <td>Character</td>
       <td>Lists defined values for these artifact types</td>
-    </tr>
+    </th>
     <tr>
       <td>`#`</td>
       <td>intents</td>
@@ -71,6 +72,7 @@ To create a dialog, complete the following steps:
       <td>context-variables that you defined or referenced elsewhere in the dialog</td>
     </tr>
     </table>
+    {: caption="Condition builder syntax" caption-side="top"}
 
     You can create a new intent, entity, entity value, or context variable by defining a new condition that uses it. If you create an artifact this way, be sure to go back and complete any other steps that are necessary for the artifact to be created completely, such as defining sample utterances for an intent.
 
@@ -176,14 +178,14 @@ Using slots produces a more natural dialog flow between the user and the service
     This table shows example slot values for a node that helps users place a pizza order.
 
     <table>
-    <tr>
+    <th>
       <td>Information</td>
       <td>Check for</td>
       <td>Save as</td>
       <td>Prompt</td>
       <td>Follow-up if found</td>
       <td>Follow-up if not found</td>
-    </tr>
+    </th>
     <tr>
       <td>Size</td>
       <td>@size</td>
@@ -201,23 +203,25 @@ Using slots produces a more natural dialog flow between the user and the service
       <td>What time did you want it delivered? We need at least a half hour to prepare it.</td>
     </tr>
     </table>
+    {: caption="Example slots for pizza order" caption-side="top"}
 
 1.  **Make a slot optional or disable it under certain conditions**. You can optionally configure a slot in these ways:
 
     - **Optional**: To make a slot optional, add a slot without a prompt. The service does not ask the user for the information, but it does look for the information in the user input, and saves the value if the user provides it. For example, you might add a slot that captures dietary restriction informations in case the user specifies any. However, you don't want to ask all users for dietary information since it is irrelevant in most cases.
 
       <table>
-      <tr>
+      <th>
         <td>Information</td>
         <td>Check for</td>
         <td>Save as</td>
-      </tr>
+      </th>
       <tr>
         <td>Wheat restriction</td>
         <td>@dietary</td>
         <td>$dietary</td>
       </tr>
       </table>
+      {: caption="Optional slot" caption-side="top"}
 
       If you make a slot optional, only reference its context variable in the node-level response text if you can word it such that it makes sense even if no value is provided for the slot. For example, you might word a summary statement like this, `I am ordering a $size $dietary pizza for delivery at $time.` The resulting text makes sense whether the dietary restriction information, such as `gluten-free` or `dairy-free`, is provided or not. The result is either, `I am ordering a large gluten-free pizza for delivery at 3:00PM.` or `I am ordering a large pizza for delivery at 3:00PM.`
       {: tip}
@@ -278,14 +282,14 @@ You can ask for a list of items and save them in one slot.
 For example, you might want to ask users whether they want toppings on their pizza. To do so define an entity (@toppings), and the accepted values for it (pepperoni, cheese, mushroom, and so on). Add a slot that asks the user about toppings. Use the values property of the entity type to capture multiple values, if provided.
 
 <table>
-<tr>
+<th>
   <td>Information</td>
   <td>Check for</td>
   <td>Save as</td>
   <td>Prompt</td>
   <td>Follow-up if found</td>
   <td>Follow-up if not found</td>
-</tr>
+</th>
 <tr>
   <td>Toppings</td>
   <td>@toppings.values</td>
@@ -295,6 +299,7 @@ For example, you might want to ask users whether they want toppings on their piz
   <td>What toppings would you like? We offer ...</td>
 </tr>
 </table>
+{: caption="Multiple value slot" caption-side="top"}
 
 To reference the user-specified toppings later, use the `<? $entity-name.join(',') ?>` syntax to list each item in the toppings array and separate the values with a comma. For example, `I am ordering you a $size pizza with <? $toppings.join(',') ?> for delivery by $time.`
 
@@ -319,32 +324,35 @@ See [Methods to process values](dialog-methods.html) for other reformatting idea
 #### Getting confirmation
 {: #slots-get-confirmation}
 
-Add a slot below the others that asks the user to confirm that the information you have collected is accurate and complete. The slot can look for responses that match the #yes or #no intent.
+Add a slot after the others that asks the user to confirm that the information you have collected is accurate and complete. The slot can look for responses that match the #yes or #no intent.
 
 <table>
-<tr>
+<th>
   <td>Information</td>
   <td>Check for</td>
   <td>Save as</td>
   <td>Prompt</td>
   <td>Follow-up if found</td>
   <td>Follow-up if not found</td>
-</tr>
+</th>
 <tr>
   <td>Confirmation</td>
   <td>#yes || #no</td>
   <td>$confirmation</td>
   <td>I'm going to order you a `$size` pizza for delivery at `$time`. Should I go ahead?</td>
   <td>Your pizza is on its way!</td>
-  <td>see below</td>
+  <td>see *Complex response*</td>
 </tr>
 </table>
+{: caption="Confirmation slot" caption-side="top"}
 
-Because users might include affirmative or negative statements at other times during the dialog (*Oh yes, we want the pizza delivered at 5pm*) or (*no guests tonight, let's make it a small*), use the `slot_in_focus` property to make it clear in the slot condition that you are looking for a Yes or No response to the prompt for this slot only.
+**Complex response** Because users might include affirmative or negative statements at other times during the dialog (*Oh yes, we want the pizza delivered at 5pm*) or (*no guests tonight, let's make it a small*), use the `slot_in_focus` property to make it clear in the slot condition that you are looking for a Yes or No response to the prompt for this slot only.
 
 ```json
 (#yes || #no) && slot_in_focus
 ```
+{: codeblock}
+
 The `slot_in_focus` property always evaluates to a Boolean (true or false) value. Only include it in a condition for which you want a boolean result. Do not use it in slot conditions that checks for an entity type and then save the entity value, for example.
 {: tip}
 
@@ -404,6 +412,7 @@ Condition: (event.previous_value != null) &&
     <? event.previous_value ?> to <? event.current_value ?>.
 Response: Ok, destination is $destination.
 ```
+{: codeblock}
 
 This slot configuration enables your dialog to react to the user's change in destination by saying, `Ok, updating the destination from Paris to Madrid.`
 
@@ -437,7 +446,7 @@ For each slot, you can use conditional responses with associated actions to help
     For Found responses (that are displayed when the user provides a value that matches the value type specified in the Check for field), you can choose one of these actions to perform next:
 
       - **Move on (Default)**: Instructs the service to move on to the next empty slot after displaying the response. In the associated response, assure the user that their input was understood. For example, *Ok. You want to schedule it for $date.*
-      - **Clear slot and prompt again**: If you are using an entity in the *Check for* field that could pick up the wrong value, add conditions that catch any likely misinterpretations, and use this action to clear the current slot value and prompt for the right value.
+      - **Clear slot and prompt again**: If you are using an entity in the *Check for* field that could pick up the wrong value, add conditions that catch any likely misinterpretations, and use this action to clear the current slot value and prompt for the correct value.
       - **Skip to response**: If, when the condition you define is met, you no longer need to fill any of the remaining slots in this node, choose this action to skip the remaining slots and go directly to the node-level response next. For example, you could add a condition that checks whether the user's age is under 16. If so, you might skip the remaining slots which ask questions about the user's driving record.
 
     For Not found responses (that are displayed when the user does not provide a valid value), you can choose one of these actions to perform:
@@ -449,7 +458,7 @@ For each slot, you can use conditional responses with associated actions to help
         {: tip}
 
       - **Skip this slot**: Instructs the service to stop trying to fill the current slot, and instead, move on to the prompt for the next empty slot. This option is useful in a slot where you want to both make the slot optional and to display a prompt that asks the user for information. For example, you might have a @seating entity that captures restaurant seating preferences, such as *outside*, *near the fireplace*, *private*, and so on. You can add a slot that prompts the user with, *Do you have any seating preferences?* and checks for `@seating.values`. If a valid response is provided, it saves the preference information to `$seating_preferences`. However, by choosing this action as the Not found response next step, you instruct the service to stop trying to fill this slot if the user does not provide a valid value for it.
-      - **Skip to response**: If, when the condition you define is met, you no longer need to fill any of the remaining slots in this node, choose this action to skip the remaining slots and go directly to the node-level response next. For example, if after capturing the one-way flight information, the slot prompt is, *Are you buying round-trip tickets?* the Not found condition can check for #No. If #No is found, use this option to skip the remaining slots that capture information about the return flight, and go straight to the node-level response instead.
+      - **Skip to response**: If, when the condition you define is met, you no longer need to fill any of the remaining slots in this node, choose this action to skip the remaining slots and go directly to the node-level response next. For example, if after capturing the one-way flight information, the slot prompt is, *Are you buying round trip tickets?* the Not found condition can check for #No. If #No is found, use this option to skip the remaining slots that capture information about the return flight, and go straight to the node-level response instead.
 
     Click **Back** to return to the edit view of the slot.
 1.  To add another conditional response, click **Add a response**, and then enter the condition and the response to display if the condition is met.
@@ -483,6 +492,7 @@ Catchall Not found condition:
   }
 }
 ```
+{: codeblock}
 
 To respond differently after 3 attempts, add another Not found condition like this:
 ```json
@@ -499,8 +509,9 @@ To respond differently after 3 attempts, add another Not found condition like th
     "size": "medium"
   }
   ```
+  {: codeblock}
 
-This condition is more precise than the true condition of the catchall response, so you must move this response up above the original conditional response or it will never be triggered. Select the conditional response and use the up arrow to move it up.
+This condition is more precise than the true condition of the catchall response, so you must move this response so it comes before the original conditional response or it will never be triggered. Select the conditional response and use the up arrow to move it up.
 
 #### Preventing a Found response from displaying when it is not needed
 {: #slots-stifle-found-responses}
@@ -548,12 +559,13 @@ Here's a sample of JSON that defines a node-level handler for the pizza example.
 }
 }
 ```
+{: codeblock}
 
 **Important**: Take into account the logic used in conditions that are evaluated before this node-level handler so you can build distinct conditions into them. When a user input is received, the conditions are evaluated in the following order:
 
-    - Current slot level Found conditions.
-    - Node-level handlers in the order they are listed.
-    - Current slot level Not found conditions.
+- Current slot level Found conditions.
+- Node-level handlers in the order they are listed.
+- Current slot level Not found conditions.
 
 Be careful about adding conditions that always evaluate to true (such as the special conditions, `true` or `anything_else`) as node-level handlers. Per slot, if the node-level handler evaluates to true, then the Not found condition is skipped entirely. So, using a node-level handler that always evaluates to true effectively prevents the Not found condition for every slot from being evaluated.
 {: tip}
@@ -581,7 +593,7 @@ Check for @animal, then save it as $animal.
 
 And to deal with a possible `cat` response, add this value to the Found condition:
 
-```josn
+```json
 If @animal:cat then, "I'm sorry. We do not groom cats."
 ```
 {: codeblock}
@@ -618,11 +630,11 @@ As you make changes to your dialog, you can test it at any time to see how it re
 1.  From the Dialog tab, click the ![Ask Watson](images/ask_watson.png) icon.
 1.  In the chat pane, type some text and then press Enter.
 
-    Make sure the system has finished training on your most recent changes before you start to test the dialog. If the system is still training, a message appears at the top of the chat pane:
+    Make sure the system has finished training on your most recent changes before you start to test the dialog. If the system is still training, a message is displayed in the *Try it out* pane:
     {: tip}
 
     ![Screen capture of training message](images/training.png)
-1.  Check the response to see if the dialog correctly interpreted your input and chose the right response.
+1.  Check the response to see if the dialog correctly interpreted your input and chose the appropriate response.
 
     The chat window indicates what intents and entities were recognized in the input:
 
@@ -650,7 +662,7 @@ As you make changes to your dialog, you can test it at any time to see how it re
 
 If you determine that the wrong intents or entities are being recognized, you might need to modify your intent or entity definitions.
 
-If the right intents and entities are being recognized, but the wrong nodes are being triggered in your dialog, make sure your conditions are written correctly.
+If the correct intents and entities are being recognized, but the wrong nodes are being triggered in your dialog, make sure your conditions are written properly.
 
 ## Moving a dialog node
 {: #move-node}
@@ -660,7 +672,7 @@ Each node that you create can be moved elsewhere in the dialog tree.
 You might want to move a previously created node to another area of the flow to change the conversation. You can move nodes to become siblings or peers in another branch.
 
 1.  On the node you want to move, click the **More** ![More icon](images/kabob.png) icon, and then select **Move**.
-1.  Select a target node that is located in the tree near where you want to move this node. Choose whether to place this node above or below the target node, or to make it a child of the target node.
+1.  Select a target node that is located in the tree near where you want to move this node. Choose whether to place this node before or after the target node, or to make it a child of the target node.
 
 ## Finding a dialog node by its node ID
 {: #get-node-id}
@@ -677,9 +689,7 @@ To discover a node based on its node ID, complete the following steps:
 1.  Close the edit view if it is open for the current node.
 1.  In your web browser's location field, a URL should display that has the following syntax:
 
-    ```json
-    https://watson-conversation.ng.bluemix.net/space/instance-id/workspaces/workspace-id/build/dialog#node=node-id
-    ```
+    `https://watson-conversation.ng.bluemix.net/space/instance-id/workspaces/workspace-id/build/dialog#node=node-id`
 
 1.  Edit the URL by replacing the current `node-id` value with the ID of the node you want to find, and then submit the new URL.
 1.  If necessary, highlight the edited URL again, and resubmit it.
