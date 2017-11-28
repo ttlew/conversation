@@ -1,0 +1,81 @@
+{:navgroup: .navgroup}
+{:topicgroup: .topicgroup}
+
+{: .toc subcollection="conversation" audience="service" href="/docs/services/conversation/getting-started.html"}
+Conversation
+
+    {: .navgroup id="learn"}
+    getting-started.md
+    index.md
+    tool-overview.md
+    [デモ: 自動車のダッシュボード](https://conversation-demo.mybluemix.net/)
+    resources.md
+    {: .navgroup-end}
+
+    {: .navgroup id="howto"}
+    configure-workspace.md
+
+    {: .topicgroup}
+    インテントとエンティティーの定義
+        intents-entities.md
+        intents.md
+        entities.md
+    dialog-build.md
+    dialog-api.md
+
+    {: .topicgroup}
+    デプロイ
+        deploy.md
+        test-deploy.md
+        develop-app.md
+        integrations.md
+    tutorial.md
+
+    {: .topicgroup}
+    理解の向上
+        logs.md
+        logs_oview.md
+        logs_convo.md
+        logs_recommend.md
+
+    plan-upgrade.md
+    {: .navgroup-end}
+
+    {: .navgroup id="reference"}
+    [API リファレンス](https://www.ibm.com/watson/developercloud/conversation/api/v1/)
+
+    {: .topicgroup}
+    式言語
+        expression-language.md
+        dialog-methods.md
+
+    filter-reference.md
+    sample-applications.md
+    lang-support.md
+
+    {: .topicgroup}
+    システム・エンティティー
+        system-entities.md
+        supported-timezones.md
+
+    [Watson GitHub リポジトリー](https://github.com/watson-developer-cloud/)
+
+    {: .topicgroup}
+    Watson SDK
+        [Java SDK](https://github.com/watson-developer-cloud/java-sdk)
+        [Node.js SDK](https://github.com/watson-developer-cloud/node-sdk)
+        [Python SDK](https://github.com/watson-developer-cloud/python-sdk)
+        [.NET SDK](https://github.com/watson-developer-cloud/dotnet-standard-sdk)
+        [Swift SDK](https://github.com/watson-developer-cloud/ios-sdk)
+        [Unity SDK](https://github.com/watson-developer-cloud/unity-sdk)
+    {: .navgroup-end}
+
+    {: .navgroup id="help"}
+    release-notes.md
+
+    {: .topicgroup}
+    開発者コミュニティー
+        [StackOverflow](http://stackoverflow.com/questions/tagged/watson-conversation)
+        [developerWorks の回答](https://developer.ibm.com/answers/topics/watson-conversation/)
+        [WDC Slack チャネル](http://wdc-slack-inviter.mybluemix.net/)
+    {: .navgroup-end}
