@@ -37,13 +37,13 @@ To understand how to use utterance data to make improvements across workspaces, 
 * ***Deployment ID:*** Deployment IDs are unique labels that are passed with user utterances to help identify the deployment environment that the utterances come from
 * ***Utterance:*** An utterance is a single message the user sends to the workspace
 
-Creating a workspace is a very iterative process. While you develop your workspace, you use the *Try it out* panel to verify that your workspace recognizes the correct intents and entities in test inputs, and to make corrections as needed.
+Creating a workspace is a very iterative process. While you develop your workspace, you use the *Try it out* pane to verify that your workspace recognizes the correct intents and entities in test inputs, and to make corrections as needed.
 
 In the **Improve** panel, you can view information about actual interactions with your users, and make similar corrections to improve the accuracy with which intents and entities are recognized by your workspace. It is difficult to know exactly *how* your users will ask questions, or what random utterances they may make, so it is important to frequently visit the **Improve** panel, in order to improve your workspaces.
 
 For a {{site.data.keyword.conversationshort}} instance that includes mutiple workspaces, there may be times when it is useful to use utterance data from one workspace to improve another workspace within that same instance.
 
-As an example, say you have a {{site.data.keyword.conversationshort}} instance named "HelpDesk". You may have both a Production workspace and a Development workspace in your HelpDesk instance. When working in the Development workspace, you can filter utterances based on the `Deployment ID` for the Production workspace, so that you are using Production workspace utterances to improve your Development workspace. Any edits you then make within the Development workspace will only affect the Development workspace, even if you’re using Production workspace utterances.
+As an example, say you have a {{site.data.keyword.conversationshort}} instance named *HelpDesk*. You may have both a Production workspace and a Development workspace in your HelpDesk instance. When working in the Development workspace, you can filter utterances based on the `Deployment ID` for the Production workspace, so that you are using Production workspace utterances to improve your Development workspace. Any edits you then make within the Development workspace will only affect the Development workspace, even if you’re using Production workspace utterances.
 
 To specify the deployment ID for an utterance sent using the `/message` API, include the deployment property inside the metadata object in your [context ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/conversation/api/v1/#send_message){: new_window}, as in this example:
 {: #deploy_id}
