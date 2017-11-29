@@ -1,0 +1,81 @@
+{:navgroup: .navgroup}
+{:topicgroup: .topicgroup}
+
+{: .toc subcollection="conversation" audience="service" href="/docs/services/conversation/getting-started.html"}
+Conversation
+
+    {: .navgroup id="learn"}
+    getting-started.md
+    index.md
+    tool-overview.md
+    [Demo: Dashboard automobile](https://conversation-demo.mybluemix.net/)
+    resources.md
+    {: .navgroup-end}
+
+    {: .navgroup id="howto"}
+    configure-workspace.md
+
+    {: .topicgroup}
+    Definizione di intenti ed entità
+        intents-entities.md
+        intents.md
+        entities.md
+    dialog-build.md
+    dialog-api.md
+
+    {: .topicgroup}
+    Distribuzione
+        deploy.md
+        test-deploy.md
+        develop-app.md
+        integrations.md
+    tutorial.md
+
+    {: .topicgroup}
+    Miglioramento della comprensione
+        logs.md
+        logs_oview.md
+        logs_convo.md
+        logs_recommend.md
+
+    plan-upgrade.md
+    {: .navgroup-end}
+
+    {: .navgroup id="reference"}
+    [Riferimento API](https://www.ibm.com/watson/developercloud/conversation/api/v1/)
+
+    {: .topicgroup}
+    Linguaggio delle espressioni
+        expression-language.md
+        dialog-methods.md
+
+    filter-reference.md
+    sample-applications.md
+    lang-support.md
+
+    {: .topicgroup}
+    Entità di sistema
+        system-entities.md
+        supported-timezones.md
+
+    [Repository GitHub Watson](https://github.com/watson-developer-cloud/)
+
+    {: .topicgroup}
+    SDK Watson
+        [SDK Java](https://github.com/watson-developer-cloud/java-sdk)
+        [SDK Node.js](https://github.com/watson-developer-cloud/node-sdk)
+        [SDK Python](https://github.com/watson-developer-cloud/python-sdk)
+        [SDK .NET](https://github.com/watson-developer-cloud/dotnet-standard-sdk)
+        [SDK Swift](https://github.com/watson-developer-cloud/ios-sdk)
+        [SDK Unity](https://github.com/watson-developer-cloud/unity-sdk)
+    {: .navgroup-end}
+
+    {: .navgroup id="help"}
+    release-notes.md
+
+    {: .topicgroup}
+    Community di sviluppatori
+        [StackOverflow](http://stackoverflow.com/questions/tagged/watson-conversation)
+        [developerWorks Answers](https://developer.ibm.com/answers/topics/watson-conversation/)
+        [Canale Slack WDC](http://wdc-slack-inviter.mybluemix.net/)
+    {: .navgroup-end}
