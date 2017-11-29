@@ -16,6 +16,7 @@ lastupdated: "2017-11-28"
 {:java: .ph data-hd-programlang='java'}
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
+{:table: .aria-labeledby="caption"}
 
 # Creating a dialog
 {: #dialog-build}
@@ -51,10 +52,10 @@ To create a dialog, complete the following steps:
     As you begin to define a condition, a box is displayed that shows you your options. You can enter one of the following characters, and then pick a value from the list of options that is displayed.
 
     <table>
-    <th>
-      <td>Character</td>
-      <td>Lists defined values for these artifact types</td>
-    </th>
+    <tr>
+      <th>Character</th>
+      <th>Lists defined values for these artifact types</th>
+    </tr>
     <tr>
       <td>`#`</td>
       <td>intents</td>
@@ -178,14 +179,14 @@ Using slots produces a more natural dialog flow between the user and the service
     This table shows example slot values for a node that helps users place a pizza order.
 
     <table>
-    <th>
-      <td>Information</td>
-      <td>Check for</td>
-      <td>Save as</td>
-      <td>Prompt</td>
-      <td>Follow-up if found</td>
-      <td>Follow-up if not found</td>
-    </th>
+    <tr>
+      <th>Information</th>
+      <th>Check for</th>
+      <th>Save as</th>
+      <th>Prompt</th>
+      <th>Follow-up if found</th>
+      <th>Follow-up if not found</th>
+    </tr>
     <tr>
       <td>Size</td>
       <td>@size</td>
@@ -209,16 +210,16 @@ Using slots produces a more natural dialog flow between the user and the service
 
     - **Optional**: To make a slot optional, add a slot without a prompt. The service does not ask the user for the information, but it does look for the information in the user input, and saves the value if the user provides it. For example, you might add a slot that captures dietary restriction informations in case the user specifies any. However, you don't want to ask all users for dietary information since it is irrelevant in most cases.
 
-      <table>
-      <th>
-        <td>Information</td>
-        <td>Check for</td>
-        <td>Save as</td>
-      </th>
-      <tr>
-        <td>Wheat restriction</td>
-        <td>@dietary</td>
-        <td>$dietary</td>
+       <table>
+       <tr>
+          <th>Information</th>
+          <th>Check for</th>
+          <th>Save as</th>
+       </tr>
+       <tr>
+          <td>Wheat restriction</td>
+          <td>@dietary</td>
+          <td>$dietary</td>
       </tr>
       </table>
       {: caption="Optional slot" caption-side="top"}
@@ -282,14 +283,14 @@ You can ask for a list of items and save them in one slot.
 For example, you might want to ask users whether they want toppings on their pizza. To do so define an entity (@toppings), and the accepted values for it (pepperoni, cheese, mushroom, and so on). Add a slot that asks the user about toppings. Use the values property of the entity type to capture multiple values, if provided.
 
 <table>
-<th>
-  <td>Information</td>
-  <td>Check for</td>
-  <td>Save as</td>
-  <td>Prompt</td>
-  <td>Follow-up if found</td>
-  <td>Follow-up if not found</td>
-</th>
+<tr>
+  <th>Information</th>
+  <th>Check for</th>
+  <th>Save as</th>
+  <th>Prompt</th>
+  <th>Follow-up if found</th>
+  <th>Follow-up if not found</th>
+</tr>
 <tr>
   <td>Toppings</td>
   <td>@toppings.values</td>
@@ -327,14 +328,14 @@ See [Methods to process values](dialog-methods.html) for other reformatting idea
 Add a slot after the others that asks the user to confirm that the information you have collected is accurate and complete. The slot can look for responses that match the #yes or #no intent.
 
 <table>
-<th>
-  <td>Information</td>
-  <td>Check for</td>
-  <td>Save as</td>
-  <td>Prompt</td>
-  <td>Follow-up if found</td>
-  <td>Follow-up if not found</td>
-</th>
+<tr>
+  <th>Information</th>
+  <th>Check for</th>
+  <th>Save as</th>
+  <th>Prompt</th>
+  <th>Follow-up if found</th>
+  <th>Follow-up if not found</th>
+</tr>
 <tr>
   <td>Confirmation</td>
   <td>#yes || #no</td>

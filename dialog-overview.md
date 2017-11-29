@@ -16,6 +16,7 @@ lastupdated: "2017-11-28"
 {:java: .ph data-hd-programlang='java'}
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
+{:table: .aria-labeledby="caption"}
 
 # Dialog overview
 {: #dialog-overview}
@@ -95,7 +96,7 @@ You can use one or more of the following artifacts in any combination to define 
 | `irrelevant`         | This condition will evaluate to true if the user’s input is determined to be irrelevant by the Conversation service. |
 | `true`               | This condition is always evaluated to true. You can use it at the end of a list of nodes or responses to catch any responses that did not match any of the previous conditions. |
 | `welcome`            | This condition is evaluated as true during the first dialog turn (when the conversation starts), only if the initial request from the application does not contain any user input. It is evaluated as false in all subsequent dialog turns. The **Welcome** node is triggered by this condition. Typically, a node with this condition is used to greet the user, for example, to display a message such as `Welcome to our Pizza ordering app.`|
-
+{: caption="Special conditions" caption-side="top"}
 
 ### Condition syntax
 
