@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-28"
+lastupdated: "2017-11-29"
 
 ---
 
@@ -33,7 +33,7 @@ The number of dialog nodes you can create depends on your service plan.
 |------------------|---------------------------:|
 | Standard/Premium |                    100,000 |
 | Lite             |                     25,000 |
-{: caption="Service plan details" caption-side="top"}
+{: caption="Table 1. Service plan details" caption-side="top"}
 
 Tree depth limit: Service supports 2,000 dialog node descendants; tooling performs best with 20 or fewer.
 
@@ -52,6 +52,7 @@ To create a dialog, complete the following steps:
     As you begin to define a condition, a box is displayed that shows you your options. You can enter one of the following characters, and then pick a value from the list of options that is displayed.
 
     <table>
+    <caption>Condition builder syntax</caption>
     <tr>
       <th>Character</th>
       <th>Lists defined values for these artifact types</th>
@@ -73,7 +74,6 @@ To create a dialog, complete the following steps:
       <td>context-variables that you defined or referenced elsewhere in the dialog</td>
     </tr>
     </table>
-    {: caption="Condition builder syntax" caption-side="top"}
 
     You can create a new intent, entity, entity value, or context variable by defining a new condition that uses it. If you create an artifact this way, be sure to go back and complete any other steps that are necessary for the artifact to be created completely, such as defining sample utterances for an intent.
 
@@ -179,6 +179,7 @@ Using slots produces a more natural dialog flow between the user and the service
     This table shows example slot values for a node that helps users place a pizza order.
 
     <table>
+    <caption>Example slots for pizza order</caption>
     <tr>
       <th>Information</th>
       <th>Check for</th>
@@ -204,13 +205,13 @@ Using slots produces a more natural dialog flow between the user and the service
       <td>What time did you want it delivered? We need at least a half hour to prepare it.</td>
     </tr>
     </table>
-    {: caption="Example slots for pizza order" caption-side="top"}
 
 1.  **Make a slot optional or disable it under certain conditions**. You can optionally configure a slot in these ways:
 
     - **Optional**: To make a slot optional, add a slot without a prompt. The service does not ask the user for the information, but it does look for the information in the user input, and saves the value if the user provides it. For example, you might add a slot that captures dietary restriction informations in case the user specifies any. However, you don't want to ask all users for dietary information since it is irrelevant in most cases.
 
        <table>
+       <caption>Optional slot</caption>
        <tr>
           <th>Information</th>
           <th>Check for</th>
@@ -222,7 +223,6 @@ Using slots produces a more natural dialog flow between the user and the service
           <td>$dietary</td>
       </tr>
       </table>
-      {: caption="Optional slot" caption-side="top"}
 
       If you make a slot optional, only reference its context variable in the node-level response text if you can word it such that it makes sense even if no value is provided for the slot. For example, you might word a summary statement like this, `I am ordering a $size $dietary pizza for delivery at $time.` The resulting text makes sense whether the dietary restriction information, such as `gluten-free` or `dairy-free`, is provided or not. The result is either, `I am ordering a large gluten-free pizza for delivery at 3:00PM.` or `I am ordering a large pizza for delivery at 3:00PM.`
       {: tip}
@@ -244,6 +244,7 @@ Using slots produces a more natural dialog flow between the user and the service
 
     If you want to define different responses based on certain conditions, click **Customize**, and then click the **Multiple responses** toggle to turn it **On**. For information about conditional responses, see [Conditional responses](dialog-overview.html#multiple).
 1.  **Add logic that resets the slot context variables**. As you collect answers from the user per slot, they are saved in context variables. You can use the context variables to pass the information to another node or to an application or external service for use. However, after passing the information, you must set the context variables to null to reset the node so it can start collecting information again. You cannot null the context variables within the current node because the service will not exit the node until the required slots are filled. Instead, consider using one of the following methods:
+
     - Add processing to the external application that nulls the variables.
     - Add a child node that nulls the variables.
     - Insert a parent node that nulls the variables, and then jumps to the node with slots.
@@ -283,6 +284,7 @@ You can ask for a list of items and save them in one slot.
 For example, you might want to ask users whether they want toppings on their pizza. To do so define an entity (@toppings), and the accepted values for it (pepperoni, cheese, mushroom, and so on). Add a slot that asks the user about toppings. Use the values property of the entity type to capture multiple values, if provided.
 
 <table>
+<caption>Multiple value slot</caption>
 <tr>
   <th>Information</th>
   <th>Check for</th>
@@ -300,7 +302,6 @@ For example, you might want to ask users whether they want toppings on their piz
   <td>What toppings would you like? We offer ...</td>
 </tr>
 </table>
-{: caption="Multiple value slot" caption-side="top"}
 
 To reference the user-specified toppings later, use the `<? $entity-name.join(',') ?>` syntax to list each item in the toppings array and separate the values with a comma. For example, `I am ordering you a $size pizza with <? $toppings.join(',') ?> for delivery by $time.`
 
@@ -328,6 +329,7 @@ See [Methods to process values](dialog-methods.html) for other reformatting idea
 Add a slot after the others that asks the user to confirm that the information you have collected is accurate and complete. The slot can look for responses that match the #yes or #no intent.
 
 <table>
+<caption>Confirmation slot</caption>
 <tr>
   <th>Information</th>
   <th>Check for</th>
@@ -345,7 +347,6 @@ Add a slot after the others that asks the user to confirm that the information y
   <td>see *Complex response*</td>
 </tr>
 </table>
-{: caption="Confirmation slot" caption-side="top"}
 
 **Complex response** Because users might include affirmative or negative statements at other times during the dialog (*Oh yes, we want the pizza delivered at 5pm*) or (*no guests tonight, let's make it a small*), use the `slot_in_focus` property to make it clear in the slot condition that you are looking for a Yes or No response to the prompt for this slot only.
 
@@ -529,7 +530,7 @@ To prevent Found responses from being displayed, you can do one of the following
 
 Add at least one node-level handler that can recognize it when a user wants to exit the node.
 
-For example, in a node that collects information to schedule a pet grooming appointment, you can add a node-level handler that conditions on the #cancel intent, which recognizes utterances such as, `Forget it. I changed my mind.`
+For example, in a node that collects information to schedule a pet grooming appointment, you can add a node-level handler that conditions on the #cancel intent, which recognizes utterances such as, <q>Forget it. I changed my mind.</q>
 
 1.  In the JSON editor for the handler, fill all of the slot context variables with dummy values to prevent the node from continuing to ask for any that are missing. And in the handler response, add a message such as, `Ok, we'll stop there. No appointment will be scheduled.`
 1.  Choose what action you want the service to take next from the following options:
