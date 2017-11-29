@@ -33,7 +33,7 @@ In the following table, the level of language and feature support is indicated b
 | **Arabic (ar)**                    | GA | Beta | Beta | Beta (Misspelling only) | Beta |
 | **Chinese (Simplified) (zh-cn)**   | Beta | Beta | Beta |  | Beta |
 | **Chinese (Traditional) (zh-tw)**  | Beta | Beta |  |  | Beta |
-| **Czech (cs)**                     | Beta | Beta | Beta | Beta (Misspelling only) | Beta |
+| **Czech (cs)**                     | Beta | Beta | Beta | Beta (Misspelling only) | Beta
 | **Dutch (nl)**                     | Beta | Beta |  |  | Beta |
 | **French (fr)**                    | GA | GA | GA | Beta (Misspelling only) | Beta |
 | **German (de)**                    | GA | GA | GA | Beta (Misspelling only) | Beta |
@@ -44,6 +44,8 @@ In the following table, the level of language and feature support is indicated b
 | **Spanish (es)**                   | GA | GA | GA | Beta (Misspelling only) | Beta ||
 
 **Note:** The {{site.data.keyword.conversationshort}} service supports multiple languages as noted, but the tooling interface itself (descriptions, labels, etc.) is in English. All supported languages can be input and trained through the English interface.
+
+**GB18030 compliance**: GB18030 is a Chinese standard that specifies an extended code page for use in the Chinese market. This code page standard is important for the software industry because the China National Information Technology Standardization Technical Committee has mandated that any software application that is released for the Chinese market after September 1, 2001, be enabled for GB18030. The {{site.data.keyword.conversationshort}} service supports this encoding, and is certified GB18030-compliant
 
 ## Changing a workspace language
 
@@ -63,7 +65,7 @@ Select from the following options for your workspace:
 - **GUI Direction**: Specifies the layout direction of elements, such as buttons or menus, in the graphical user interface. Choose `LTR` (left-to-right) or `RTL` (right-to-left). If not specified, the tool follows the web browser GUI direction setting.
 - **Text Direction**: Specifies the direction of typed text. Choose `LTR` (left-to-right) or `RTL` (right-to-left), or select `Auto` which will automatically choose the text direction based on your system settings. The `None` option will display left-to-right text.
 - **Numeric Shaping**: Specifies which form of numerals to use when presenting regular digits. Choose from `Nominal`, `Arabic-Indic`, or `Arabic-European`. The `None` option will display Western numerals.
-- **Calendar Type**: Specifies how you choose filtering dates in the workspace UI. Choose `Islamic-Civil`, `Islamic-Tabular`, `Islamic-Umm al-Qura`, or `Gregorian`. **Note**: This setting does not apply to the *Try it out* pane.
+- **Calendar Type**: Specifies how you choose filtering dates in the workspace UI. Choose `Islamic-Civil`, `Islamic-Tabular`, `Islamic-Umm al-Qura`, or `Gregorian`. **Note**: This setting does not apply to the "Try it out" panel.
 
 ![Bidi options](images/bidi_opts.png)
 
