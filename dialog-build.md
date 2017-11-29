@@ -530,7 +530,7 @@ To prevent Found responses from being displayed, you can do one of the following
 
 Add at least one node-level handler that can recognize it when a user wants to exit the node.
 
-For example, in a node that collects information to schedule a pet grooming appointment, you can add a node-level handler that conditions on the #cancel intent, which recognizes utterances such as, "Forget it. I changed my mind."
+For example, in a node that collects information to schedule a pet grooming appointment, you can add a node-level handler that conditions on the #cancel intent, which recognizes utterances such as, <q>Forget it. I changed my mind.</q>
 
 1.  In the JSON editor for the handler, fill all of the slot context variables with dummy values to prevent the node from continuing to ask for any that are missing. And in the handler response, add a message such as, `Ok, we'll stop there. No appointment will be scheduled.`
 1.  Choose what action you want the service to take next from the following options:
