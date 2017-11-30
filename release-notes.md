@@ -28,7 +28,7 @@ Send the version parameter with every API request. The service uses the API vers
 
 The current version is `2017-05-26`.
 
-The *Try it out* pane in the Conversation tooling uses the latest API version.
+The "Try it out" pane in the Conversation tooling uses the latest API version.
 
 ## Beta features
 
@@ -51,7 +51,7 @@ The following new features and changes to the service are available.
 ### 29 November 2017
 {: #29November2017}
 
-- **Improving understanding of user input across workspaces**: You can now improve a workspace with utterances that were sent to other workspaces within your instance. For example, you may have multiple versions of production workspaces and development workspaces; you can use the same utterance data to improve any of these workspaces. See [Improving across workspaces](logs.html#deploy_id) and [Selecting a data source](logs_convo.html#select-source) for additional information.
+- **Improving understanding of user input across workspaces**: You can now improve a workspace with utterances that were sent to other workspaces within your instance. For example, you might have multiple versions of production workspaces and development workspaces; you can use the same utterance data to improve any of these workspaces. See [Improving across workspaces](logs.html#deploy_id) and [Selecting a data source](logs_convo.html#select-source) for additional information.
 
 ### 20 November 2017
 {: #20November2017}
@@ -79,7 +79,7 @@ The following new features and changes to the service are available.
 
     - You can now choose **Skip user input** as the next step for a node. When you choose this option, after processing the current node, the service jumps directly to the first child node of the current node. This option is similar to the existing *Jump to* next step option, except that it allows for more flexibility. You do not need to specify the exact node to jump to. At run time, the service always jumps to whichever node is the first child node, even if the child nodes are reordered or new nodes are added after the next step behavior is defined.
 
-    - You can add conditional responses for slots. For both Found and Not found responses, you can customize how the service responds based on whether certain conditions are met. This feature enables you to check for possible misinterpretations and correct them before saving the value provided by the user in the slot's context variable. For example, if the slot saves the user's age, and uses `@sys-number` in the *Check for* field to capture it, you can add a condition that checks for numbers over 100, and responds with something like, *Please provide a valid age in years.* See [Adding conditions to Found and Not found responses](dialog-build.html#slot-handler-next-steps) for more details.
+    - You can add conditional responses for slots. For both Found and Not found responses, you can customize how the service responds based on whether certain conditions are met. This feature enables you to check for possible misinterpretations and correct them before saving the value provided by the user in the slot's context variable. For example, if the slot saves the user's age, and uses `@sys-number` in the *Check for* field to capture it, you can add a condition that checks for numbers over 100, and responds with something like, *Please provide a valid age in years.* See [Adding conditions to Found and Not found responses](dialog-slots.html#slot-handler-next-steps) for more details.
 
     - The interface you use to add conditional responses to a node has been redesigned to make it easier to list each condition and its response. To add node-level conditional responses, click **Customize**, and then enable the **Multiple responses** option.
 
@@ -172,7 +172,7 @@ The following new features and changes to the service are available.
 ### 14 July 2017
 {: #14July2017}
 
-- The slots functionality of dialogs was enhanced. For example, a *slot_in_focus* property was added that you can use to define a condition that applies to a single slot only. See [Gathering information with slots](/docs/services/conversation/dialog-build.html#slots) for details.
+- The slots functionality of dialogs was enhanced. For example, a *slot_in_focus* property was added that you can use to define a condition that applies to a single slot only. See [Gathering information with slots](/docs/services/conversation/dialog-slots.html) for details.
 
 ### 12 July 2017
 {: #12July2017}
@@ -193,7 +193,7 @@ The following new features and changes to the service are available.
 ### 22 June 2017
 {: #22June2017}
 
-- **Introducing slots**: It is now easier to collect multiple pieces of information from a user in a single node by adding slots. Previously, you had to create several dialog nodes to cover all the possible combinations of ways that users might provide the information. With slots, you can configure a single node that saves any information that the user provides, and prompts for any required details that the user does not. See [Gathering information with slots](dialog-build.html#slots) for more details.
+- **Introducing slots**: It is now easier to collect multiple pieces of information from a user in a single node by adding slots. Previously, you had to create several dialog nodes to cover all the possible combinations of ways that users might provide the information. With slots, you can configure a single node that saves any information that the user provides, and prompts for any required details that the user does not. See [Gathering information with slots](dialog-slots.html) for more details.
 - **Simplified dialog tree** - The dialog tree has been redesigned to improve its usability. The tree view is more compact so it is easier to see where you are within it. And the links between nodes are represented in a way that makes it easier to understand the relationships between the nodes.
 
 ### 21 June 2017
