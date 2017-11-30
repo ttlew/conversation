@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-29"
+lastupdated: "2017-11-30"
 
 ---
 
@@ -47,6 +47,11 @@ Existing models that you have trained will not be immediately impacted, but expi
 {: #change-log}
 
 The following new features and changes to the service are available.
+
+### 30 November 2017
+{: #30November2017}
+
+- **Eastern Arabic numeral support**: Eastern Arabic numerals are now supported in Arabic system entities.
 
 ### 29 November 2017
 {: #29November2017}
