@@ -38,6 +38,7 @@ The number of dialog nodes you can create depends on your service plan.
 Tree depth limit: Service supports 2,000 dialog node descendants; tooling performs best with 20 or fewer.
 
 ## Procedure
+{: #dialog-procedure}
 
 To create a dialog, complete the following steps:
 
