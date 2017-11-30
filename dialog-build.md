@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-29"
+lastupdated: "2017-11-30"
 
 ---
 
@@ -33,7 +33,7 @@ The number of dialog nodes you can create depends on your service plan.
 |------------------|---------------------------:|
 | Standard/Premium |                    100,000 |
 | Lite             |                     25,000 |
-{: caption="Table 1. Service plan details" caption-side="top"}
+{: caption="Service plan details" caption-side="top"}
 
 Tree depth limit: Service supports 2,000 dialog node descendants; tooling performs best with 20 or fewer.
 
@@ -181,7 +181,6 @@ Using slots produces a more natural dialog flow between the user and the service
     <table>
     <caption>Example slots for pizza order</caption>
     <tr>
-      <th>Information</th>
       <th>Check for</th>
       <th>Save as</th>
       <th>Prompt</th>
@@ -189,7 +188,6 @@ Using slots produces a more natural dialog flow between the user and the service
       <th>Follow-up if not found</th>
     </tr>
     <tr>
-      <td>Size</td>
       <td>@size</td>
       <td>$size</td>
       <td>What size pizza would you like?</td>
@@ -197,7 +195,6 @@ Using slots produces a more natural dialog flow between the user and the service
       <td>What size did you want? We have small, medium, and large.</td>
     </tr>
     <tr>
-      <td>DeliverBy</td>
       <td>@sys-time</td>
       <td>$time</td>
       <td>When do you need the pizza by?</td>
@@ -233,11 +230,11 @@ Using slots produces a more natural dialog flow between the user and the service
     {: tip}
 1.  **Keep users on track**. You can optionally define node-level handlers that provide responses to questions users might ask during the interaction that are tangential to the purpose of the node.
 
-    For example, the user might ask about the tomato sauce recipe or where you get your ingredients. To handle such digressions, click the **Manage handlers** link and add a condition and response for each anticipated question.
+    For example, the user might ask about the tomato sauce recipe or where you get your ingredients. To handle such off-topic questions, click the **Manage handlers** link and add a condition and response for each anticipated question.
 
     ![Shows a user ask about the sauce recipe. The response is, I'll take it to my grave'.](images/sauce.png)
 
-    After responding to the digression, the prompt associated with the current empty slot is displayed.
+    After responding to the off-topic question, the prompt associated with the current empty slot is displayed.
 
     This condition is triggered if the user provides input that matches the handler conditions at any time during the dialog node flow up until the node-level response is displayed. See [Handling requests to exit a process](dialog-build.html#slots-node-level-handler) for more ways to use the node-level handler.
 1.  **Add a node-level response**. The node-level response is not executed until after all of the required slots are filled. You can add a response that summarizes the information you collected. For example, `A $size pizza is scheduled for delivery at $time. Enjoy!`
@@ -286,7 +283,6 @@ For example, you might want to ask users whether they want toppings on their piz
 <table>
 <caption>Multiple value slot</caption>
 <tr>
-  <th>Information</th>
   <th>Check for</th>
   <th>Save as</th>
   <th>Prompt</th>
@@ -294,7 +290,6 @@ For example, you might want to ask users whether they want toppings on their piz
   <th>Follow-up if not found</th>
 </tr>
 <tr>
-  <td>Toppings</td>
   <td>@toppings.values</td>
   <td>$toppings</td>
   <td>Any toppings on that?</td>
@@ -331,7 +326,6 @@ Add a slot after the others that asks the user to confirm that the information y
 <table>
 <caption>Confirmation slot</caption>
 <tr>
-  <th>Information</th>
   <th>Check for</th>
   <th>Save as</th>
   <th>Prompt</th>
@@ -339,7 +333,6 @@ Add a slot after the others that asks the user to confirm that the information y
   <th>Follow-up if not found</th>
 </tr>
 <tr>
-  <td>Confirmation</td>
   <td>#yes || #no</td>
   <td>$confirmation</td>
   <td>I'm going to order you a `$size` pizza for delivery at `$time`. Should I go ahead?</td>
