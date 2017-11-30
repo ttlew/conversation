@@ -59,8 +59,8 @@ These videos are available in the documentation and on YouTube.
     - [Working with dialog](dialog-overview.html)
     - [Working with conditional responses](dialog-overview.html#multiple)
     - [Adding response variations](dialog-overview.html#variety)
-- *Creating a dialog* page:
-    - [Watson Conversation Slots](dialog-build.html#slots)
+- *Gathering information with slots* page:
+    - [Watson Conversation Slots](dialog-slots.html)
 
 ## Tutorials and articles
 
