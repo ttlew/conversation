@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-27"
+lastupdated: "2017-11-30"
 
 ---
 
@@ -19,8 +19,34 @@ lastupdated: "2017-11-27"
 
 # Additional resources
 
-Videos and articles to help you get started faster.
+Links to resources, videos, tutorials, and articles that can help you to get started faster and go further.
 {: shortdesc}
+
+## Developer resources
+
+- [IBM Code Bot Asset Exchange ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/code/exchanges/bots/){: new_window}
+- [Retail chat app ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/code/journey/create-cognitive-retail-chatbot/){: new_window}
+- [Investment management chat app ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/code/journey/create-an-investment-management-chatbot/){: new_window}
+- [Cognitive Banking chatbot ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/code/journey/create-cognitive-banking-chatbot/){: new_window}
+- [Pizza ordering chatbot using slots ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/code/journey/assemble-a-pizza-ordering-chatbot-dialog/){: new_window}
+- [Building an Amazon Alexa Skill with Conversation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/IBM/alexa-skill-watson-conversation){: new_window}
+
+## Building with Watson videos
+
+From an IBM technical deep-dive series. These recordings provide step-by-step instructions and answers.
+
+- [Advanced integrations with Watson Conversation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/0rnt54ONtQw){: new_window}
+- [Training Watson Conversation to detect user intent ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/uYw4Tv1Y5tc){: new_window}
+- [New tools for dialog scripting ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/QuR54--vD5o){: new_window}
+
+## Other videos
+
+Additional videos created by IBMers.
+
+- [Watson Conversation Integrations Tutorial  ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.youtube.com/watch?v=O3silvVBaC8&t=3s){: new_window}: A 10-minute tutorial you can follow to connect Watson Conversation with Twilio using Botkit to create a SMS chatbot
+- [Show me how to use Conversation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/tUkLIUOm550){: new_window}: A 3-minute overview of the service
+- [Introducing Watson Conversation service ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/A96nLYSMltA){: new_window}: A 1-minute introduction
+- [Walkthrough of Watson Conversation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/ELwWhJGE2P8){: new_window}: A 14-minute technical walkthrough
 
 ## Videos in the documentation
 
@@ -35,31 +61,6 @@ These videos are available in the documentation and on YouTube.
     - [Adding response variations](dialog-overview.html#variety)
 - *Creating a dialog* page:
     - [Watson Conversation Slots](dialog-build.html#slots)
-
-## Building with Watson videos
-
-From an IBM technical deep-dive series. These recordings provide step-by-step instructions and answers.
-
-- [Advanced integrations with Watson Conversation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/0rnt54ONtQw){: new_window}
-- [Training Watson Conversation to detect user intent ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/uYw4Tv1Y5tc){: new_window}
-- [New tools for dialog scripting ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/QuR54--vD5o){: new_window}
-
-## Developer journeys
-
-- [Retail chat app ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/code/journey/create-cognitive-retail-chatbot/){: new_window}
-- [Investment management chat app ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/code/journey/create-an-investment-management-chatbot/){: new_window}
-- [Cognitive Banking chatbot ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/code/journey/create-cognitive-banking-chatbot/){: new_window}
-- [Pizza ordering chatbot using slots ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/code/journey/assemble-a-pizza-ordering-chatbot-dialog/){: new_window}
-- [Building an Amazon Alexa Skill with Conversation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/IBM/alexa-skill-watson-conversation){: new_window}
-
-## Other videos
-
-Additional videos created by IBMers.
-
-- [Watson Conversation Integrations Tutorial  ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.youtube.com/watch?v=O3silvVBaC8&t=3s){: new_window}: A 10-minute tutorial you can follow to connect Watson Conversation with Twilio using Botkit to create a SMS chatbot
-- [Show me how to use Conversation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/tUkLIUOm550){: new_window}: A 3-minute overview of the service
-- [Introducing Watson Conversation service ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/A96nLYSMltA){: new_window}: A 1-minute introduction
-- [Walkthrough of Watson Conversation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/ELwWhJGE2P8){: new_window}: A 14-minute technical walkthrough
 
 ## Tutorials and articles
 
