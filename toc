@@ -25,6 +25,7 @@ Conversation
     Building a dialog
         dialog-overview.md
         dialog-build.md
+        dialog-slots.md
         dialog-api.md
 
     {: .topicgroup}
