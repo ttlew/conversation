@@ -263,7 +263,8 @@ In the **Not found** prompt, clarify that you are expecting the user to provide 
   "output":{
     "text": {
       "values": [
-        "Please respond with Yes to indicate that you want the order to be placed as-is, or No to indicate that you do not."
+        "Respond with Yes to indicate that you want the order to
+         be placed as-is, or No to indicate that you do not."
       ]
     }
   }
