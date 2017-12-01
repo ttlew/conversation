@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-30"
+lastupdated: "2017-12-01"
 
 ---
 
@@ -154,7 +154,17 @@ Using slots produces a more natural dialog flow between the user and the service
 ## Slots usage tips
 {: #slots-tips}
 
-Consider these suggested approaches for handling common tasks.
+The following slot properties can help you check and set values in slot context variables.
+
+| Property name          | Description |
+|------------------------|-------------|
+| `all_slots_filled`     | Evaluates to true only if all of the context variables for all of the slots in the node have been set. See [Preventing a Found response from displaying when it is not needed](dialog-slots.html#slots-stifle-found-responses) for a usage example. |
+| `event.current_value`  | Current value of the context variable for this slot. See [Replacing a slot context variable value](dialog-slots.html#slots-found-handler-event-properties) for a usage example for this property and the event.previous_value property. |
+| `event.previous_value` | Previous value of the context variable for this slot. |
+| `slot_in_focus`        | Forces the slot condition to be applied to the current slot only. See [Getting confirmation](dialog-slots.html#slots-get-confirmation) for more details. |
+{: caption="Slot properties" caption-side="top"}
+
+Consider using these approaches for handling common tasks.
 
 - [Asking for everything at once](dialog-slots.html#slots-prompt-for-everything)
 - [Capturing multiple values](dialog-slots.html#slots-multiple-entity-values)
@@ -167,7 +177,7 @@ Consider these suggested approaches for handling common tasks.
 - [Preventing a Found response from displaying when it is not needed](dialog-slots.html#slots-stifle-found-responses)
 - [Handling requests to exit a process](dialog-slots.html#slots-node-level-handler)
 
-## Asking for everything at once
+### Asking for everything at once
 {: #slots-prompt-for-everything}
 
 Include an initial prompt for the whole node that clearly tells users which units of information you want them to provide. Displaying this prompt first gives users the opportunity to provide all the details at once and not have to wait to be prompted for each piece of information one at a time.
