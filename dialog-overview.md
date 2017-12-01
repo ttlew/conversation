@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-28"
+lastupdated: "2017-12-01"
 
 ---
 
@@ -62,6 +62,10 @@ The services continues to work its way through the dialog tree from first to las
 ![Shows arrow 1 pointing from the first base node to the last, arrow 2 pointing from along the length of a triggered node, and arrow 3 pointing from the first to the last child nodes of the triggered node.](images/node-flow.png)
 
 When you start to build the dialog, you must determine the branches to include, and where to place them. The order of the branches is important because nodes are evaluated from first to last. The first base node whose condition matches the input is used; any nodes that come later in the tree are not triggered.
+
+When the service reaches the end of a branch, or cannot find a condition that evaluates to true from the current set of child nodes it is evaluating, it jumps back out to the base of the tree. And once again, the service processes the base nodes from first to the last. If none of the conditions evaluate to true, then the response from the last node in the tree, which typically has a special `anything_else` condition that always evaluates to true, is returned.
+
+You can disrupt the standard first-to-last flow by customizing what happens after a node is processed. For example, you can configure a node to jump directly to another node after it is processed, even if the other node is defined earlier in the tree. See [Defining what to do next](dialog-overview.html#jump-to) for more details.
 
 ## Conditions
 {: #conditions}
@@ -389,7 +393,7 @@ To define a context variable, complete the following steps:
 
   To subsequently reference the context variable, use the syntax `$name` where *name* is the name of the context variable that you defined. For example, `$new_variable`.
 
-Other common tasks include:
+### Common context variable tasks
 
 - To store the entire string that was provided by the user as input, use `input.text`:
 
@@ -434,6 +438,33 @@ Other common tasks include:
     }
     ```
     {: codeblock}
+
+### Deleting a context variable
+
+To delete a context variable, set the variable to null.
+
+```json
+{
+  "context": {
+    "order_form": "null"
+  }
+}
+```
+{: codeblock}
+
+If you want to remove all trace of the context variable, you can use the JSONObject.remove(string) method to delete it from the context object. However, you must use a variable to perform the removal. Define the new variable in the message output so it will not be saved beyond the current call.
+
+```json
+{
+  "output": {
+    "text" : {},
+    "deleted_variable" : "<? context.remove('order_form') ?>"
+  }
+}
+```
+{: codeblock}
+
+Alternatively you can delete the context variable in your application logic.
 
 ### Order of operation
 {: #order-of-context-var-ops}
