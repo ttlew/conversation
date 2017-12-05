@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-12-04"
+lastupdated: "2017-12-05"
 
 ---
 
@@ -23,6 +23,8 @@ lastupdated: "2017-12-04"
 We value your opinion and want to hear it.
 {: shortdesc}
 
-- Submit ideas or feature requests for the IBM Watson Conversation service in the [IBM Watson Ideas Portal](https://ibm-watson.ideas.aha.io/?project=WCS).
+- Submit ideas or feature requests for the {{site.data.keyword.conversationlong}} service in the [IBM Watson Ideas Portal](https://ibm-watson.ideas.aha.io/?project=WCS).
 
 - To provide feedback about the documentation, click the **FEEDBACK** button that is displayed along the edge of the page you are reading and want to comment about.
+
+  **Note**: The **FEEDBACK** button is not available from mobile devices.
