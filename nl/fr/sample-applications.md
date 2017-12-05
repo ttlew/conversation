@@ -26,13 +26,13 @@ Explorez nos exemples d'application afin de comprendre ce que vous pouvez dével
 
 L'application Node.js app montre comment {{site.data.keyword.conversationshort}} utilise des intentions dans une simple interface de discussion. Elle montre la conversation avec un utilisateur final et les réponses JSON à chaque tour de la conversation.
 
-[Reportez-vous à la démonstration ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](http://conversation-simple.mybluemix.net/){: new_window} ou [déviez le code ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://github.com/watson-developer-cloud/conversation-simple){: new_window}.
+[Reportez-vous à la démonstration ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](http://conversation-simple.ng.bluemix.net/){: new_window} ou [déviez le code ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://github.com/watson-developer-cloud/conversation-simple){: new_window}.
 
 ## Conversation et interface utilisateur de tableau de bord de voiture
 
 Cette application Node.js est un exemple entièrement développé du type d'application que vous pouvez créer à l'aide de {{site.data.keyword.conversationshort}} et qui utilise des intentions, des entités et un dialogue. 
 
-[Regardez la démonstration ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://conversation-demo.mybluemix.net/){: new_window}.
+[Regardez la démonstration ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://conversation-demo.ng.bluemix.net/){: new_window}.
 
 ## Message texte avec un bot relatif à la météo
 

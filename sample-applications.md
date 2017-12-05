@@ -26,13 +26,13 @@ Explore our sample applications to understand what you can develop with {{site.d
 
 The Node.js app shows how {{site.data.keyword.conversationshort}} uses intents in a simple chat interface. It shows the conversation with an end user and the JSON responses at each turn of the conversation.
 
-[See the demo ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://conversation-simple.mybluemix.net/){: new_window} or [fork the code ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/conversation-simple){: new_window}.
+[See the demo ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://conversation-simple.ng.bluemix.net/){: new_window} or [fork the code ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/conversation-simple){: new_window}.
 
 ## Conversation and car dashboard UI
 
 This Node.js app is a fully developed example of the type of app you can build with {{site.data.keyword.conversationshort}} that uses intents, entities, and dialog.
 
-[View the demo ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://conversation-demo.mybluemix.net/){: new_window}.
+[View the demo ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://conversation-demo.ng.bluemix.net/){: new_window}.
 
 ## Text message weather bot
 

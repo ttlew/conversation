@@ -26,13 +26,13 @@ lastupdated: "2017-07-10"
 
 Node.js アプリは、シンプルなチャット・インターフェースで {{site.data.keyword.conversationshort}} がインテントをどのように使用するかを示します。エンド・ユーザーとの会話、および会話のそれぞれの順番での JSON の応答を示します。
 
-[デモを見る![外部リンク・アイコン](../../icons/launch-glyph.svg "外部リンク・アイコン")](http://conversation-simple.mybluemix.net/){: new_window}または[コードをフォークする![外部リンク・アイコン](../../icons/launch-glyph.svg "外部リンク・アイコン")](https://github.com/watson-developer-cloud/conversation-simple){: new_window}。
+[デモを見る![外部リンク・アイコン](../../icons/launch-glyph.svg "外部リンク・アイコン")](http://conversation-simple.ng.bluemix.net/){: new_window}または[コードをフォークする![外部リンク・アイコン](../../icons/launch-glyph.svg "外部リンク・アイコン")](https://github.com/watson-developer-cloud/conversation-simple){: new_window}。
 
 ## Conversation と車のダッシュボード UI
 
 この Node.js アプリは、インテント、エンティティー、およびダイアログを使用する {{site.data.keyword.conversationshort}} で構築できる、開発が完成したアプリ・タイプのサンプルです。
 
-[デモを見る![外部リンク・アイコン](../../icons/launch-glyph.svg "外部リンク・アイコン")](https://conversation-demo.mybluemix.net/){: new_window}。
+[デモを見る![外部リンク・アイコン](../../icons/launch-glyph.svg "外部リンク・アイコン")](https://conversation-demo.ng.bluemix.net/){: new_window}。
 
 ## テキスト・メッセージによる天気ボット
 

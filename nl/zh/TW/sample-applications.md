@@ -26,13 +26,13 @@ lastupdated: "2017-07-10"
 
 Node.js 應用程式顯示 {{site.data.keyword.conversationshort}} 如何在簡單聊天介面中使用目的。它會顯示每次交談時與一般使用者的交談及 JSON 回應。
 
-[查看展示 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](http://conversation-simple.mybluemix.net/){: new_window} 或[分出程式碼 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://github.com/watson-developer-cloud/conversation-simple){: new_window}。
+[查看展示 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](http://conversation-simple.ng.bluemix.net/){: new_window} 或[分出程式碼 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://github.com/watson-developer-cloud/conversation-simple){: new_window}。
 
 ## Conversation 及汽車儀表板使用者介面
 
 此 Node.js 應用程式是您可以使用 {{site.data.keyword.conversationshort}}（使用目的、實體及對話）建置之應用程式類型的完整開發範例。
 
-[檢視展示 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://conversation-demo.mybluemix.net/){: new_window}。
+[檢視展示 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://conversation-demo.ng.bluemix.net/){: new_window}。
 
 ## 文字訊息天氣機器人
 
