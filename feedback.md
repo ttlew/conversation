@@ -23,8 +23,8 @@ lastupdated: "2017-12-05"
 We value your opinion and want to hear it.
 {: shortdesc}
 
-- Submit ideas or feature requests for the {{site.data.keyword.conversationlong}} service in the [IBM Watson Ideas Portal](https://ibm-watson.ideas.aha.io/?project=WCS).
+- To share ideas or suggest new features for the {{site.data.keyword.conversationlong}} service, go to the [IBM Watson Ideas Portal](https://ibm-watson.ideas.aha.io/?project=WCS).
 
 - To provide feedback about the documentation, click the **FEEDBACK** button that is displayed along the edge of the page you are reading and want to comment about.
 
-  **Note**: The **FEEDBACK** button is not available from mobile devices.
+  **Note**: The **FEEDBACK** button is not available when you access the documentation site from mobile devices.
