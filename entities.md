@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-27"
+lastupdated: "2017-12-05"
 
 ---
 
@@ -21,7 +21,7 @@ lastupdated: "2017-11-27"
 
 ***Entities*** represent a class of object or a data type that is relevant to a user's purpose. By recognizing the entities that are mentioned in the user's input, the {{site.data.keyword.conversationshort}} service can choose the specific actions to take to fulfill an intent.
 
-<iframe class="embed-responsive-item" id="youtubeplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/oSNF-QCbuDc?rel=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+<iframe class="embed-responsive-item" id="youtubeplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/kAZ9m-oCKxM" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
 ## Entity limits
 {: #entity-limits}
@@ -41,10 +41,12 @@ System entities that you enable for use count toward your plan usage totals.
 Use the {{site.data.keyword.conversationshort}} tool to create entities.
 
 1.  In the {{site.data.keyword.conversationshort}} tool, open your workspace and then click the **Entities** tab. If **Entities** is not visible, use the ![Menu](images/Menu_16.png) menu to open the page.
-1.  Click **Create new**.
+
+1.  Click **Add entity**.
 
     You can also click **Use System Entities** to select from a list of common entities, provided by {{site.data.keyword.IBM_notm}}, that can be applied to any use case. See [Enabling system entities](#enable_system_entities) for more detail.
-1.  In the **Add the entity name** field, type a descriptive name for the entity.
+
+1.  In the **Entity name** field, type a descriptive name for the entity.
 
     The entity name can contain letters (in Unicode), numbers, underscores, and hyphens. For example:
     - `@location`
@@ -53,6 +55,14 @@ Use the {{site.data.keyword.conversationshort}} tool to create entities.
 
     Don't include the `@` character in the entity names when you create them in the {{site.data.keyword.conversationshort}} tool. Entity names can't contain spaces or be longer than 64 characters. And entity names can't begin with the string `sys-`, which is reserved for system entities.
     {: tip}
+
+1.  Select **Create entity**.
+
+    ![Screen capture of creating an entity](images/create_entity.png)
+
+1.  In the **Value name** field, type the text of a possible value for the entity and hit the `Enter` key. An entity value can be any string up to 64 characters in length.
+
+    > **Important:** Don't include sensitive or personal information in entity names or values. The names and values can be exposed in URLs in an app.
 
 1.  For **Fuzzy Matching**, click the button to select either on or off; fuzzy matching is off by default. This feature is available for languages noted in the [Supported languages](lang-support.html) topic.
  {: #fuzzy-matching}
@@ -63,23 +73,21 @@ Use the {{site.data.keyword.conversationshort}} tool to create entities.
     - *Partial match* - With partial matching, the feature automatically suggests substring-based synonyms present in the user-defined entities, and assigns a lower confidence score as compared to the exact entity match.
 
     **Note** - For English, fuzzy matching prevents the capturing of some common, valid English words as fuzzy matches for a given entity. Currently, this feature uses only standard English dictionary words, and does not use synonyms defined by the user.
-1.  In the **Value** field, type the text of a possible value for the entity. An entity value can be any string up to 64 characters in length.
 
-    > **Important:** Don't include sensitive or personal information in entity names or values. The names and values can be exposed in URLs in an app.
-
-    Once you have entered an entity value, you can then add any synonyms, or define specific patterns, for that entity value by selecting either `Synonyms` or `Patterns` from the *Type* drop-down menu.
+1.  Once you have entered a value name, you can then add any synonyms, or define specific patterns, for that entity value by selecting either `Synonyms` or `Patterns` from the *Type* drop-down menu.
 
     ![Type selector for Value](images/value_type.png)
 
     > **Note:** You can add *either* synonyms or patterns for a single entity value, you cannot add both.
 
-1.  In the **Synonyms** field, type any synonyms for the entity value. A synonym can be any string up to 64 characters in length.
+1.  In the **Add synonyms** field, type any synonyms for the entity value. A synonym can be any string up to 64 characters in length.
 
     ![Screen capture of defining an entity](images/define_entity.png)
+
 1.  The **Patterns** field lets you define specific patterns for an entity value. A pattern **must** be entered as a regular expression in the field.
-  {: #pattern-entities}
 
     ![Screen capture of defining a pattern entity](images/patternents1.png)
+    {: #pattern-entities}
 
     As in this example, for entity *ContactInfo*, the patterns for phone, email, and website values can be defined as follows:
     - Phone
@@ -109,8 +117,9 @@ Use the {{site.data.keyword.conversationshort}} tool to create entities.
 
     The regular expression engine is loosely based on the Java regular expression engine. The {{site.data.keyword.conversationshort}} service will produce an error if you try to upload an unsupported pattern, either via the API or from within the {{site.data.keyword.conversationshort}} service Tooling UI.
 
-1.  Click **+** and repeat the process to add more entity values.
-1.  When you are finished adding entity values, click **Done**.
+1.  Click **Add value** and repeat the process to add more entity values.
+
+1.  When you are finished adding entity values, select ![Close arrow](images/close_arrow.png) to finish creating the entity.
 
 ### Results
 
@@ -123,8 +132,6 @@ You can click any entity in the list to open it for editing. You can rename or d
 ## Importing entities
 
 If you have a large number of entities, you might find it easier to import them from a comma-separated value (CSV) file than to define them one by one in the {{site.data.keyword.conversationshort}} tool.
-
-**Note:** Importing a CSV file does not currently support patterns.
 
 1.  Collect the entities into a CSV file, or export them from a spreadsheet to a CSV file. The required format for each line in the file is as follows:
 
@@ -151,8 +158,20 @@ If you have a large number of entities, you might find it easier to import them 
     ```
     {: screen}
 
+    Importing a CSV file also supports patterns. Any string wrapped with `/` will be considered a pattern (as opposed to a synonym).
+
+    ```
+    ContactInfo,localPhone,/(\d{3})-(\d{4})/
+    ContactInfo,fullUSphone,/(\d{3})-(\d{3})-(\d{4})/
+    ContactInfo,internationalPhone,/^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$/
+    ContactInfo,email,/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/
+    ContactInfo,website,/(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
+    ```
+    {: screen}
+
     Save the CSV file with UTF-8 encoding and no byte order mark (BOM). The maximum CSV file size is 10MB. If your CSV file is larger, consider splitting it into multiple files and importing them separately.  In the {{site.data.keyword.conversationshort}} tool, open your workspace and then click the **Entities** tab.
     {: tip}
+
 1.  Click ![Import](images/importGA.png) and then drag a file, or browse to select a file from your computer. The file is validated and imported, and the system begins to train itself on the new data.
 
 ### Results
@@ -162,17 +181,14 @@ You can view the imported entities on the Entities tab. You might need to refres
 ## Exporting entities
 {: #export_entities}
 
-You can export a number of entities to a CSV file, so you can then import and reuse them for another Conversation application.
+You can export a number of entities to a CSV file, so you can then import and reuse them for another {{site.data.keyword.conversationshort}} application.
 
-**Note:** Exporting a CSV file does not currently support patterns.
+Exporting a CSV file supports patterns. Any string wrapped with `/` will be considered a pattern (as opposed to a synonym).
+{: tip}
 
-1.  On the Entities tab, select ![Export icon](images/ExportIcon.png)
+1.  Select the entities you want, then select **Export**.
 
-    ![Export and Delete options](images/ExportEntity1.png)
-
-1.  Select the entities you want, and click the **Export** button.
-
-    ![Entity selection for Export and Delete buttons](images/ExportEntity2.png)
+    ![Export entity button](images/ExportEntity.png)
 
 ## Deleting entities
 {: #delete_entities}
@@ -181,11 +197,9 @@ You can select a number of entities for deletion.
 
 **IMPORTANT**: By deleting entities you are also deleting all associated values, synonyms, or patterns, and these items cannot be retrieved later. All dialog nodes that reference these entities or values must be updated manually to no longer reference the deleted content.
 
-1.  On the Entities tab, select ![Delete icon](images/DeleteIcon.png)
+1.  Select the entities you want, then select **Delete**.
 
-    ![Export and Delete options](images/DeleteEntity.png)
-
-1.  Select the entities you want to delete, and click the **Delete** button. **Note**: The delete feature supports bulk delete of entities.
+    ![Delete entity button](images/DeleteEntity.png)
 
 ## Enabling system entities
 {: #enable_system_entities}
@@ -200,14 +214,11 @@ System entities are centrally maintained, so any updates are available automatic
 
     ![Screen capture of "System entities" tab](images/system_entities_1.png)
 
-    If you haven't created any entities, click **Use system entities**.
-
-    ![Screen capture of "Use system entities" button](images/system_entities_2.png)
-
 1.  Browse through the list of system entities to choose the ones that are useful for your application.
     - To see more information about a system entity, including examples of matching input, click the entity in the list.
     - For details about the available system entities, see [System entities](system-entities.html).
-1.  Click the toggle switch next to a system entity to enable or disable it. You can also enable or disable all system entities by clicking the **All toggle** switch.
+
+1.  Click the toggle switch next to a system entity to enable or disable it. You can also enable or disable all system entities by clicking the **All toggle** switch at the top of the list.
 
 ### Results
 

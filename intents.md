@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-27"
+lastupdated: "2017-12-05"
 
 ---
 
@@ -22,7 +22,7 @@ lastupdated: "2017-11-27"
 ***Intents*** are purposes or goals expressed in a customer's input, such as answering a question or processing a bill payment. By recognizing the intent expressed in a customer's input, the {{site.data.keyword.conversationshort}} service can choose the correct dialog flow for responding to it.
 {: shortdesc}
 
-<iframe class="embed-responsive-item" id="youtubeplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/VG0YykNcfv8?rel=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+<iframe class="embed-responsive-item" id="youtubeplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/6HAZpBHqX8M" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
 ## Intent limits
 {: #intent-limits}
@@ -40,8 +40,10 @@ The number of intents and examples you can create depends on your {{site.data.ke
 Use the {{site.data.keyword.conversationshort}} tool to create intents.
 
 1.  In the {{site.data.keyword.conversationshort}} tool, open your workspace and then select the **Intents** tab in the navigation bar. If **Intents** is not visible, use the ![Menu](images/Menu_16.png) menu to open the page.
+
 1.  Select **Create new**.
-1.  In the **Intent name** field, type a descriptive name for the intent.
+
+1.  In the **Intent name** field, type a name for the intent.
     - The intent name can contain letters (in Unicode), numbers, underscores, hyphens, and periods.
     - The name cannot consist of `..` or any other string of only periods.
     - Intent names cannot contain spaces and must not exceed 128 characters. The following are examples of intent names:
@@ -52,19 +54,27 @@ Use the {{site.data.keyword.conversationshort}} tool to create intents.
     The tooling automatically includes the `#` character in the intent names, so you do not have to add one.
     {: tip}
 
-    You can select **Create** to save your intent name without adding examples. You can also select the user example field, or use the tab key to move forward, and add examples.
+    Add a description of the intent in the **Description** field.
 
-1.  In the **User example** field, type the text of a user example for the intent. An example can be any string up to 1024 characters in length. The following might be examples for the `#pay_bill` intent:
+1.  Select **Create intent** to save your intent name.
+
+    ![Screen capture showing new intent definition](images/create_intent.png)
+
+1.  Next, in the **Add user examples** field, type the text of a user example for the intent. An example can be any string up to 1024 characters in length. The following might be examples for the `#pay_bill` intent:
     - `I need to pay my bill.`
     - `Pay my account balance`
     - `make a payment`
 
-    *Referencing entities and synonyms as intent examples* - If you have defined or plan to define entities that correspond to this intent, refer to the entities or their associated synonyms in some of the examples. Doing so helps to establish a relationship between the intent and entities.
+    **Referencing entities and synonyms as intent examples**
+
+    If you have defined or plan to define entities that correspond to this intent, refer to the entities or their associated synonyms in some of the examples. Doing so helps to establish a relationship between the intent and entities.
 
     ![Screen capture showing intent definition](images/define_intent.png)
     {: #entity-as-example}
 
-    *Directly referencing an @Entity as an intent example* - You may also choose to directly reference entities in your intent examples. For instance, say you have an entity called `@PhoneModelName`, which contains values *Galaxy S8*, *Moto Z2*, *LG G6*, and *Google Pixel 2*. When you create an intent, for example `#order_phone`, you could then provide training data as follows:
+    **Directly referencing an @Entity as an intent example**
+
+    You may also choose to directly reference entities in your intent examples. For instance, say you have an entity called `@PhoneModelName`, which contains values *Galaxy S8*, *Moto Z2*, *LG G6*, and *Google Pixel 2*. When you create an intent, for example `#order_phone`, you could then provide training data as follows:
     - Can I get a `@PhoneModelName`?
     - Help me order a `@PhoneModelName`.
     - Is the `@PhoneModelName` in stock?
@@ -72,19 +82,21 @@ Use the {{site.data.keyword.conversationshort}} tool to create intents.
 
     ![Screen capture showing intent definition](images/define_intent_entity.png)
 
-    **Note**: Currently, you can only directly reference closed entities that you define. You cannot directly reference [pattern entities](entities.html#pattern-entities) or [system entities](system-entities.html).
+    **Note**: Currently, you can only directly reference closed entities that you define (pattern values will be ignored). You cannot use [system entities](system-entities.html).
 
     If you choose to reference an entity as an intent example (for example, `@PhoneModelName`) *anywhere* in your training data it cancels out the value of using a direct reference (for example, *Galaxy S8*) in an intent example anywhere else. All intents will then use the entity-as-an-intent-example approach; you cannot select this approach for a specific intent only.
 
     In practice, this means that if you have previously trained most of your intents based on direct references (*Galaxy S8*), and you now use entity references (`@PhoneModelName`) for just one intent, that would impact all your previous training. If you do choose to use `@Entity` references, you need to be careful to replace all previous direct references with `@Entity` references.
 
-    **Note**: Defining one example intent with an `@Entity` that has 10 values defined for it **does not** equate to specifying that example intent 10 times. The {{site.data.keyword.conversationshort}} does not give that much weight to that one example intent syntax.
+    **Note**: Defining one example intent with an `@Entity` that has 10 values defined for it **does not** equate to specifying that example intent 10 times. The {{site.data.keyword.conversationshort}} service does not give that much weight to that one example intent syntax.
 
     **Important**: Intent names and example text can be exposed in URLs when an application interacts with the service. Do not include sensitive or personal information in these artifacts.
 
-    Press Enter or select **+** to save the example.
+    Press **Add example** to save the example.
+
 1.  Repeat the same process to add more examples. You can tab between each example. Provide at least 5 examples for each intent. The more examples you provide, the more accurate your application can be.
-1.  When you have finished adding examples, select **Done** to finish creating the intent.
+
+1.  When you have finished adding examples, select ![Close arrow](images/close_arrow.png) to finish creating the intent.
 
 ### Results
 
@@ -101,9 +113,9 @@ You can select any intent in the list to open it for editing. You can make the f
 
 You can tab from the intent name to each example, editing the examples if you choose.
 
-To move an example, select the example by selecting the check box and then select **Move to**.
+To move or delete an example, select the example by selecting the check box and then select **Move** or **Delete**.
 
-  ![Screen capture showing how to move an example](images/move_example.png)
+  ![Screen capture showing how to move or delete an example](images/move_example.png)
 
 ## Importing intents and examples
 
@@ -131,25 +143,24 @@ If you have a large number of intents and examples, you might find it easier to 
 
 1.  In the {{site.data.keyword.conversationshort}} tool, open your workspace and then select the **Intents** tab in the navigation bar. If **Intents** is not visible, use the ![Menu](images/Menu_16.png) menu to open the page.
 
-1.  Select ![Import](images/importGA.png) and then drag a file, or browse to select a file from your computer. The file is validated and imported, and the system begins to train itself on the new data.
+1.  Select the *Import* icon ![Import icon](images/ImportGA.png). Then, drag a file or browse to select a file from your computer. The file is validated and imported, and the system begins to train itself on the new data.
+
+    ![Import option](images/ImportIntent.png)
 
     > **Important:** The maximum CSV file size is 10MB. If your CSV file is larger, consider splitting it into multiple files and importing them separately.
 
 ### Results
 
-You can view the imported intents and the corresponding examples on the Intents tab. You might need to refresh the page in order to see the new intents and examples.
+You can view the imported intents and the corresponding examples on the **Intents** tab. You might need to refresh the page in order to see the new intents and examples.
 
 ## Exporting intents
 {: #export_intents}
 
-You can export a number of intents to a CSV file, so you can then import and reuse them for another Conversation application.
+You can export a number of intents to a CSV file, so you can then import and reuse them for another {{site.data.keyword.conversationshort}} application.
 
-1.  On the Intents tab, select ![Export icon](images/ExportIcon.png)
+1.  On the Intents tab, select the intents you want from the list and choose *Export*.
 
-    ![Export and Delete options](images/ExportIntent1.png)
-
-1.  Select the intents you want, and click the **Export** button.
-    ![Entity selection for Export and Delete buttons](images/ExportIntent2.png)
+    ![Export option](images/ExportIntent.png)
 
 ## Deleting intents
 {: #delete_intents}
@@ -158,11 +169,9 @@ You can select a number of intents for deletion.
 
 **IMPORTANT**: By deleting intents you are also deleting all associated examples, and these items cannot be retrieved later. All dialog nodes that reference these intents must be updated manually to no longer reference the deleted content.
 
-1.  On the Intents tab, select ![Delete icon](images/DeleteIcon.png)
+1.  On the Intents tab, select the intents you want from the list and choose *Delete*.
 
-    ![Export and Delete options](images/ExportIntent3.png)
-
-1.  Select the intents you want to delete, and click the **Delete** button. **Note**: The delete feature supports bulk delete of intents.
+    ![Delete option](images/DeleteIntent.png)
 
 ## Testing your intents
 {: #testing-your-intents}
@@ -202,14 +211,14 @@ As of February 2017, there is a new algorithm for scoring intent confidence and 
 
 ### Absolute scoring
 
-We now score each intent’s confidence on its own, not in relation to other intents. This allows the flexibility to have multiple intents returned. It also means the system may not return an intent at all. If the system has low confidence (less than .2) that any intents relate to the user’s input, the system will not return an intent.
+The {{site.data.keyword.conversationshort}} service now scores each intent’s confidence on its own, not in relation to other intents. This allows the flexibility to have multiple intents returned. It also means the system may not return an intent at all. If the system has low confidence (less than .2) that any intents relate to the user’s input, the system will not return an intent.
 
 As intent confidence scores change, your dialogs may need restructuring. For example, if you conditioned your dialog with an intent that now has low confidence, the system’s response will no longer be correct.
 
 ### Mark as irrelevant
 {: #mark-irrelevant}
 
-You can refer to [supported languages](lang-support.html) for the availability of this feature.
+Refer to [supported languages](lang-support.html) for the availability of this feature.
 
 After you upgrade your workspace, you can [test input](#testing-your-intents) in the *Try it out* pane to see the changes. You can use **Mark as irrelevant** to indicate that the input is not related to your application.
 

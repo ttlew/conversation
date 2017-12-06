@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-30"
+lastupdated: "2017-12-05"
 
 ---
 
@@ -47,6 +47,11 @@ Existing models that you have trained will not be immediately impacted, but expi
 {: #change-log}
 
 The following new features and changes to the service are available.
+
+### 5 December 2017
+{: #5December2017}
+
+- **Redesigned UI for Intents and Entities** - The `Intents` and `Entities` tabs have been redesigned to provide an easier, more efficient workflow when creating and editing entities and intents. See [Defining intents](intents.html#defining-intents) and [Defining entities](entities.html#defining-entities) for information about working with these tabs.
 
 ### 30 November 2017
 {: #30November2017}

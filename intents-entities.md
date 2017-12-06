@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-27"
+lastupdated: "2017-12-05"
 
 ---
 
@@ -33,6 +33,7 @@ As an example, suppose you want to create a cognitive car dashboard application 
     - `Headlights off`
     - `Turn the radio off`
     - `Stop the air conditioner`
+
 1.  Once you have a list of examples, sort them into categories based on the capabilities you want your application to support; these categories represent the intents you will define, while the examples will help your application to identify those intents in new input.
 
     Do not make your intents too similar. Similar intents can be difficult for the {{site.data.keyword.conversationshort}} service to distinguish. If you find that you have several intents that are close in meaning, consider whether you could combine them into a single intent, and then use entities to provide multiple possible responses for that intent.
@@ -41,6 +42,7 @@ As an example, suppose you want to create a cognitive car dashboard application 
     Since the previous examples all represent the same intent (to turn something off), you might call this category `#turn_off`.
     Remember that a customer's input does not have to be an exact match for any of your examples; intents are recognized using natural-language processing.
     {: tip}
+
 1.  You would then use an entity to represent what the user wants to turn off. To do this, you might create an entity called `@accessory`, and give it the following possible values:
 
     - `headlights`
@@ -51,4 +53,5 @@ As an example, suppose you want to create a cognitive car dashboard application 
 1.  When the user's input is received, the conversation recognizes both intents and entities. Your dialog flow can then use these to provide the best answer. You should only create an entity for something that matters in terms of changing the way the application responds to an intent.
     In addition to the entities you define, the service provides a set of system entities that are already defined and available for you to use. For more information, see [Enabling system entities](entities.html#enable_system_entities).
     {: tip}
+
 1.  Continue to refine your intents, entities, and examples as needed. Do not think of your set of intents and entities as finished products. It is likely that when you [build your dialogs](dialog-build.html), you will identify additional intents and entities that you need to add. You can also continue to gather input from new customers, and use it to add new examples; this iterative process improves your application's ability to recognize intents and entities accurately.
