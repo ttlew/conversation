@@ -26,13 +26,13 @@ Explore nossos aplicativos de amostra para entender o que você pode desenvolver
 
 O aplicativo Node.js mostra como o {{site.data.keyword.conversationshort}} usa intenções em uma interface de bate-papo simples. Ele mostra a conversa com um usuário final e as respostas JSON em cada rodada da conversa.
 
-[Consulte a demo ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](http://conversation-simple.mybluemix.net/){: new_window} ou [bifurcar o código ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://github.com/watson-developer-cloud/conversation-simple){: new_window}.
+[Consulte a demo ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](http://conversation-simple.ng.bluemix.net/){: new_window} ou [bifurcar o código ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://github.com/watson-developer-cloud/conversation-simple){: new_window}.
 
 ## IU da Conversa e do painel de carro
 
 Esse aplicativo Node.js é um exemplo totalmente desenvolvido do tipo de aplicativo que você pode construir com {{site.data.keyword.conversationshort}} que usa intenções, entidades e diálogo.
 
-[Visualizar a demo ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://conversation-demo.mybluemix.net/){: new_window}.
+[Visualizar a demo ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://conversation-demo.ng.bluemix.net/){: new_window}.
 
 ## Robô de clima da mensagem de texto
 

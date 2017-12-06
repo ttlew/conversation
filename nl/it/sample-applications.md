@@ -26,13 +26,13 @@ Esplora le nostre applicazioni di esempio per comprendere cosa puoi sviluppare c
 
 L'applicazione Node.js mostra in che modo {{site.data.keyword.conversationshort}} utilizza gli intenti in una semplice interfaccia di chat. Mostra la conversazione con un utente finale e le risposte JSON in ogni turno della conversazione. 
 
-[Vedi la demo ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](http://conversation-simple.mybluemix.net/){: new_window} o [duplica il codice ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://github.com/watson-developer-cloud/conversation-simple){: new_window}.
+[Vedi la demo ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](http://conversation-simple.ng.bluemix.net/){: new_window} o [duplica il codice ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://github.com/watson-developer-cloud/conversation-simple){: new_window}.
 
 ## IU conversazione e dashboard automobile
 
 Questa applicazione Node.js è un esempio interamente sviluppato del tipo di applicazione che puoi creare con {{site.data.keyword.conversationshort}} che utilizza intenti, entità e dialogo.
 
-[Visualizza la demo ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://conversation-demo.mybluemix.net/){: new_window}.
+[Visualizza la demo ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://conversation-demo.ng.bluemix.net/){: new_window}.
 
 ## Bot del meteo con messaggi di testo
 

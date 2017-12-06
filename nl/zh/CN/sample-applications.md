@@ -26,13 +26,13 @@ lastupdated: "2017-07-10"
 
 Node.js 应用程序显示 {{site.data.keyword.conversationshort}} 如何在简单交谈界面中使用意向。它显示与最终用户的会话以及每轮会话的 JSON 响应。
 
-[观看演示 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](http://conversation-simple.mybluemix.net/){: new_window} 或 [派生代码 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://github.com/watson-developer-cloud/conversation-simple){: new_window}。
+[观看演示 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](http://conversation-simple.ng.bluemix.net/){: new_window} 或 [派生代码 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://github.com/watson-developer-cloud/conversation-simple){: new_window}。
 
 ## Conversation 和汽车仪表板 UI
 
 利用 {{site.data.keyword.conversationshort}} 可以构建使用意向、实体和对话的应用程序，而此 Node.js 应用程序就是这一类型的成熟的应用程序。
 
-[观看演示 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://conversation-demo.mybluemix.net/){: new_window}。
+[观看演示 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://conversation-demo.ng.bluemix.net/){: new_window}。
 
 ## 短信天气机器人
 

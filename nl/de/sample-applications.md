@@ -26,13 +26,13 @@ Durch eine Untersuchung der Beispielanwendungen können Sie sich einen Eindruck 
 
 Die Node.js-App veranschaulicht, wie {{site.data.keyword.conversationshort}} Absichten in einer einfachen Chatschnittstelle verwendet. Sie zeigt den Dialog mit einem Endbenutzer und die JSON-Antworten in jeder Runde des Dialogs.
 
-[Demo ansehen ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](http://conversation-simple.mybluemix.net/){: new_window} oder [Code ansehen ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://github.com/watson-developer-cloud/conversation-simple){: new_window}
+[Demo ansehen ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](http://conversation-simple.ng.bluemix.net/){: new_window} oder [Code ansehen ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://github.com/watson-developer-cloud/conversation-simple){: new_window}
 
 ## Conversation und Benutzerschnittstelle 'Car Dashboard'
 
 Diese Node.js-App ist ein vollständig entwickeltes Beispiel für den Typ einer App, die Sie mit {{site.data.keyword.conversationshort}} erstellen können und die Absichten, Entitäten sowie ein Dialogmodul verwendet.
 
-[Demo ansehen ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://conversation-demo.mybluemix.net/){: new_window}
+[Demo ansehen ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://conversation-demo.ng.bluemix.net/){: new_window}
 
 ## Textnachrichtenbot für Wetterlage
 

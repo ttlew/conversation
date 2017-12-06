@@ -26,13 +26,13 @@ Explore nuestras aplicaciones de ejemplo para ver todo lo que puede desarrollar 
 
 La app Node.js muestra cómo {{site.data.keyword.conversationshort}} utiliza intenciones en una sencilla interfaz de conversación. Se muestra la conversación con un usuario final y las respuestas JSON en cada turno de la conversación.
 
-[Consulte la demo ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](http://conversation-simple.mybluemix.net/){: new_window} o [ramificación del código![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://github.com/watson-developer-cloud/conversation-simple){: new_window}.
+[Consulte la demo ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](http://conversation-simple.ng.bluemix.net/){: new_window} o [ramificación del código![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://github.com/watson-developer-cloud/conversation-simple){: new_window}.
 
 ## Conversación e interfaz de usuario del panel de control de un coche
 
 Esta app Node.js es un ejemplo completamente desarrollado del tipo de app que puede crear con {{site.data.keyword.conversationshort}} que utiliza intenciones, entidades y diálogo.
 
-[Consulte la demo ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://conversation-demo.mybluemix.net/){: new_window}.
+[Consulte la demo ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://conversation-demo.ng.bluemix.net/){: new_window}.
 
 ## Bot meteorológico de mensajes de texto
 

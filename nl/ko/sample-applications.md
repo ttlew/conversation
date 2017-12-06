@@ -26,13 +26,13 @@ lastupdated: "2017-07-10"
 
 Node.js 앱은 {{site.data.keyword.conversationshort}}가 단순 대화 인터페이스에서 인텐트를 사용하는 방법을 표시합니다. 대화의 각 턴에서 일반 사용자와의 대화 및 JSON 응답을 표시합니다.
 
-[데모 보기(![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘"))](http://conversation-simple.mybluemix.net/){: new_window} 또는 [코드 포크(![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘"))](https://github.com/watson-developer-cloud/conversation-simple){: new_window}.
+[데모 보기(![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘"))](http://conversation-simple.ng.bluemix.net/){: new_window} 또는 [코드 포크(![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘"))](https://github.com/watson-developer-cloud/conversation-simple){: new_window}.
 
 ## Conversation 및 자동차 대시보드 UI
 
 이 Node.js 앱은 인텐트, 엔티티 및 대화 상자를 사용하는 {{site.data.keyword.conversationshort}}을 사용하여 빌드할 수 있는 앱 유형의 완전히 개발된 예제입니다.
 
-[데모 보기 ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://conversation-demo.mybluemix.net/){: new_window}.
+[데모 보기 ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://conversation-demo.ng.bluemix.net/){: new_window}.
 
 ## 문자 메시지 날씨 봇
 
