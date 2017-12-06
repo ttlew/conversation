@@ -218,7 +218,7 @@ System entities are centrally maintained, so any updates are available automatic
     - To see more information about a system entity, including examples of matching input, click the entity in the list.
     - For details about the available system entities, see [System entities](system-entities.html).
 
-1.  Click the toggle switch next to a system entity to enable or disable it. You can also enable or disable all system entities by clicking the **All toggle** switch at the top of the list.
+1.  Click the toggle switch next to a system entity to enable or disable it.
 
 ### Results
 
