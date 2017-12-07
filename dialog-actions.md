@@ -96,7 +96,7 @@ To make a programmatic call from a dialog node, complete the following steps:
 
       - **server**: Calls a Cloud Functions action (one or more) directly. You must define the action itself separately by using IBM Cloud Functions. For more information, see [Creating a Cloud Functions action](dialog-actions.html#create-action) below.
 
-        **Note**: Currently, you can call an action from a Cloud Functions instance that is hosted in the US South region from Conversation instances that are hosted in the US South, Sydney, and United Kingdom regions.
+        **Note**: Currently, you can call an action from a Cloud Functions instance that is hosted in the US South region from Conversation instances that are hosted in the US South region.
 
       Specifying the type is optional. The default value is `client`.
 

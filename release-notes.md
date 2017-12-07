@@ -51,7 +51,7 @@ The following new features and changes to the service are available.
 ### 6 December 2017
 {: #6December2017}
 
-- **IBM Cloud Functions integration (Beta)**: Call IBM Cloud Functions (formerly IBM OpenWhisk) actions directly from a dialog node. This feature enables you to, for example, call an action to retrieve weather information from within a dialog node, and then condition on the returned information in the dialog response. Currently, you can call an action from a Cloud Functions instance that is hosted in the US South region from Conversation instances that are hosted in the US South, Sydney, and United Kingdom regions. See [Making programmatic calls from a dialog node](dialog-actions.html) for more details.
+- **IBM Cloud Functions integration (Beta)**: Call IBM Cloud Functions (formerly IBM OpenWhisk) actions directly from a dialog node. This feature enables you to, for example, call an action to retrieve weather information from within a dialog node, and then condition on the returned information in the dialog response. Currently, you can call an action from a Cloud Functions instance that is hosted in the US South region from Conversation instances that are hosted in the US South region. See [Making programmatic calls from a dialog node](dialog-actions.html) for more details.
 
 ### 5 December 2017
 {: #5December2017}
