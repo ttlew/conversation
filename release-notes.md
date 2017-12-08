@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-12-06"
+lastupdated: "2017-12-08"
 
 ---
 
@@ -48,6 +48,11 @@ Existing models that you have trained will not be immediately impacted, but expi
 
 The following new features and changes to the service are available.
 
+### 8 December 2017
+{: #8December2017}
+
+- **Log data access across instances (Premium users only)**: If you are a {{site.data.keyword.conversationshort}} Premium user, your premium instances can optionally be configured to allow access to log data from workspaces across your different premium instances.
+
 ### 6 December 2017
 {: #6December2017}
 
@@ -56,7 +61,7 @@ The following new features and changes to the service are available.
 ### 5 December 2017
 {: #5December2017}
 
-- **Redesigned UI for Intents and Entities** - The `Intents` and `Entities` tabs have been redesigned to provide an easier, more efficient workflow when creating and editing entities and intents. See [Defining intents](intents.html#defining-intents) and [Defining entities](entities.html#defining-entities) for information about working with these tabs.
+- **Redesigned UI for Intents and Entities**: The `Intents` and `Entities` tabs have been redesigned to provide an easier, more efficient workflow when creating and editing entities and intents. See [Defining intents](intents.html#defining-intents) and [Defining entities](entities.html#defining-entities) for information about working with these tabs.
 
 ### 30 November 2017
 {: #30November2017}
