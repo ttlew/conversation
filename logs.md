@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-28"
+lastupdated: "2017-12-08"
 
 ---
 
@@ -41,7 +41,7 @@ Creating a workspace is a very iterative process. While you develop your workspa
 
 In the **Improve** panel, you can view information about actual interactions with your users, and make similar corrections to improve the accuracy with which intents and entities are recognized by your workspace. It is difficult to know exactly *how* your users will ask questions, or what random utterances they may make, so it is important to frequently visit the **Improve** panel, in order to improve your workspaces.
 
-For a {{site.data.keyword.conversationshort}} instance that includes mutiple workspaces, there may be times when it is useful to use utterance data from one workspace to improve another workspace within that same instance.
+For a {{site.data.keyword.conversationshort}} instance that includes multiple workspaces, there may be times when it is useful to use utterance data from one workspace to improve another workspace within that same instance. **Note**: If you are a {{site.data.keyword.conversationshort}} Premium user, your premium instances can optionally be configured to allow access to log data from workspaces across your different premium instances.
 
 As an example, say you have a {{site.data.keyword.conversationshort}} instance named *HelpDesk*. You may have both a Production workspace and a Development workspace in your HelpDesk instance. When working in the Development workspace, you can filter utterances based on the `Deployment ID` for the Production workspace, so that you are using Production workspace utterances to improve your Development workspace.
 
