@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-12-05"
+lastupdated: "2017-12-11"
 
 ---
 
@@ -109,6 +109,28 @@ Use the {{site.data.keyword.conversationshort}} tool to create entities.
     }
     ```
     {: screen}
+    {: #capture-group}
+
+    *Capture groups* - For regular expressions, any part of a pattern inside a pair of normal parentheses will be captured as a group. For example, the entity value `fullUSphone` contains three captured groups:
+
+      - `(\d{3})` - US area code
+      - `(\d{3})` - Prefix
+      - `(\d{4})` - Line number
+
+    Grouping can be helpful if, for example, you wanted the {{site.data.keyword.conversationshort}} service to ask users for their phone number, and then use only the area code of their provided number in a response.
+
+    In order to assign the user-entered area code as a context variable, the following syntax can be used to capture the group match within the dialog node's response section:
+
+    ```json
+    {
+        "context" : {
+            "area_code": "<? @fullUSphone.groups[1] ?>"
+        }
+    }
+    ```
+    {: screen}
+
+    For additional information about using capture groups in dialog runtime, see [Storing pattern entity values in context variables](dialog-overview-context-groups.html)
 
     The pattern matching engine employed by the {{site.data.keyword.conversationshort}} service has some syntax limitations, which are necessary in order to avoid performance concerns which can occur when using other regular expression engines. Notably, entity patterns may not contain:
       - Positive repetitions (e.g., `x*+`)
