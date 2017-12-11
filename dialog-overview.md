@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-12-08"
+lastupdated: "2017-12-11"
 
 ---
 
@@ -320,14 +320,14 @@ You can condition against context variable values by referencing a context varia
 
 Learn more:
 
-- [Passing context from the application](dialog_overview.html#context-from-app)
-- [Passing context from node to node](dialog_overview.html#context-node-to-node)
-- [Defining a context variable](dialog_overview.html#context-var-define)
-- [Common context variable tasks](dialog_overview.html#context-common-tasks)
-- [Deleting a context variable](dialog_overview.html#context-delete)
-- [Order of operation](dialog_overview.html#context-order-of-ops)
-- [Storing pattern entity values](dialog_overview.html#context-pattern-entities)
-- [Updating a context variable value](dialog_overview.html#context-update)
+- [Passing context from the application](dialog-overview.html#context-from-app)
+- [Passing context from node to node](dialog-overview.html#context-node-to-node)
+- [Defining a context variable](dialog-overview.html#context-var-define)
+- [Common context variable tasks](dialog-overview.html#context-common-tasks)
+- [Deleting a context variable](dialog-overview.html#context-delete)
+- [Order of operation](dialog-overview.html#context-order-of-ops)
+- [Storing pattern entity values](dialog-overview.html#context-pattern-entities)
+- [Updating a context variable value](dialog-overview.html#context-update)
 
 ### Passing context from the application
 {: #context-from-app}
@@ -420,12 +420,13 @@ To define a context variable, complete the following steps:
     {: codeblock}
 
     In this example, a variable named `new_variable` is added to a context block that already contains a variable.
+
     ```json
     {
       "context":{
         "existing_variable": "value",
         "new_variable":"value"
-    }
+      }
     }
     ```
     {: codeblock}
@@ -523,14 +524,14 @@ Use a slightly more complex expression to avoid having to rely on the value of t
 
 To store the value of a pattern entity in a context variable, append .literal to the entity name. Using this syntax ensures that the exact span of text from user input that matched the specified pattern is stored in the variable.
 
-    ```json
-    {
-      "context": {
-        "email": "<? @email.literal ?>"
-      }
-    }
-    ```
-    {: codeblock}
+```json
+{
+  "context": {
+    "email": "<? @email.literal ?>"
+  }
+}
+```
+{: codeblock}
 
 To store the text from a single group in a pattern entity with groups defined, specify the array number of the group that you want to store. For example, assume that the entity pattern is defined as follows for the @phone_number entity. (Remember, the parentheses denote pattern groups):
 
@@ -538,37 +539,39 @@ To store the text from a single group in a pattern entity with groups defined, s
 
 To store only the area code from the phone number that is specified in user input, you can use the following syntax:
 
-    ```json
-    {
-      "context": {
-        "area_code": "<? @phone_number.groups[1] ?>"
-      }
-    }
-    ```
-    {: codeblock}
+```json
+{
+  "context": {
+    "area_code": "<? @phone_number.groups[1] ?>"
+  }
+}
+```
+{: codeblock}
 
 The groups are delimited by the regular expression that is used to define the group pattern. For example, if the user input that matches the pattern defined in the entity `@phone_number` is: `958-234-3456`, then the following groups are created:
 
-| Group number | Regex engine value | Dialog value   | Explanation |
-|--------------|--------------------|----------------|-------------|
-| groups[0]    | `958-234-3456`     | `958-234-3456` | The first group is always the full matching string. |
-| groups[1]    | `((958)\|(555))`    | `958`         | String that matches the regex for the first defined group, which is `((958)\|(555))`. |
-| groups[2]    | `(958)`            | `958`          | Match against the group that is included as the first operand in the OR expression `((958)\|(555))` |
-| groups[3]    | `(555)`            | `null`         | No match against the group that is included as the second operand in the OR expression `((958)\|(555))` |
-| groups[4]    | `(\d{3})`          | `234`          | String that matches the regular expression that is defined for the group. |
-| groups[5]    | `(\d{4})`          | `3456`         | String that matches the regular expression that is defined for the group. |
+| Group number | Regex engine value  | Dialog value   | Explanation |
+|--------------|---------------------|----------------|-------------|
+| groups[0]    | `958-234-3456`      | `958-234-3456` | The first group is always the full matching string. |
+| groups[1]    | `((958)&vert;(555))`| `958`          | String that matches the regex for the first defined group, which is `((958)I(555))`. |
+| groups[2]    | `(958)`             | `958`          | Match against the group that is included as the first operand in the OR expression `((958)I(555))` |
+| groups[3]    | `(555)`             | `null`         | No match against the group that is included as the second operand in the OR expression `((958)I(555))` |
+| groups[4]    | `(\d{3})`           | `234`          | String that matches the regular expression that is defined for the group. |
+| groups[5]    | `(\d{4})`           | `3456`         | String that matches the regular expression that is defined for the group. |
 {: caption="Group details" caption-side="top"}
+
+**Note**: The `I` used in the examples in the table above is used to mean a pipe symbol (|), which represents `or`. For example, `((958)I(555))` is equivalent to `((958)|(555))`
 
 To help you decipher which group number to use to capture the section of input you are interested in, you can extract information about all the groups at once. Use the following syntax to create a context variable that returns an array of all the grouped pattern entity matches:
 
-    ```json
-    {
-      "context": {
-        "array_of_matched_groups": "<? @phone_number.groups ?>"
-      }
-    }
-    ```
-    {: codeblock}
+```json
+{
+  "context": {
+    "array_of_matched_groups": "<? @phone_number.groups ?>"
+  }
+}
+```
+{: codeblock}
 
 Use the "Try it out" pane to enter some test phone number values. For the input `958-123-2345`, this expression sets `$array_of_matched_groups` to `["958-123-2345","958","958",null,"123","2345"]`.
 
@@ -588,41 +591,41 @@ It is easy to determine that, to capture the last four digits of the phone numbe
 
 To return the JSONArray structure that is created to represent the grouped pattern entity, use the following syntax:
 
-    ```json
-    {
-      "context": {
-        "json_matched_groups": "<? @phone_number.groups_json ?>"
-      }
-    }
-    ```
-    {: codeblock}
+```json
+{
+  "context": {
+    "json_matched_groups": "<? @phone_number.groups_json ?>"
+  }
+}
+```
+{: codeblock}
 
 This expression sets `$json_matched_groups` to the following JSON array:
 
-    ```json
-    [
-      {"group": "group_0","location": [0, 12]},
-      {"group": "group_1","location": [0, 3]},
-      {"group": "group_2","location": [0, 3]},
-      {"group": "group_3"},
-      {"group": "group_4","location": [4, 7]},
-      {"group": "group_5","location": [8, 12]}
-    ]
-    ```
-    {: codeblock}
+```json
+[
+  {"group": "group_0","location": [0, 12]},
+  {"group": "group_1","location": [0, 3]},
+  {"group": "group_2","location": [0, 3]},
+  {"group": "group_3"},
+  {"group": "group_4","location": [4, 7]},
+  {"group": "group_5","location": [8, 12]}
+]
+```
+{: codeblock}
 
 **Note**: `location` is a property of an entity that uses a zero-based character offset to indicate where the detected entity value begins and ends in the input text.
 
 If you expect two phone numbers to be supplied in the input, then you can check for two phone numbers. If present, use the following syntax to capture the area code of the second number, for example.
 
-    ```json
-    {
-      "context": {
-        "second_areacode": "<? entities['phone_number'][1].groups[1] ?>"
-      }
-    }
-    ```
-    {: codeblock}
+```json
+{
+  "context": {
+    "second_areacode": "<? entities['phone_number'][1].groups[1] ?>"
+  }
+}
+```
+{: codeblock}
 
 If the input is `I want to change my phone number from 958-234-3456 to 555-456-5678`, then `$second_areacode` equals `555`.
 
