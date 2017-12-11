@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-12-01"
+lastupdated: "2017-12-08"
 
 ---
 
@@ -62,7 +62,7 @@ Using slots produces a more natural dialog flow between the user and the service
 
 1.  **Add a slot for each unit of required information**. For each slot, specify these details:
 
-    - **Check for**: Identify the type of information you want to extract from the user's response to the slot prompt. In most cases, you check for entity values, but you can also check for an intent. You can use AND and OR operators here to define more complex conditions.
+    - **Check for**: Identify the type of information you want to extract from the user's response to the slot prompt. In most cases, you check for entity values. In fact, the condition builder that is displayed suggests entities that you can check for. However, you can also check for an intent; just type the intent name into the field. You can use AND and OR operators here to define more complex conditions.
 
       **Note**: If the entity has regular expression patterns defined for it, then after adding the entity name, append `.literal` to it. For example, after you choose `@email` from the list of defined entities, edit the *Check for* field to contain `@email.literal`. By adding the `.literal` property, you indicate that you want to capture the exact text that was entered by the user and was identified as an email address based on its pattern.
 

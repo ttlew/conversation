@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-30"
+lastupdated: "2017-12-08"
 
 ---
 
@@ -106,6 +106,7 @@ To create a dialog, complete the following steps:
     - To create a peer node that is checked next if the condition for the existing node is not met, select **Add node below**.
     - To create a peer node that is checked before the condition for the existing node is checked, select **Add node above**.
     - To create a child node to the selected node, select **Add child node**. A child node is processed after its parent node.
+    - To copy the current node, select **Duplicate**.
 
     For more information about the order in which dialog nodes are processed, see [Dialog overview](dialog-overview.html#dialog-flow).
 1.  Test the dialog as you build it.
@@ -153,6 +154,16 @@ If you determine that the wrong intents or entities are being recognized, you mi
 
 If the correct intents and entities are being recognized, but the wrong nodes are being triggered in your dialog, make sure your conditions are written properly.
 
+## Copying a dialog node
+{: #copy-node}
+
+You can duplicate a node to create an exact copy of it as a peer node directly below it in the dialog tree. The copied node itself is given the same name as the original node, but with `- copy`*`n`* appended to it, where *`n`* is a number that starts with 1. If you duplicate the same node more than once, then the *`n`* in the name increments by one for each copy to help you distinguish the copies from one another. If the node has no name, it is given the name `copy`*`n`*.
+
+When you duplicate a node that has child nodes, the child nodes are duplicated also. The copied child nodes have the exact same names as the original child nodes. The only way to distinguish a copied child node from an original child node is the `copy` reference in the parent node name.
+
+1.  On the node you want to copy, click the **More** ![More icon](images/kabob.png) icon, and then select **Duplicate**.
+1.  Consider renaming the copied nodes or editing their conditions to make them distinct.
+
 ## Moving a dialog node
 {: #move-node}
 
@@ -183,6 +194,6 @@ To discover a node based on its node ID, complete the following steps:
 1.  Edit the URL by replacing the current `node-id` value with the ID of the node you want to find, and then submit the new URL.
 1.  If necessary, highlight the edited URL again, and resubmit it.
 
-The tooling refreshes, and shifts focus to the dialog node with the node ID that you specified. If the node ID is for a slot, a slot handler, a node-level handler, or a conditional response, then the node in which the slot or conditional response is defined gets focus.
+The tooling refreshes, and shifts focus to the dialog node with the node ID that you specified. If the node ID is for a slot, a slot handler, a node-level handler, or a conditional response, then the node in which the slot or conditional response is defined gets focus and the corresponding modal is displayed.
 
-**Note**: If you still cannot identify the node, you can export the workspace, and use a JSON editor to find the node-id in the JSON. Look for the `type` that is associated with the node. It tells you what part of the node to look at, such as a slot, a slot's Found condition, a node-level conditional response, and so on.
+**Note**: If you still cannot find the node, you can export the workspace and use a JSON editor to search the workspace JSON file.
