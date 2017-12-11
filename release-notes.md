@@ -67,7 +67,7 @@ The following new features and changes to the service are available.
 ### 5 December 2017
 {: #5December2017}
 
-- **Redesigned UI for Intents and Entities** - The `Intents` and `Entities` tabs have been redesigned to provide an easier, more efficient workflow when creating and editing entities and intents. See [Defining intents](intents.html#defining-intents) and [Defining entities](entities.html#defining-entities) for information about working with these tabs.
+- **Redesigned UI for Intents and Entities**: The `Intents` and `Entities` tabs have been redesigned to provide an easier, more efficient workflow when creating and editing entities and intents. See [Defining intents](intents.html#defining-intents) and [Defining entities](entities.html#defining-entities) for information about working with these tabs.
 
 ### 30 November 2017
 {: #30November2017}
