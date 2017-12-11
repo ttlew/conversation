@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-20"
+lastupdated: "2017-12-11"
 
 ---
 
@@ -96,8 +96,6 @@ For this example, we're going to keep things simple and define only two intents:
     - `greetings`
     - `hi`
     - `howdy`
-
-   ![Shows an animation of a user creating a #hello intent with example utterances.](images/gs-add-intents-animated.gif)
 
 1.  Create another intent named #goodbye with these five examples:
     - `bye`

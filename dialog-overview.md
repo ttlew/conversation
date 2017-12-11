@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-12-01"
+lastupdated: "2017-12-08"
 
 ---
 
@@ -63,7 +63,7 @@ The services continues to work its way through the dialog tree from first to las
 
 When you start to build the dialog, you must determine the branches to include, and where to place them. The order of the branches is important because nodes are evaluated from first to last. The first base node whose condition matches the input is used; any nodes that come later in the tree are not triggered.
 
-When the service reaches the end of a branch, or cannot find a condition that evaluates to true from the current set of child nodes it is evaluating, it jumps back out to the base of the tree. And once again, the service processes the base nodes from first to the last. If none of the conditions evaluate to true, then the response from the last node in the tree, which typically has a special `anything_else` condition that always evaluates to true, is returned.
+When the service reaches the end of a branch, or cannot find a condition that evaluates to true from the current set of child nodes it is evaluating, it jumps back out to the base of the tree. And once again, the service processes the base nodes from first to the last. If none of the conditions evaluates to true, then the response from the last node in the tree, which typically has a special `anything_else` condition that always evaluates to true, is returned.
 
 You can disrupt the standard first-to-last flow by customizing what happens after a node is processed. For example, you can configure a node to jump directly to another node after it is processed, even if the other node is defined earlier in the tree. See [Defining what to do next](dialog-overview.html#jump-to) for more details.
 
@@ -73,26 +73,35 @@ You can disrupt the standard first-to-last flow by customizing what happens afte
 A node condition determines whether that node is used in the conversation. Response conditions determine which response to display to a user.
 You can use one or more of the following artifacts in any combination to define a condition:
 
-- **Context variable**: The node is used if the context variable expression that you specify is true. Use the syntax `$variable_name:value` or `$variable_name == 'value'`. See [Context variables](#context).
+- **Context variable**: The node is used if the context variable expression that you specify is true. Use the syntax, `$variable_name:value` or `$variable_name == 'value'`. For example, `$city:Boston` checks whether the `$city` context variable contains the value, `Boston`. If so, the node or response is processed.
 
   Do not define a node or response condition based on the value of a context variable in the same dialog node in which you set the context variable value.
   {: tip}
 
-- **Entity**: The node is used when any value or synonym for the entity is recognized in the user input. Use the syntax `@entity_name`. For example `@city`.
+  For more information about context variables, see [Context variables](#context).
+
+- **Entity**: The node is used when any value or synonym for the entity is recognized in the user input. Use the syntax, `@entity_name`. For example, `@city` checks whether any of the city names that are defined for the @city entity were detected in the user input. If so, the node or response is processed.
 
   Be sure to create a peer node to handle the case where none of the entity's values or synonyms are recognized.
   {: tip}
 
-- **Entity value**: The node is used if the entity value is detected in the user input. Use the syntax `@entity_name:value`. For example: `@city:Boston`. Specify a defined value for the entity, not a synonym.
+  For more information about entities, see [Defining entities](entities.html).
+
+- **Entity value**: The node is used if the entity value is detected in the user input. Use the syntax, `@entity_name:value` and specify a defined value for the entity, not a synonym. For example: `@city:Boston` checks whether the specific city name, `Boston`, was detected in the user input.
+
+  If the entity is a pattern entity with capture groups, then you can check for a certain group value match. For example, you can use the syntax: `@us_phone.groups[1] == '617'`
+  See [Storing pattern entity values in context variables](dialog-overview.html#context-pattern-entities) for more information.
 
   If you check for the presence of the entity, without specifying a particular value for it, in a peer node, be sure to position this node (which checks for a particular entity value) before the peer node that checks only for the presence of the entity. Otherwise, this node will never be evaluated.
-{: tip}
+  {: tip}
 
-- **Intent**: The simplest condition is a single intent. The node is used if the user's input maps to that intent. Use the sytnax `#intent-name`. For example, `#weather` checks if the intent detected in the user input is `weather`. If so, the node is processed.
+- **Intent**: The simplest condition is a single intent. The node is used if the user's input maps to that intent. Use the syntax, `#intent_name`. For example, `#weather` checks if the intent detected in the user input is `weather`. If so, the node is processed.
+
+  For more information about intents, see [Defining intents](intents.html).
 
 - **Special condition**: Conditions that are provided with the service that you can use to perform common dialog functions.
 
-| Condition name       | Description |
+| Condition syntax     | Description |
 |----------------------|-------------|
 | `anything_else`      | You can use this condition at the end of a dialog, to be processed when the user input does not match any other dialog nodes. The **Anything else** node is triggered by this condition. |
 | `conversation_start` | Like **welcome**, this condition is evaluated as true during the first dialog turn. Unlike **welcome**, it is true whether or not the initial request from the application contains user input. A node with the **conversation_start** condition can be used to initialize context variables or perform other tasks at the beginning of the dialog. |
@@ -102,21 +111,37 @@ You can use one or more of the following artifacts in any combination to define 
 | `welcome`            | This condition is evaluated as true during the first dialog turn (when the conversation starts), only if the initial request from the application does not contain any user input. It is evaluated as false in all subsequent dialog turns. The **Welcome** node is triggered by this condition. Typically, a node with this condition is used to greet the user, for example, to display a message such as `Welcome to our Pizza ordering app.`|
 {: caption="Special conditions" caption-side="top"}
 
-### Condition syntax
+### Condition syntax details
 
 Use one of these syntax options to create valid expressions in conditions:
 
-- Spring Expression (SpEL) language, which is an expression language that supports querying and manipulating an object graph at runtime. See [Spring Expression Language (SpEL) language ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html){: new_window} for more information.
-
 - Shorthand notations to refer to intents, entities, and context variables. See [Accessing and evaluating objects](expression-language.html).
+
+- Spring Expression (SpEL) language, which is an expression language that supports querying and manipulating an object graph at runtime. See [Spring Expression Language (SpEL) language ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html){: new_window} for more information.
 
 Use regular expressions to check for values to condition against.  To find a matching string, for example, you can use the `String.find` method. See  [Methods](dialog-methods.html) for more details.
 
 ### Condition usage tips
 
-- If you want to evaluate only the value of the first detected instance of an entity type, you can use the syntax  `@entity == 'specific-value'` instead of the `@entity:(specific-value)` format. For example, when you use `@appliance == 'air conditioner'`, you are evaluating only the value of the first detected `@appliance` entity. But, using `@appliance:(air conditioner)` gets expanded to `entity['appliance'].contains('air conditioner')`, which matches whenever there is at least one `@appliance` entity of value 'air conditioner' detected in the user input.
-- When using numeric variables, make sure the variables have values. If a variable does not have a value, it is treated as having a null value (0) in a numeric comparison. For example, if you check the value of a variable with the condition `@price < 100`, and the @price entity is null, then the condition is evaluated as `true` because 0 is less than 100, even though the price was never set. To prevent the checking of null variables, use a condition such as `@price AND @price < 100`. If @price has no value, then this condition correctly returns false.
-- If you use an entity as the condition and fuzzy matching is enabled, then `@entity_name` evaluates to true only if the confidence of the match is greater than 30%. That is, only if `@entity_name.confidence > .3`.
+- **Checking for values with special characters**: If you want to check whether an entity or context variable contains a value, and the value includes a special character, such as an apostrophe ('), then you must surround the value that you want to check with parentheses. For example, to check if an entity or context variable contains the name `O'Reilly`, you must surround the name with parentheses.
+
+  `@person:(O'Reilly)` and `$person:(O'Reilly)`
+
+  The service converts these shorthand references into these full SpEL expressions:
+
+  `entities['person']?.contains('O''Reilly')` and `context['person'] == 'O''Reilly'`
+
+  **Note**: SpEL uses a second apostrophe to escape the single apostrophe in the name.
+
+- **Checking for number values**: When using numeric variables, make sure the variables have values. If a variable does not have a value, it is treated as having a null value (0) in a numeric comparison.
+
+  For example, if you check the value of a variable with the condition `@price < 100`, and the @price entity is null, then the condition is evaluated as `true` because 0 is less than 100, even though the price was never set. To prevent the checking of null variables, use a condition such as `@price AND @price < 100`. If `@price` has no value, then this condition correctly returns false.
+
+- **How fuzzy matching impacts entity recognition**: If you use an entity as the condition and fuzzy matching is enabled, then `@entity_name` evaluates to true only if the confidence of the match is greater than 30%. That is, only if `@entity_name.confidence > .3`.
+
+- **Handling multiple entities in input**: If you want to evaluate only the value of the first detected instance of an entity type, you can use the syntax  `@entity == 'specific-value'` instead of the `@entity:(specific-value)` format.
+
+  For example, when you use `@appliance == 'air conditioner'`, you are evaluating only the value of the first detected `@appliance` entity. But, using `@appliance:(air conditioner)` gets expanded to `entity['appliance'].contains('air conditioner')`, which matches whenever there is at least one `@appliance` entity of value 'air conditioner' detected in the user input.
 
 ## Responses
 {: #responses}
@@ -289,11 +314,23 @@ If you choose to jump to another node, you must specify whether the action targe
 
 The dialog is stateless, meaning that it does not retain information from one interchange with the user to the next. Your application is responsible for maintaining any continuing information that it needs. However, the application can pass information to the dialog, and the dialog can update this information and pass it back to the application. It does so by using context variables.
 
-A context variable is a variable that you define in a node, and optionally specify a default value for. Other nodes or application logic can subsequently set or change the value of the context variable. 
+A context variable is a variable that you define in a node, and optionally specify a default value for. Other nodes or application logic can subsequently set or change the value of the context variable.
 
 You can condition against context variable values by referencing a context variable from a dialog node condition to determine whether to execute a node. And you can reference a context variable from dialog node response conditions to show different reponses depending on a value provided by an external service or by the user.
 
+Learn more:
+
+- [Passing context from the application](dialog_overview.html#context-from-app)
+- [Passing context from node to node](dialog_overview.html#context-node-to-node)
+- [Defining a context variable](dialog_overview.html#context-var-define)
+- [Common context variable tasks](dialog_overview.html#context-common-tasks)
+- [Deleting a context variable](dialog_overview.html#context-delete)
+- [Order of operation](dialog_overview.html#context-order-of-ops)
+- [Storing pattern entity values](dialog_overview.html#context-pattern-entities)
+- [Updating a context variable value](dialog_overview.html#context-update)
+
 ### Passing context from the application
+{: #context-from-app}
 
 Pass information from the application to the dialog by setting a context variable and passing the context variable to the dialog.
 
@@ -304,6 +341,7 @@ For example, your application can set a $time_of_day context variable, and pass 
 In this example, the dialog knows that the application sets the variable to one of these values: *morning*, *afternoon*, or *evening*. It can check for each value, and depending on which value is present, return the appropriate greeting. If the variable is not passed or has a value that does not match one of the expected values, then a more generic greeting is displayed to the user.
 
 ### Passing context from node to node
+{: #context-node-to-node}
 
 The dialog can also add context variables to pass information from one node to another or to update the values of context variables. As the dialog asks for and gets information from the user, it can keep track of the information and reference it later in the conversation.
 
@@ -314,6 +352,7 @@ For example, in one node you might ask users for their name, and in a later node
 In this example, the system entity @sys-person is used to extract the user's name from the input if the user provides one. In the JSON editor, the username context variable is defined and set to the @sys-person value. In a subsequent node, the $username context variable is included in the response to address the user by name.
 
 ### Defining a context variable
+{: #context-var-define}
 
 Define a context variable by adding a `name` and `value` pair to the `{context}` section of the JSON dialog node definition. The pair must meet these requirements:
 
@@ -394,6 +433,7 @@ To define a context variable, complete the following steps:
   To subsequently reference the context variable, use the syntax `$name` where *name* is the name of the context variable that you defined. For example, `$new_variable`.
 
 ### Common context variable tasks
+{: #context-common-tasks}
 
 - To store the entire string that was provided by the user as input, use `input.text`:
 
@@ -428,18 +468,8 @@ To define a context variable, complete the following steps:
     ```
     {: codeblock}
 
-- To store the value of a pattern entity in a context variable, append .literal to the entity name. Using this syntax ensures that the exact span of text from user input that matched the specified pattern is stored in the variable.
-
-    ```json
-    {
-      "context": {
-        "email": "<? @email.literal ?>"
-      }
-    }
-    ```
-    {: codeblock}
-
 ### Deleting a context variable
+{: #context-delete}
 
 To delete a context variable, set the variable to null.
 
@@ -467,7 +497,7 @@ If you want to remove all trace of the context variable, you can use the JSONObj
 Alternatively you can delete the context variable in your application logic.
 
 ### Order of operation
-{: #order-of-context-var-ops}
+{: #context-order-of-ops}
 
 The order in which you define the context variables does not determine the order in which they are evaluated by the service. The service evaluates the variables, which are defined as JSON name and value pairs, in random order. Do not set a value in the first context variable and expect to be able to use it in the second, because there is no guarantee that the first context variable in your list will be executed before the second one in your list. For example, do not use two context variables to implement logic that returns a random number between zero and some higher value that is passed to the node.
 
@@ -488,8 +518,116 @@ Use a slightly more complex expression to avoid having to rely on the value of t
 ```
 {: codeblock}
 
+### Storing pattern entity values
+{: #context-pattern-entities}
+
+To store the value of a pattern entity in a context variable, append .literal to the entity name. Using this syntax ensures that the exact span of text from user input that matched the specified pattern is stored in the variable.
+
+    ```json
+    {
+      "context": {
+        "email": "<? @email.literal ?>"
+      }
+    }
+    ```
+    {: codeblock}
+
+To store the text from a single group in a pattern entity with groups defined, specify the array number of the group that you want to store. For example, assume that the entity pattern is defined as follows for the @phone_number entity. (Remember, the parentheses denote pattern groups):
+
+`\b((958)|(555))-(\d{3})-(\d{4})\b`
+
+To store only the area code from the phone number that is specified in user input, you can use the following syntax:
+
+    ```json
+    {
+      "context": {
+        "area_code": "<? @phone_number.groups[1] ?>"
+      }
+    }
+    ```
+    {: codeblock}
+
+The groups are delimited by the regular expression that is used to define the group pattern. For example, if the user input that matches the pattern defined in the entity `@phone_number` is: `958-234-3456`, then the following groups are created:
+
+| Group number | Regex engine value | Dialog value   | Explanation |
+|--------------|--------------------|----------------|-------------|
+| groups[0]    | `958-234-3456`     | `958-234-3456` | The first group is always the full matching string. |
+| groups[1]    | `((958)\|(555))`    | `958`         | String that matches the regex for the first defined group, which is `((958)\|(555))`. |
+| groups[2]    | `(958)`            | `958`          | Match against the group that is included as the first operand in the OR expression `((958)\|(555))` |
+| groups[3]    | `(555)`            | `null`         | No match against the group that is included as the second operand in the OR expression `((958)\|(555))` |
+| groups[4]    | `(\d{3})`          | `234`          | String that matches the regular expression that is defined for the group. |
+| groups[5]    | `(\d{4})`          | `3456`         | String that matches the regular expression that is defined for the group. |
+{: caption="Group details" caption-side="top"}
+
+To help you decipher which group number to use to capture the section of input you are interested in, you can extract information about all the groups at once. Use the following syntax to create a context variable that returns an array of all the grouped pattern entity matches:
+
+    ```json
+    {
+      "context": {
+        "array_of_matched_groups": "<? @phone_number.groups ?>"
+      }
+    }
+    ```
+    {: codeblock}
+
+Use the "Try it out" pane to enter some test phone number values. For the input `958-123-2345`, this expression sets `$array_of_matched_groups` to `["958-123-2345","958","958",null,"123","2345"]`.
+
+You can then count each value in the array starting with 0 to get the group number for it.
+
+| Array element value | Array element number |
+|---------------------|----------------------|
+| "958-123-2345"      | 0 |
+| "958"               | 1 |
+| "958"               | 2 |
+| null                | 3 |
+| "123"               | 4 |
+| "2345"              | 5 |
+{: caption="Array elements" caption-side="top"}
+
+It is easy to determine that, to capture the last four digits of the phone number, you need group #5, for example.
+
+To return the JSONArray structure that is created to represent the grouped pattern entity, use the following syntax:
+
+    ```json
+    {
+      "context": {
+        "json_matched_groups": "<? @phone_number.groups_json ?>"
+      }
+    }
+    ```
+    {: codeblock}
+
+This expression sets `$json_matched_groups` to the following JSON array:
+
+    ```json
+    [
+      {"group": "group_0","location": [0, 12]},
+      {"group": "group_1","location": [0, 3]},
+      {"group": "group_2","location": [0, 3]},
+      {"group": "group_3"},
+      {"group": "group_4","location": [4, 7]},
+      {"group": "group_5","location": [8, 12]}
+    ]
+    ```
+    {: codeblock}
+
+**Note**: `location` is a property of an entity that uses a zero-based character offset to indicate where the detected entity value begins and ends in the input text.
+
+If you expect two phone numbers to be supplied in the input, then you can check for two phone numbers. If present, use the following syntax to capture the area code of the second number, for example.
+
+    ```json
+    {
+      "context": {
+        "second_areacode": "<? entities['phone_number'][1].groups[1] ?>"
+      }
+    }
+    ```
+    {: codeblock}
+
+If the input is `I want to change my phone number from 958-234-3456 to 555-456-5678`, then `$second_areacode` equals `555`.
+
 ### Updating a context variable value
-{: #updating-a-context-variable-value}
+{: #context-update}
 
 If a node sets the value of a context variable that is already set, then the previous value is overwritten.
 
