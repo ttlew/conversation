@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-12-05"
+lastupdated: "2017-12-12"
 
 ---
 
@@ -32,7 +32,7 @@ The number of intents and examples you can create depends on your {{site.data.ke
 | Service plan     | Intents per workspace | Examples per workspace |
 |------------------|----------------------:|-----------------------:|
 | Standard/Premium |                 2,000 |                 25,000 |
-| Lite             |                    25 |                 25,000 |
+| Lite             |                   100 |                 25,000 |
 
 ## Creating intents
 {: #creating-intents}

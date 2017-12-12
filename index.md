@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-14"
+lastupdated: "2017-12-12"
 
 ---
 
@@ -56,6 +56,10 @@ Follow these links to read more:
 - [Planning your intents and entities](intents-entities.html#planning-your-entities)
 - [Dialog overview](dialog-overview.html)
 - [Deployment overview](deploy.html)
+
+## Browser support
+
+The minimum required browser software for the {{site.data.keyword.conversationfull}} service tooling user interface matches the {{site.data.keyword.Bluemix_notm}} prerequisites. See the {{site.data.keyword.Bluemix_notm}} [Prerequisites ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/docs/overview/prereqs.html#browsers){: new_window} topic for details.
 
 ## Language support
 
