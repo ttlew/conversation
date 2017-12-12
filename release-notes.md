@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-12-08"
+lastupdated: "2017-12-12"
 
 ---
 
@@ -50,8 +50,6 @@ The following new features and changes to the service are available.
 
 ### 8 December 2017
 {: #8December2017}
-
-- **Intent training data**: The options to move and delete user utterance examples for an intent are not available temporarily.
 
 - **Log data access across instances (Premium users only)**: If you are a {{site.data.keyword.conversationshort}} Premium user, your premium instances can optionally be configured to allow access to log data from workspaces across your different premium instances.
 
