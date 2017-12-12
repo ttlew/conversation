@@ -553,14 +553,14 @@ The groups are delimited by the regular expression that is used to define the gr
 | Group number | Regex engine value  | Dialog value   | Explanation |
 |--------------|---------------------|----------------|-------------|
 | groups[0]    | `958-234-3456`      | `958-234-3456` | The first group is always the full matching string. |
-| groups[1]    | `((958)&vert;(555))`| `958`          | String that matches the regex for the first defined group, which is `((958)I(555))`. |
-| groups[2]    | `(958)`             | `958`          | Match against the group that is included as the first operand in the OR expression `((958)I(555))` |
-| groups[3]    | `(555)`             | `null`         | No match against the group that is included as the second operand in the OR expression `((958)I(555))` |
+| groups[1]    | `((958)`l`(555))`   | `958`          | String that matches the regex for the first defined group, which is `((958)`l`(555))`. |
+| groups[2]    | `(958)`             | `958`          | Match against the group that is included as the first operand in the OR expression `((958)`l`(555))` |
+| groups[3]    | `(555)`             | `null`         | No match against the group that is included as the second operand in the OR expression `((958)`l`(555))` |
 | groups[4]    | `(\d{3})`           | `234`          | String that matches the regular expression that is defined for the group. |
 | groups[5]    | `(\d{4})`           | `3456`         | String that matches the regular expression that is defined for the group. |
 {: caption="Group details" caption-side="top"}
 
-**Note**: The `I` used in the examples in the table above is used to mean a pipe symbol (|), which represents `or`. For example, `((958)I(555))` is equivalent to `((958)|(555))`
+**Note**: The 'l' used in the examples in the table above replaces the vertical bar character (|), which represents an `or` operator in the regular expression. For example, `((958)`l`(555))` is equivalent to `((958)|(555))`, which means `(958) or (555)`.
 
 To help you decipher which group number to use to capture the section of input you are interested in, you can extract information about all the groups at once. Use the following syntax to create a context variable that returns an array of all the grouped pattern entity matches:
 

@@ -24,6 +24,8 @@ lastupdated: "2017-12-11"
 Use the {{site.data.keyword.conversationshort}} tool to create your dialog.
 {: shortdesc}
 
+**BETA** Some of the features described in this documentation are beta features that have been made available for your evaluation. Beta features might be unstable, might change frequently, and might be discontinued with short notice. Beta features also might not provide the same level of performance or compatibility that generally available features provide and are not intended for use in a production environment. Click [here](docs/services/conversation/dialog-build.html) to return to the generally available version of this topic.
+
 ## Dialog node limits
 {: #dialog-node-limits}
 
@@ -154,7 +156,7 @@ If you determine that the wrong intents or entities are being recognized, you mi
 
 If the correct intents and entities are being recognized, but the wrong nodes are being triggered in your dialog, make sure your conditions are written properly.
 
-## Digressions
+## Digressions **BETA**
 {: #digressions}
 
 A digression occurs when a user is in the middle of a dialog flow that is designed to address one goal, and abruptly switches topics to initiate a dialog flow that is designed to address a different goal. The dialog has always supported the user's ability to change subjects. If none of the nodes in the dialog branch that is being processed match the goal of the user's latest input, the conversation goes back out to the tree to check the base node conditions for an appropriate match.
