@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-12-06"
+lastupdated: "2017-12-12"
 
 ---
 
@@ -213,7 +213,7 @@ For a client type programmatic call, you can pass information about error proces
 ```
 {: codeblock}
 
-### Client call example
+## Client call example
 {: #action-client-example}
 
 The following example shows what a call to an external weather service might look like. It is added to the JSON editor that is associated with the node response. By the time the node-level response is triggered, slots have collected and stored the date and location information from the user. This example assumes that the service that will be called has an endpoint named `/weather`, and that it takes `location` and `date` parameters, and returns a JSON object, `{"forecast": "<value>"}`.
@@ -268,7 +268,7 @@ The following diagram illustrates how you can use a client call to get weather f
 
 ![Shows someone asking for a weather forecast, and the dialog sending the request to a client app, which then sends it to the external service](images/forecast.png)
 
-### Server call example
+## Server call example
 {: #action-server-example}
 
 The following example shows what a call to a Cloud Functions action might look like. This example shows how to use the Cloud Functions `echo` action that is defined in the [Utilities package ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/docs/openwhisk/openwhisk_actions.html#openwhisk_create_action_sequence){: new_window} provided with the service. The action takes a text string, and returns it.
@@ -331,7 +331,7 @@ To see a workspace with a dialog that is already set up to call the Cloud Functi
 
     The service will use the Cloud Functions Echo action to repeat whatever you enter back to you.
 
-### Advanced server call example
+## Advanced server call example
 {: #advanced-action-server-example}
 
 You can call multiple actions from within a single dialog flow. In fact, you can call up to five actions within one `actions` JSON object in a single dialog node. However, any server type actions that are defined in an `actions` JSON array are all processed in parallel. Therefore, you cannot call one server type action and pass the result from it to a second server type action in the same `actions` block. The best way to call server actions in a specific order is to use a Cloud Functions sequence. At runtime, this approach is faster because the dialog only has to make one external call to complete multiple actions. To use a sequence, just reference the sequence name instead of an action name in the `actions` block definition. Alternatively, you can call the first server type action from one node and jump to a child node that calls the next server type action.

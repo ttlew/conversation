@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-12-11"
+lastupdated: "2017-12-12"
 
 ---
 
@@ -559,8 +559,6 @@ The groups are delimited by the regular expression that is used to define the gr
 | groups[4]    | `(\d{3})`           | `234`          | String that matches the regular expression that is defined for the group. |
 | groups[5]    | `(\d{4})`           | `3456`         | String that matches the regular expression that is defined for the group. |
 {: caption="Group details" caption-side="top"}
-
-**Note**: The 'l' used in the examples in the table above replaces the vertical bar character (|), which represents an `or` operator in the regular expression. For example, `((958)`l`(555))` is equivalent to `((958)|(555))`, which means `(958) or (555)`.
 
 To help you decipher which group number to use to capture the section of input you are interested in, you can extract information about all the groups at once. Use the following syntax to create a context variable that returns an array of all the grouped pattern entity matches:
 
