@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-12-12"
+lastupdated: "2017-12-14"
 
 ---
 
@@ -47,6 +47,11 @@ Existing models that you have trained will not be immediately impacted, but expi
 {: #change-log}
 
 The following new features and changes to the service are available.
+
+### 14 December 2017
+{: #14December2017}
+
+- **Intent training data**: When you delete an example that contains a comma (`,`) from the training data for an intent, the example is not removed. To remove the example, first click to edit the example, and remove any commas from the example text. You can then delete the example.
 
 ### 8 December 2017
 {: #8December2017}
