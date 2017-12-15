@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-12-12"
+lastupdated: "2017-12-13"
 
 ---
 
@@ -59,7 +59,7 @@ Follow these links to read more:
 
 ## Browser support
 
-The minimum required browser software for the {{site.data.keyword.conversationfull}} service tooling user interface matches the {{site.data.keyword.Bluemix_notm}} prerequisites. See the {{site.data.keyword.Bluemix_notm}} [Prerequisites ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/docs/overview/prereqs.html#browsers){: new_window} topic for details.
+The {{site.data.keyword.conversationshort}} service tooling requires the same level of browser software as is required by {{site.data.keyword.Bluemix_notm}}. See the {{site.data.keyword.Bluemix_notm}} [Prerequisites ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/docs/overview/prereqs.html#browsers){: new_window} topic for details.
 
 ## Language support
 
