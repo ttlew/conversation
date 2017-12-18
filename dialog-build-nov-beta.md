@@ -197,11 +197,11 @@ To change the digression behavior for an individual node, complete the following
 
     - If any of the child nodes of the current node contain the `anything_else` or `true` condition
 
-      These conditions are special in that they always evaluate to true. Because of their known behavior, they are often used in dialogs to force a parent node to evaluate a specific child node in succession. To prevent breaking the design of the existing dialog flow, digression are not allowed in this case. Before you can enable digressions away from this node, you must change the child node's condition to something else.
+      These conditions are special in that they always evaluate to true. Because of their known behavior, they are often used in dialogs to force a parent node to evaluate a specific child node in succession. To prevent breaking the design of the existing dialog flow, digressions are not allowed in this case. Before you can enable digressions away from this node, you must change the child node's condition to something else.
 
     - If the node is configured to jump to another node or skip user input after it is processed
 
-      The final step section of a node specifies what should happen after the node is processed. When the dialog is configured to jump directly to another node, it is often to ensure that a specific sequence is followed. And when the node is configured to skip user input, it is equivalent to forcing the dialog to process the first child node after the current node in succession. To prevent breaking the design of the existing dialog flow, digression are not allowed in either of these cases. Before you can enable digressions away from this node, you must change what is specified in the final step section.
+      The final step section of a node specifies what should happen after the node is processed. When the dialog is configured to jump directly to another node, it is often to ensure that a specific sequence is followed. And when the node is configured to skip user input, it is equivalent to forcing the dialog to process the first child node after the current node in succession. To prevent breaking the design of the existing dialog flow, digressions are not allowed in either of these cases. Before you can enable digressions away from this node, you must change what is specified in the final step section.
 
     If the cases listed above do not apply, then you can make the following choices:
 
