@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-12-08"
+lastupdated: "2017-12-18"
 
 ---
 
@@ -142,7 +142,7 @@ As you make changes to your dialog, you can test it at any time to see how it re
     1.  To add a context variable, specify the variable name, and press **Enter**.
     1.  To define a default value for the context variable, find the context variable you added in the list, and then specify a value for it.
 
-    See [Context variables](dialog-overview.html#context) for more information.
+    See [Context variables](dialog-runtime.html#context) for more information.
 
 1.  Continue to interact with the dialog to see how the conversation flows through it.
     - To find and resubmit a test utterance, you can press the Up key to cycle through your recent inputs.

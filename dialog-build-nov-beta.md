@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-12-15"
+lastupdated: "2017-12-18"
 
 ---
 
@@ -144,7 +144,7 @@ As you make changes to your dialog, you can test it at any time to see how it re
     1.  To add a context variable, specify the variable name, and press **Enter**.
     1.  To define a default value for the context variable, find the context variable you added in the list, and then specify a value for it.
 
-    See [Context variables](dialog-overview.html#context) for more information.
+    See [Context variables](dialog-runtime.html#context) for more information.
 
 1.  Continue to interact with the dialog to see how the conversation flows through it.
     - To find and resubmit a test utterance, you can press the Up key to cycle through your recent inputs.
@@ -161,21 +161,21 @@ If the correct intents and entities are being recognized, but the wrong nodes ar
 
 A digression occurs when a user is in the middle of a dialog flow that is designed to address one goal, and abruptly switches topics to initiate a dialog flow that is designed to address a different goal. The dialog has always supported the user's ability to change subjects. If none of the nodes in the dialog branch that is being processed match the goal of the user's latest input, the conversation goes back out to the tree to check the base node conditions for an appropriate match.
 
-The digression settings that are available per node give you the ability to tailor this behavior even more. Namely, you can use them to allow the conversation to go back to the dialog flow that was interrupted when the digression occurred. For example, if the user is ordering a new phone, then switches topics to ask about tablets, your dialog can answer the question about tablets, and then bring the user back to where they left off in the process of ordering the phone. Allowing digressions to occur and return gives your users more control over the flow of the conversation at run time. They can briefly change topics, and then return to where they left off. The result is a dialog flow that more closely simulates a human-to-human conversation.
+The digression settings that are available per node give you the ability to tailor this behavior even more. Namely, you can allow the conversation to return to the dialog flow that was interrupted when the digression occurred. For example, the user might be ordering a new phone, but switches topics to ask about tablets. Your dialog can answer the question about tablets, and then bring the user back to where they left off in the process of ordering a phone. Allowing digressions to occur and return gives your users more control over the flow of the conversation at run time. They can briefly change topics, and then return to where they were before. The result is a dialog flow that more closely simulates a human-to-human conversation.
 
-The following image illustrates the concept of a digression. It shows how a user interacts with dialog nodes that are configured to allow digressions, and return to the dialog flow that was in progress. The user starts to provide the information required to make a dinner reservation. In the middle of filling slots in the #reservation node, the user asks a question about vegetarian menu options. The dialog answers the user's new question by finding a node that addresses it amongst the base nodes (a node that conditions on the #cuisine intent). It then returns to where it left off by showing the prompt for the next empty slot from the original dialog node.
+The following image illustrates the concept of a digression. It shows how a user interacts with dialog nodes that are configured to allow digressions, and return to the dialog flow that was in progress. The user starts to provide the information required to make a dinner reservation. In the middle of filling slots in the #reservation node, the user asks a question about vegetarian menu options. The dialog answers the user's new question by finding a node that addresses it amongst the base nodes (a node that conditions on the #cuisine intent). It then returns to the conversation that was in progress by showing the prompt for the next empty slot from the original dialog node.
 
 ![Shows someone who is providing details about a dinner reservation ask about vegetarian options, get an answer, and then return to providing reservation details.](images/digression.gif)
 
-You can also limit where digressions are allowed, including:
+You can also limit where digressions are allowed.
 
-- Blocking users from digressing away from a dialog branch, perhaps because it has a complex flow that you do not want interrupted.
-- Stopping users from exiting a node with slots if they are in the middle of filling the slot variables that you need.
-- Preventing a base node with a complex flow from being considered as a possible digression target.
+- Block users from digressing away from a dialog branch. For example, when a branch has a complex flow that you do not want interrupted.
+- Stop users from exiting a node with slots if they are in the middle of filling the slot variables with information you need.
+- Prevent a base node from being considered as a possible digression target. See [Disabling digressions into a base node](#disable-digressions) for more details.
 
 ### Before you begin
 
-As you test your overall dialog, decide when and where it makes sense to allow digressions and returns from digressions to occur. The following digression controls are applied to the nodes automatically. It is only if you want to change this default behavior that you need to take any action.
+As you test your overall dialog, decide when and where it makes sense to allow digressions and returns from digressions to occur. The following digression controls are applied to the nodes automatically. Only take action if you want to change this default behavior.
 
 - Nodes with slots are configured to prevent digressions away. All other nodes are configured to allow digressions away.
 - Every base node in your dialog is configured to allow digressions to target them by default. A child node cannot be the target of a digression.
@@ -183,13 +183,13 @@ As you test your overall dialog, decide when and where it makes sense to allow d
 ### Customizing digressions
 {: #enable-digressions}
 
-To configure how digressions behave for an individual node, complete the following steps:
+To change the digression behavior for an individual node, complete the following steps:
 
 1.  Click the node to open its edit view.
 
 1.  Click **Customize**, and then click the **Digressions** tab.
 
-    The configuration options you can select differ depending on the type of node you are editing, such as a base node, a child node, a node with children, or a node with slots.
+    The configuration options differ depending on the whether the node you are editing is a base node, a child node, a node with children, or a node with slots.
 
     **Digressions away from this node**
 
@@ -201,13 +201,13 @@ To configure how digressions behave for an individual node, complete the followi
 
     - If the node is configured to jump to another node or skip user input after it is processed
 
-      The final step section of a node specifies what should happen after the node is processed. When the dialog is configured to jump directly to another node, it is often to ensure that a specific sequence is followed. And when the node is configured to skip user input, it is equivalent to forcing the dialog to process the first child node after the current node in succession. To prevent breaking the design of the existing dialog flow, digression are not allowed in this case. Before you can enable digressions away from this node, you must change what is specified in the final step section.
+      The final step section of a node specifies what should happen after the node is processed. When the dialog is configured to jump directly to another node, it is often to ensure that a specific sequence is followed. And when the node is configured to skip user input, it is equivalent to forcing the dialog to process the first child node after the current node in succession. To prevent breaking the design of the existing dialog flow, digression are not allowed in either of these cases. Before you can enable digressions away from this node, you must change what is specified in the final step section.
 
     If the cases listed above do not apply, then you can make the following choices:
 
     - For all node types, choose whether to allow users to digress away from the current node before they reach the end of the current dialog branch.
 
-    - For all node types that have children, you can decide whether you want the conversation to come back to the current node after a digression if the current node's response has already been displayed. Set the *Allow return from digressions triggered after this node's response* toggle to **Yes** to force the dialog to return to the current node and continue processing it.
+    - For all node types that have children, you can decide whether you want the conversation to come back to the current node after a digression if the current node's response has already been displayed. Set the *Allow return from digressions triggered after this node's response* toggle to **No** to prevent the dialog from returning to the current node and continuing to process its branch.
 
       For example, if the user asks, `Do you sell cupcakes?` and the response, `We offer cupcakes in a variety of flavors and sizes` has been displayed, and then the user changes subjects, you might not want the dialog to return to where it left off. If the child node only captures any possible follow-up questions from the user, then it can safely be ignored.
 
@@ -225,7 +225,7 @@ To configure how digressions behave for an individual node, complete the followi
 
     You can make the following choices about how digressions into a node behave:
 
-    - You can choose to prevent users from being able to digress into the node. Click the *Allow digressions into this node* toggle to change the setting.
+    - You can prevent users from being able to digress into the node. See [Disabling digressions into a base node](#diable-digressions) for more details.
 
     - When digressions into the node are enabled, you can specify whether the dialog must go back to the dialog flow that it digressed away from after the processing of the current node's branch is finished. To allow the dialog to return afterwards, select **Go back after digression**.
 
@@ -250,9 +250,9 @@ To disable digressions into a base node altogether, complete the following steps
 
 - **Digression chains**: If a user digresses away from the current node to another node that allows digressions, they could potentially digress away from that other node, and repeat this pattern one or more times again. If all the nodes in the digression chain are configured to go back after the digression, then the user will eventually be brought back to the current dialog node. Test scenarios that digress multiple times to determine whether individual nodes function as expected in this scenario.
 
-- **The current node gets priority**: Remember that nodes outside the current flow are only considered as digression targets if the current flow cannot address the user input. It is even more important in a node with slots that allows digressions away, in particular, to make it clear to users what information is needed from them, and to add confirmation statements that are displayed after the user provides a value, both when the value provided is valid and when it is not.
+- **The current node gets priority**: Remember that nodes outside the current flow are only considered as digression targets if the current flow cannot address the user input. It is even more important in a node with slots that allows digressions away, in particular, to make it clear to users what information is needed from them, and to add confirmation statements that are displayed after the user provides a value.
 
-  Any slot can be filled during the slot-filling process. So, a slot might capture user input unexpectedly. For example, you might have a node with slots that collects the information necessary to make a dinner reservation. One of the slots collects date information. While providing the reservation details, the user might ask, `What's the weather meant to be tomorrow?` You might have a base node that conditions on #forecast which could answer the user, but because the user's input included the word `tomorrow` and the reservation node with slots is being processed, the service assumes the user is providing or updating the reservation date instead. *The current node always gets priority.* If you define a clear confirmation statement, such as, `Ok, setting the reservation date to tomorrow,` the user is more likely to realize there was a miscommunication and correct it.
+  Any slot can be filled during the slot-filling process. So, a slot might capture user input unexpectedly. For example, you might have a node with slots that collects the information necessary to make a dinner reservation. One of the slots collects date information. While providing the reservation details, the user might ask, `What's the weather meant to be tomorrow?` You might have a base node that conditions on #forecast which could answer the user. However, because the user's input includes the word `tomorrow` and the reservation node with slots is being processed, the service assumes the user is providing or updating the reservation date instead. *The current node always gets priority.* If you define a clear confirmation statement, such as, `Ok, setting the reservation date to tomorrow,` the user is more likely to realize there was a miscommunication and correct it.
 
   Conversely, while filling slots, if the user provides a value that is not expected by any of the slots, there is a chance it will match against a completely unrelated base node that the user never intended to digress to.
 

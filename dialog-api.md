@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-09-21"
+lastupdated: "2017-12-18"
 
 ---
 
@@ -21,7 +21,7 @@ lastupdated: "2017-09-21"
 
 The {{site.data.keyword.conversationshort}} REST API supports modifying your dialog programmatically, without using the {{site.data.keyword.conversationshort}} tool. You can use the /dialog_nodes API to create, delete, or modify dialog nodes.
 
-Remember that the dialog is a tree of interconnected nodes, and that it must conform to certain rules in order to be valid. This means that any change you make to a dialog node might have cascading effects on other nodes, or on the structure of your dialog. Before using the /dialog_nodes API to modify your dialog, make sure you understand how your changes will affect the rest of the dialog.
+Remember that the dialog is a tree of interconnected nodes, and that it must conform to certain rules in order to be valid. This means that any change you make to a dialog node might have cascading effects on other nodes, or on the structure of your dialog. Before using the /dialog_nodes API to modify your dialog, make sure you understand how your changes will affect the rest of the dialog. You can make a backup copy of the current dialog by exporting the workspace in which it resides. See [Exporting and copying workspaces](configure-workspace.html#exporting-and-copying-workspaces) for details.
 
 A valid dialog always satisfies the following criteria:
 
@@ -33,7 +33,55 @@ A valid dialog always satisfies the following criteria:
 - Two nodes cannot point to the same previous sibling.
 - A node can specify another node that is to be executed next (the `next_step` property).
 - A node cannot be its own parent or its own sibling.
-- A node of type `response_condition` cannot have children.
+- A node must have a type property that contains one of the following values. If no type property is specified, then the type is `standard`.
+
+  - `event_handler`: A handler that is defined for a frame node or an individual slot node.
+
+    From the tooling, you can define a frame node handler by clicking the **Manage handlers** link from a node with slots. (The tooling user interface does not expose the slot-level event handler, but you can define one through the API.)
+
+  - `frame`: A node with one or more child nodes of type `slot`. Any child slot nodes that are required must be filled before the service can exit the frame node.
+
+    The frame node type is represented as a node with slots in the tooling. The node that contains the slots is represented as a node of type=`frame`. It is the parent node to each slot, which is represented as a child node of type `slot`.
+
+  - `response_condition`: A conditional response.
+
+    In the tooling, you can add one or more conditional responses to a node. Each conditional response that you define is represented in the underlying JSON as an individual node of type=`response_condition`.
+
+  - `slot`: A child node of a node of type `frame`.
+
+    This node type is represented in the tooling as being one of multiple slots added to a single node. That single node is represented in the JSON as a parent node of type `frame`.
+
+  - `standard`: A typical dialog node. This is the default type.
+
+- For nodes of type `slot` that have the same parent node, the sibling order (specified by the `previous_sibling` property) reflects the order in which the slots will be processed.
+- A node of type `slot` must have a parent node of type `frame`.
+- A node of type `frame` must have at least one child node of type `slot`.
+- A node of type `response_condition` must have a parent node of type `standard` or `frame`.
+- Nodes of type `response_condition` and `event_handler` cannot have children.
+- A node of type `event_handler` must also have an `event_name` property that contains one of the following values to identify the type of node event:
+
+  - `filled`: Defines what to do if the user provides a value that meets the condition specified in the *Check for* field of a slot, and the slot is filled in. A handler with this name is only present if a Found condition is defined for the slot.
+  - `focus`: Defines the question to show to prompt the user to provide the information needed by the slot. A handler with this name is only present if the slot is required.
+  - `generic`: Defines a condition to watch for that can address unrelated questions that users might ask while filling a slot or node with slots.
+  - `input`: Updates the message context to include a context variable with the value that is collected from the user to fill the slot. A handler with this name must be present for each slot in the frame node.
+  - `nomatch`: Defines what to do if the user's response to the slot prompt does not contain a valid value. A handler with this name is only present if a Not found condition is defined for the slot.
+
+  The following diagram illustrates where in the tooling user interface you define the code that is triggered for each named event.
+
+  ![UI location where the code that is triggered by named event handlers is authored](images/api-event-handlers.png)
+
+- A node of type `event_handler` with an event_name of `generic` can have a parent of type `slot` or `frame`.
+- A node of type `event_handler` with an event_name of `focus`, `input`, `filled`, or `nomatch` must have a parent of type `slot`.
+- If more than one event_handler with the same event_name is associated with the same parent node, then the order of the siblings reflects the order in which the event handlers will be executed.
+- For `event_handler` nodes with the same parent slot node, the order of execution is the same regardless of the placement of the node definitions. The events are triggered in this order by event_name:
+
+  1. focus
+  1. input
+  1. filled
+  1. generic*
+  1. nomatch
+
+  *If an `event_handler` with the event_name `generic` is defined for this slot or for the parent frame, then it is executed between the filled and nomatch event_handler nodes.
 
 The following examples show how various modifications might cause cascading changes.
 
@@ -72,7 +120,7 @@ The values you specify for `parent` and `previous_node` must be valid:
 
 - Both values must refer to existing nodes.
 - The specified parent must be the same as the parent of the previous sibling (or `null`, if the previous sibling has no parent).
-- The parent cannot be a node of type `response_condition`.
+- The parent cannot be a node of type `response_condition` or `event_handler`.
 
 The resulting dialog looks like this:
 
@@ -95,7 +143,7 @@ The specified value for `parent` must be valid:
 - It must refer to an existing node.
 - It must not refer to the node being modified (a node cannot be its own parent).
 - It must not refer to a descendant of the node being modified.
-- It must not refer to a node of type `response_condition`.
+- It must not refer to a node of type `response_condition` or `event_handler`.
 
 This results in the following changed structure:
 
