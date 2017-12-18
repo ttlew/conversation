@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-07-10"
+lastupdated: "2017-12-18"
 
 ---
 
@@ -44,11 +44,4 @@ This app demonstrates how {{site.data.keyword.conversationshort}} can be used wi
 
 This app demonstrates the combination of {{site.data.keyword.conversationshort}} and {{site.data.keyword.discoveryshort}}. First, users pose questions to the {{site.data.keyword.conversationshort}} service. If {{site.data.keyword.conversationshort}} is not able to answer confidently, {{site.data.keyword.conversationshort}} Enhanced executes a call to {{site.data.keyword.discoveryshort}} to provide the user with a list of helpful answers.
 
-[See the demo ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://conversation-with-discovery-within-ui.mybluemix.net/){: new_window} or [fork the code ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/conversation-enhanced){: new_window}.
-
-## Conversation and Tone Analyzer
-
-{{site.data.keyword.toneanalyzerfull}} uses linguistic analysis to detect three types of tones from written text: emotions, social tendencies, and writing style. The Watson Food Coach app is an example of {{site.data.keyword.toneanalyzershort}} integrated with {{site.data.keyword.conversationshort}}. In this app, depending on the kind of food the user ate and how he or she is feeling about it, the automated agent provides an appropriate coaching response to encourage the user to make healthy choices.
-
-[View the demo ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://food-coach.mybluemix.net/){: new_window} or [fork the code ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/food-coach){: new_window}
-
+[See the demo ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://conversation-with-discovery-within-ui.ng.bluemix.net/){: new_window} or [fork the code ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/conversation-enhanced){: new_window}.

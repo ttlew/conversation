@@ -24,6 +24,7 @@ Conversation
     {: .topicgroup}
     Building a dialog
         dialog-overview.md
+        dialog-runtime.md
         dialog-build.md
         dialog-slots.md
         dialog-actions.md
