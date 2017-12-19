@@ -136,9 +136,9 @@ To define a context variable, complete the following steps:
 
     The editor is surfaced in multiple places in the dialog node edit view. Where it surfaces reflects the time at which the variable will be set during dialog node evaluation.
 
-    -To add a context variable that is processed after the node response is processed. Click the **Options**  ![Advanced response](images/kabob.png) icon that is displayed in the response section, and then click **Open JSON editor**.
+    -To add a context variable that is processed after the node response is processed, click the **Options**  ![Advanced response](images/kabob.png) icon that is displayed in the response section, and then click **Open JSON editor**.
 
-    If the **Multiple responses** setting is **On** for the node, then you must click the **Edit response** ![Edit response](images/edit-slot.png) icon before the **Options**  ![Advanced response](images/kabob.png) icon will be displayed in the response section.
+    If the **Multiple responses** setting is **On** for the node, then you must click the **Edit response** ![Edit response](images/edit-slot.png) icon before the **Options**  ![Advanced response](images/kabob.png) icon will be visible.
     {:tip}
 
     -To add a context variable that is processed after a slot condition is met, click the **Edit slot** ![Edit response](images/edit-slot.png) icon. From the *Configure slot* view header, click the **Options** ![Advanced response](images/kabob.png) icon, and then click **Open JSON editor**. (For more information about slots, see [Gathering information with slots](dialog-slots.html).)
