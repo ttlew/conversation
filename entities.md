@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-12-12"
+lastupdated: "2017-12-18"
 
 ---
 
@@ -80,64 +80,64 @@ Use the {{site.data.keyword.conversationshort}} tool to create entities.
 
     > **Note:** You can add *either* synonyms or patterns for a single entity value, you cannot add both.
 
-1.  In the **Add synonyms** field, type any synonyms for the entity value. A synonym can be any string up to 64 characters in length.
+    - In the **Synonyms** field, type any synonyms for the entity value. A synonym can be any string up to 64 characters in length.
 
-    ![Screen capture of defining an entity](images/define_entity.png)
+      ![Screen capture of defining an entity](images/define_entity.png)
 
-1.  The **Patterns** field lets you define specific patterns for an entity value. A pattern **must** be entered as a regular expression in the field.
+    - The **Patterns** field lets you define specific patterns for an entity value. A pattern **must** be entered as a regular expression in the field.
 
-    ![Screen capture of defining a pattern entity](images/patternents1.png)
-    {: #pattern-entities}
+      ![Screen capture of defining a pattern entity](images/patternents1.png)
+      {: #pattern-entities}
 
-    As in this example, for entity *ContactInfo*, the patterns for phone, email, and website values can be defined as follows:
-    - Phone
-      - `localPhone`: `(\d{3})-(\d{4})`, e.g. 426-4968
-      - `fullUSphone`: `(\d{3})-(\d{3})-(\d{4})`, e.g. 800-426-4968
-      - `internationalPhone`: `^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$`, e.g., +44 1962 815000
-    - `email`: `\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b`, e.g. name@ibm.com
-    - `website`: `(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$`, e.g. https://www.ibm.com
+      As in this example, for entity *ContactInfo*, the patterns for phone, email, and website values can be defined as follows:
+      - Phone
+        - `localPhone`: `(\d{3})-(\d{4})`, e.g. 426-4968
+        - `fullUSphone`: `(\d{3})-(\d{3})-(\d{4})`, e.g. 800-426-4968
+        - `internationalPhone`: `^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$`, e.g., +44 1962 815000
+      - `email`: `\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b`, e.g. name@ibm.com
+      - `website`: `(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$`, e.g. https://www.ibm.com
 
-    Often when using pattern entities, it will be necessary to store the text that matches the pattern in a context variable (or action variable), from within your dialog tree.
+      Often when using pattern entities, it will be necessary to store the text that matches the pattern in a context variable (or action variable), from within your dialog tree.
 
-    Imagine a case where you are asking a user for their email address. The dialog node condition will contain a condition similar to `@contactInfo:email`. In order to assign the user-entered email as a context variable, the following syntax can be used to capture the pattern match within the dialog node's response section:
+      Imagine a case where you are asking a user for their email address. The dialog node condition will contain a condition similar to `@contactInfo:email`. In order to assign the user-entered email as a context variable, the following syntax can be used to capture the pattern match within the dialog node's response section:
 
-    ```json
-    {
-        "context" : {
-            "email": "<? @contactInfo.literal ?>"
+      ```json
+      {
+          "context" : {
+              "email": "<? @contactInfo.literal ?>"
+          }
+      }
+      ```
+      {: screen}
+      {: #capture-group}
+
+      *Capture groups* - For regular expressions, any part of a pattern inside a pair of normal parentheses will be captured as a group. For example, the entity value `fullUSphone` contains three captured groups:
+
+        - `(\d{3})` - US area code
+        - `(\d{3})` - Prefix
+        - `(\d{4})` - Line number
+
+      Grouping can be helpful if, for example, you wanted the {{site.data.keyword.conversationshort}} service to ask users for their phone number, and then use only the area code of their provided number in a response.
+
+      In order to assign the user-entered area code as a context variable, the following syntax can be used to capture the group match within the dialog node's response section:
+
+        ```json
+        {
+            "context" : {
+                "area_code": "<? @fullUSphone.groups[1] ?>"
+            }
         }
-    }
-    ```
-    {: screen}
-    {: #capture-group}
+        ```
+       {: screen}
 
-    *Capture groups* - For regular expressions, any part of a pattern inside a pair of normal parentheses will be captured as a group. For example, the entity value `fullUSphone` contains three captured groups:
+      For additional information about using capture groups in dialog runtime, see [Storing pattern entity values in context variables](dialog-overview-context-groups.html).
 
-      - `(\d{3})` - US area code
-      - `(\d{3})` - Prefix
-      - `(\d{4})` - Line number
+      The pattern matching engine employed by the {{site.data.keyword.conversationshort}} service has some syntax limitations, which are necessary in order to avoid performance concerns which can occur when using other regular expression engines. Notably, entity patterns may not contain:
+        - Positive repetitions (e.g., `x*+`)
+        - Backreferences (e.g., `\g1`)
+        - Conditional branches (e.g., `(?(cond)true))`
 
-    Grouping can be helpful if, for example, you wanted the {{site.data.keyword.conversationshort}} service to ask users for their phone number, and then use only the area code of their provided number in a response.
-
-    In order to assign the user-entered area code as a context variable, the following syntax can be used to capture the group match within the dialog node's response section:
-
-    ```json
-    {
-        "context" : {
-            "area_code": "<? @fullUSphone.groups[1] ?>"
-        }
-    }
-    ```
-    {: screen}
-
-    For additional information about using capture groups in dialog runtime, see [Storing pattern entity values in context variables](dialog-overview-context-groups.html).
-
-    The pattern matching engine employed by the {{site.data.keyword.conversationshort}} service has some syntax limitations, which are necessary in order to avoid performance concerns which can occur when using other regular expression engines. Notably, entity patterns may not contain:
-      - Positive repetitions (e.g., `x*+`)
-      - Backreferences (e.g., `\g1`)
-      - Conditional branches (e.g., `(?(cond)true))`
-
-    The regular expression engine is loosely based on the Java regular expression engine. The {{site.data.keyword.conversationshort}} service will produce an error if you try to upload an unsupported pattern, either via the API or from within the {{site.data.keyword.conversationshort}} service Tooling UI.
+      The regular expression engine is loosely based on the Java regular expression engine. The {{site.data.keyword.conversationshort}} service will produce an error if you try to upload an unsupported pattern, either via the API or from within the {{site.data.keyword.conversationshort}} service Tooling UI.
 
 1.  Click **Add value** and repeat the process to add more entity values.
 
@@ -150,6 +150,8 @@ The entity you created is added to the **Entities** tab, and the system begins t
 ## Editing entities
 
 You can click any entity in the list to open it for editing. You can rename or delete entities, and you can add, edit, or delete values, synonyms, or patterns.
+
+> **Note**: If you change the entity type from `synonym` to `pattern`, or vice versa, the existing values are converted, but might not be useful as-is.
 
 ## Importing entities
 
