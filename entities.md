@@ -130,7 +130,7 @@ Use the {{site.data.keyword.conversationshort}} tool to create entities.
         ```
        {: screen}
 
-      For additional information about using capture groups in dialog runtime, see [Storing pattern entity values in context variables](dialog-overview-context-groups.html).
+      For additional information about using capture groups in dialog runtime, see [Storing pattern entity values in context variables](dialog-runtime.html#context-pattern-entities).
 
       The pattern matching engine employed by the {{site.data.keyword.conversationshort}} service has some syntax limitations, which are necessary in order to avoid performance concerns which can occur when using other regular expression engines. Notably, entity patterns may not contain:
         - Positive repetitions (e.g., `x*+`)
