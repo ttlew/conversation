@@ -40,7 +40,7 @@ The body of the message API call request and response includes the following obj
   ```
   {: codeblock}
 
-  See [Retaining information across dialog turns](dialog-runtime.html#store-vars) for more information.
+  See [Retaining information across dialog turns](dialog-runtime.html#context) for more information.
 
 - `input`: The string of text that was submitted by the user.
 
@@ -67,7 +67,7 @@ The body of the message API call request and response includes the following obj
 You can learn more about the /message API call from the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/conversation/api/v1/){: new_window}.
 
 ## Retaining information across dialog turns
-{: #store-vars}
+{: #context}
 
 The dialog is stateless, meaning that it does not retain information from one interaction with the user to the next. It is the responsibility of the application developer to maintain any continuing information that the application needs. The application must look for, and store the context object in the message API response, and pass it in the context object with the next /message API request that is made as part of the conversation flow.
 
@@ -75,27 +75,11 @@ The simplest way to retain the information is to store the entire context object
 
 The application can pass information to the dialog, and the dialog can update this information and pass it back to the application, or to a subsequent node. The dialog does so by using context variables.
 
-## Context variables
-{: #context}
-
-The dialog is stateless, meaning that it does not retain information from one interchange with the user to the next. Your application is responsible for maintaining any continuing information that it needs. However, the application can pass information to the dialog, and the dialog can update this information and pass it back to the application. It does so by using context variables.
-
 A context variable is a variable that you define in a node, and optionally specify a default value for. Other nodes or application logic can subsequently set or change the value of the context variable.
 
 You can condition against context variable values by referencing a context variable from a dialog node condition to determine whether to execute a node. And you can reference a context variable from dialog node response conditions to show different reponses depending on a value provided by an external service or by the user.
 
-Learn more:
-
-- [Passing context from the application](dialog-runtime.html#context-from-app)
-- [Passing context from node to node](dialog-runtime.html#context-node-to-node)
-- [Defining a context variable](dialog-runtime.html#context-var-define)
-- [Common context variable tasks](dialog-runtime.html#context-common-tasks)
-- [Deleting a context variable](dialog-runtime.html#context-delete)
-- [Order of operation](dialog-runtime.html#context-order-of-ops)
-- [Storing pattern entity values](dialog-runtime.html#context-pattern-entities)
-- [Updating a context variable value](dialog-runtime.html#context-update)
-
-### Passing context from the application
+## Passing context from the application
 {: #context-from-app}
 
 Pass information from the application to the dialog by setting a context variable and passing the context variable to the dialog.
@@ -106,7 +90,7 @@ For example, your application can set a $time_of_day context variable, and pass 
 
 In this example, the dialog knows that the application sets the variable to one of these values: *morning*, *afternoon*, or *evening*. It can check for each value, and depending on which value is present, return the appropriate greeting. If the variable is not passed or has a value that does not match one of the expected values, then a more generic greeting is displayed to the user.
 
-### Passing context from node to node
+## Passing context from node to node
 {: #context-node-to-node}
 
 The dialog can also add context variables to pass information from one node to another or to update the values of context variables. As the dialog asks for and gets information from the user, it can keep track of the information and reference it later in the conversation.
@@ -117,7 +101,7 @@ For example, in one node you might ask users for their name, and in a later node
 
 In this example, the system entity @sys-person is used to extract the user's name from the input if the user provides one. In the JSON editor, the username context variable is defined and set to the @sys-person value. In a subsequent node, the $username context variable is included in the response to address the user by name.
 
-### Defining a context variable
+## Defining a context variable
 {: #context-var-define}
 
 Define a context variable by adding a `name` and `value` pair to the `{context}` section of the JSON dialog node definition. The pair must meet these requirements:
@@ -199,7 +183,7 @@ To define a context variable, complete the following steps:
 
   To subsequently reference the context variable, use the syntax `$name` where *name* is the name of the context variable that you defined. For example, `$new_variable`.
 
-### Common context variable tasks
+## Common context variable tasks
 {: #context-common-tasks}
 
 - To store the entire string that was provided by the user as input, use `input.text`:
@@ -235,7 +219,7 @@ To define a context variable, complete the following steps:
     ```
     {: codeblock}
 
-### Deleting a context variable
+## Deleting a context variable
 {: #context-delete}
 
 To delete a context variable, set the variable to null.
@@ -263,7 +247,7 @@ If you want to remove all trace of the context variable, you can use the JSONObj
 
 Alternatively you can delete the context variable in your application logic.
 
-### Order of operation
+## Order of operation
 {: #context-order-of-ops}
 
 The order in which you define the context variables does not determine the order in which they are evaluated by the service. The service evaluates the variables, which are defined as JSON name and value pairs, in random order. Do not set a value in the first context variable and expect to be able to use it in the second, because there is no guarantee that the first context variable in your list will be executed before the second one in your list. For example, do not use two context variables to implement logic that returns a random number between zero and some higher value that is passed to the node.
@@ -285,7 +269,7 @@ Use a slightly more complex expression to avoid having to rely on the value of t
 ```
 {: codeblock}
 
-### Storing pattern entity values
+## Storing pattern entity values
 {: #context-pattern-entities}
 
 To store the value of a pattern entity in a context variable, append .literal to the entity name. Using this syntax ensures that the exact span of text from user input that matched the specified pattern is stored in the variable.
@@ -393,12 +377,12 @@ If you expect two phone numbers to be supplied in the input, then you can check 
 
 If the input is `I want to change my phone number from 958-234-3456 to 555-456-5678`, then `$second_areacode` equals `555`.
 
-### Updating a context variable value
+## Updating a context variable value
 {: #context-update}
 
 If a node sets the value of a context variable that is already set, then the previous value is overwritten.
 
-#### Updating a complex JSON object
+### Updating a complex JSON object
 
 Previous values are overwritten for all JSON types except a JSON object. If the context variable is a complex type such as JSON object, a JSON merge procedure is used to update the variable. The merge operation adds any newly defined properties and overwrites any existing properties of the object.
 
@@ -442,7 +426,7 @@ The result is this context:
 ```
 {: codeblock}
 
-#### Updating arrays
+### Updating arrays
 
 If your dialog context data contains an array of values, you can update the array by appending values, removing a value, or replacing all the values.
 
