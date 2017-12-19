@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-12-18"
+lastupdated: "2017-12-19"
 
 ---
 
@@ -26,9 +26,9 @@ Understand how your dialog is processed when a person interacts with your instan
 ## Anatomy of a dialog call
 {: message-anatomy}
 
-Each user utterance is passed to the dialog as a /message API call. This includes utterances that users make in reply to prompts from the dialog that ask them for more information.
+Each user utterance is passed to the dialog as a /message API call. This includes utterances that users make in reply to prompts from the dialog that ask them for more information. Some subscription plans include a set number of API calls, so it helps to understand what constitutes a call. A single /message API call is equivalent to a single dialog turn, which consists of an input from the user and a corresponding response from the dialog.
 
-The body of the message API call request and response includes the following objects:
+The body of the /message API call request and response includes the following objects:
 
 - `context`: Contains variables that are meant to be persisted. To pass information from one call to the next, the application developer must pass the previous API call's response context in with each subsequent API call. For example, the dialog can collect the user's name and then refer to the user by name in subsequent nodes.
 
@@ -42,7 +42,7 @@ The body of the message API call request and response includes the following obj
 
   See [Retaining information across dialog turns](dialog-runtime.html#context) for more information.
 
-- `input`: The string of text that was submitted by the user.
+- `input`: The string of text that was submitted by the user. The text string can contain up to 2,048 characters.
 
   ```json
   {
@@ -108,7 +108,8 @@ Define a context variable by adding a `name` and `value` pair to the `{context}`
 
 - The `name` can contain any upper- and lowercase alphabetic characters, numeric characters (0-9), and underscores.
 
-  **Note**: You can include other characters, such as periods and hyphens, in the name. However, if you do, then you must use one of the following approaches to reference the variable:
+  **Note**: You can include other characters, such as periods and hyphens, in the name. However, if you do, then you must use one of the following approaches every time you subsequently reference the variable:
+
   - context['variable-name']: The full SpEL expression syntax.
   - $(variable-name): Shorthand syntax with the variable name enclosed in parentheses.
 
@@ -135,9 +136,9 @@ To define a context variable, complete the following steps:
 
     The editor is surfaced in multiple places in the dialog node edit view. Where it surfaces reflects the time at which the variable will be set during dialog node evaluation.
 
-    -To add a context variable that is processed after the node response is processed, click the **Edit response** ![Edit response](images/edit-slot.png) icon. Click the **Options**  ![Advanced response](images/kabob.png) icon that is displayed in the response section, and then click **Open JSON editor**.
+    -To add a context variable that is processed after the node response is processed. Click the **Options**  ![Advanced response](images/kabob.png) icon that is displayed in the response section, and then click **Open JSON editor**.
 
-    If the **Multiple responses** setting is disabled for the node, then you do not need to click the **Edit response** icon first.
+    If the **Multiple responses** setting is **On** for the node, then you must click the **Edit response** ![Edit response](images/edit-slot.png) icon before the **Options**  ![Advanced response](images/kabob.png) icon will be displayed in the response section.
     {:tip}
 
     -To add a context variable that is processed after a slot condition is met, click the **Edit slot** ![Edit response](images/edit-slot.png) icon. From the *Configure slot* view header, click the **Options** ![Advanced response](images/kabob.png) icon, and then click **Open JSON editor**. (For more information about slots, see [Gathering information with slots](dialog-slots.html).)

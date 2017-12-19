@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-12-18"
+lastupdated: "2017-12-19"
 
 ---
 
@@ -27,7 +27,7 @@ A valid dialog always satisfies the following criteria:
 
 - Each dialog node has a unique ID (the `dialog_node` property).
 - A child node is aware of its parent node (the `parent` property). However, a parent node is not aware of its children.
-- A node is aware of its immediate previous sibling, if any (the `previous_sibling` property). This means that all siblings of a given parent form a linked list, with each node pointing to the previous node.
+- A node is aware of its immediate previous sibling, if any (the `previous_sibling` property). This means that all siblings that share the same parent form a linked list, with each node pointing to the previous node.
 - Only one child of a given parent can be the first sibling (meaning that its `previous_sibling` is null).
 - A node cannot point to a previous sibling that is a child of a different parent.
 - Two nodes cannot point to the same previous sibling.
