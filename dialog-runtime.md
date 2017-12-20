@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-12-19"
+lastupdated: "2017-12-20"
 
 ---
 
@@ -136,17 +136,21 @@ To define a context variable, complete the following steps:
 
     The editor is surfaced in multiple places in the dialog node edit view. Where it surfaces reflects the time at which the variable will be set during dialog node evaluation.
 
-    -To add a context variable that is processed after the node response is processed, click the **Options**  ![Advanced response](images/kabob.png) icon that is displayed in the response section, and then click **Open JSON editor**.
+    -To add a context variable that is processed after the node response is processed, from the **Options**  ![Advanced response](images/kabob.png) menu that is displayed in the response section, click **Open JSON editor**.
 
-    If the **Multiple responses** setting is **On** for the node, then you must click the **Edit response** ![Edit response](images/edit-slot.png) icon before the **Options**  ![Advanced response](images/kabob.png) icon will be visible.
-    {:tip}
+    ![Shows how to access the JSON editor associated with a standard node response.](images/contextvar-json-response.png)
 
-    -To add a context variable that is processed after a slot condition is met, click the **Edit slot** ![Edit response](images/edit-slot.png) icon. From the *Configure slot* view header, click the **Options** ![Advanced response](images/kabob.png) icon, and then click **Open JSON editor**. (For more information about slots, see [Gathering information with slots](dialog-slots.html).)
+    If the **Multiple responses** setting is **On** for the node, then you must click the **Edit response** ![Edit response](images/edit-slot.png) icon before the **Options**  ![Advanced response](images/kabob.png) menu will be visible.
 
-    -To add a context variable that is processed after a slot response condition is met, click the **Edit slot** ![Edit response](images/edit-slot.png) icon. Click the **Options** ![Advanced response](images/kabob.png) icon in the response section, and then click **Open JSON editor**.
+    ![Shows how to access the JSON editor associated with a standard node that has multiple conditional responses enabled for it.](images/contextvar-json-multi-response.png)
 
-    If the **Enable conditional responses** setting is enabled for the slot, then you must click the **Edit response** ![Edit response](images/edit-slot.png) icon before you will see the **Options** ![Advanced response](images/kabob.png) icon in the response section.
-    {: tip}
+    -To add a context variable that is processed after a slot condition is met, click the **Edit slot** ![Edit response](images/edit-slot.png) icon. From the **Options** ![Advanced response](images/kabob.png) menu in the *Configure slot* view header, click **Open JSON editor**. (For more information about slots, see [Gathering information with slots](dialog-slots.html).)
+
+    ![Shows how to access the JSON editor associated with a slot condition.](images/contextvar-json-slot-condition.png)
+
+    -To add a context variable that is processed after a slot response condition is met, click the **Edit slot** ![Edit response](images/edit-slot.png) icon. From the **Options** ![Advanced response](images/kabob.png) menu in the *Configure slot* view header, click **Enable conditional responses**.  Next to the conditional response for which you want to define a context variable, click the **Edit response** ![Edit response](images/edit-slot.png) icon. From the **Options** ![Advanced response](images/kabob.png) menu in the response section, click **Open JSON editor**.
+
+    ![Shows how to access the JSON editor associated with the conditional response for a slot.](images/contextvar-json-slot-multi-response.png)
 
 1.  Add a `"context":{}` block if one is not present.
 
