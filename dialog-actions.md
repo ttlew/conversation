@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-12-14"
+lastupdated: "2017-12-21"
 
 ---
 
@@ -39,15 +39,28 @@ When you define the programmatic call, you choose one of the following types:
 
 To make a programmatic call from a dialog node, complete the following steps:
 
-1.  In the dialog node from which you want to make the programmatic call, click the **More** ![More icon](images/kabob.png) icon to open the JSON editor.
+1.  In the dialog node from which you want to make the programmatic call, open the JSON editor.
 
     - To make a programmatic call that is executed after the response for a node is evaluated, open the JSON editor for the node response.
 
-      **Note**: If you want to display or further process the response from the external service within the same dialog turn, then you must add a second node that does so, and jump to it from this node.
+      ![Shows how to access the JSON editor associated with a standard node response.](images/contextvar-json-response.png)
 
-    - To make a call that can be used by an individual slot, click the **Edit slot** icon ![Edit slot icon](images/config-icon.png) for the slot, and then do one of the following things:
+      If the **Multiple responses** setting is **On** for the node, then you must click the **Edit response** ![Edit response](images/edit-slot.png) icon before the **Options**  ![Advanced response](images/kabob.png) menu will be visible.
+
+      ![Shows how to access the JSON editor associated with a standard node that has multiple conditional responses enabled for it.](images/contextvar-json-multi-response.png)
+
+    If you want to display or further process the response from the external service within the same dialog turn, then you must add a second node that does so, and jump to it from this node.
+    {: tip}
+
+    - To make a call that can be used by an individual slot, click the **Edit slot** icon ![Edit slot icon](images/edit-slot.png) for the slot, and then do one of the following things:
+
       - To make a programmatic call that is executed after the slot condition is evaluated to true, open the JSON editor that is associated with the slot condition.
-      - To make a programmatic call that is executed after the slot is successfully filled, open the JSON editor that is associated with the Found response. To do so, from the **More** ![More icon](images/kabob.png) menu for the slot, click **Enable conditional responses**. For the Found response, click the **Edit response** ![Edit response](images/edit-slot.png) icon. From the **More** ![More icon](images/kabob.png) menu for the Found response, click **Open JSON editor**.
+
+        ![Shows how to access the JSON editor associated with a slot condition.](images/contextvar-json-slot-condition.png)
+
+      - To make a programmatic call that is executed after the slot is successfully filled, open the JSON editor that is associated with the Found response. To do so, from the **Options** ![Options icon](images/kabob.png) menu for the slot, click **Enable conditional responses**. For the Found response, click the **Edit response** ![Edit response](images/edit-slot.png) icon. From the **Options** ![Options icon](images/kabob.png) menu for the Found response, click **Open JSON editor**.
+
+        ![Shows how to access the JSON editor associated with the conditional response for a slot.](images/contextvar-json-slot-multi-response.png)
 
 1.  Use the following syntax to define the programmatic call.
 
@@ -410,6 +423,6 @@ The output of the Cloud Functions action, which is stored in the `context.foreca
 ```
 {: codeblock}
 
-The following diagram illustrates a complex interaction. A user asks for a weather forecast. The slots in the dialog node prompt the user for location and time period information. To call the Cloud Functions forecast service, you must provide geographic coordinates. Therefore, the dialog first gets latitude and longitude details for the location provided by the user by sending a request the Cloud Functions service, which passes it to an external service that returns the coordinate information. In a subsequent node, the dialog sends the newly obtained coordinate information along with the time period information it got from the user to the Cloud Functions built-in forecast service to get the forecast details. The dialog then answers the user's question by showing the forecast result that was provided by the Cloud Functions forecast service.
+The following diagram illustrates a complex interaction. A user asks for a weather forecast. The slots in the dialog node prompt the user for location and time period information. To call the Cloud Functions forecast service, you must provide geographic coordinates. Therefore, the dialog first gets latitude and longitude details for the location provided by the user by sending a request to the Cloud Functions service, which passes it to an external service that returns the coordinate information. In a subsequent node, the dialog sends the newly obtained coordinate information along with the time period information it got from the user to the Cloud Functions built-in forecast service to get the forecast details. The dialog then answers the user's question by showing the forecast result that was provided by the Cloud Functions forecast service.
 
 ![Shows someone asking for a weather forecast, and the dialog sending the request to the Cloud Function service to pass it to the external service.](images/forecast-via-cf.png)
