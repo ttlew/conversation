@@ -37,7 +37,6 @@ Conversation
         conversation-connector.md
         develop-app.md
         integrations.md
-    tutorial.md
 
     {: .topicgroup}
     Improving understanding
@@ -47,6 +46,12 @@ Conversation
         logs_recommend.md
 
     plan-upgrade.md
+
+    {: .topicgroup}
+    Tutorials
+        tutorial.md
+        tutorial-slots.md
+        tutorial-slots-complex.md
     {: .navgroup-end}
 
     {: .navgroup id="reference"}
