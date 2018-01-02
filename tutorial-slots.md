@@ -100,12 +100,30 @@ You have successfully enabled the @sys-date, @sys-time, and @sys-number system e
     ![Shows the customize dialog where you turn on slots.](images/slots-toggle-on.png)
 1.  Define the following slots:
 
-| Check for | Save it as | If not present, ask |
-|-----------|------------|---------------------|
-| @sys-date | $date      | What day would you like to come in? |
-| @sys-time | $time      | What time do you want the reservation to be made for? |
-| @sys-number | $guests  | How many people will be dining? |
-{: caption="Slot details" caption-side="top"}
+    <table>
+    <caption>Slot details</caption>
+    <tr>
+      <th>Check for</th>
+      <th>Save it as</th>
+      <th>If not present, ask</th>
+    </tr>
+    <tr>
+      <td>@sys-date</td>
+      <td>$date</td>
+      <td>What day would you like to come in?</td>
+    </tr>
+    <tr>
+      <td>@sys-time</td>
+      <td>$time</td>
+      <td>What time do you want the reservation to be made for?</td>
+    </tr>
+    </tr>
+    <tr>
+      <td>@sys-number</td>
+      <td>$guests</td>
+      <td>How many people will be dining?</td>
+    </tr>
+    </table>
 
 1.  As the response, specify `OK. I am making you a reservation for $guests on $date at $time.`
 

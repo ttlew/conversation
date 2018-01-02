@@ -78,18 +78,45 @@ When the date and time system entity values are saved, they are converted into a
 
 1.  Test the node again. Open the "Try it out" pane, and click **Clear** to delete the slot context variable values that you specified when you tested the node with slots earlier. To see the impact of the changes you made, use the following script:
 
-| Speaker | Utterance |
-|---------|-----------|
-| You     | i want to make a reservation |
-| Watson  | What day would you like to come in? |
-| You     | Friday |
-| Watson  | What time do you want the reservation to be made for? |
-| You     | 5pm |
-| Watson  | How many people will be dining? |
-| You     | 6 |
-{: caption="Script details" caption-side="top"}
+    <table>
+    <caption>Script details</caption>
+    <tr>
+      <th>Speaker</th>
+      <th>Utterance</th>
+    </tr>
+    <tr>
+      <td>You</td>
+      <td>i want to make a reservation</td>
+    </tr>
+    <tr>
+      <td>Watson</td>
+      <td>What day would you like to come in?</td>
+    </tr>
+    <tr>
+      <td>You</td>
+      <td>Friday</td>
+    </tr>
+    <tr>
+      <td>Watson</td>
+      <td>What time do you want the reservation to be made for?</td>
+    </tr>
+    <tr>
+      <td>You</td>
+      <td>5pm</td>
+    </tr>
+    <tr>
+      <td>Watson</td>
+      <td>How many people will be dining?</td>
+    </tr>
+    <tr>
+      <td>You</td>
+      <td>6</td>
+    </tr>
+    </table>
 
-This time Watson responds with, `OK. I am making you a reservation for 6 on Friday, December 29 at 5:00 PM.` You have successfully improved the format that the dialog uses when it references context variable values in its responses. The dialog now uses `Friday, December 29` instead of the more technical, `2017-12-29`. And it uses `5:00 PM` instead of `17:00:00`. To learn about other SpEL methods you can use with date and time values, see [Methods to process values](dialog-methods.html#date-time).
+    This time Watson responds with, `OK. I am making you a reservation for 6 on Friday, December 29 at 5:00 PM.`
+
+You have successfully improved the format that the dialog uses when it references context variable values in its responses. The dialog now uses `Friday, December 29` instead of the more technical, `2017-12-29`. And it uses `5:00 PM` instead of `17:00:00`. To learn about other SpEL methods you can use with date and time values, see [Methods to process values](dialog-methods.html#date-time).
 
 ## Step 2: Ask for everything at once
 {: #ask-for-everything}
@@ -144,17 +171,35 @@ To validate user input, complete the following steps:
 
 1.  Add the following condition and response to check whether the date that the user specifies falls before today:
 
-| Condition                 | Response                                             | Action (And finally section)        |
-|---------------------------|------------------------------------------------------|-------------------------------------|
-| `@sys-date.before(now())` | You cannot make a reservation for a day in the past. | Clear slot and prompt again         |
-{: caption="Slot 1 conditional response 1 details" caption-side="top"}
+    <table>
+    <caption>Slot 1 conditional response 1 details</caption>
+    <tr>
+      <th>Condition</th>
+      <th>Response</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td>`@sys-date.before(now())`</td>
+      <td>You cannot make a reservation for a day in the past.</td>
+      <td>Clear slot and prompt again</td>
+    </tr>
+    </table>
 
 1.  Add a second conditional response that is displayed if the user provides a valid date. This type of simple confirmation lets the user know that her response was understood.
 
-| Condition                    | Response      | Action                      |
-|------------------------------|---------------|-----------------------------|
-| `true`                       | $date it is.  | Move on                     |
-{: caption="Slot 1 conditional response 2 details" caption-side="top"}
+    <table>
+    <caption>Slot 1 conditional response 2 details</caption>
+    <tr>
+      <th>Condition</th>
+      <th>Response</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td>`true`</td>
+      <td>$date it is</td>
+      <td>Move on</td>
+    </tr>
+    </table>
 
 1.  From the edit view of the node with slots, click the **Edit slot** ![Edit slot](images/edit-slot.png) icon for the `@sys-time` slot.
 
@@ -164,30 +209,65 @@ To validate user input, complete the following steps:
 
 1.  Add the following conditions and responses to check whether the time that the user specifies falls within the allowed time window:
 
-| Condition                      | Response                          | Action                      |
-|--------------------------------|-----------------------------------|-----------------------------|
-| `@sys-time.after('21:00:00')`  | Our last seating is at 9 PM.      | Clear slot and prompt again |
-| `@sys-time.before('09:00:00')` | Our first seating is at 9 AM.     | Clear slot and prompt again |
-{: caption="Slot 2 conditional response details" caption-side="top"}
+    <table>
+    <caption>Slot 2 conditional response details</caption>
+    <tr>
+      <th>Condition</th>
+      <th>Response</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td>`@sys-time.after('21:00:00')`</td>
+      <td>Our last seating is at 9 PM.</td>
+      <td>Clear slot and prompt again</td>
+    </tr>
+    <tr>
+      <td>`@sys-time.before('09:00:00')`</td>
+      <td>Our first seating is at 9 AM.</td>
+      <td>Clear slot and prompt again</td>
+    </tr>
+    </table>
 
 1.  Add a third conditional response that is displayed if the user provides a valid time that falls within the window. This type of simple confirmation lets the user know that her response was understood.
 
-| Condition                   | Response                          | Action  |
-|-----------------------------|-----------------------------------|---------|
-| `true`                      | Ok, the reservation is for $time. | Move on |
-{: caption="Slot 2 conditional response 3 details" caption-side="top"}
+    <table>
+    <caption>Slot 2 conditional response 3 details</caption>
+    <tr>
+      <th>Condition</th>
+      <th>Response</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td>`true`</td>
+      <td>Ok, the reservation is for $time.</td>
+      <td>Move on</td>
+    </tr>
+    </table>
 
-1.  Edit the @sys-number slot to anticipate and address the case when the user changes the number of guests. If, at any point while the node with slots is being processed, the user changes a slot value, the corresponding slot context variable value is updated. However, it can be useful to let the user know that the value it being replaced, both to give clear feedback to the user and to give the user a chance to rectify it if the change was not what she intended. From the edit view of the node with slots, click the **Edit slot** ![Edit slot](images/edit-slot.png) icon for the `@sys-number` slot.
+1.  Edit the @sys-number slot to anticipate and address the case when the user changes the number of guests. If, at any point while the node with slots is being processed, the user changes a slot value, the corresponding slot context variable value is updated. However, it can be useful to let the user know that the value is being replaced, both to give clear feedback to the user and to give the user a chance to rectify it if the change was not what she intended. From the edit view of the node with slots, click the **Edit slot** ![Edit slot](images/edit-slot.png) icon for the `@sys-number` slot.
 
 1.  From the **Options** ![More icon](images/kabob.png) menu in the *Configure slot 3* header, select **Enable conditional responses**.
 
 1.  In the **Found** section, add a conditional response by clicking the ![Edit response](images/edit-slot.png) icon, and then add the following condition and response:
 
-| Condition                                                                         | Response                          | Action |
-|-----------------------------------------------------------------------------------|-----------------------------------|--------|
-| `(event.previous_value != null) && (event.previous_value != event.current_value)` | Ok, updating the number of guests from `<? event.previous_value ?>` to `<? event.current_value ?>`. | Move on |
-| `true`                                                                            | Ok. The reservation is for $guests guests. | Move on |
-{: caption="Slot 3 conditional response details" caption-side="top"}
+    <table>
+    <caption>Slot 3 conditional response details</caption>
+    <tr>
+      <th>Condition</th>
+      <th>Response</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td>`(event.previous_value != null) && (event.previous_value != event.current_value)`</td>
+      <td>Ok, updating the number of guests from `<? event.previous_value ?>` to `<? event.current_value ?>`.</td>
+      <td>Move on</td>
+    </tr>
+    <tr>
+      <td>`true`</td>
+      <td>Ok. The reservation is for $guests guests.</td>
+      <td>Move on</td>
+    </tr>
+    </table>
 
 ## Step 4: Add a confirmation slot
 {: #confirmation-slot}
@@ -230,14 +310,23 @@ You might want to design your dialog to call an external reservation system and 
 
 1.  Return to the **Dialog** tab, and then click to edit the node with slots. Click **Add slot** to add a fourth slot, and then specify the following values for it:
 
-| Check for                      | Save it as    | If not present, ask |
-|--------------------------------|---------------|---------------------|
-| (#yes ll #no) && slot_in_focus | $confirmation | I'm going to reserve you a table for $guests on $date at $time. Should I go ahead? |
-{: caption="Confirmation slot details" caption-side="top"}
+    <table>
+    <caption>Confirmation slot details</caption>
+    <tr>
+      <th>Check for</th>
+      <th>Save it as</th>
+      <th>If not present, ask</th>
+    </tr>
+    <tr>
+      <td>`(#yes || #no) && slot_in_focus`</td>
+      <td>$confirmation</td>
+      <td>I'm going to reserve you a table for $guests on $date at $time. Should I go ahead?</td>
+    </tr>
+    </table>
 
-This condition checks for either answer. You will specify what happens next depending on whether the user answer Yes or No by using conditional slot responses. The `slot_in_focus` property forces the scope of this condition to apply to the current slot only. This setting prevents random statements that could match against a `#yes` or `#no` intent that the user might make from triggering this slot.
+    This condition checks for either answer. You will specify what happens next depending on whether the user answer Yes or No by using conditional slot responses. The `slot_in_focus` property forces the scope of this condition to apply to the current slot only. This setting prevents random statements that could match against a `#yes` or `#no` intent that the user might make from triggering this slot.
 
-For example, the user might be answering the number of guests slot, and say something like, `Yes, there will be 5 of us.` You do not want the `Yes` included in this response to accidentally fill the confirmation slot. By adding the `slot_in_focus` property to the condition, a yes or no indicated by the user is applied to this slot only when the user is answering the prompt for this slot specifically.
+    For example, the user might be answering the number of guests slot, and say something like, `Yes, there will be 5 of us.` You do not want the `Yes` included in this response to accidentally fill the confirmation slot. By adding the `slot_in_focus` property to the condition, a yes or no indicated by the user is applied to this slot only when the user is answering the prompt for this slot specifically.
 
 1.  Click the **Edit slot** ![Edit slot](images/edit-slot.png) icon. From the **Options** ![More icon](images/kabob.png) menu in the *Configure slot 4* header, select **Enable conditional responses**.
 
@@ -286,24 +375,51 @@ Now that you have confirmation responses for slot values, and you ask for everyt
 
 1.  Replace the `true` condition that is specified in the JSON snippet for the last conditional response in the @sys-date slot with `!($time && $guests)`. For example:
 
-| Condition                   | Response                                  | Action  |
-|-----------------------------|-------------------------------------------|---------|
-| `!($time && $guests)`       | Ok, the date of the reservation is $date. | Move on |
-{: caption="Slot 1 conditional response 2 details" caption-side="top"}
+    <table>
+    <caption>Slot 1 conditional response 2 details</caption>
+    <tr>
+      <th>Condition</th>
+      <th>Response</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td>`!($time && $guests)`</td>
+      <td>$date it is</td>
+      <td>Move on</td>
+    </tr>
+    </table>
 
 1.  Replace the `true` condition that is specified in the JSON snippet for the last conditional response in the @sys-time slot with `!($date && $guests)`. For example:
 
-| Condition                   | Response                          | Action  |
-|-----------------------------|-----------------------------------|---------|
-| `!($date && $guests)`       | Ok, the reservation is for $time. | Move on |
-{: caption="Slot 2 conditional response 3 details" caption-side="top"}
+    <table>
+    <caption>Slot 2 conditional response 3 details</caption>
+    <tr>
+      <th>Condition</th>
+      <th>Response</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td>`!($date && $guests)`</td>
+      <td>Ok, the reservation is for $time.</td>
+      <td>Move on</td>
+    </tr>
+    </table>
 
 1.  Replace the `true` condition that is specified in the JSON snippet for the last conditional response in the @sys-number slot with `!($date && $time)`. For example:
 
-| Condition                   | Response                                   | Action  |
-|-----------------------------|--------------------------------------------|---------|
-| `!($date && $time)`         | Ok. The reservation is for $guests guests. | Move on |
-{: caption="Slot 3 conditional response 2 details" caption-side="top"}
+    <table>
+    <caption>Slot 3 conditional response 2 details</caption>
+    <tr>
+      <th>Condition</th>
+      <th>Response</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <td>`!($date && $time)`</td>
+      <td>Ok. The reservation is for $guests guests.</td>
+      <td>Move on</td>
+    </tr>
+    </table>
 
 If you add more slots later, you must edit these conditions to account for the associated context variables for the additional slots. If you do not include a confirmation slot, you can specify `!all_slots_filled` only, and it would remain valid no matter how many slots you add later.
 
@@ -377,10 +493,17 @@ Adding a node with slots is powerful because it keeps users on track with provid
 
 1.  Add the following values to the fields.
 
-| Condition | Response                                   |
-|-----------|--------------------------------------------|
-| `#exit`   | Ok, we'll stop there. No reservation will be made. |
-{: caption="Node-level handler details" caption-side="top"}
+    <table>
+    <caption>Node-level handler details</caption>
+    <tr>
+      <th>Condition</th>
+      <th>Response</th>
+    </tr>
+    <tr>
+      <td>`#exit`</td>
+      <td>Ok, we'll stop there. No reservation will be made.</td>
+    </tr>
+    </table>
 
 1.  To force the service to exit the node, you must set all of the slot context variable values. Click the **Edit response** ![Edit response](images/edit-slot.png) icon, and then click the **Options** ![More icon](images/kabob.png) icon, and select **Open JSON editor**.
 
@@ -402,17 +525,39 @@ Adding a node with slots is powerful because it keeps users on track with provid
 
 1.  Test this change by using the following script in the "Try it out" pane.
 
-| Speaker | Utterance |
-|---------|-----------|
-| You     | i want to make a reservation |
-| Watson  | I can make a reservation for you. Just tell me the day and time of the reservation, and how many people it is for. |
-| You     | it's for 5 people |
-| Watson  | Ok. The reservation is for 5 guests.  What day would you like to come in? |
-| You     | Nevermind |
-| Watson  | Ok, we'll stop there. No reservation will be made.  OK. I am making you a reservation for dummy on 2900-12-31 at 12:00:00. |
-{: caption="Script details" caption-side="top"}
+    <table>
+    <caption>Script details</caption>
+    <tr>
+      <th>Speaker</th>
+      <th>Utterance</th>
+    </tr>
+    <tr>
+      <td>You</td>
+      <td>i want to make a reservation</td>
+    </tr>
+    <tr>
+      <td>Watson</td>
+      <td>I can make a reservation for you. Just tell me the day and time of the reservation, and how many people it is for.</td>
+    </tr>
+    <tr>
+      <td>You</td>
+      <td>it's for 5 people</td>
+    </tr>
+    <tr>
+      <td>Watson</td>
+      <td>Ok. The reservation is for 5 guests.  What day would you like to come in?</td>
+    </tr>
+    <tr>
+      <td>You</td>
+      <td>Nevermind</td>
+    </tr>
+    <tr>
+      <td>Watson</td>
+      <td>Ok, we'll stop there. No reservation will be made.  OK. I am making you a reservation for dummy on 2900-12-31 at 12:00:00.</td>
+    </tr>
+    </table>
 
-Notice that the node-level response is displayed, which contradicts the handler response that says the process is being stopped. To prevent it from being displayed, edit the node-level response.
+Notice that the node-level response is also displayed, which contradicts the node-level handler response that says the process is being stopped. To prevent this confusion, edit the node-level response.
 
 1.  You must add a conditional response for the node. From the edit view of the node with slots, click **Customize**, click the **Multiple responses** toggle to turn it **on**, and then click **Apply**.
 
@@ -422,10 +567,17 @@ Notice that the node-level response is displayed, which contradicts the handler 
 
 1.  Add the following values to the fields.
 
-| Condition           | Response                                                                   |
-|---------------------|----------------------------------------------------------------------------|
-| `$guests == 'dummy'` | I look forward to helping you with your next reservation. Have a good day. |
-{: caption="Node-level conditional response details" caption-side="top"}
+    <table>
+    <caption>Node-level conditional response details</caption>
+    <tr>
+      <th>Condition</th>
+      <th>Response</th>
+    </tr>
+    <tr>
+      <td>`$guests == 'dummy'`</td>
+      <td>I look forward to helping you with your next reservation. Have a good day.</td>
+    </tr>
+    </table>
 
 1.  Click the up arrow to move this response so it is placed above the response that was there already.
 
@@ -461,9 +613,17 @@ For the $time information, you will define a follow-up statement that is display
 
 1.  In the **Not found** section, add a conditional response.
 
-| Condition   | Response                          |
-|-------------|-----------------------------------|
-| `true`      | Please specify the time that you want to eat. The restaurant seats people between 9AM and 9PM. |
+    <table>
+    <caption>Not found response details</caption>
+    <tr>
+      <th>Condition</th>
+      <th>Response</th>
+    </tr>
+    <tr>
+      <td>`true`</td>
+      <td>Please specify the time that you want to eat. The restaurant seats people between 9AM and 9PM.</td>
+    </tr>
+    </table>
 
 1.  Add a 1 to the `counter` variable each time this response is triggered. Remember, this response is only triggered when the user does not provide a valid time value. Click the **Edit response** ![Edit response](images/edit-slot.png) icon.
 
@@ -489,9 +649,17 @@ For the $time information, you will define a follow-up statement that is display
 
 1.  Add the following condition and response.
 
-| Condition       | Response                          |
-|-----------------|-----------------------------------|
-| `$counter > 1`  | You seem to be having trouble choosing a time. I will make the reservation at 8PM for you. |
+    <table>
+    <caption>Not found response details</caption>
+    <tr>
+      <th>Condition</th>
+      <th>Response</th>
+    </tr>
+    <tr>
+      <td>`$counter > 1`</td>
+      <td>You seem to be having trouble choosing a time. I will make the reservation at 8PM for you.</td>
+    </tr>
+    </table>
 
 You must set the $time variable to 8PM, so click the **Edit response** ![Edit response](images/edit-slot.png) icon. Select **Open JSON editor**, add the following context variable definition, and then click **Back**.
 
