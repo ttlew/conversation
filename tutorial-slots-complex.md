@@ -368,10 +368,7 @@ You might want to design your dialog to call an external reservation system and 
 ```
 {: codeblock}
 
-## Step 5: Prevent Found responses from displaying when they aren't needed
-{: #prevent-found-responses}
-
-Now that you have confirmation responses for slot values, and you ask for everything at once, you might notice that the individual slot responses are displayed before the confirmation slot response is displayed, which can appear repetitive to users. Edit the slot found responses to prevent them from being displayed under certain conditions.
+1.  Now that you have confirmation responses for slot values, and you ask for everything at once, you might notice that the individual slot responses are displayed before the confirmation slot response is displayed, which can appear repetitive to users. Edit the slot found responses to prevent them from being displayed under certain conditions.
 
 1.  Replace the `true` condition that is specified in the JSON snippet for the last conditional response in the @sys-date slot with `!($time && $guests)`. For example:
 
@@ -423,7 +420,7 @@ Now that you have confirmation responses for slot values, and you ask for everyt
 
 If you add more slots later, you must edit these conditions to account for the associated context variables for the additional slots. If you do not include a confirmation slot, you can specify `!all_slots_filled` only, and it would remain valid no matter how many slots you add later.
 
-## Step 6: Reset the slot context variable values
+## Step 5: Reset the slot context variable values
 {: #reset-variables}
 
 You might have noticed that before each test, you must clear the context variable values that were created during the previous test. You must do so because the node with slots only prompts users for information that it considers to be missing. If the slot context variables are all filled with valid values, no prompts are displayed. The same is true for the dialog at run time. You must build into the dialog a mechanism by which you reset the slot context variables to null so that the slots can be filled anew by the next user. To do so, you are going to add a parent node to the node with slots that sets the context variables to null.
@@ -465,7 +462,7 @@ You might have noticed that before each test, you must clear the context variabl
 
 When a user input matches the `#reservation` intent, this node is triggered. The slot context variables are all set to null, and then the dialog jumps directly to the node with slots to process it.
 
-## Step 7: Give users a way to exit the process
+## Step 6: Give users a way to exit the process
 {: #handler}
 
 Adding a node with slots is powerful because it keeps users on track with providing the information you need to give them a meaningful response or perform an action on their behalf. However, there might be times when a user is in the middle of providing reservation details, but decides to not go through with placing the reservation. You must give users a way to exit the process gracefully. You can do so by adding a node-level handler that can detect a user's desire to exit the process, and exit the node without saving any values that were collected.
@@ -583,7 +580,7 @@ Notice that the node-level response is also displayed, which contradicts the nod
 
 When you test again, you'll see that the following response is provided by the dialog, `Ok, we'll stop there. No reservation will be made.  I look forward to helping you with your next reservation. Have a good day.`
 
-## Step 8: Apply a valid value if the user fails to provide one after several attempts
+## Step 7: Apply a valid value if the user fails to provide one after several attempts
 
 In some cases, a user might not understand what you are asking for. They might respond again and again with the wrong types of values. To plan for this possibility, you can add a counter to the slot, and after 3 failed attempts by the user to provide a valid value, you can apply a value to the slot on the user's behalf and move on.
 
@@ -689,18 +686,18 @@ You must set the $time variable to 8PM, so click the **Edit response** ![Edit re
 | You     | purple |
 | Watson  | You seem to be having trouble choosing a time. I will make the reservation at 8PM for you.  How many people will be dining? |
 
-## Step 9: Connect to an external service
+## Step 8: Connect to an external service
 {: #action}
 
 Now that your dialog can collect and confirm a user's reservation details, you can call an external service to actually reserve a table in the restaurant's system or through a multi-restaurant online reservations service. See [Making programmatic calls from a dialog node](dialog-actions.html) for more details.
 
 In the logic that calls the reservation service, be sure to check for `$guests == 'dummy'` and do not continue with the reservation if it is present.
 
-## Step 10: Deploy the tutorial workspace
+## Step 9: Deploy the tutorial workspace
 {: #deploy}
 
 Deploy your workspace by connecting it to a user interface. There are several ways you can do this. See [Deployment overview](deploy.html) for more details.
 
-## Summary
+### Summary
 
 In this tutorial you tested a node with slots and made changes that optimize how it interacts with real users. For more information about this subject, see [Gathering information with slots](dialog-slots.html).
