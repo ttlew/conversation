@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-02"
+lastupdated: "2017-01-03"
 
 ---
 
@@ -259,15 +259,13 @@ Now add a peer node that is triggered if the user does not specify a valid appli
 
     ![Shows choosing a different intent and retraining](images/tut-change-intent.gif)
 
-#### What to do next
-
-Optionally review the **Car Dashboard - Sample** workspace to see this same use case fleshed out even more with a longer dialog and additional functionality.
+Optionally, you can review the **Car Dashboard - Sample** workspace to see this same use case fleshed out even more with a longer dialog and additional functionality.
 
 1.  Click the **Back to workspaces** button ![Shows Back to workspaces button in menu](images/workspaces-button.png) from the navigation menu.
 
 1.  On the **Car Dashboard - Sample** tile, click **Edit sample**.
 
-## Step 4: Deploy the tutorial workspace
+## Next steps
 {: #deploy}
 
 Now that you have built and tested your workspace, you can deploy it by connecting it to a user interface. There are several ways you can do this.

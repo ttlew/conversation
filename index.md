@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-12-13"
+lastupdated: "2017-01-03"
 
 ---
 
@@ -56,6 +56,11 @@ Follow these links to read more:
 - [Planning your intents and entities](intents-entities.html#planning-your-entities)
 - [Dialog overview](dialog-overview.html)
 - [Deployment overview](deploy.html)
+
+The {{site.data.keyword.conversationshort}} service is available from {{site.data.keyword.cloud_notm}}. Follow these links to learn more about it:
+
+- [IBM Cloud](https://console.bluemix.net/docs/overview/ibm-cloud.html#overview)
+- [Cloud Services data security and privacy](http://www-03.ibm.com/software/sla/sladb.nsf/sla/csdsp)
 
 ## Browser support
 

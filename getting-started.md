@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-12-11"
+lastupdated: "2017-01-03"
 
 ---
 
@@ -86,17 +86,18 @@ An [intent](intents.html) represents the purpose of a user's input. You can thin
 For this example, we're going to keep things simple and define only two intents: one for saying hello, and one for saying goodbye.
 
 1.  Make sure you're on the Intents tab. (You should already be there, if you just created the workspace.)
-1.  Click **Create new**.
-1.  Name the intent `hello`.
-1.  Type `hello` as a **User example** and press Enter.
+1.  Click **Add intent**.
+1.  Name the intent `hello`, and then click **Create intent**.
+1.  Type `hello` into the **Add user example** field, and then press **Enter**.
 
    *Examples* tell the {{site.data.keyword.conversationshort}} service what kinds of user input you want to match to the intent. The more examples you provide, the more accurate the service can be at recognizing user intents.
-1.  Add four more examples and click **Done** to finish creating the #hello intent:
+1.  Add four more examples:
     - `good morning`
     - `greetings`
     - `hi`
     - `howdy`
 
+1.  Click the **Close** ![Close arrow](images/close_arrow.png) icon to finish creating the #hello intent.
 1.  Create another intent named #goodbye with these five examples:
     - `bye`
     - `farewell`
@@ -185,7 +186,7 @@ Open the sample workspace to see intents similar to the ones you just created pl
 
     ![Shows the car dashboard sample tile on the Workspaces page](images/gs-workspace-car-sample.png)
 
-## What to do next
+## Next steps
 {: #next-steps}
 
 This tutorial is built around a simple example. For a real application, you'll need to define some more interesting intents, some entities, and a more complex dialog.
