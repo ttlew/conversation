@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-01-02"
+lastupdated: "2018-01-03"
 
 ---
 
@@ -693,11 +693,11 @@ Now that your dialog can collect and confirm a user's reservation details, you c
 
 In the logic that calls the reservation service, be sure to check for `$guests == 'dummy'` and do not continue with the reservation if it is present.
 
-## Step 9: Deploy the tutorial workspace
-{: #deploy}
-
-Deploy your workspace by connecting it to a user interface. There are several ways you can do this. See [Deployment overview](deploy.html) for more details.
-
 ### Summary
 
 In this tutorial you tested a node with slots and made changes that optimize how it interacts with real users. For more information about this subject, see [Gathering information with slots](dialog-slots.html).
+
+## Next steps
+{: #deploy}
+
+Deploy your workspace by connecting it to a user interface. There are several ways you can do this. See [Deployment overview](deploy.html) for more details.

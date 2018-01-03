@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-01-02"
+lastupdated: "2018-01-03"
 
 ---
 
@@ -158,4 +158,6 @@ It worked! Congratulations. You have successfully created a node with slots.
 
 In this tutorial you created a node with slots that can capture the information necessary to reserve a table at a restaurant.
 
-Do you want to improve the experience of users who interact with the node? If so, complete the follow-on tutorial, [Improving a node with slots](tutorial-slots-complex.html). It covers simple improvements, such as how to reformat the date (2017-12-28) and time (17:00:00) values that are returned by the system. It also covers more complex tasks, such as what to do if the user does not provide the type of value that your dialog expects for a slot.
+## Next steps
+
+Improve the experience of users who interact with the node. Complete the follow-on tutorial, [Improving a node with slots](tutorial-slots-complex.html). It covers simple improvements, such as how to reformat the date (2017-12-28) and time (17:00:00) values that are returned by the system. It also covers more complex tasks, such as what to do if the user does not provide the type of value that your dialog expects for a slot.
