@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-1-2"
+lastupdated: "2018-01-04"
 
 ---
 
@@ -143,7 +143,7 @@ If you have a large number of intents and examples, you might find it easier to 
 
 1.  In the {{site.data.keyword.conversationshort}} tool, open your workspace and then select the **Intents** tab in the navigation bar. If **Intents** is not visible, use the ![Menu](images/Menu_16.png) menu to open the page.
 
-1.  Select the *Import* icon ![Import icon](images/ImportGA.png). Then, drag a file or browse to select a file from your computer. The file is validated and imported, and the system begins to train itself on the new data.
+1.  Select the *Import* icon ![Import icon](images/importGA.png). Then, drag a file or browse to select a file from your computer. The file is validated and imported, and the system begins to train itself on the new data.
 
     ![Import option](images/ImportIntent.png)
 
