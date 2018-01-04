@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2018-01-03"
+  years: 2015, 2018
+lastupdated: "2018-01-04"
 
 ---
 
@@ -45,8 +45,8 @@ You will use the Conversation tutorial workspace that you created, and add nodes
 
 Add an intent on the Intents tab. An intent is the purpose or goal expressed in user input.
 
-1.  On the Intents page of the Conversation tutorial workspace, click **Create new**.
-1.  Add the following intent name, and then press Enter:
+1.  On the Intents page of the Conversation tutorial workspace, click **Add intent**.
+1.  Add the following intent name, and then click **Create intent**:
 
     ```
     turn_on
@@ -54,7 +54,7 @@ Add an intent on the Intents tab. An intent is the purpose or goal expressed in 
     {: codeblock}
 
     A `#` is prepended to the intent name you specify. The `#turn_on` intent indicates that the user wants to turn on an appliance such as the radio, windshield wipers, or headlights.
-1.  In the **User example** field, type the following utterance, and then press Enter:
+1.  In the **Add user example** field, type the following utterance, and then click **Add example**:
 
     ```
     I need lights
@@ -73,9 +73,9 @@ Add an intent on the Intents tab. An intent is the purpose or goal expressed in 
     ```
     {: codeblock}
 
-1.  Click **Done** to add the intent.
+1.  Click the **Close** ![Close arrow](images/close_arrow.png) icon to finish adding the `#turn_on` intent.
 
-You now have three intents, `#turn_on`, `#hello`, and `#goodbye`, all with example utterances. These examples help train Watson to recognize the intents in user input.
+You now have three intents, the `#turn_on` intent that you just added, and the `#hello` and `#goodbye` intents that were added in the *Getting started tutorial* that you completed as a prerequisite step. Each intent has a set of example utterances that help train Watson to recognize the intents in user input.
 
 ## Step 2: Add entities
 {: #entities}
@@ -85,7 +85,7 @@ An entity definition includes a set of entity *values* that can be used to trigg
 Create entities that might occur in user input that has the #turn_on intent to represent what the user wants to turn on.
 
 1.  Click the **Entities** tab to open the Entities page.
-1.  Click **Create new**.
+1.  Click **Add entity**.
 1.  Add the following entity name, and then press Enter:
 
     ```
@@ -94,9 +94,7 @@ Create entities that might occur in user input that has the #turn_on intent to r
     {: codeblock}
 
     A `@` is prepended to the entity name you specify. The `@appliance` entity represents an appliance in the car that a user might want to turn on.
-1.  Click the toggle to turn fuzzy matching **On**.
-    This setting helps the service recognize references to entities in user input even when the entity is specified in a way that does not exactly match the syntax you use here.
-1.  Add the following value to the **Value** field, but do not press Enter:
+1.  Add the following value to the **Value name** field:
 
     ```
     radio
@@ -104,7 +102,7 @@ Create entities that might occur in user input that has the #turn_on intent to r
     {: codeblock}
 
     The value represents a specific appliance that users might want to turn on.
-1.  Add other ways to specify the radio appliance entity in the **Synonyms** field. Press tab to give the the field focus, and then enter the following synonyms. Press Enter after each synonym.
+1.  Add other ways to specify the radio appliance entity in the **Synonyms** field. Press **Tab** to give the the field focus, and then enter the following synonyms. Press **Enter** after each synonym.
 
     ```
     music
@@ -112,11 +110,17 @@ Create entities that might occur in user input that has the #turn_on intent to r
     ```
     {: codeblock}
 
-1.  Click the **Add a new value** icon ![plus sign](images/add.png) to add other types of appliances.
+1.  Click **Add value** to finish defining the `radio` value for the `@appliance` entity.
+1.  Add other types of appliances.
+
     - Value: `headlights`. Synonym: `lights`.
     - Value: `air conditioning`. Synonyms: `air` and `AC`.
-1.  Click **Done** to add the **@appliance** entity.
+
+1.  Click the toggle to turn fuzzy matching **On** for the `@appliance` entity.
+    This setting helps the service recognize references to entities in user input even when the entity is specified in a way that does not exactly match the syntax you use here.
+1.  Click the **Close** ![Close arrow](images/close_arrow.png) icon to finish adding the `@appliance` entity.
 1.  Repeat Steps 2-8 to create the @`genre` entity with fuzzy matching on, and these values and synonyms:
+
     - Value: `classical`. Synonym: `symphonic`.
     - Value: `rhythm and blues` Synonym: `r&b`.
     - Value: `rock`. Synonym: `rock & roll`, `rock and roll`, and `pop`.
