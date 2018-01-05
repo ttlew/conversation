@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-04"
+lastupdated: "2018-01-05"
 
 ---
 
@@ -49,12 +49,9 @@ Here's how you will implement your conversation:
 
     Use the dialog tool to build a dialog flow that incorporates your intents and entities. The dialog flow is represented graphically in the tool as a tree. You can add a branch to process each of the intents that you want the service to handle. You can then add branch nodes that handle the many possible permutations of a request based on other factors, such as the entities found in the user input or information that is passed to the service from your application or another external service.
 
-- **Deploy your workspace.** Deploy the configured workspace to users by connecting it to a front-end user interface, social media, or a messaging channel. Your deployed instance of the {{site.data.keyword.conversationshort}} service is hosted by {{site.data.keyword.cloud_notm}}. Follow these links to learn more about it:
+- **Deploy your workspace.** Deploy the configured workspace to users by connecting it to a front-end user interface, social media, or a messaging channel. Your deployed instance of the {{site.data.keyword.conversationshort}} service is hosted by {{site.data.keyword.cloud_notm}}, the IBM cloud computing platform. (See [Platform overview ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/docs/overview/ibm-cloud.html#overview) for more information.)
 
-    - [IBM Cloud](https://console.bluemix.net/docs/overview/ibm-cloud.html#overview)
-    - [Cloud Services data security and privacy](http://www-03.ibm.com/software/sla/sladb.nsf/sla/csdsp)
-
-Read more about these implementation steps here:
+Read more about these implementation steps by following these links:
 
 - [Planning your intents and entities](intents-entities.html#planning-your-entities)
 - [Dialog overview](dialog-overview.html)
