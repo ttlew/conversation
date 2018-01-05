@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-11-28"
+  years: 2015, 2018
+lastupdated: "2018-01-05"
 
 ---
 
@@ -37,7 +37,7 @@ The length of time for which messages are retained depends on your {{site.data.k
   ------------------------------------ | ------------------------------------
   Premium                              | Last 90 days
   Standard                             | Last 30 days
-  Free                                 | Last 7 days
+  Lite                                 | Last 7 days
 
 ## Selecting a data source
 {: #select-source}
