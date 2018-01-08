@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-12-20"
+  years: 2015, 2018
+lastupdated: "2018-01-08"
 
 ---
 
@@ -110,8 +110,12 @@ Define a context variable by adding a `name` and `value` pair to the `{context}`
 
   **Note**: You can include other characters, such as periods and hyphens, in the name. However, if you do, then you must use one of the following approaches every time you subsequently reference the variable:
 
-  - context['variable-name']: The full SpEL expression syntax.
-  - $(variable-name): Shorthand syntax with the variable name enclosed in parentheses.
+  - **context['variable-name']**
+
+      The full SpEL expression syntax.
+  - **$(variable-name)**
+
+      Shorthand syntax with the variable name enclosed in parentheses.
 
   See [Accessing and evaluating objects](expression-language.html#shorthand-syntax-for-context-variables) for more details.
 
