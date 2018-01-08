@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-03"
+lastupdated: "2018-01-08"
 
 ---
 
@@ -338,8 +338,7 @@ You might want to design your dialog to call an external reservation system and 
   "output":{
     "text": {
       "values": [
-        "Let's try this again. Tell me when you want the reservation
-         to be for (date and time) and for how many people."
+        "Alright. Let's start over. I'll try to keep up this time."
       ]
     }
   },
@@ -495,30 +494,62 @@ Adding a node with slots is powerful because it keeps users on track with provid
     <tr>
       <th>Condition</th>
       <th>Response</th>
+      <th>Action</th>
     </tr>
     <tr>
       <td>`#exit`</td>
       <td>Ok, we'll stop there. No reservation will be made.</td>
+      <td>Skip to response</td>
     </tr>
     </table>
 
-1.  To force the service to exit the node, you must set all of the slot context variable values. Click the **Edit response** ![Edit response](images/edit-slot.png) icon, and then click the **Options** ![More icon](images/kabob.png) icon, and select **Open JSON editor**.
-
-1.  In the JSON editor, set all of the context variable values except one to valid values. Set the $guests context variable to `dummy` instead of to a valid number. You will check for this `dummy` value before you display the node response in a later step.
-
-    ```json
-    {
-      "context": {
-       "date": "2900-12-31",
-       "time": "12:00:00",
-       "guests": "dummy",
-       "confirmation":"true"
-      }
-    }
-    ```
-    {: codeblock}
+    The **Skip to response** action jumps directly to the node-level response without displaying the prompts associated with any of the remaining unfilled slots.
 
 1.  Click **Back**, and then click **Save**.
+
+1.  Now, you need to edit the node-level response to make it recognize when a user wants to exit the process rather than make a reservation. Add a conditional response for the node. 
+
+    From the edit view of the node with slots, click **Customize**, click the **Multiple responses** toggle to turn it **on**, and then click **Apply**.
+
+    ![Shows the Multiple responses toggle after it is turned on](images/slots-multi-responses.png)
+
+1.  Scroll down to the response section for the node with slots, and then click **Add response**.
+
+1.  Add the following values to the fields.
+
+    <table>
+    <caption>Node-level conditional response details</caption>
+    <tr>
+      <th>Condition</th>
+      <th>Response</th>
+    </tr>
+    <tr>
+      <td>`has_skipped_slots`</td>
+      <td>I look forward to helping you with your next reservation. Have a good day.</td>
+    </tr>
+    </table>
+
+    The `has_skipped_slots` condition checks the properties of the slots node to see if any of the slots were skipped. The `#exit` node-level handler skips all remaining slots to go directly to the node response. So, when the `has_skipped_slots` property is present, you know the `#exit` intent was triggered, and the dialog can display an alternate response.
+
+    **Note**: If you use this method to show an alternate node-level response when the user wants to exit the process, you cannot configure any other slots or other node-level handlers in the node to skip slots. If you need to skip slots in more than one place, you must use a different approach for testing whether the `#exit` intent was triggered. One alternate approach is to set all of the slot variables values, including one that uses the actual value, `dummy`, and then test for it in the node-level response condition.
+
+      In the JSON editor for the `#exit` node-level handler:
+
+      ```json
+      {
+        "context": {
+         "date": "2900-12-31",
+         "time": "12:00:00",
+         "guests": "dummy",
+         "confirmation":"true"
+        }
+      }
+      ```
+      {: codeblock}
+
+      In the node-level response condition:
+
+      `$guests == 'dummy'`
 
 1.  Test this change by using the following script in the "Try it out" pane.
 
@@ -550,35 +581,9 @@ Adding a node with slots is powerful because it keeps users on track with provid
     </tr>
     <tr>
       <td>Watson</td>
-      <td>Ok, we'll stop there. No reservation will be made.  OK. I am making you a reservation for dummy on 2900-12-31 at 12:00:00.</td>
+      <td>Ok, we'll stop there. No reservation will be made.  I look forward to helping you with your next reservation. Have a good day.</td>
     </tr>
     </table>
-
-Notice that the node-level response is also displayed, which contradicts the node-level handler response that says the process is being stopped. To prevent this confusion, edit the node-level response.
-
-1.  You must add a conditional response for the node. From the edit view of the node with slots, click **Customize**, click the **Multiple responses** toggle to turn it **on**, and then click **Apply**.
-
-    ![Shows the Multiple responses toggle after it is turned on](images/slots-multi-responses.png)
-
-1.  Scroll down to the response section for the node with slots, and then click **Add response**.
-
-1.  Add the following values to the fields.
-
-    <table>
-    <caption>Node-level conditional response details</caption>
-    <tr>
-      <th>Condition</th>
-      <th>Response</th>
-    </tr>
-    <tr>
-      <td>`$guests == 'dummy'`</td>
-      <td>I look forward to helping you with your next reservation. Have a good day.</td>
-    </tr>
-    </table>
-
-1.  Click the up arrow to move this response so it is placed above the response that was there already.
-
-When you test again, you'll see that the following response is provided by the dialog, `Ok, we'll stop there. No reservation will be made.  I look forward to helping you with your next reservation. Have a good day.`
 
 ## Step 7: Apply a valid value if the user fails to provide one after several attempts
 
@@ -691,7 +696,7 @@ You must set the $time variable to 8PM, so click the **Edit response** ![Edit re
 
 Now that your dialog can collect and confirm a user's reservation details, you can call an external service to actually reserve a table in the restaurant's system or through a multi-restaurant online reservations service. See [Making programmatic calls from a dialog node](dialog-actions.html) for more details.
 
-In the logic that calls the reservation service, be sure to check for `$guests == 'dummy'` and do not continue with the reservation if it is present.
+In the logic that calls the reservation service, be sure to check for `has_skipped_slots` (or `$guests == 'dummy'` if you used that approach), and do not continue with the reservation if it is present.
 
 ### Summary
 

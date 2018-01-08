@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-12-19"
+  years: 2015, 2018
+lastupdated: "2018-01-08"
 
 ---
 
@@ -64,9 +64,13 @@ Using slots produces a more natural dialog flow between the user and the service
 
     - **Check for**: Identify the type of information you want to extract from the user's response to the slot prompt. In most cases, you check for entity values. In fact, the condition builder that is displayed suggests entities that you can check for. However, you can also check for an intent; just type the intent name into the field. You can use AND and OR operators here to define more complex conditions.
 
-      **Note**: If the entity has regular expression patterns defined for it, then after adding the entity name, append `.literal` to it. For example, after you choose `@email` from the list of defined entities, edit the *Check for* field to contain `@email.literal`. By adding the `.literal` property, you indicate that you want to capture the exact text that was entered by the user and was identified as an email address based on its pattern.
+      **Important**: The *Check for* value is first used as a condition, but then becomes the value of the context variable that you name in the *Save as* field. If you want to change how the value is saved, reformat it, for example, then add the expression that reformats the value directly to the **Check for** field.
 
-      Avoid checking for context variable values. The *Check for* value is first used as a condition, but then becomes the value of the context variable that you name in the *Save as* field. If you use a context variable in the condition, it can lead to unexpected behavior when it gets used in the context.
+      For example, if the entity has regular expression patterns defined for it, then after adding the entity name, append `.literal` to it. After you choose `@email` from the list of defined entities, for example, edit the **Check for** field to contain `@email.literal`. By adding the `.literal` property, you indicate that you want to capture the exact text that was entered by the user and was identified as an email address based on its pattern. Make this syntax change directly in the **Check for** field.
+
+      **Warning** If you want to apply a complex expression to the value before you save it, then you can open the JSON editor to define the complex SpEL expression. However, the complex expression that you define in the JSON editor will not be reflected in the **Check for** field when you exit the JSON editor. And if you click the **Check for** field to give it focus at any time after you define the complex expression for it, the expression is removed.
+
+      Avoid checking for context variable values. Because the value you check for is also the value that is saved, when you use a context variable in the condition, it can lead to unexpected behavior when it gets used in the context.
       {: tip}
 
     - **Save as**: Provide a name for the context variable in which to store the value of interest from the user's response to the slot prompt. Do not specify a context variable that is used earlier in the dialog, and therefor might have a value. It is only when the context variable for the slot is null that the prompt for the slot is displayed.
@@ -161,6 +165,7 @@ The following slot properties can help you check and set values in slot context 
 | `all_slots_filled`     | Evaluates to true only if all of the context variables for all of the slots in the node have been set. See [Preventing a Found response from displaying when it is not needed](dialog-slots.html#slots-stifle-found-responses) for a usage example. |
 | `event.current_value`  | Current value of the context variable for this slot. See [Replacing a slot context variable value](dialog-slots.html#slots-found-handler-event-properties) for a usage example for this property and the event.previous_value property. |
 | `event.previous_value` | Previous value of the context variable for this slot. |
+| `has_skipped_slots`    | True if any of the slots or node-level handlers that are configured with a next step option that skips slots was processed. See [Adding conditions to Found and Not found responses](dialog-slots.html#slot-handler-next-steps) for more information about next step options for slots and [Handling requests to exit a process](dialog-slots.html#slots-node-level-handler) for information about next step options for node-level handlers. |
 | `slot_in_focus`        | Forces the slot condition to be applied to the current slot only. See [Getting confirmation](dialog-slots.html#slots-get-confirmation) for more details. |
 {: caption="Slot properties" caption-side="top"}
 
