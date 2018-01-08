@@ -531,26 +531,6 @@ Adding a node with slots is powerful because it keeps users on track with provid
 
     The `has_skipped_slots` condition checks the properties of the slots node to see if any of the slots were skipped. The `#exit` node-level handler skips all remaining slots to go directly to the node response. So, when the `has_skipped_slots` property is present, you know the `#exit` intent was triggered, and the dialog can display an alternate response.
 
-    **Note**: If you use this method to show an alternate node-level response when the user wants to exit the process, you cannot configure any other slots or other node-level handlers in the node to skip slots. If you need to skip slots in more than one place, you must use a different approach for testing whether the `#exit` intent was triggered. One alternate approach is to set all of the slot variables values, including one that uses the actual value, `dummy`, and then test for it in the node-level response condition.
-
-      In the JSON editor for the `#exit` node-level handler:
-
-      ```json
-      {
-        "context": {
-         "date": "2900-12-31",
-         "time": "12:00:00",
-         "guests": "dummy",
-         "confirmation":"true"
-        }
-      }
-      ```
-      {: codeblock}
-
-      In the node-level response condition:
-
-      `$guests == 'dummy'`
-
 1.  Test this change by using the following script in the "Try it out" pane.
 
     <table>
@@ -696,7 +676,7 @@ You must set the $time variable to 8PM, so click the **Edit response** ![Edit re
 
 Now that your dialog can collect and confirm a user's reservation details, you can call an external service to actually reserve a table in the restaurant's system or through a multi-restaurant online reservations service. See [Making programmatic calls from a dialog node](dialog-actions.html) for more details.
 
-In the logic that calls the reservation service, be sure to check for `has_skipped_slots` (or `$guests == 'dummy'` if you used that approach), and do not continue with the reservation if it is present.
+In the logic that calls the reservation service, be sure to check for `has_skipped_slots` and do not continue with the reservation if it is present.
 
 ### Summary
 
