@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-04"
+lastupdated: "2018-01-08"
 
 ---
 
@@ -67,10 +67,16 @@ Use the {{site.data.keyword.conversationshort}} tool to create intents.
 
     **Referencing entities and synonyms as intent examples**
 
-    If you have defined or plan to define entities that correspond to this intent, refer to the entities or their associated synonyms in some of the examples. Doing so helps to establish a relationship between the intent and entities.
+    If you have defined, or plan to define, entities that correspond to this intent, it is recommended that you refer to the entities, or their associated synonyms, in some of the examples. Doing so helps to establish a relationship between the intent and entities.
 
     ![Screen capture showing intent definition](images/define_intent.png)
     {: #entity-as-example}
+
+    *Important*:
+
+      - Intent example data should be representative and typical of data that end users will provide. Examples can be collected from actual user data, or from people who are experts in your specific field. The representative and accurate nature of the data is important.
+      - Both training and test data (for evaluation purposes) should reflect the distribution of intents in real usage. Generally, more frequent intents have relatively more examples, and better response coverage.
+      - You can include punctuation in the example text, as long as it appears naturally. If you believe that some users will express their intents with examples that include punctuation, and some users will not, it is recommended that you include both versions. Generally, the more coverage for various patterns, the better the response.
 
     **Directly referencing an @Entity as an intent example**
 
