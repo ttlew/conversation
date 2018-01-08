@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-12-18"
+  years: 2015, 2018
+lastupdated: "2018-01-08"
 
 ---
 
@@ -130,12 +130,14 @@ Use the {{site.data.keyword.conversationshort}} tool to create entities.
         ```
        {: screen}
 
-      For additional information about using capture groups in dialog runtime, see [Storing pattern entity values in context variables](dialog-runtime.html#context-pattern-entities).
+      For additional information about using capture groups in dialog runtime, see [Storing pattern entity values in context variables](dialog-overview-context-groups.html).
 
-      The pattern matching engine employed by the {{site.data.keyword.conversationshort}} service has some syntax limitations, which are necessary in order to avoid performance concerns which can occur when using other regular expression engines. Notably, entity patterns may not contain:
-        - Positive repetitions (e.g., `x*+`)
-        - Backreferences (e.g., `\g1`)
-        - Conditional branches (e.g., `(?(cond)true))`
+      The pattern matching engine employed by the {{site.data.keyword.conversationshort}} service has some syntax limitations, which are necessary in order to avoid performance concerns which can occur when using other regular expression engines.
+        - Entity patterns may not contain:
+          - Positive repetitions (for example `x*+`)
+          - Backreferences (for example `\g1`)
+          - Conditional branches (for example `(?(cond)true)`)
+        - When a pattern entity starts or ends with a Unicode character, and includes word boundaries, for example `\bš\b`, the pattern match does not match the word boundary correctly. In this example, for input `š zkouška`, the match returns `Group 0: 6-7 š`, or `š zkou`_**`š`**_`ka`, instead of the correct `Group 0: 0-1 š`, or _**`š`**_ `zkouška`.
 
       The regular expression engine is loosely based on the Java regular expression engine. The {{site.data.keyword.conversationshort}} service will produce an error if you try to upload an unsupported pattern, either via the API or from within the {{site.data.keyword.conversationshort}} service Tooling UI.
 

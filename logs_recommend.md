@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-10-16"
+  years: 2015, 2018
+lastupdated: "2018-01-08"
 
 ---
 
@@ -24,9 +24,6 @@ This page presents recommendations for ways to improve your system.
 ![Recommendations tab](images/RecommendTop.png)
 
 This feature is Beta only.
-{: tip}
-
-This feature is available only to Premium users.
 {: tip}
 
 By analyzing the conversations that users have had with your workspace, and taking into account your system's current training data and response certainty, you will be presented with actions you can take to easily and efficiently improve your workspace.
