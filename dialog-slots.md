@@ -155,6 +155,8 @@ Using slots produces a more natural dialog flow between the user and the service
     - Add a child node that nulls the variables.
     - Insert a parent node that nulls the variables, and then jumps to the node with slots.
 
+Give it a try! Follow the step-by-step [tutorial](tutorial-slots.html).
+
 ## Slots usage tips
 {: #slots-tips}
 
