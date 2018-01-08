@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-12-18"
+  years: 2015, 2018
+lastupdated: "2018-01-08"
 
 ---
 
@@ -136,6 +136,14 @@ Use regular expressions to check for values to condition against.  To find a mat
 - **Checking for number values**: When using numeric variables, make sure the variables have values. If a variable does not have a value, it is treated as having a null value (0) in a numeric comparison.
 
   For example, if you check the value of a variable with the condition `@price < 100`, and the @price entity is null, then the condition is evaluated as `true` because 0 is less than 100, even though the price was never set. To prevent the checking of null variables, use a condition such as `@price AND @price < 100`. If `@price` has no value, then this condition correctly returns false.
+
+- **Checking for intents with a specific intent name pattern**: You can condition on any detected intents with intent names that start with 'User_' by using a syntax like this:
+
+  `intents[0].intent.startsWith("User_")`
+
+  However, when you do so, all of the detected intents are considered, even those with a confidence lower than 0.2. You should also check that the intents are not considered irrelevant by Watson based on their condifence score in the condition. For example, change the condition as follows:
+
+  `!irrelevant && intents[0].intent.startsWith("User_")`
 
 - **How fuzzy matching impacts entity recognition**: If you use an entity as the condition and fuzzy matching is enabled, then `@entity_name` evaluates to true only if the confidence of the match is greater than 30%. That is, only if `@entity_name.confidence > .3`.
 
