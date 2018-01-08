@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-12-18"
+  years: 2015, 2018
+lastupdated: "2018-01-08"
 
 ---
 
@@ -232,6 +232,10 @@ To change the digression behavior for an individual node, complete the following
 1.  Click **Apply**.
 
 1.  Use the "Try it out" pane to test the digression behavior, and confirm that your dialog functions as expected.
+
+For example, the settings that support the digression that is shown in the example illustration above look like this.
+
+![Shows two dialogs, one that sets the digressions away from the reservation slots node and one that sets the digression into the cuisine node.](images/digression-settings.png)
 
 ### Disabling digressions into a base node
 {: #disable-digressions}
