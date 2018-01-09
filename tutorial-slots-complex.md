@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-08"
+lastupdated: "2018-01-09"
 
 ---
 
@@ -530,6 +530,8 @@ Adding a node with slots is powerful because it keeps users on track with provid
     </table>
 
     The `has_skipped_slots` condition checks the properties of the slots node to see if any of the slots were skipped. The `#exit` node-level handler skips all remaining slots to go directly to the node response. So, when the `has_skipped_slots` property is present, you know the `#exit` intent was triggered, and the dialog can display an alternate response.
+
+    **Note**: If you configure more than one slot to skip other slots, or configure another node-level event handler to skip slots, then you must use a different approach to check whether the #exit intent was triggered. See [Handling requests to exit a process](dialog-slots.html#slots-node-level-handler) for an alternate way to do so.
 
 1.  Test this change by using the following script in the "Try it out" pane.
 
