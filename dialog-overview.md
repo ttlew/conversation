@@ -151,7 +151,7 @@ You can use regular expressions to check for values to condition against.  To fi
 
   `intents[0].intent.startsWith("User_")`
 
-  However, when you do so, all of the detected intents are considered, even those with a confidence lower than 0.2. You should also check that intents that are considered irrelevant by Watson based on their confidence score are not returned. To do so, change the condition as follows:
+  However, when you do so, all of the detected intents are considered, even those with a confidence lower than 0.2. Also check that intents which are considered irrelevant by Watson based on their confidence score are not returned. To do so, change the condition as follows:
 
   `!irrelevant && intents[0].intent.startsWith("User_")`
 
