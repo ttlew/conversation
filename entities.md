@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-08"
+lastupdated: "2018-01-09"
 
 ---
 
@@ -137,7 +137,7 @@ Use the {{site.data.keyword.conversationshort}} tool to create entities.
           - Positive repetitions (for example `x*+`)
           - Backreferences (for example `\g1`)
           - Conditional branches (for example `(?(cond)true)`)
-        - When a pattern entity starts or ends with a Unicode character, and includes word boundaries, for example `\bš\b`, the pattern match does not match the word boundary correctly. In this example, for input `š zkouška`, the match returns `Group 0: 6-7 š`, or `š zkou`_**`š`**_`ka`, instead of the correct `Group 0: 0-1 š`, or _**`š`**_ `zkouška`.
+        - When a pattern entity starts or ends with a Unicode character, and includes word boundaries, for example `\bš\b`, the pattern match does not match the word boundary correctly. In this example, for input `š zkouška`, the match returns `Group 0: 6-7 š` (`š zkou`_**`š`**_`ka`), instead of the correct `Group 0: 0-1 š` (_**`š`**_ `zkouška`).
 
       The regular expression engine is loosely based on the Java regular expression engine. The {{site.data.keyword.conversationshort}} service will produce an error if you try to upload an unsupported pattern, either via the API or from within the {{site.data.keyword.conversationshort}} service Tooling UI.
 
