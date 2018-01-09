@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-08"
+lastupdated: "2018-01-09"
 
 ---
 
@@ -71,6 +71,14 @@ You can disrupt the standard first-to-last flow by customizing what happens afte
 {: #conditions}
 
 A node condition determines whether that node is used in the conversation. Response conditions determine which response to display to a user.
+
+- [Condition artifacts](dialog-overview.html#condition-artifacts)
+- [Condition syntax details](dialog-overview.html#condition-syntax)
+- [Condition usage tips](dialog-overview.html#condition-tips)
+
+### Condition artifacts
+{: #condition-artifacts}
+
 You can use one or more of the following artifacts in any combination to define a condition:
 
 - **Context variable**: The node is used if the context variable expression that you specify is true. Use the syntax, `$variable_name:value` or `$variable_name == 'value'`. For example, `$city:Boston` checks whether the `$city` context variable contains the value, `Boston`. If so, the node or response is processed.
@@ -112,6 +120,7 @@ You can use one or more of the following artifacts in any combination to define 
 {: caption="Special conditions" caption-side="top"}
 
 ### Condition syntax details
+{: #condition-syntax}
 
 Use one of these syntax options to create valid expressions in conditions:
 
@@ -119,9 +128,10 @@ Use one of these syntax options to create valid expressions in conditions:
 
 - Spring Expression (SpEL) language, which is an expression language that supports querying and manipulating an object graph at runtime. See [Spring Expression Language (SpEL) language ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html){: new_window} for more information.
 
-Use regular expressions to check for values to condition against.  To find a matching string, for example, you can use the `String.find` method. See  [Methods](dialog-methods.html) for more details.
+You can use regular expressions to check for values to condition against.  To find a matching string, for example, you can use the `String.find` method. See  [Methods](dialog-methods.html) for more details.
 
 ### Condition usage tips
+{: #condition-tips}
 
 - **Checking for values with special characters**: If you want to check whether an entity or context variable contains a value, and the value includes a special character, such as an apostrophe ('), then you must surround the value that you want to check with parentheses. For example, to check if an entity or context variable contains the name `O'Reilly`, you must surround the name with parentheses.
 
@@ -137,11 +147,11 @@ Use regular expressions to check for values to condition against.  To find a mat
 
   For example, if you check the value of a variable with the condition `@price < 100`, and the @price entity is null, then the condition is evaluated as `true` because 0 is less than 100, even though the price was never set. To prevent the checking of null variables, use a condition such as `@price AND @price < 100`. If `@price` has no value, then this condition correctly returns false.
 
-- **Checking for intents with a specific intent name pattern**: You can condition on any detected intents with intent names that start with 'User_' by using a syntax like this:
+- **Checking for intents with a specific intent name pattern**: You can use a condition that looks for intents that match a pattern. For example, to find any detected intents with intent names that start with 'User_', you can use a syntax like this in the condition:
 
   `intents[0].intent.startsWith("User_")`
 
-  However, when you do so, all of the detected intents are considered, even those with a confidence lower than 0.2. You should also check that the intents are not considered irrelevant by Watson based on their condifence score in the condition. For example, change the condition as follows:
+  However, when you do so, all of the detected intents are considered, even those with a confidence lower than 0.2. Also check that intents which are considered irrelevant by Watson based on their confidence score are not returned. To do so, change the condition as follows:
 
   `!irrelevant && intents[0].intent.startsWith("User_")`
 
