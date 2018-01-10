@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-12-08"
+  years: 2015, 2018
+lastupdated: "2018-01-10"
 
 ---
 
@@ -25,7 +25,7 @@ The Improve component of {{site.data.keyword.conversationshort}} provides a hist
 Sections of the **Improve** panel:
 
 * [Overview](logs_oview.html): A summary of interactions of users with a workspace.
-* [User conversations](logs_convo.html): A list of user utterances. You can update intents and entities while viewing a user utterance.
+* [User conversations](logs_convo.html): A list of user utterances. You can update intents and entities while viewing an individual user utterance. **Note**: A single user conversation may consist of multiple utterances.
 * [Recommendations](logs_recommend.html): Ways to improve your system. Available only to Premium users.
 
 ## Improving across workspaces

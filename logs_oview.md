@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-11-28"
+  years: 2015, 2018
+lastupdated: "2018-01-10"
 
 ---
 
@@ -48,11 +48,11 @@ You can choose whether to view data for a single day, a week, a month, a quarter
 
 A graph displays the total number of conversations for the date range selected.
 
-**Note:** A 'conversation' is considered to be any interaction with the workspace, so if there are conversations where the service starts by saying "Hi, how can I help you?", and then the user closes their browser without responding, that conversation is included in the total conversation count.
+**Note**: A 'conversation' is considered to be any interaction with the workspace, so if there are conversations where the service starts by saying "Hi, how can I help you?", and then the user closes their browser without responding, that conversation is included in the total conversation count.
 
-You can select **View logs** to open the [User conversations](logs_convo.html) page, with the date range filtered to match the time period that you have selected for the Overview page. Depending on your plan and the date range that you selected, you might see no data. For example, the {{site.data.keyword.conversationshort}} [Standard service plan](logs_convo.html#log-limits) only retains chat logs for 30 days; if you choose a date range older than 30 days, you will see no data.
+You can select **View logs** to open the [User conversations](logs_convo.html) page, with the date range filtered to match the time period that you have selected for the Overview page. The [User conversations](logs_convo.html) page displays the total number of *utterances*. An utterance is a single message the user sends to the workspace. Each conversation may be made up of multiple utterances. Thus, the number of results on the [User conversations](logs_convo.html) page is different than the number of conversations shown on this Overview page.
 
-**Note:** The [User conversations](logs_convo.html) page displays the total number of *utterances*. An utterance is a single message the user sends to the workspace. Each conversation may be made up of multiple utterances. Thus, the number of results on the [User conversations](logs_convo.html) page is different than the number of conversations shown on this Overview page.
+**Note**: Depending on your plan and the date range that you selected, you might see no data. For example, the {{site.data.keyword.conversationshort}} [Standard service plan](logs_convo.html#log-limits) only retains conversations for 30 days; if you choose a date range older than 30 days, you will see no data.
 
 While viewing the graph, you can click on an individual data point to see the numeric value, as shown here:
 
@@ -62,7 +62,7 @@ Below the graph, statistics related to the displayed data are shown:
 
 * *Total conversations* - The total number of conversations that took place during this time period
 * *Max. conversations* - The maximum number of conversations for a single data point within the time period
-* *Weak understanding* - The number of conversations with weak understanding. These conversations are not classified by an intent, and do not contain any known entities. These can be useful in identifying potential dialog problems.
+* *Weak understanding* - The number of individual utterances with weak understanding. These utterances are not classified by an intent, and do not contain any known entities. These can be useful in identifying potential dialog problems.
 
 ## Top intents and Top entities
 
