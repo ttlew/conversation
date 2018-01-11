@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-12-21"
+  years: 2015, 2018
+lastupdated: "2018-01-11"
 
 ---
 
@@ -108,8 +108,6 @@ To make a programmatic call from a dialog node, complete the following steps:
       - **client**: Sends a message response with programmatic call information in a standardized format that your external client application can use to perform the call or function, and get a result on behalf of the dialog. The JSON object in the response body specifies the service or function to call, any associated parameters to pass with the call, and how the result should be sent back.
 
       - **server**: Calls a Cloud Functions action (one or more) directly. You must define the action itself separately by using IBM Cloud Functions. For more information, see [Creating a Cloud Functions action](dialog-actions.html#create-action) below.
-
-        **Note**: Currently, you can call an action from a Cloud Functions instance that is hosted in the US South region from Conversation instances that are hosted in the US South region.
 
       Specifying the type is optional. The default value is `client`.
 
