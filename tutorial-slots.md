@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-03"
+lastupdated: "2018-01-12"
 
 ---
 
@@ -66,7 +66,7 @@ Add an intent on the Intents tab. An intent is the purpose or goal that is expre
     ```json
     I want to reserve a table for dinner
     Can 3 of us get a table for lunch?
-    do you have openings for next Wenesday at 7?
+    do you have openings for next Wednesday at 7?
     Is there availability for 4 on Tuesday night?
     i'd like to come in for brunch tomorrow
     can i reserve a table?
@@ -92,6 +92,13 @@ You have successfully enabled the @sys-date, @sys-time, and @sys-number system e
 ## Step 3: Add a dialog node with slots
 {: #add-dialog-with-slots}
 
+A dialog node represents the start of a thread of dialog between the service and the user. It contains a condition that must be met for the node to be processed by the service. At a minimum, it also contains a response. For example, a node condition might look for the `#hello` intent in user input, and respond with, `Hi. How can I help you?` This example is the simplest form of a dialog node, one that contains a single condition and a single response. You can define complex dialogs by adding conditional responses to a single node, adding child nodes that prolong the exchange with the user, and much more. (If you want to learn more about complex dialogs, you can complete the [Building a complex dialog](tutorial.html) tutorial.)
+
+The node that you will add in this step is one that contains slots. Slots provide a structured format through which you can ask for and save multiple pieces of information from a user within a single node. They are most useful when you have a specific task in mind and need key pieces of information from the user before you can perform it. See [Gathering information with slots](dialog-slots.html) for more information.
+
+The node you add will collect the information required to make a reservation at a restaurant.
+
+1.  Click the **Dialogs** tab to open the dialog tree.
 1.  Click the More icon ![More options](images/kabob.png) on the **#greeting** node, and then select **Add node below**.
 1.  Start typing `#reservation` in the condition field, and then select it from the list.
     This node will be evaluated if the user input matches the `#reservation` intent.

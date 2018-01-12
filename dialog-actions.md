@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-11"
+lastupdated: "2018-01-12"
 
 ---
 
@@ -32,7 +32,11 @@ When you define the programmatic call, you choose one of the following types:
 - **client**: Defines a programmatic call in a standardized format that your external client application can use to perform the programmatic call or function, and return the result to the dialog.
 - **server**: Calls an IBM Cloud Functions action directly, and returns the result to the dialog.
 
-    Only use this method to make a call to a Cloud Functions action that you know can return in **under 5 seconds**. The request to Cloud Functions times out if an individual service call takes longer than that. And if your dialog makes more than one call to an external service, the total amount of time allowed for the calls to complete is 7 seconds. If the first three calls complete in 2 seconds each, and the fourth takes more than 1 second, then the fourth call is stopped, and the error message for the call indicates that the call was not completed. For less efficient services that you need to call, manage the call through your client application and pass the information to the dialog as a separate step.
+    Currently, you can call a Cloud Functions action from Conversation instances that are hosted in the US South or Germany regions.
+
+    **Note**: The Cloud Functions instance that is used is the one hosted in the same location (US South or Germany). Therefore, do not define an action in a Cloud Functions instance that is hosted in Germany if you plan to access it from a Conversation service instance hosted in US South, for example.
+
+    **Important**: Only use this method to make a call to a Cloud Functions action that you know can return in **under 5 seconds**. The request to Cloud Functions times out if an individual service call takes longer than that. And if your dialog makes more than one call to an external service, the total amount of time allowed for the calls to complete is 7 seconds. If the first three calls complete in 2 seconds each, and the fourth takes more than 1 second, then the fourth call is stopped, and the error message for the call indicates that the call was not completed. For less efficient services that you need to call, manage the call through your client application and pass the information to the dialog as a separate step.
 
 ## Procedure
 {: #call-action}
