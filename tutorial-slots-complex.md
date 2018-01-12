@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-09"
+lastupdated: "2018-01-12"
 
 ---
 
@@ -330,7 +330,9 @@ You might want to design your dialog to call an external reservation system and 
 
 1.  Click the **Edit slot** ![Edit slot](images/edit-slot.png) icon. From the **Options** ![More icon](images/kabob.png) menu in the *Configure slot 4* header, select **Enable conditional responses**.
 
-1.  In the **Found** prompt, add a condition that checks for a No response (`#no`). When found, reset the context variables that you saved earlier to null and ask for the information again. Otherwise, you can assume the user confirmed the reservation details and proceed with making the reservation.
+1.  In the **Found** prompt, add a condition that checks for a No response (`#no`). Use the response, `Alright. Let's start over. I'll try to keep up this time.` Otherwise, you can assume the user confirmed the reservation details and proceed with making the reservation.
+
+When the `#no` intent is found, you also must reset the context variables that you saved earlier to null, so you can ask for the information again. You can reset the context variable values by using the JSON editor. Click the **Edit response** ![Edit response](images/edit-slot.png) icon for the conditional response you just added. From the **Options**  ![Advanced response](images/kabob.png) menu, click **Open JSON editor**. Add a `context` block that sets the slot context variables to `null`, as shown below.
 
 ```json
 {
@@ -351,21 +353,23 @@ You might want to design your dialog to call an external reservation system and 
 ```
 {: codeblock}
 
-1.  In the **Not found** prompt, clarify that you are expecting the user to provide a Yes or No answer.
+1.  Click **Back**, and then click **Save**.
 
-```json
-{
-  "output":{
-    "text": {
-      "values": [
-        "Respond with Yes to indicate that you want the reservation to
-         be made as-is, or No to indicate that you do not."
-      ]
-    }
-  }
-}
-```
-{: codeblock}
+1.  Click the **Edit slot** ![Edit slot](images/edit-slot.png) icon for the confirmation slot again. In the **Not found** prompt, clarify that you are expecting the user to provide a Yes or No answer. Add a response with the following values.
+
+    <table>
+    <caption>Not found response details</caption>
+    <tr>
+      <th>Condition</th>
+      <th>Response</th>
+    </tr>
+    <tr>
+      <td>`true`</td>
+      <td>Respond with Yes to indicate that you want the reservation to be made as-is, or No to indicate that you do not.</td>
+    </tr>
+    </table>
+
+1.  Click **Save**.
 
 1.  Now that you have confirmation responses for slot values, and you ask for everything at once, you might notice that the individual slot responses are displayed before the confirmation slot response is displayed, which can appear repetitive to users. Edit the slot found responses to prevent them from being displayed under certain conditions.
 
@@ -507,7 +511,7 @@ Adding a node with slots is powerful because it keeps users on track with provid
 
 1.  Click **Back**, and then click **Save**.
 
-1.  Now, you need to edit the node-level response to make it recognize when a user wants to exit the process rather than make a reservation. Add a conditional response for the node. 
+1.  Now, you need to edit the node-level response to make it recognize when a user wants to exit the process rather than make a reservation. Add a conditional response for the node.
 
     From the edit view of the node with slots, click **Customize**, click the **Multiple responses** toggle to turn it **on**, and then click **Apply**.
 
@@ -532,6 +536,8 @@ Adding a node with slots is powerful because it keeps users on track with provid
     The `has_skipped_slots` condition checks the properties of the slots node to see if any of the slots were skipped. The `#exit` node-level handler skips all remaining slots to go directly to the node response. So, when the `has_skipped_slots` property is present, you know the `#exit` intent was triggered, and the dialog can display an alternate response.
 
     **Note**: If you configure more than one slot to skip other slots, or configure another node-level event handler to skip slots, then you must use a different approach to check whether the #exit intent was triggered. See [Handling requests to exit a process](dialog-slots.html#slots-node-level-handler) for an alternate way to do so.
+
+1.  You want the service to check for the `has_skipped_slots` property before it displays the standard node-level response. Move the `has_skipped_slots` conditional response up so it gets processed before the original conditional response or it will never be triggered. To do so, click the response you just added, use the **up arrow** to move it up, and then click **Save**.
 
 1.  Test this change by using the following script in the "Try it out" pane.
 
@@ -575,7 +581,7 @@ For the $time information, you will define a follow-up statement that is display
 
 1.  Create a context variable that can keep track of how many times the user provides a value that does not match the value type that the slot expects. You want the context variable to be initialized and set to 0 before the node with slots is processed, so you will add it to the parent `#reservation` node.
 
-1.  Click to edit the `#reservation` node. Add a context variable called `counter` and set it equal to `0`.
+1.  Click to edit the `#reservation` node. Open the JSON editor associated with the node response, by clicking the **Options** ![More icon](images/kabob.png) icon in the response section, and choosing **Open JSON editor**. Add a context variable called `counter` to the bottom of the existing `"context"` block, below the `confirmation` variable. Set the `counter` variable equal to `0`.
 
        ```json
        {
@@ -591,7 +597,9 @@ For the $time information, you will define a follow-up statement that is display
        ```
        {: codeblock}
 
-1.  From the edit view of the node with slots, click the **Edit slot** ![Edit slot](images/edit-slot.png) icon for the `@sys-time` slot.
+1.  From the tree view, expand the `#reservation` node, and then click to edit the node with slots. 
+
+1.  Click the **Edit slot** ![Edit slot](images/edit-slot.png) icon for the `@sys-time` slot.
 
 1.  From the **Options** ![More icon](images/kabob.png) menu in the *Configure slot 2* header, select **Enable conditional responses**.
 
@@ -615,10 +623,17 @@ For the $time information, you will define a follow-up statement that is display
 
     ```json
     {
+      "conditions": "true",
+      "output": {
+        "text": {
+          "values": [
+            "Please specify the time that you want to eat. The restaurant seats people between 9AM and 9PM."
+          ]
+        }
+      },
       "context": {
         "counter": "<? context['counter'] + 1 ?>"
-      },
-      "output": {}
+      }
     }
     ```
     {: codeblock}
@@ -645,10 +660,18 @@ For the $time information, you will define a follow-up statement that is display
     </tr>
     </table>
 
-You must set the $time variable to 8PM, so click the **Edit response** ![Edit response](images/edit-slot.png) icon. Select **Open JSON editor**, add the following context variable definition, and then click **Back**.
+    You must set the $time variable to 8PM, so click the **Edit response** ![Edit response](images/edit-slot.png) icon. Select **Open JSON editor**, add the following context variable definition, and then click **Back**.
 
     ```json
     {
+      "conditions": "$counter > 1",
+      "output": {
+        "text": {
+          "values": [
+            "You seem to be having trouble choosing a time. I will make the reservation at 8 PM for you."
+          ]
+        }
+      },
       "context": {
         "time": "<? '20:00:00'.reformatDateTime('h:mm a') ?>"
       }
