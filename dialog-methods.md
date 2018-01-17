@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-08-08"
+  years: 2015, 2018
+lastupdated: "2018-01-17"
 
 ---
 
@@ -194,6 +194,18 @@ Result:
 This is the array: onion;olives;ham;
 ```
 {: screen}
+
+### new JsonArray().append('value')
+
+To define a new array that will be filled in with values that are provided by users, you can instantiate an array. You must also add a placeholder value to the array when you instantiate it. You can use the following syntax to do so:
+
+```json
+{
+  "context":{
+    "answer": "<? output.answer?:new JsonArray().append('temp_value') ?>"
+  }
+```
+{: codeblock}
 
 ### JSONArray.remove(integer)
 
@@ -516,7 +528,9 @@ Condition = @sys-number
 
   Converts the object or field to the Long number type. You can call this method on any object or field. If the conversion fails, *null* is returned.
 
-For information about system entities that extract numbers, see [@sys-number entity](system-entities.html#sys-number).
+  If you specify a Long number type in a SpEL expression, you must append an `L` to the number to identify it as such. For example, `5000000000L`. This syntax is required for any numbers that do not fit into the 32-bit Integer type. For example, numbers that are greater than 2^31 (2,147,483,648) or lower than -2^31 (-2,147,483,648) are considered Long number types. Long number types have a minimum value of -2^63 and a maximum value of 2^63-1.
+
+For information about system entities that extract numbers, see [@sys-number entity](system-entities.html#sys-number). If you want the service to recognize specific number formats in user input, such as order number references, consider creating a pattern entity. See [Creating entities](entities.html#creating-entities) for more details.
 
 ## Objects
 {: #objects}
@@ -730,6 +744,21 @@ This syntax:
 {: codeblock}
 
 Result: The condition is true because the numeric portion of the input text matches the regular expression `^[^\d]*[\d]{6}[^\d]*$`.
+
+### T(java.lang.String).format()
+
+You can apply a standard Java String format method to text. See [java.util.formatter reference](https://docs.oracle.com/javase/7/docs/api/java/util/Formatter.html#syntax) for information about the syntax to use in the format() method to specify the format details.
+
+For example, the following expression takes three decimal integers (1, 1, and 2) and adds them to a sentence.
+
+```json
+{
+  "formatted String": "<? T(java.lang.String).format("%d + %d equals %d", 1, 1, 2) ?>"
+}
+```
+{: codeblock}
+
+Result: `1 + 1 equals 2`.
 
 ### String.isEmpty()
 
