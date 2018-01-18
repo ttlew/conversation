@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-17"
+lastupdated: "2018-01-18"
 
 ---
 
@@ -22,7 +22,7 @@ lastupdated: "2018-01-17"
 Use these methods to process values extracted from user utterances that you want to reference in a context variable, condition, or elsewhere in the response.
 {: shortdesc}
 
->**Note:** For methods that involve regular expressions, see [RE2 Syntax reference](https://github.com/google/re2/wiki/Syntax) for details about the syntax to use when you specify the regular expression.
+>**Note:** For methods that involve regular expressions, see [RE2 Syntax reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/google/re2/wiki/Syntax){: new_window} for details about the syntax to use when you specify the regular expression.
 
 ## Arrays
 {: #arrays}
@@ -464,7 +464,7 @@ For example, this context variable definition creates a $time variable that save
 ```
 {: codeblock}
 
-Format follows the Java [SimpleDateFormat](http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html) rules.
+Format follows the Java [SimpleDateFormat ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html){: new_window} rules.
 
 >Note: When trying to format time only, the date is treated as `1970-01-01`.
 
@@ -747,13 +747,13 @@ Result: The condition is true because the numeric portion of the input text matc
 
 ### T(java.lang.String).format()
 
-You can apply a standard Java String format method to text. See [java.util.formatter reference](https://docs.oracle.com/javase/7/docs/api/java/util/Formatter.html#syntax) for information about the syntax to use in the format() method to specify the format details.
+You can apply a standard Java String format method to text. See [java.util.formatter reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.oracle.com/javase/7/docs/api/java/util/Formatter.html#syntax){: new_window} for information about the syntax to use in the format() method to specify the format details.
 
 For example, the following expression takes three decimal integers (1, 1, and 2) and adds them to a sentence.
 
 ```json
 {
-  "formatted String": "<? T(java.lang.String).format("%d + %d equals %d", 1, 1, 2) ?>"
+  "formatted String": "<? T(java.lang.String).format('%d + %d equals %d', 1, 1, 2) ?>"
 }
 ```
 {: codeblock}
