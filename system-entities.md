@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-07-06"
+  years: 2015, 2018
+lastupdated: "2018-01-19"
 
 ---
 
@@ -151,6 +151,7 @@ For the input `at 6 pm` @sys-time returns these values:
 - @sys-time always returns the time in this format: HH:mm:ss.
 
 For information about processing date and time values, see the [Date and time](dialog-methods.html#date-time) method reference.
+{: tip}
 
 ## @sys-location entity
 {: #sys-location}
@@ -164,6 +165,7 @@ For information about processing date and time values, see the [Date and time](d
 - New South Wales
 
 For information about processing String values, see the [Strings](dialog-methods.html#strings) method reference.
+{: tip}
 
 ## @sys-number entity
 {: #sys-number}
@@ -213,6 +215,7 @@ You get equivalent results for other supported languages.
   Use `@sys-number AND @sys-number<4` instead. If no number is present, the first condition evaluates to false, which appropriately results in the whole condition evaluating to false.
 
 For information about processing number values, see the [Numbers](dialog-methods.html#numbers) method reference.
+{: tip}
 
 ## @sys-percentage entity
 {: #sys-percentage}
@@ -270,3 +273,4 @@ You get equivalent results for other supported languages.
 - Vijay
 
 For information about processing String values, see the [Strings](dialog-methods.html#strings) method reference.
+{: tip}

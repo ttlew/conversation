@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-12"
+lastupdated: "2018-01-18"
 
 ---
 
@@ -332,26 +332,26 @@ You might want to design your dialog to call an external reservation system and 
 
 1.  In the **Found** prompt, add a condition that checks for a No response (`#no`). Use the response, `Alright. Let's start over. I'll try to keep up this time.` Otherwise, you can assume the user confirmed the reservation details and proceed with making the reservation.
 
-When the `#no` intent is found, you also must reset the context variables that you saved earlier to null, so you can ask for the information again. You can reset the context variable values by using the JSON editor. Click the **Edit response** ![Edit response](images/edit-slot.png) icon for the conditional response you just added. From the **Options**  ![Advanced response](images/kabob.png) menu, click **Open JSON editor**. Add a `context` block that sets the slot context variables to `null`, as shown below.
+    When the `#no` intent is found, you also must reset the context variables that you saved earlier to null, so you can ask for the information again. You can reset the context variable values by using the JSON editor. Click the **Edit response** ![Edit response](images/edit-slot.png) icon for the conditional response you just added. From the **Options**  ![Advanced response](images/kabob.png) menu, click **Open JSON editor**. Add a `context` block that sets the slot context variables to `null`, as shown below.
 
-```json
-{
-  "conditions": "#no",
-  "output":{
-    "text": {
-      "values": [
-        "Alright. Let's start over. I'll try to keep up this time."
-      ]
+    ```json
+    {
+      "conditions": "#no",
+      "output":{
+        "text": {
+          "values": [
+            "Alright. Let's start over. I'll try to keep up this time."
+          ]
+        }
+      },
+      "context":{
+        "date": null,
+        "time": null,
+        "guests": null
+      }
     }
-  },
-  "context":{
-    "date": null,
-    "time": null,
-    "guests": null
-  }
-}
-```
-{: codeblock}
+    ```
+    {: codeblock}
 
 1.  Click **Back**, and then click **Save**.
 
@@ -463,7 +463,7 @@ You might have noticed that before each test, you must clear the context variabl
 
     ![Shows the dialog reorganized to include a base node with the #reservation condition and a skip to action set up to go directly to its child node, which is the node with slots](images/slots-skip-user-input.png)
 
-When a user input matches the `#reservation` intent, this node is triggered. The slot context variables are all set to null, and then the dialog jumps directly to the node with slots to process it.
+    When a user input matches the `#reservation` intent, this node is triggered. The slot context variables are all set to null, and then the dialog jumps directly to the node with slots to process it.
 
 ## Step 6: Give users a way to exit the process
 {: #handler}
@@ -627,7 +627,8 @@ For the $time information, you will define a follow-up statement that is display
       "output": {
         "text": {
           "values": [
-            "Please specify the time that you want to eat. The restaurant seats people between 9AM and 9PM."
+            "Please specify the time that you want to eat.
+              The restaurant seats people between 9AM and 9PM."
           ]
         }
       },
@@ -668,7 +669,8 @@ For the $time information, you will define a follow-up statement that is display
       "output": {
         "text": {
           "values": [
-            "You seem to be having trouble choosing a time. I will make the reservation at 8 PM for you."
+            "You seem to be having trouble choosing a time.
+              I will make the reservation at 8 PM for you."
           ]
         }
       },
