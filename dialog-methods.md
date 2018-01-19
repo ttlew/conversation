@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-18"
+lastupdated: "2018-01-19"
 
 ---
 
@@ -195,18 +195,6 @@ This is the array: onion;olives;ham;
 ```
 {: screen}
 
-### new JsonArray().append('value')
-
-To define a new array that will be filled in with values that are provided by users, you can instantiate an array. You must also add a placeholder value to the array when you instantiate it. You can use the following syntax to do so:
-
-```json
-{
-  "context":{
-    "answer": "<? output.answer?:new JsonArray().append('temp_value') ?>"
-  }
-```
-{: codeblock}
-
 ### JSONArray.remove(integer)
 
 This method removes the element in the index position from the JSONArray and returns the updated JSONArray.
@@ -388,10 +376,31 @@ Results in this output:
 ```
 {: screen}
 
+### com.google.gson.JsonArray support
+{: #com.google.gson.JsonArray}
+
+In addition to the built-in methods, you can use standard methods of the `com.google.gson.JsonArray` class also.
+
+#### New array
+
+new JsonArray().append('value')
+
+To define a new array that will be filled in with values that are provided by users, you can instantiate an array. You must also add a placeholder value to the array when you instantiate it. You can use the following syntax to do so:
+
+```json
+{
+  "context":{
+    "answer": "<? output.answer?:new JsonArray().append('temp_value') ?>"
+  }
+```
+{: codeblock}
+
 ## Date and Time
 {: #date-time}
 
 Several methods are available to work with date and time.
+
+For information about how to recognize and extract date and time information from user input, see [@sys-date and @sys-time entities](system-entities.html#sys-datetime).
 
 ### .after(String date/time)
 
@@ -481,10 +490,36 @@ Format follows the Java [SimpleDateFormat ![External link icon](../../icons/laun
 
 - Determines whether the date/time value is before or the same as the date/time argument.
 
-For information about system entities that extract date and time values, see [@sys-date and @sys-time entities](system-entities.html#sys-datetime).
+### java.util.Date support
+{: #java.util.Date}
+
+In addition to the built-in methods, you can use standard methods of the `java.util.Date` class also.
+
+#### Date calculations
+
+To get the date of the day that falls a week from today, you can use the following syntax.
+
+```json
+{
+  "context": {
+    "week_from_today": "<? new Date(new Date().getTime() + (7 * (24*60*60*1000))) ?>"
+  }
+}
+```
+{: codeblock}
+
+This expression first gets the current date in milliseconds (since January 1, 1970, 00:00:00 GMT). It also calculates the number of milliseconds in 7 days. (The `(24*60*60*1000)` equates to `86,400,000`, which is one day in milliseconds.) It then adds 7 days to the current date. The result is the full date of the day that falls a week from today. For example, `Fri Jan 26 16:30:37 UTC 2018`.
+
+You can always change the 7 to a variable, such as `$number_of_days`, that you can pass in. Just be sure that its value will be set before this expression is evaluated.
 
 ## Numbers
 {: #numbers}
+
+These methods help you get and reformat number values.
+
+For information about system entities that can recognize and extract numbers from user input, see [@sys-number entity](system-entities.html#sys-number).
+
+If you want the service to recognize specific number formats in user input, such as order number references, consider creating a pattern entity to capture it. See [Creating entities](entities.html#creating-entities) for more details.
 
 ### Random()
 
@@ -530,7 +565,17 @@ Condition = @sys-number
 
   If you specify a Long number type in a SpEL expression, you must append an `L` to the number to identify it as such. For example, `5000000000L`. This syntax is required for any numbers that do not fit into the 32-bit Integer type. For example, numbers that are greater than 2^31 (2,147,483,648) or lower than -2^31 (-2,147,483,648) are considered Long number types. Long number types have a minimum value of -2^63 and a maximum value of 2^63-1.
 
-For information about system entities that extract numbers, see [@sys-number entity](system-entities.html#sys-number). If you want the service to recognize specific number formats in user input, such as order number references, consider creating a pattern entity. See [Creating entities](entities.html#creating-entities) for more details.
+### Java number support
+{: #java.lang.Number}
+
+In addition to the built-in methods, you can use standard methods of the following classes also:
+
+- `java.lang.Byte`
+- `java.lang.Integer`
+- `java.lang.Long`
+- `java.lang.Double`
+- `java.lang.Short`
+- `java.lang.Float`
 
 ## Objects
 {: #objects}
@@ -609,8 +654,17 @@ Result:
 ```
 {: screen}
 
+### com.google.gson.JsonObject support
+{: #com.google.gson.JsonObject}
+
+In addition to the built-in methods, you can use standard methods of the `com.google.gson.JsonObject` class also.
+
 ## Strings
 {: #strings}
+
+There methods help you work with text.
+
+For information about how to recognize and extract certain types of Strings, such as people names and locations, from user input, see [System entities](system-entities.html).
 
 ### String.append(object)
 
@@ -744,21 +798,6 @@ This syntax:
 {: codeblock}
 
 Result: The condition is true because the numeric portion of the input text matches the regular expression `^[^\d]*[\d]{6}[^\d]*$`.
-
-### T(java.lang.String).format()
-
-You can apply a standard Java String format method to text. See [java.util.formatter reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.oracle.com/javase/7/docs/api/java/util/Formatter.html#syntax){: new_window} for information about the syntax to use in the format() method to specify the format details.
-
-For example, the following expression takes three decimal integers (1, 1, and 2) and adds them to a sentence.
-
-```json
-{
-  "formatted String": "<? T(java.lang.String).format('%d + %d equals %d', 1, 1, 2) ?>"
-}
-```
-{: codeblock}
-
-Result: `1 + 1 equals 2`.
 
 ### String.isEmpty()
 
@@ -1004,4 +1043,22 @@ Results in this output:
 ```
 {: screen}
 
-For information about system entities that extract strings, see the [System entities](system-entities.html).
+### java.lang.String support
+{: #java.lang.String}
+
+In addition to the built-in methods, you can use standard methods of the `java.lang.String` class also.
+
+#### java.lang.String.format()
+
+You can apply the standard Java String `format()` method to text. See [java.util.formatter reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://docs.oracle.com/javase/7/docs/api/java/util/Formatter.html#syntax){: new_window} for information about the syntax to use to specify the format details.
+
+For example, the following expression takes three decimal integers (1, 1, and 2) and adds them to a sentence.
+
+```json
+{
+  "formatted String": "<? T(java.lang.String).format('%d + %d equals %d', 1, 1, 2) ?>"
+}
+```
+{: codeblock}
+
+Result: `1 + 1 equals 2`.
