@@ -64,7 +64,7 @@ Result:
   }
 }
 ```
-{: screen}
+{: codeblock}
 
 ### JSONArray.contains(object value)
 
@@ -193,7 +193,7 @@ Result:
 ```json
 This is the array: onion;olives;ham;
 ```
-{: screen}
+{: codeblock}
 
 ### JSONArray.remove(integer)
 
@@ -230,7 +230,7 @@ Result:
   }
 }
 ```
-{: screen}
+{: codeblock}
 
 ### JSONArray.removeValue(object)
 
@@ -267,7 +267,7 @@ Result:
   }
 }
 ```
-{: screen}
+{: codeblock}
 
 ### JSONArray.set(integer index, object value)
 
@@ -304,7 +304,7 @@ Result:
   }
 }
 ```
-{: screen}
+{: codeblock}
 
 ### JSONArray.size()
 
@@ -341,7 +341,7 @@ Result:
   }
 }
 ```
-{: screen}
+{: codeblock}
 
 ### JSONArray split(String regexp)
 
@@ -374,7 +374,7 @@ Results in this output:
   }
 }
 ```
-{: screen}
+{: codeblock}
 
 ### com.google.gson.JsonArray support
 {: #com.google.gson.JsonArray}
@@ -665,7 +665,7 @@ Result:
   }
 }
 ```
-{: screen}
+{: codeblock}
 
 ### com.google.gson.JsonObject support
 {: #com.google.gson.JsonObject}
@@ -714,7 +714,7 @@ Results in this output:
   }
 }
 ```
-{: screen}
+{: codeblock}
 
 ### String.contains(string)
 
@@ -799,7 +799,7 @@ For this input:
 ```
 "Hello 123456".
 ```
-{: screen}
+{: codeblock}
 
 This syntax:
 
@@ -869,7 +869,7 @@ Results in this output:
   }
 }
 ```
-{: screen}
+{: codeblock}
 
 ### String.matches(string regexp)
 
@@ -951,7 +951,7 @@ Results in this output:
   }
 }
 ```
-{: screen}
+{: codeblock}
 
 ### String.toLowerCase()
 
@@ -984,7 +984,7 @@ Results in this output:
   }
 }
 ```
-{: screen}
+{: codeblock}
 
 ### String.toUpperCase()
 
@@ -1017,7 +1017,7 @@ Results in this output:
   }
 }
 ```
-{: screen}
+{: codeblock}
 
 ### String.trim()
 
@@ -1054,7 +1054,7 @@ Results in this output:
   }
 }
 ```
-{: screen}
+{: codeblock}
 
 ### java.lang.String support
 {: #java.lang.String}
