@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-05"
+lastupdated: "2018-01-22"
 
 ---
 
@@ -70,3 +70,5 @@ Language support by feature is detailed in the [Supported languages](lang-suppor
 - [Get started](getting-started.html) with the service
 - Try out some [demos](sample-applications.html).
 - View the list of [SDKs ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/developer-tools.html){: new_window}.
+
+Still have questions? Contact [IBM Sales](https://www-01.ibm.com/marketing/iwm/dre/signup?source=urx-20970).
