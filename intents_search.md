@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-09"
+lastupdated: "2018-01-22"
 
 ---
 
@@ -124,6 +124,8 @@ To move or delete an example, select the example by selecting the check box and 
   ![Screen capture showing how to move or delete an example](images/move_example.png)
 
 ## Searching intents
+
+**BETA** The Searching intents feature described in this documentation is a beta feature that has been made available for your evaluation. Beta features might be unstable, might change frequently, and might be discontinued with short notice. Beta features also might not provide the same level of performance or compatibility that generally available features provide, and are not intended for use in a production environment.
 
 Use the Search feature to find user examples, intent names, and descriptions.
 
