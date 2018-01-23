@@ -48,5 +48,5 @@ To upgrade your plan, complete these steps:
 
 You can learn more about services hosted by IBM Cloud from the following links:
 
-- [Cloud Services terms](http://www-03.ibm.com/software/sla/sladb.nsf/sla/saas)
-- [Cloud Services data security and privacy](http://www-03.ibm.com/software/sla/sladb.nsf/sla/csdsp)
+- [Cloud Services terms](http://www.ibm.com/software/sla/sladb.nsf/sla/saas)
+- [Cloud Services data security and privacy](http://www.ibm.com/software/sla/sladb.nsf/sla/csdsp)
