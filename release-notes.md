@@ -48,9 +48,10 @@ Existing models that you have trained will not be immediately impacted, but expi
 
 The following new features and changes to the service are available.
 
-### 23 December 2018
+### 23 January 2018
+{: #23January2018}
 
-- **Unable to retrieve list of workspaces**: If you see this or similar error messages when working in the tooling, it might mean that your session has expired. Log out by choosing **Log out** from the **User information** icon ![User information icon](images/user-icon.png) menu, and then log back in.
+- **Unable to retrieve list of workspaces**: If you see this or similar error messages when working in the tooling, it might mean that your session has expired. Log out by choosing ![Log out](images/log-out.png) from the **User information** icon ![User information icon menu](images/user-info.png), and then log back in.
 
 ### 8 December 2017
 {: #8December2017}
