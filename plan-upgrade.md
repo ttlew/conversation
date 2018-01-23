@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-05"
+lastupdated: "2018-01-23"
 
 ---
 
@@ -46,9 +46,9 @@ To upgrade your plan, complete these steps:
 1.  Click **Plan** from the navigation pane.
    From here, you can see your current plan and other available plan options, and make changes.
 
-For answers to common questions about subscriptions, see the [Managing billing and usage ![External link icon](../../icons/launch-glyph.svg "External link icon")](/docs/pricing/index.html){: new_window}.
+For answers to common questions about subscriptions, see the [Managing billing and usage ![External link icon](../../icons/launch-glyph.svg "External link icon")](/docs/billing-usage/how_charged.html){: new_window}.
 
 You can learn more about services hosted by IBM Cloud from the following links:
 
-- [Cloud Services terms](http://www-03.ibm.com/software/sla/sladb.nsf/sla/saas)
-- [Cloud Services data security and privacy](http://www-03.ibm.com/software/sla/sladb.nsf/sla/csdsp)
+- [Cloud Services terms](http://www.ibm.com/software/sla/sladb.nsf/sla/saas)
+- [Cloud Services data security and privacy](http://www.ibm.com/software/sla/sladb.nsf/sla/csdsp)

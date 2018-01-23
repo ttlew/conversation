@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-08"
+lastupdated: "2018-01-23"
 
 ---
 
@@ -70,7 +70,7 @@ Using slots produces a more natural dialog flow between the user and the service
 
       **Warning** If you want to apply a complex expression to the value before you save it, then you can open the JSON editor to define the complex SpEL expression. However, the complex expression that you define in the JSON editor will not be reflected in the **Check for** field when you exit the JSON editor. And if you click the **Check for** field to give it focus at any time after you define the complex expression for it, the expression is removed.
 
-      Avoid checking for context variable values. Because the value you check for is also the value that is saved, when you use a context variable in the condition, it can lead to unexpected behavior when it gets used in the context.
+      Avoid checking for context variable values. Because the value you check for is also the value that is saved, when you use a context variable in the condition, it can lead to unexpected behavior when it gets used in the context. Do not try to use an optional slot to display a response only if a given context variable is set. If the variable is set, then the slot Found response that you define for the optional slot will be displayed along with the response that is returned by every other slot, over and over again.
       {: tip}
 
     - **Save as**: Provide a name for the context variable in which to store the value of interest from the user's response to the slot prompt. Do not specify a context variable that is used earlier in the dialog, and therefor might have a value. It is only when the context variable for the slot is null that the prompt for the slot is displayed.
