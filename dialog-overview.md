@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-09"
+lastupdated: "2018-01-23"
 
 ---
 
@@ -178,6 +178,9 @@ You can reply with one of these response types:
 If you want to provide a text response, simply enter the text that you want the service to display to the user.
 
 ![Shows a node that shows a user ask, Where are you located, and the dialog response is, We have no brick and mortar stores! But, with an internet connection, you can shop us from anywhere.](images/response-simple.png)
+
+If you include an email address in the response, you must escape the at symbol (`@`) with a backslash (`\`). For example, `Send us your feedback at feedback\@example.com.` Likewise, if you include a number sign (`#`) in the response, you must escape it. For example, `We are the \#1 seller of lobster rolls in Maine.` Escaping these symbols helps to distinguish email address syntax from entity name syntax and number syntax from intent name syntax.
+{: tip}
 
 #### Adding variety
 {: #variety}
