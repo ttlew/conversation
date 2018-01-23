@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-05"
+lastupdated: "2018-01-23"
 
 ---
 
@@ -45,8 +45,6 @@ To upgrade your plan, complete these steps:
 1.  Select the service instance that you want to upgrade to open it.
 1.  Click **Plan** from the navigation pane.
    From here, you can see your current plan and other available plan options, and make changes.
-
-For answers to common questions about subscriptions, see the [Managing billing and usage ![External link icon](../../icons/launch-glyph.svg "External link icon")](/docs/pricing/index.html){: new_window}.
 
 You can learn more about services hosted by IBM Cloud from the following links:
 
