@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-11-20"
+  years: 2015, 2018
+lastupdated: "2018-01-24"
 
 ---
 
@@ -39,7 +39,7 @@ In the following table, the level of language and feature support is indicated b
 | **German (de)**                    | GA | GA | GA | Beta (Misspelling only) | Beta |
 | **Italian (it)**                   | GA | GA | GA | Beta (Misspelling only) | Beta |
 | **Japanese (ja)**                  | GA | GA | GA | Beta (Misspelling only) | Beta |
-| **Korean (ko)**                    | GA | GA | Beta | Beta (Misspelling only) | Beta |
+| **Korean (ko)**                    | GA | GA | GA | Beta (Misspelling only) | Beta |
 | **Portuguese (Brazilian) (pt-br)** | GA | GA | GA | Beta (Misspelling only) | Beta |
 | **Spanish (es)**                   | GA | GA | GA | Beta (Misspelling only) | Beta ||
 
