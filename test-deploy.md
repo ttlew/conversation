@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-11-14"
+  years: 2015, 2018
+lastupdated: "2018-01-24"
 
 ---
 
@@ -21,7 +21,7 @@ lastupdated: "2017-11-14"
 
 You can use the test deployment tool to integrate your {{site.data.keyword.conversationshort}} workspace into a Slack team as a bot user. Use this method if you want to quickly test using a Slack bot as the user interface for your workspace.
 
-The test deployment tool uses the {{site.data.keyword.openwhisk}} service to deploy a prebuilt Slack application to your team as a bot user. This application handles communication with your Conversation workspaces.
+The test deployment tool uses the {{site.data.keyword.openwhisk}} service to deploy a prebuilt Slack application to your team as a bot user. This application handles communication with your {{site.data.keyword.conversationshort}} workspaces.
 
 ![Test deployment overview diagram](images/testdeploy_diagram.png)
 
@@ -40,7 +40,7 @@ To install your application as a bot user:
 
    ![Quick deploy menu option](images/deploy_menu_testdeploy.png)
 
-1. Under **Deploy with Cloud Functions**, click **Test in Slack** and follow the instructions.
+1. Under **Deploy with {{site.data.keyword.openwhisk_short}}**, click **Test in Slack** and follow the instructions.
 
    ![Create Slack test button](images/testdeploy_testinslack.png)
 

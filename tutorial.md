@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-04"
+lastupdated: "2018-01-24"
 
 ---
 
@@ -38,14 +38,14 @@ This tutorial will take approximately 2 to 3 hours to complete.
 
 Before you begin, complete the [Getting Started tutorial](getting-started.html). 
 
-You will use the Conversation tutorial workspace that you created, and add nodes to the simple dialog that you built as part of the getting started exercise.
+You will use the {{site.data.keyword.conversationshort}} tutorial workspace that you created, and add nodes to the simple dialog that you built as part of the getting started exercise.
 
 ## Step 1: Add intents and examples
 {: #intents}
 
 Add an intent on the Intents tab. An intent is the purpose or goal expressed in user input.
 
-1.  On the Intents page of the Conversation tutorial workspace, click **Add intent**.
+1.  On the Intents page of the {{site.data.keyword.conversationshort}} tutorial workspace, click **Add intent**.
 1.  Add the following intent name, and then click **Create intent**:
 
     ```
@@ -134,8 +134,8 @@ When the user's input is received, the {{site.data.keyword.conversationshort}} s
 
 In this complex dialog, you will create dialog branches that handle the #turn_on intent you defined earlier.
 
-### Add a base node for #turn_on
-Create a dialog branch to respond to the #turn_on intent. Start by creating the base node:
+### Add a root node for #turn_on
+Create a dialog branch to respond to the #turn_on intent. Start by creating the root node:
 
 1.  Click the More icon ![More options](images/kabob.png) on the **#hello** node, and then select **Add node below**.
 1.  Start typing `#turn_on` in the condition field, and then select it from the list.
@@ -280,7 +280,7 @@ You can use the test deployment tool to [deploy your workspace](test-deploy.html
 
 ### Build your own front-end application
 
-You can use the Watson SDKs to [build your own](develop-app.html) front-end application that connects to your workspace using the Conversation REST API.
+You can use the Watson SDKs to [build your own](develop-app.html) front-end application that connects to your workspace using the {{site.data.keyword.conversationshort}} REST API.
 
 ### Deploy to social media or messaging channels
 

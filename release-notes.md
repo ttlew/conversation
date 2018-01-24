@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-23"
+lastupdated: "2018-01-24"
 
 ---
 
@@ -28,7 +28,7 @@ Send the version parameter with every API request. The service uses the API vers
 
 The current version is `2017-05-26`.
 
-The "Try it out" pane in the Conversation tooling uses the latest API version.
+The "Try it out" pane in the {{site.data.keyword.conversationshort}} tooling uses the latest API version.
 
 ## Beta features
 
@@ -65,7 +65,7 @@ The following new features and changes to the service are available.
 ### 6 December 2017
 {: #6December2017}
 
-- **IBM Cloud Functions integration (Beta)**: Call IBM Cloud Functions (formerly IBM OpenWhisk) actions directly from a dialog node. This feature enables you to, for example, call an action to retrieve weather information from within a dialog node, and then condition on the returned information in the dialog response. Currently, you can call an action from a Cloud Functions instance that is hosted in the US South region from Conversation instances that are hosted in the US South region. See [Making programmatic calls from a dialog node](dialog-actions.html) for more details.
+- **{{site.data.keyword.openwhisk}} integration (Beta)**: Call {{site.data.keyword.openwhisk}} (formerly IBM OpenWhisk) actions directly from a dialog node. This feature enables you to, for example, call an action to retrieve weather information from within a dialog node, and then condition on the returned information in the dialog response. Currently, you can call an action from a {{site.data.keyword.openwhisk_short}} instance that is hosted in the US South region from {{site.data.keyword.conversationshort}} instances that are hosted in the US South region. See [Making programmatic calls from a dialog node](dialog-actions.html) for more details.
 
 ### 5 December 2017
 {: #5December2017}
@@ -90,14 +90,14 @@ The following new features and changes to the service are available.
 ### 9 November 2017
 {: #9November2017}
 
-- **Intent examples can directly reference entities**: You can now specify an entity reference directly in an intent example. That entity reference, along with all its values or synonyms, is used by the Conversation service classifier for training the intent. For more information, see [*Entity as example*](intents.html#entity-as-example) in the [Intents](intents.html) topic.
+- **Intent examples can directly reference entities**: You can now specify an entity reference directly in an intent example. That entity reference, along with all its values or synonyms, is used by the {{site.data.keyword.conversationshort}} service classifier for training the intent. For more information, see [*Entity as example*](intents.html#entity-as-example) in the [Intents](intents.html) topic.
 
   **Note**: Currently, you can only directly reference closed entities that you define. You cannot directly reference [pattern entities](entities.html#pattern-entities) or [system entities](system-entities.html).
 
 ### 8 November 2017
 {: #8November2017}
 
-- **Conversation connector**: You can use the new Conversation connector tool to connect your workspace to a Slack or Facebook Messenger app that you own, making it available as a chat bot that Slack or Facebook Messenger users can interact with. This tool is available only for the {{site.data.keyword.Bluemix_notm}} US South region. For more information, see [Deploying to a channel with the Conversation connector](conversation-connector.html).
+- **{{site.data.keyword.conversationshort}} connector**: You can use the new {{site.data.keyword.conversationshort}} connector tool to connect your workspace to a Slack or Facebook Messenger app that you own, making it available as a chat bot that Slack or Facebook Messenger users can interact with. This tool is available only for the {{site.data.keyword.Bluemix_notm}} US South region. For more information, see [Deploying to a channel with the {{site.data.keyword.conversationshort}} connector](conversation-connector.html).
 
 ### 3 November 2017
 {: #3November2017}
@@ -158,7 +158,7 @@ The following new features and changes to the service are available.
 ### 10 August 2017
 {: #10August2017}
 
-- **Accent normalization**: In a conversational setting, users may or may not use accents while interacting with the Conversation service. As such, an update has been made to the algorithm so that accented and non-accented versions of words are treated the same for intent detection and entity recognition.
+- **Accent normalization**: In a conversational setting, users may or may not use accents while interacting with the {{site.data.keyword.conversationshort}} service. As such, an update has been made to the algorithm so that accented and non-accented versions of words are treated the same for intent detection and entity recognition.
 
   However for some languages, like Spanish, some accents can alter the meaning of the entity. Thus, for entity detection, although the original entity may implicitly have an accent, the service can also match the non-accented version of the same entity, but with a slightly lower confidence score.
 
@@ -179,7 +179,7 @@ The following new features and changes to the service are available.
 ### 7 August 2017
 {: #7August2017}
 
-- **`Next` and `last` date interpretation**: The Conversation service treats "last" and "next" dates as referring to the most immediate last or next day referenced, which may be in either the same or a previous week. See the [system entities](system-entities.html#sys-datetime) topic for additional information.
+- **`Next` and `last` date interpretation**: The {{site.data.keyword.conversationshort}} service treats "last" and "next" dates as referring to the most immediate last or next day referenced, which may be in either the same or a previous week. See the [system entities](system-entities.html#sys-datetime) topic for additional information.
 
 ### 3 August 2017
 {: #3August2017}
@@ -275,7 +275,7 @@ The following new features and changes to the service are available.
 ### 25 May 2017
 {: #25May2017}
 
-- You can now manage context variables in the *Try it out* pane. Click the **Manage context** link to open a new pane where you can set and check the values of context variables as you test the dialog. See [Testing your dialog](dialog-test.html) for more information.
+- You can now manage context variables in the "Try it out" pane. Click the **Manage context** link to open a new pane where you can set and check the values of context variables as you test the dialog. See [Testing your dialog](dialog-test.html) for more information.
 
 ### 16 May 2017
 {: #16May2017}
@@ -283,7 +283,7 @@ The following new features and changes to the service are available.
 - A **Car Dashboard** sample workspace is now available when you open the tool. To use the sample as a starting point for your own workspace, edit the workspace. If you want to use it for multiple workspaces, then duplicate it instead. The sample workspace does not count toward your subscription workspace total unless you use it.
 - It is now easier to navigate the tool. The navigation menu options are available from the side of the main page instead of the top. At the top of the page, Breadcrumb links display that show you where you are. You can now switch between service instances from the Workspaces page. To get there quickly, click **Back to workspaces** from the navigation menu. If you have multiple service instances, the name of the current instance is displayed. You can click the **Change** link beside it to choose another instance.
 - When you create a dialog, two nodes are now added to it for you: 1) a **Welcome** node at the top of the dialog tree that contains the greeting to display to the user and 2) an **Anything else** node at the bottom of the tree that catches any user inquiries that are not recognized by other nodes in the dialog and responds to them. See [Creating a dialog](dialog-create.html) for more details.
-- When you are testing a dialog in the *Try it out* pane, you can now find and resubmit a recent test utterance by pressing the Up key to cycle through your previous inputs.
+- When you are testing a dialog in the "Try it out" pane, you can now find and resubmit a recent test utterance by pressing the Up key to cycle through your previous inputs.
 - Experimental Korean language support for 5 system entities (`@sys-date`, `@sys-time`, `@sys-currency`, `@sys-number`, `@sys-percentage`) is now available. There are known issues for some of the numeric entities, and limited support for informal language input.
 - An Overview page is available from the Improve tab. The page provides a summary of interactions with your bot. You can view the amount of traffic for a given time period, as well as the intents and entities that were recognized most often in user conversations. For additional information, see [Using the Overview page](logs_oview.html).
 
