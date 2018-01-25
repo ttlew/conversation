@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-19"
+lastupdated: "2018-01-24"
 
 ---
 
@@ -98,7 +98,7 @@ In some locales, a phrase like "last Monday" is used to specify the Monday of th
 
 As an example, for Friday June 16, in some locales "last Monday" could refer to either June 12 or to June 5, while in other locales it refers only to June 5 (the previous week). This same logic holds true for a phrase like "next Monday".
 
-The Conversation service treats "last" and "next" dates as referring to the most immediate last or next day referenced, which may be in either the same or a previous week.
+The {{site.data.keyword.conversationshort}} service treats "last" and "next" dates as referring to the most immediate last or next day referenced, which may be in either the same or a previous week.
 
 For time phrases like "for the last 3 days" or "in the next 4 hours", the logic is equivalent. For example, in the case of "in the next 4 hours", this results in two `@sys-time` entities: one of the current time, and one of the time four hours later than the current time.
 

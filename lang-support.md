@@ -74,7 +74,7 @@ When finished making selections, click **Update** to save and return to the work
 ## Working with accented characters
 {: #working-with-accents}
 
-In a conversational setting, users may or may not use accents while interacting with the Conversation service. As such, both accented and non-accented versions of words may be treated the same for intent detection and entity recognition.
+In a conversational setting, users may or may not use accents while interacting with the {{site.data.keyword.conversationshort}} service. As such, both accented and non-accented versions of words may be treated the same for intent detection and entity recognition.
 
 However for some languages, like Spanish, some accents can alter the meaning of the entity. Thus, for entity detection, although the original entity may implicitly have an accent, the service can also match the non-accented version of the same entity, but with a slightly lower confidence score.
 

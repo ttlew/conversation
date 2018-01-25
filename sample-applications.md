@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-12-19"
+  years: 2015, 2018
+lastupdated: "2018-01-24"
 
 ---
 
@@ -28,7 +28,7 @@ The Node.js app shows how {{site.data.keyword.conversationshort}} uses intents i
 
 [See the demo ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://conversation-simple.ng.bluemix.net/){: new_window} or [fork the code ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/conversation-simple){: new_window}.
 
-## Conversation and car dashboard UI
+## {{site.data.keyword.conversationshort}} and car dashboard UI
 
 This Node.js app is a fully developed example of the type of app you can build with {{site.data.keyword.conversationshort}} that uses intents, entities, and dialog.
 
@@ -40,13 +40,13 @@ This app demonstrates how {{site.data.keyword.conversationshort}} can be used wi
 
  [See the demo ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://text-bot.mybluemix.net/  ){: new_window} or [fork the code ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/text-bot){: new_window}.
 
-## Conversation and Discovery
+## {{site.data.keyword.conversationshort}} and {{site.data.keyword.discoveryshort}}
 
 This app demonstrates the combination of {{site.data.keyword.conversationshort}} and {{site.data.keyword.discoveryshort}}. First, users pose questions to the {{site.data.keyword.conversationshort}} service. If {{site.data.keyword.conversationshort}} is not able to answer confidently, {{site.data.keyword.conversationshort}} Enhanced executes a call to {{site.data.keyword.discoveryshort}} to provide the user with a list of helpful answers.
 
 [See the demo ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://conversation-with-discovery-within-ui.ng.bluemix.net/){: new_window} or [fork the code ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/conversation-enhanced){: new_window}.
 
-## Conversation and Tone Analyzer
+## {{site.data.keyword.conversationshort}} and {{site.data.keyword.toneanalyzershort}}
 
 {{site.data.keyword.toneanalyzerfull}} uses linguistic analysis to detect three types of tones from written text: emotions, social tendencies, and writing style. The Watson Food Coach app is an example of {{site.data.keyword.toneanalyzershort}} integrated with {{site.data.keyword.conversationshort}}. In this app, depending on the kind of food the user ate and how he or she is feeling about it, the automated agent provides an appropriate coaching response to encourage the user to make healthy choices.
 

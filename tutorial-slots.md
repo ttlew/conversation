@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-12"
+lastupdated: "2018-01-24"
 
 ---
 
@@ -36,7 +36,7 @@ This tutorial will take approximately 30 minutes to complete.
 
 ### Prerequisite
 
-Before you begin, complete the [Getting Started tutorial](getting-started.html). You will use the Conversation tutorial workspace that you created, and add nodes to the simple dialog that you built as part of the getting started exercise.
+Before you begin, complete the [Getting Started tutorial](getting-started.html). You will use the {{site.data.keyword.conversationshort}} tutorial workspace that you created, and add nodes to the simple dialog that you built as part of the getting started exercise.
 
 **Note**: You can also start with a new workspace if you want. Just be sure to create the workspace before you begin this tutorial.
 

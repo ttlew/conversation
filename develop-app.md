@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-11-28"
+  years: 2015, 2018
+lastupdated: "2018-01-24"
 
 ---
 
@@ -27,7 +27,7 @@ So you have a working dialog. Now you want to develop the application that will 
 You can view this tutorial for either Node.js (Javascript) or Python by clicking the language selector in the upper right. For details about all supported languages, refer to the {{site.data.keyword.watson}} [SDKs ![External link icon](../../icons/launch-glyph.svg "External link icon")](/docs/services/watson/getting-started-sdks.html#sdks){: new_window}.
 {: tip }
 
-## Setting up the Conversation service
+## Setting up the {{site.data.keyword.conversationshort}} service
 
 The example application we will create in this section implements several functions of a cognitive personal assistant. The application code will connect to a {{site.data.keyword.conversationshort}} workspace, where the cognitive processing (such as the detection of user intents) takes place.
 
@@ -44,7 +44,7 @@ To access the service credentials and the workspace ID from your workspace, sele
 
 You can also access the service credentials from your {{site.data.keyword.Bluemix_short}} dashboard.
 
-## Communicating with the Conversation service
+## Communicating with the {{site.data.keyword.conversationshort}} service
 
 Interacting with the {{site.data.keyword.conversationshort}} service is simple. Let's take a look at an example that connects to the service, sends a single message, and prints the output to the console:
 
@@ -137,7 +137,7 @@ Use the `python <filename.py>` command to run the example application.
 Assuming everything works as expected, the {{site.data.keyword.conversationshort}} service returns the output from the dialog, which is then printed to the console:
 
 ```
-Welcome to the Conversation example!
+Welcome to the {{site.data.keyword.conversationshort}} example!
 ```
 {: screen}
 
@@ -245,21 +245,21 @@ It then displays any intent detected by the dialog along with the output text, a
 But something still isn't right:
 
 ```
-Welcome to the Conversation example!
+Welcome to the {{site.data.keyword.conversationshort}} example!
 >> hello
 Detected intent: #hello
-Welcome to the Conversation example!
+Welcome to the {{site.data.keyword.conversationshort}} example!
 >> what time is it?
 Detected intent: #time
-Welcome to the Conversation example!
+Welcome to the {{site.data.keyword.conversationshort}} example!
 >> goodbye
 Detected intent: #goodbye
-Welcome to the Conversation example!
+Welcome to the {{site.data.keyword.conversationshort}} example!
 >>
 ```
 {: screen}
 
-The {{site.data.keyword.conversationshort}} service is detecting the correct intents, and yet every turn of the conversation returns the welcome message from the conversation_start node (`Welcome to the Conversation example!`).
+The {{site.data.keyword.conversationshort}} service is detecting the correct intents, and yet every turn of the conversation returns the welcome message from the conversation_start node (`Welcome to the {{site.data.keyword.conversationshort}} example!`).
 
 This is happening because the {{site.data.keyword.conversationshort}} service is stateless; it is the responsibility of the application to maintain state information. Because we are not yet doing anything to maintain state, the {{site.data.keyword.conversationshort}} service sees every round of user input as the first turn of a new conversation, triggering the conversation_start node.
 
@@ -531,7 +531,7 @@ The app now checks the value of the `action` property of the `output` object rec
 {: python}
 
 ```
-Welcome to the Conversation example!
+Welcome to the {{site.data.keyword.conversationshort}} example!
 >> hello
 Good day to you.
 >> what time is it?

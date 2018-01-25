@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-03"
+lastupdated: "2018-01-24"
 
 ---
 
@@ -51,7 +51,7 @@ If you use {{site.data.keyword.Bluemix_dedicated_notm}}, create your service ins
 
 After you create a project that includes the {{site.data.keyword.conversationshort}} service, you'll land on the project details page. Launch the  {{site.data.keyword.conversationshort}} tool from here.
 
-Click **Launch Tool** for Conversation under **Services**.
+Click **Launch Tool** for {{site.data.keyword.conversationshort}} under **Services**.
 
 <!-- To do: Add screenshot for developer console -->
 
@@ -74,9 +74,9 @@ Your first step in the {{site.data.keyword.conversationshort}} tool is to create
 A [*workspace*](configure-workspace.html) is a container for the artifacts that define the conversation flow.
 
 1.  In the {{site.data.keyword.conversationshort}} tool, click **Create**.
-1.  Give your workspace the name `Conversation tutorial`. If the dialog you plan to build will use a language other than English, then choose the appropriate language from the list. Click **Create**. Youʼll land on the **Intents** tab of your new workspace.
+1.  Give your workspace the name `{{site.data.keyword.conversationshort}} tutorial`. If the dialog you plan to build will use a language other than English, then choose the appropriate language from the list. Click **Create**. Youʼll land on the **Intents** tab of your new workspace.
 
-![Shows an animation of a user creating a Conversation tutorial workspace.](images/gs-create-workspace-animated.gif)
+![Shows an animation of a user creating a {{site.data.keyword.conversationshort}} tutorial workspace.](images/gs-create-workspace-animated.gif)
 
 ## Step 3: Create intents
 {: #create-intents}
@@ -125,7 +125,7 @@ We'll create a simple dialog that handles our #hello and #goodbye intents, each 
 
     ![Shows the dialog tree with the Welcome and Anything else nodes](images/gs-add-dialog-node-animated-cover.png)
 1.  Click the **Welcome** node to open it in the edit view.
-1.  Replace the default response with the text, `Welcome to the Conversation tutorial!`.
+1.  Replace the default response with the text, `Welcome to the {{site.data.keyword.conversationshort}} tutorial!`.
 
     ![Shows the Welcome node open in edit view](images/gs-edit-welcome-node.png)
 1.  Click ![Close](images/close.png) to close the edit view.
@@ -136,7 +136,7 @@ You created a dialog node that is triggered by the `welcome` condition, which is
 
 You can test your dialog at any time to verify the dialog. Let's test it now.
 
-- Click the ![Ask Watson](images/ask_watson.png) icon to open the *Try it out* pane. You should see your welcome message.
+- Click the ![Ask Watson](images/ask_watson.png) icon to open the "Try it out" pane. You should see your welcome message.
 
     ![Testing the dialog node](images/gs-tryitout-welcome-node.png)
 
@@ -158,7 +158,7 @@ Now let's add nodes to handle our intents between the `Welcome` node and the `An
 
 You  built a simple dialog to recognize and respond to both hello and goodbye inputs. Let's see how well it works.
 
-1.  Click the ![Ask Watson](images/ask_watson.png) icon to open the *Try it out* pane. There's that reassuring welcome message.
+1.  Click the ![Ask Watson](images/ask_watson.png) icon to open the "Try it out" pane. There's that reassuring welcome message.
 1.  At the bottom of the pane, type `Hello` and press Enter. The output indicates that the #hello intent was recognized, and the appropriate response (`Good day to you.`) appears.
 1.  Try the following input:
     - `bye`

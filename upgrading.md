@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-11-20"
+  years: 2015, 2018
+lastupdated: "2018-01-24"
 
 ---
 
@@ -19,12 +19,12 @@ lastupdated: "2017-11-20"
 
 # Upgrading workspaces
 
-The Conversation service regularly adds and updates features. While some of these changes are automatically applied to your workspace, updates that have a large impact do require a manual update.
+The {{site.data.keyword.conversationshort}} service regularly adds and updates features. While some of these changes are automatically applied to your workspace, updates that have a large impact do require a manual update.
 {: shortdesc}
 
 If you have an instance that was created before February 3, 2017 and your workspace has an available update, the upgrade icon (![upgrade icon](images/upgrade.png)) is displayed to indicate that and upgrade is available. Select this icon to open the Upgrade workspace dialog.
 
-When you upgrade your workspace, the latest version of the API is enabled in the tool, and the *Try it out* pane begins to use the newest features.
+When you upgrade your workspace, the latest version of the API is enabled in the tool, and the "Try it out" pane begins to use the newest features.
 
 After you upgrade a workspace, you cannot revert your workspace to a previous version.
 

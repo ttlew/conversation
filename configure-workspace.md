@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-10-17"
+  years: 2015, 2018
+lastupdated: "2018-01-24"
 
 ---
 
@@ -17,7 +17,7 @@ lastupdated: "2017-10-17"
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Configuring a Conversation workspace
+# Configuring a {{site.data.keyword.conversationshort}} workspace
 
 The natural-language processing for the {{site.data.keyword.conversationshort}} service happens inside a *workspace*, which is a container for all of the artifacts that define the conversation flow for an application.
 {: shortdesc}
@@ -51,7 +51,7 @@ You use the {{site.data.keyword.conversationshort}} tool to create workspaces. F
 
 1.  If the "Service Details" page is not already open, click your {{site.data.keyword.conversationshort}} service instance from the console. (When you create a service instance, the "Service Details" page is displayed.)
 
-1.  On the "Service Details" page, scroll down to **Conversation tooling** and click **Launch tool**.
+1.  Click **Launch tool**.
 
 1.  Do one of the following things:
     - To create a workspace from scratch, click **Create**.
