@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-24"
+lastupdated: "2018-01-25"
 
 ---
 
@@ -162,13 +162,13 @@ The following new features and changes to the service are available.
 
   However for some languages, like Spanish, some accents can alter the meaning of the entity. Thus, for entity detection, although the original entity may implicitly have an accent, the service can also match the non-accented version of the same entity, but with a slightly lower confidence score.
 
-  For example, for the word "barrió", which has an accent and corresponds to the past tense of the verb "barrer" (to sweep), the service can also match the word "barrio" (neighborhood), but with a slightly lower confidence.
+  For example, for the word `barrió`, which has an accent and corresponds to the past tense of the verb `barrer` (to sweep), the service can also match the word `barrio` (neighborhood), but with a slightly lower confidence.
 
   The system will provide the highest confidence scores in entities with exact matches. For example, `barrio` will not be detected if `barrió` is in the training set; and `barrió` will not be detected if `barrio` is in the training set.
 
   You are expected to train the system with the proper characters and accents. For example, if you are expecting `barrió` as a response, then you should put `barrió` into the training set.
 
-  Although not an accent mark, the same applies to words using, for example, the Spanish letter `ñ` vs. the letter `n`, such as "uña" vs. "una". In this case the letter `ñ` is not simply an `n` with an accent; it is a unique, Spanish-specific letter.
+  Although not an accent mark, the same applies to words using, for example, the Spanish letter `ñ` vs. the letter `n`, such as `uña` vs. `una`. In this case the letter `ñ` is not simply an `n` with an accent; it is a unique, Spanish-specific letter.
 
   You can enable fuzzy matching if you think your customers will not use the appropriate accents, or misspell words (including, for example, putting a `n` instead of a `ñ`), or you can explicitly include them in the training examples.
 
@@ -179,7 +179,7 @@ The following new features and changes to the service are available.
 ### 7 August 2017
 {: #7August2017}
 
-- **`Next` and `last` date interpretation**: The {{site.data.keyword.conversationshort}} service treats "last" and "next" dates as referring to the most immediate last or next day referenced, which may be in either the same or a previous week. See the [system entities](system-entities.html#sys-datetime) topic for additional information.
+- **`Next` and `last` date interpretation**: The {{site.data.keyword.conversationshort}} service treats `last` and `next` dates as referring to the most immediate last or next day referenced, which may be in either the same or a previous week. See the [system entities](system-entities.html#sys-datetime) topic for additional information.
 
 ### 3 August 2017
 {: #3August2017}
@@ -295,7 +295,7 @@ The following new features and changes to the service are available.
     - sys-person: Recognizes references to people's names, first and last, in user utterances.
 
     For more information, see the [System entities reference](system-entities.html).
-- Fuzzy matching for entities is a beta feature that is now available in English. You can turn on fuzzy matching per entity to improve the ability of the service to recognize terms in user input with syntax that is similar to the entity, without requiring an exact match. The feature is able to map user input to the appropriate corresponding entity despite the presence of misspellings or slight syntactical differences. For examples, if you define **giraffe** as a synonym for an animal entity, and the user input contains the terms *giraffes* or *girafe*, the fuzzy match is able to map the term to the animal entity correctly. See [Defining entities](entities.html#fuzzy-matching) and search for "Fuzzy Matching" for details.
+- Fuzzy matching for entities is a beta feature that is now available in English. You can turn on fuzzy matching per entity to improve the ability of the service to recognize terms in user input with syntax that is similar to the entity, without requiring an exact match. The feature is able to map user input to the appropriate corresponding entity despite the presence of misspellings or slight syntactical differences. For examples, if you define **giraffe** as a synonym for an animal entity, and the user input contains the terms *giraffes* or *girafe*, the fuzzy match is able to map the term to the animal entity correctly. See [Defining entities](entities.html#fuzzy-matching) and search for `Fuzzy Matching` for details.
 
 ### 18 April 2017
 {: #18April2017}
@@ -349,12 +349,18 @@ For more information, see the [API Reference ![External link icon](../../icons/l
 ### 3 February 2017
 {: #3February2017}
 
-- In this release, we change how intents are scored and add the ability to mark input as irrelevant to your application. [For details, see Defining intents](intents.html#mark-irrelevant) and search for "Mark as irrelevant".
-    - These features are available in the tooling by [upgrading your workspace](upgrading.html).
-    - These features are available for your application by changing the message API call to use **2017-02-03.**
-- The processing of **Jump to** actions has been changed to prevent loops that can occur under certain conditions.
+- We changed how intents are scored and added the ability to mark input as irrelevant to your application. For details, see [Defining intents](intents.html) and search for `Mark as irrelevant`.
 
-    See [Jump to actions](dialog-overview.html#jump-to) for details.
+- This release introduced a major change to the workspace. To benefit from the changes, you must manually upgrade your workspace. To do so, complete the following steps:
+
+  1.  [Duplicate your workspace](configure-workspace.html#exporting-and-copying-workspaces).
+  1.  Upgrade the duplicate workspace by clicking the upgrade icon (![upgrade icon](images/upgrade.png)).
+  1.  Test the upgraded workspace.
+  1.  When testing is done and things are working as expected, apply the upgrade to your application by changing the message API call to use **2017-02-03** or later.
+
+- The processing of **Jump to** actions changed to prevent loops that can occur under certain conditions. Previously, if you jumped to the condition of a node and neither that node nor any of its peer nodes had a condition that was evaluated as true, the system would jump to the root-level node and look for a node whose condition matched the input. In some situations this processing created a loop, which prevented the dialog from progressing.
+
+  Under the new process, if neither the target node nor its peers is evaluated as true, the dialog turn is ended. To reimplement the old model, add a final peer node with a condition of `true`. In the response, use a **Jump to** action that targets the condition of the first node at the root level of your dialog tree.
 
 ### 11 January 2017
 {: #11January2017}
@@ -383,9 +389,9 @@ Several changes make the dialog builder easier and more intuitive to use:
 ### 21 October 2016
 {: #21October2016}
 
-- The {{site.data.keyword.conversationshort}} service now provides system entities, which are common entities that can be used across any use case. For details, see [Defining entities](entities.html) and search for "Enabling system entities".
+- The {{site.data.keyword.conversationshort}} service now provides system entities, which are common entities that can be used across any use case. For details, see [Defining entities](entities.html) and search for `Enabling system entities`.
 - You can now view a history of conversations with users on the Improve page. You can use this to understand your bot's behavior. For details, see [Improving understanding](logs.html).
-- You can now import entities from a comma-separated value (CSV) file, which helps with when you have a large number of entities. For details, see [Defining entities](entities.html) and search for "Importing entities".
+- You can now import entities from a comma-separated value (CSV) file, which helps with when you have a large number of entities. For details, see [Defining entities](entities.html) and search for `Importing entities`.
 
 ### 20 September 2016
 {: #20September2016}
