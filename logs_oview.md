@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-10"
+lastupdated: "2018-01-25"
 
 ---
 
@@ -48,7 +48,7 @@ You can choose whether to view data for a single day, a week, a month, a quarter
 
 A graph displays the total number of conversations for the date range selected.
 
-**Note**: A 'conversation' is considered to be any interaction with the workspace, so if there are conversations where the service starts by saying "Hi, how can I help you?", and then the user closes their browser without responding, that conversation is included in the total conversation count.
+**Note**: A 'conversation' is considered to be any interaction with the workspace, so if there are conversations where the service starts by saying `Hi, how can I help you?`, and then the user closes their browser without responding, that conversation is included in the total conversation count.
 
 You can select **View logs** to open the [User conversations](logs_convo.html) page, with the date range filtered to match the time period that you have selected for the Overview page. The [User conversations](logs_convo.html) page displays the total number of *utterances*. An utterance is a single message the user sends to the workspace. Each conversation may be made up of multiple utterances. Thus, the number of results on the [User conversations](logs_convo.html) page is different than the number of conversations shown on this Overview page.
 
