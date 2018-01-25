@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-05"
+lastupdated: "2018-01-25"
 
 ---
 
@@ -58,7 +58,7 @@ The selected data source now displays.
 
 **Note:** While **Data source:** now shows the source of the utterances you are using to improve this workspace, the top of the page still shows the workspace you are applying changes to.
 
-In this example, the Improve page is populated with utterances that had the Deployment ID `HelpDesk-Production` included in their message API calls, but if the utterance *test input* is added to the intent **#No** by clicking **Save** then *test input* would be added as an example of "#No" in the workspace `HelpDesk-Development`.
+In this example, the Improve page is populated with utterances that had the Deployment ID `HelpDesk-Production` included in their message API calls, but if the utterance *test input* is added to the intent **#No** by clicking **Save** then *test input* would be added as an example of `#No` in the workspace `HelpDesk-Development`.
 ![Data source link](images/data_source_3.png)
 
 ## Filtering utterances
@@ -91,7 +91,7 @@ You can then choose to show the classification(s) for the utterance you selected
 1.  To correct an intent, select the ![Edit](images/edit_icon.png) edit icon beside the chosen #intent.
 1.  From the list provided, select the correct intent for this input.
     - Begin typing in the entry field and the list of intents is filtered.
-    - You can also choose **Mark as irrelevant** from this menu. (For more information, see "[Mark as irrelevant](intents.html#mark-irrelevant)".) Or, you can choose **Do not train on intent**, which does not save this utterance as an example for training.
+    - You can also choose **Mark as irrelevant** from this menu. (For more information, see [Mark as irrelevant](intents.html#mark-irrelevant).) Or, you can choose **Do not train on intent**, which does not save this utterance as an example for training.
 
     ![Select intent](images/select_intent.png)
 1.  Select **Save**.
@@ -111,7 +111,7 @@ You can then choose to show the classification(s) for the utterance you selected
     ![Select entity](images/select_entity.png)
 1.  Choose an entity to which the highlighted phrase will be added as a value.
     - Begin typing in the entry field and the list of entities and values is filtered.
-    - To add the highlighted phrase as a synonym for an existing value, choose the "@entity:value" from the drop-down list.
+    - To add the highlighted phrase as a synonym for an existing value, choose the `@entity:value` from the drop-down list.
 
     ![Add entity word](images/add_entity_word.png)
 1.  Select **Save**.

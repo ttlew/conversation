@@ -195,7 +195,7 @@ To create a {{site.data.keyword.openwhisk_short}} action, complete the following
 
 1.  Go to the [online {{site.data.keyword.openwhisk_short}} editor ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.ng.bluemix.net/openwhisk/create){: new_window}, where you can write your code directly in your browser.
 
-    There is also a [command line interface ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/openwhisk/cli?loadWsk=true){: new_window} you can install that enables you to define an action using code you write locally.
+    There is also a [command line interface ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/openwhisk/learn/cli){: new_window} you can install that enables you to define an action using code you write locally.
 
 1.  Create a {{site.data.keyword.openwhisk_short}} action using one of the supported programming languages. See the [{{site.data.keyword.openwhisk_short}} documentation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.ng.bluemix.net/docs/openwhisk/openwhisk_actions.html){: new_window} for details.
 
