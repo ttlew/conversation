@@ -161,7 +161,7 @@ To make a programmatic call from a dialog node, complete the following steps:
     - `<reference_to_credentials>`: The name of the object in which the {{site.data.keyword.openwhisk_short}} credentials are stored. Required for server actions only. These credentials are used to access the {{site.data.keyword.openwhisk_short}} instance on which the action runs. These are not your {{site.data.keyword.Bluemix_notm}} credentials.
 
       To discover the credentials, complete the following steps:
-      1.  Go to the [API key ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/openwhisk/learn/api-key){: new_window} page.
+      1.  Go to the [{{site.data.keyword.openwhisk_short}} API key ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/openwhisk/learn/api-key){: new_window} page.
 
           - If you have not yet created an account, do so.
           - If you are not logged in, log in.
