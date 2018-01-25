@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-08"
+lastupdated: "2018-01-25"
 
 ---
 
@@ -79,7 +79,7 @@ A context variable is a variable that you define in a node, and optionally speci
 
 You can condition against context variable values by referencing a context variable from a dialog node condition to determine whether to execute a node. And you can reference a context variable from dialog node response conditions to show different reponses depending on a value provided by an external service or by the user.
 
-## Passing context from the application
+### Passing context from the application
 {: #context-from-app}
 
 Pass information from the application to the dialog by setting a context variable and passing the context variable to the dialog.
@@ -90,7 +90,7 @@ For example, your application can set a $time_of_day context variable, and pass 
 
 In this example, the dialog knows that the application sets the variable to one of these values: *morning*, *afternoon*, or *evening*. It can check for each value, and depending on which value is present, return the appropriate greeting. If the variable is not passed or has a value that does not match one of the expected values, then a more generic greeting is displayed to the user.
 
-## Passing context from node to node
+### Passing context from node to node
 {: #context-node-to-node}
 
 The dialog can also add context variables to pass information from one node to another or to update the values of context variables. As the dialog asks for and gets information from the user, it can keep track of the information and reference it later in the conversation.
@@ -256,7 +256,7 @@ If you want to remove all trace of the context variable, you can use the JSONObj
 
 Alternatively you can delete the context variable in your application logic.
 
-## Order of operation
+### Order of operation
 {: #context-order-of-ops}
 
 The order in which you define the context variables does not determine the order in which they are evaluated by the service. The service evaluates the variables, which are defined as JSON name and value pairs, in random order. Do not set a value in the first context variable and expect to be able to use it in the second, because there is no guarantee that the first context variable in your list will be executed before the second one in your list. For example, do not use two context variables to implement logic that returns a random number between zero and some higher value that is passed to the node.
@@ -278,7 +278,7 @@ Use a slightly more complex expression to avoid having to rely on the value of t
 ```
 {: codeblock}
 
-## Storing pattern entity values
+### Storing pattern entity values
 {: #context-pattern-entities}
 
 To store the value of a pattern entity in a context variable, append .literal to the entity name. Using this syntax ensures that the exact span of text from user input that matched the specified pattern is stored in the variable.
