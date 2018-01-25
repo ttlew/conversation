@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-11"
+lastupdated: "2018-01-25"
 
 ---
 
@@ -321,7 +321,7 @@ A digression occurs when a user is in the middle of a dialog flow that is design
 
 The digression settings that are available per node give you the ability to tailor this behavior even more. Namely, you can allow the conversation to return to the dialog flow that was interrupted when the digression occurred. For example, the user might be ordering a new phone, but switches topics to ask about tablets. Your dialog can answer the question about tablets, and then bring the user back to where they left off in the process of ordering a phone. Allowing digressions to occur and return gives your users more control over the flow of the conversation at run time. They can change topics, follow a dialog flow about the unrelated topic to its end, and then return to where they were before. The result is a dialog flow that more closely simulates a human-to-human conversation.
 
-The following image illustrates the concept of a digression. It shows how a user interacts with dialog nodes that are configured to allow digressions that return to the dialog flow that was in progress. The user starts to provide the information required to make a dinner reservation. In the middle of filling slots in the #reservation node, the user asks a question about vegetarian menu options. The dialog answers the user's new question by finding a node that addresses it amongst the root nodes (a node that conditions on the #cuisine intent). It then returns to the conversation that was in progress by showing the prompt for the next empty slot from the original dialog node.
+The following image uses a mockup of the dialog tree user interface to illustrate the concept of a digression. It shows how a user interacts with dialog nodes that are configured to allow digressions that return to the dialog flow that was in progress. The user starts to provide the information required to make a dinner reservation. In the middle of filling slots in the #reservation node, the user asks a question about vegetarian menu options. The dialog answers the user's new question by finding a node that addresses it amongst the root nodes (a node that conditions on the #cuisine intent). It then returns to the conversation that was in progress by showing the prompt for the next empty slot from the original dialog node.
 
 ![Shows someone who is providing details about a dinner reservation ask about vegetarian options, get an answer, and then return to providing reservation details.](images/digression.gif)
 
@@ -379,6 +379,10 @@ To change the digression behavior for an individual node, complete the following
 
       If enabled, when the conversation returns from the digression, the prompt for the next unfilled slot is displayed to encourage the user to continue providing information. If disabled, then any inputs that the user submits which do not contain a value that can fill a slot are ignored. However, you can address unsolicited questions that you anticipate your users might ask while they interact with the node by defining node-level handlers. See [Adding slots](dialog-slots.html#add-slots) for more information.
 
+      The following image shows you how the #reservation node with slots that is shown in the earlier illustration is configured.
+
+      ![Shows the digressions away settings from a node with slots.](images/digress-away-slots-full.png)
+
     - **Nodes with slots**: Choose whether the user is only allowed to digress away if they will return to the current node by selecting the **Only digress from slots to nodes that allow returns** checkbox.
 
       When set, as the dialog looks for a node to answer the user's unrelated question, it does not consider any root nodes that are not configured to allow the dialog to return. Select this checkbox if you want to prevent users from being able to permanently leave the node before they have finished filling the required slots.
@@ -391,13 +395,17 @@ To change the digression behavior for an individual node, complete the following
 
     - When digressions into the node are enabled, choose whether the dialog must go back to the dialog flow that it digressed away from after the processing of the current node's branch is finished. To allow the dialog to return afterwards, select **Go back after digression**.
 
+    The following image shows you how the #cuisine node that is shown in the earlier illustration is configured.
+
+    ![Shows the digressions away settings from a node with slots.](images/digress-into-cuisine-full.png)
+
 1.  Click **Apply**.
 
 1.  Use the "Try it out" pane to test the digression behavior.
 
     Again, you cannot define the start and end of a digression. The user controls where and when digressions happen. You can only apply settings that determine how a single node participates in one. Because digressions are so amorphous, it is hard to predict how your configuration decisions will impact the overall conversation. To truly see the impact of the choices you made, you must test the dialog.
 
-The settings that support the digression which is illustrated in the image above look like this.
+The #reservation and #cuisine nodes represent two dialog branches that participate in a single user-directed digression. The digression settings that are configured for each individual node are what make this type of digression possible.
 
 ![Shows two dialogs, one that sets the digressions away from the reservation slots node and one that sets the digression into the cuisine node.](images/digression-settings.png)
 
@@ -418,9 +426,9 @@ If you decide that you want to prevent digressions into several root nodes, but 
 ### Design considerations
 {: #digression-design-considerations}
 
-- **Avoid fallback node proliferation**: Many dialog designers include a node with a `true` or `anything_else` condition at the end of every dialog branch as a way to prevent users from getting stuck in the branch. The thinking is that if the user input does not match anything you anticipated and included a specific dialog node to address, then a generic response is displayed, at least. However, users cannot digress away from nodes that have child nodes with a `true` or `anything_else` condition. Evaluate any branches that currently use this approach to see whether the dialog would be better served if you allow digressions away from the branch. If the user's input does not match anything you anticipated, it might just match against an entirely different dialog flow in your tree. Rather than responding with a generic message that doesn't help anyone, you can put the rest of the dialog to work to try to address the user's input. And the root-level `Anything else` node can always respond to input that no other nodes know how to address.
+- **Avoid fallback node proliferation**: Many dialog designers include a node with a `true` or `anything_else` condition at the end of every dialog branch as a way to prevent users from getting stuck in the branch. This design returns a generic message if the user input does not match anything that you anticipated and included a specific dialog node to address. However, users cannot digress away from dialog flows that use this approach. Evaluate any branches that use it to see whether it would be better to allow digressions away from the branch. If the user's input does not match anything you anticipated, it might find a match against an entirely different dialog flow in your tree. Rather than responding with a generic message, you can put the rest of the dialog to work to try to address the user's input. And the root-level `Anything else` node can always respond to input that none of the other root nodes can address.
 
-- **Reconsider jumps to a closing node**: Many dialogs are designed to ask a standard closing question, such as, `Did I answer your question today?` Users cannot digress away from nodes that are configured to jump to another node. So, if you configure all of your final branch nodes to jump to a common closing node, digressions cannot occur. Consider tracking user satisfaction through metrics or other means.
+- **Reconsider jumps to a closing node**: Many dialogs are designed to ask a standard closing question, such as, `Did I answer your question today?` Users cannot digress away from nodes that are configured to jump to another node. So, if you configure all of your final branch nodes to jump to a common closing node, digressions cannot occur. Consider tracking user satisfaction through metrics or some other means.
 
 - **Test possible digression chains**: If a user digresses away from the current node to another node that allows digressions away, the user could potentially digress away from that other node, and repeat this pattern one or more times again. If all the nodes in the digression chain are configured to go back after the digression, then the user will eventually be brought back to the current dialog node. However, test scenarios that digress multiple times to determine whether individual nodes function as expected.
 
@@ -432,4 +440,6 @@ If you decide that you want to prevent digressions into several root nodes, but 
 
   Be sure to do lots of testing as you configure the digression behavior.
 
-- **When to use digressions instead of slot node-level handlers**: Use slot node-level handlers to anticipate and address questions that users might ask which are related to the goal of the node with slots specifically. For example, if the node with slots collects the information required to fill out an insurance claim, then you might want to add node-level handlers that address more general questions about insurance claims. However, if an intent is general enough that users might ask about it in multiple contexts, then address it with a root node that allows digressions into it instead. Examples of intents that serve better as digression-enabled root nodes include ones that address questions about how to get additional customer support, or where your stores are located, or about the history of your company.
+- **When to use digressions instead of slot node-level handlers**: For general questions that users might ask at any time, use a root node that allows digressions into it, and that goes back to the flow that was in progress. For nodes with slots, try to anticipate the types of related questions users might want to ask while filling in the slots, and address them by adding handlers to the node.
+
+For example, if the node with slots collects the information required to fill out an insurance claim, then you might want to add handlers that address common questions about insurance. However, for questions about how to get help, or your stores locations, or the history of your company, use a root level node.
