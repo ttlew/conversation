@@ -27,20 +27,20 @@ In the following table, the level of language and feature support is indicated b
 - **Beta** - The feature is supported only as a Beta release, and is still undergoing testing before it is made generally available in this language.
 - **Blank** - Absence of any code indicates that a feature is not available in this language.
 
-|                  | **[Defining intents](intents.html)**, **[entities](entities.html)**, and **[dialog](dialog-build.html)** | **[Absolute scoring and 'Mark as irrelevant'](intents.html#mark-irrelevant)** | **System entities ([number](system-entities.html#sys-number), [currency](system-entities.html#sys-currency), [percentage](system-entities.html#sys-percentage), [date, time](system-entities.html#sys-datetime))** | **[Entity fuzzy matching](entities.html#fuzzy-matching)** | **[Pattern-based entities](entities.html#pattern-entities)** |
+|                  | **[Defining intents](intents.html)**, **[entities](entities.html)**, and **[dialog](dialog-build.html)** | **[Absolute scoring and 'Mark as irrelevant'](intents.html#mark-irrelevant)** | **System entities ([number](system-entities.html#sys-number), [currency](system-entities.html#sys-currency), [percentage](system-entities.html#sys-percentage), [date, time](system-entities.html#sys-datetime))** | **[Entity fuzzy matching](entities.html#fuzzy-matching)** |
 |:---|:---:|:---:|:---:|:---:|:---:|
-| **English (en)**                   | GA | GA | GA </br> Beta ([location](system-entities.html#sys-location), [person](system-entities.html#sys-person)) | Beta (Stemming, misspelling, and partial match) | Beta |
-| **Arabic (ar)**                    | GA | Beta | Beta | Beta (Misspelling only) | Beta |
-| **Chinese (Simplified) (zh-cn)**   | Beta | Beta | Beta |  | Beta |
-| **Chinese (Traditional) (zh-tw)**  | Beta | Beta |  |  | Beta |
-| **Czech (cs)**                     | Beta | Beta | Beta | Beta (Misspelling only) | Beta |
-| **French (fr)**                    | GA | GA | GA | Beta (Misspelling only) | Beta |
-| **German (de)**                    | GA | GA | GA | Beta (Misspelling only) | Beta |
-| **Italian (it)**                   | GA | GA | GA | Beta (Misspelling only) | Beta |
-| **Japanese (ja)**                  | GA | GA | GA | Beta (Misspelling only) | Beta |
-| **Korean (ko)**                    | GA | GA | GA | Beta (Misspelling only) | Beta |
-| **Portuguese (Brazilian) (pt-br)** | GA | GA | GA | Beta (Misspelling only) | Beta |
-| **Spanish (es)**                   | GA | GA | GA | Beta (Misspelling only) | Beta ||
+| **English (en)**                   | GA | GA | GA </br> Beta ([location](system-entities.html#sys-location), [person](system-entities.html#sys-person)) | Beta (Stemming, misspelling, and partial match) |
+| **Arabic (ar)**                    | GA | Beta | Beta | Beta (Misspelling only) |
+| **Chinese (Simplified) (zh-cn)**   | Beta | Beta | Beta |  |
+| **Chinese (Traditional) (zh-tw)**  | Beta | Beta |  |  |
+| **Czech (cs)**                     | Beta | Beta | Beta | Beta (Misspelling only) |
+| **French (fr)**                    | GA | GA | GA | Beta (Misspelling only) |
+| **German (de)**                    | GA | GA | GA | Beta (Misspelling only) |
+| **Italian (it)**                   | GA | GA | GA | Beta (Misspelling only) |
+| **Japanese (ja)**                  | GA | GA | GA | Beta (Misspelling only) |
+| **Korean (ko)**                    | GA | GA | GA | Beta (Misspelling only) |
+| **Portuguese (Brazilian) (pt-br)** | GA | GA | GA | Beta (Misspelling only) |
+| **Spanish (es)**                   | GA | GA | GA | Beta (Misspelling only) ||
 
 **Note:** The {{site.data.keyword.conversationshort}} service supports multiple languages as noted, but the tooling interface itself (descriptions, labels, etc.) is in English. All supported languages can be input and trained through the English interface.
 
