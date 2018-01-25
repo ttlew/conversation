@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-24"
+lastupdated: "2018-01-25"
 
 ---
 
@@ -44,7 +44,7 @@ From an IBM technical deep-dive series. These recordings provide step-by-step in
 Additional videos created by IBMers.
 
 - [{{site.data.keyword.conversationshort}} Integrations Tutorial  ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.youtube.com/watch?v=O3silvVBaC8&t=3s){: new_window}: A 10-minute tutorial you can follow to connect {{site.data.keyword.conversationshort}} with Twilio using Botkit to create a SMS chatbot
-- [Show me how to use Conversation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/tUkLIUOm550){: new_window}: A 3-minute overview of the service
+- [Show me how to use {{site.data.keyword.conversationshort}} ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/tUkLIUOm550){: new_window}: A 3-minute overview of the service
 - [Introducing {{site.data.keyword.conversationshort}} service ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/A96nLYSMltA){: new_window}: A 1-minute introduction
 - [Walkthrough of {{site.data.keyword.conversationshort}} ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://youtu.be/ELwWhJGE2P8){: new_window}: A 14-minute technical walkthrough
 
@@ -52,7 +52,7 @@ Additional videos created by IBMers.
 
 These videos are available in the documentation and on YouTube.
 
-- Navigation pane video: Tool overview for Conversation
+- Navigation pane video: Tool overview for {{site.data.keyword.conversationshort}}
 - *Defining intents* page: [Working with intents](intents.html)
 - *Defining entities* page: [Working with entities](entities.html)
 - *Dialog overview* page:

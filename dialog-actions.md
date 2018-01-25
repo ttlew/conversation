@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-24"
+lastupdated: "2018-01-25"
 
 ---
 
@@ -161,18 +161,14 @@ To make a programmatic call from a dialog node, complete the following steps:
     - `<reference_to_credentials>`: The name of the object in which the {{site.data.keyword.openwhisk_short}} credentials are stored. Required for server actions only. These credentials are used to access the {{site.data.keyword.openwhisk_short}} instance on which the action runs. These are not your {{site.data.keyword.Bluemix_notm}} credentials.
 
       To discover the credentials, complete the following steps:
-      1.  Go to the [CLI Getting started ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/openwhisk/cli?loadWsk=true){: new_window} page.
+      1.  Go to the [{{site.data.keyword.openwhisk_short}} API key ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/openwhisk/learn/api-key){: new_window} page.
 
           - If you have not yet created an account, do so.
           - If you are not logged in, log in.
 
-            Follow this link to return to the [CLI Getting started ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/openwhisk/cli?loadWsk=true){: new_window} page. (Do not click CLI from the table of contents; it will bring you to the wrong page.)
-
-      1.  Scroll down to the *Target a Region and Namespace* step, and copy the value of the `--auth` parameter from the sample. The segment before the colon (:) is your user ID. The segment after the colon is your password.
+      1.  Click the **Show Auth Key** icon ![Show Auth Key](images/show-auth-icon.png) to show the credentials. The segment before the colon (:) is your user ID. The segment after the colon is your password.
 
       **Attention**: Any charges that are incurred when the action runs are charged to the person who owns these credentials.
-
-      ![Shows Step 2. Target a Region and Namespace of {{site.data.keyword.openwhisk_short}} setup with credentials obfuscated.](images/cf-creds.png)
 
       To protect the credentials, do not store them in the {{site.data.keyword.conversationshort}} workspace. Instead, pass them from the client application as part of context. You can prevent the information from being stored in Watson logs by nesting your context variable within the $private section of the message context. For example: `$private.my_credentials`.
 
@@ -197,11 +193,11 @@ If you choose to define a server type programmatic call, then before you can cal
 
 To create a {{site.data.keyword.openwhisk_short}} action, complete the following steps:
 
-1.  Go to the [online {{site.data.keyword.openwhisk_short}} editor ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.ng.bluemix.net/openwhisk/editor){: new_window}, where you can write your code directly in your browser.
+1.  Go to the [online {{site.data.keyword.openwhisk_short}} editor ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.ng.bluemix.net/openwhisk/create){: new_window}, where you can write your code directly in your browser.
 
     There is also a [command line interface ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/openwhisk/cli?loadWsk=true){: new_window} you can install that enables you to define an action using code you write locally.
 
-1.  Create and invoke a {{site.data.keyword.openwhisk_short}} action using one of the supported programming languages. See the [{{site.data.keyword.openwhisk_short}} documentation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.ng.bluemix.net/docs/openwhisk/openwhisk_actions.html){: new_window} for details.
+1.  Create a {{site.data.keyword.openwhisk_short}} action using one of the supported programming languages. See the [{{site.data.keyword.openwhisk_short}} documentation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.ng.bluemix.net/docs/openwhisk/openwhisk_actions.html){: new_window} for details.
 
     Keep the following tips in mind:
 
@@ -209,6 +205,9 @@ To create a {{site.data.keyword.openwhisk_short}} action, complete the following
     - To make a call to a Watson service, use the [Watson Developer Cloud SDK ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud){: new_window} for the language you want to use.
     - Make sure your {{site.data.keyword.openwhisk_short}} action accepts any input parameters as a JSON object, and returns any output as a JSON object.
     - If you are using Node.js to write your {{site.data.keyword.openwhisk_short}} action, make sure you use `Promise` for asynchronous processing. Also make sure you return the final result from the `main` function.
+
+    Alternatively, you can create a sequence of actions.
+    {: tip}
 
 ## Handling errors
 
