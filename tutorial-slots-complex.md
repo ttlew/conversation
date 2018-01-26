@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-18"
+lastupdated: "2018-01-26"
 
 ---
 
@@ -461,7 +461,7 @@ You might have noticed that before each test, you must clear the context variabl
 
 1.  Click to edit the `#reservation` node. In the *And finally* section, change the action from *Wait for user input* to **Skip user input**.
 
-    ![Shows the dialog reorganized to include a base node with the #reservation condition and a skip to action set up to go directly to its child node, which is the node with slots](images/slots-skip-user-input.png)
+    ![Shows the dialog reorganized to include a root node with the #reservation condition and a skip to action set up to go directly to its child node, which is the node with slots](images/slots-skip-user-input.png)
 
     When a user input matches the `#reservation` intent, this node is triggered. The slot context variables are all set to null, and then the dialog jumps directly to the node with slots to process it.
 
