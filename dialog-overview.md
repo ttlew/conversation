@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-24"
+lastupdated: "2018-01-26"
 
 ---
 
@@ -65,7 +65,7 @@ When you start to build the dialog, you must determine the branches to include, 
 
 When the service reaches the end of a branch, or cannot find a condition that evaluates to true from the current set of child nodes it is evaluating, it jumps back out to the base of the tree. And once again, the service processes the root nodes from first to the last. If none of the conditions evaluates to true, then the response from the last node in the tree, which typically has a special `anything_else` condition that always evaluates to true, is returned.
 
-You can disrupt the standard first-to-last flow by customizing what happens after a node is processed. For example, you can configure a node to jump directly to another node after it is processed, even if the other node is defined earlier in the tree. See [Defining what to do next](dialog-overview.html#jump-to) for more details.
+You can disrupt the standard first-to-last flow by customizing what happens after a node is processed. For example, you can configure a node to jump directly to another node after it is processed, even if the other node is positioned earlier in the tree. See [Defining what to do next](dialog-overview.html#jump-to) for more details.
 
 ## Conditions
 {: #conditions}
@@ -179,7 +179,7 @@ If you want to provide a text response, simply enter the text that you want the 
 
 ![Shows a node that shows a user ask, Where are you located, and the dialog response is, We have no brick and mortar stores! But, with an internet connection, you can shop us from anywhere.](images/response-simple.png)
 
-If you include an email address in the response, you must escape the at symbol (`@`) with a backslash (`\`). For example, `Send us your feedback at feedback\@example.com.` Likewise, if you include a number sign (`#`) in the response, you must escape it. For example, `We are the \#1 seller of lobster rolls in Maine.` Escaping these symbols helps to distinguish email address syntax from entity name syntax and number syntax from intent name syntax.
+If you include an email address in the response, you must escape the at symbol (`@`) with a backslash (`\`). For example, `Send us your feedback at feedback\@example.com.` Likewise, if you include a number sign (`#`) in the response, you must escape it. For example, `We are the \#1 seller of lobster rolls in Maine.` Entity names begin with `@` and intent names begin with `#`. Escaping these symbols prevents the service from misreading the response text.
 {: tip}
 
 #### Adding variety

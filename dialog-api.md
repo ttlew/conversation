@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-12-19"
+  years: 2015, 2018
+lastupdated: "2018-01-26"
 
 ---
 
@@ -186,7 +186,7 @@ The result is this:
 
 ![Example dialog 6](images/dialog_api_6.png)
 
-Note that **node_1**, **node_4**, **node_5**, and **node_7** were all deleted. When you delete a node, all descendants of that node are deleted as well. Therefore, if you delete a base node, you are actually deleting an entire branch of the dialog tree. Any other references to the deleted node (such as `next_step` references) are changed to `null`.
+Note that **node_1**, **node_4**, **node_5**, and **node_7** were all deleted. When you delete a node, all descendants of that node are deleted as well. Therefore, if you delete a root node, you are actually deleting an entire branch of the dialog tree. Any other references to the deleted node (such as `next_step` references) are changed to `null`.
 
 In addition, **node_2** is updated to point to **node_8** as its new previous sibling.
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-22"
+lastupdated: "2018-01-26"
 
 ---
 
@@ -22,7 +22,7 @@ lastupdated: "2018-01-22"
 With the {{site.data.keyword.conversationfull}} service, you can build a solution that understands natural-language input and uses machine learning to respond to customers in a way that simulates a conversation between humans.
 {: shortdesc}
 
-## How to use the service
+## How it works
 
 This diagram shows the overall architecture of a complete solution:![Flow diagram of the service](images/conversation_arch_overview.png)
 
