@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-24"
+lastupdated: "2018-01-29"
 
 ---
 
@@ -49,21 +49,24 @@ You can also access the service credentials from your {{site.data.keyword.Bluemi
 Interacting with the {{site.data.keyword.conversationshort}} service is simple. Let's take a look at an example that connects to the service, sends a single message, and prints the output to the console:
 
 ```javascript
-// Example 1: sets up service wrapper, sends initial message, and
+// Example 1: sets up service wrapper, sends initial message, and 
 // receives response.
 
 var ConversationV1 = require('watson-developer-cloud/conversation/v1');
 
 // Set up Conversation service wrapper.
 var conversation = new ConversationV1({
-  username: 'USERNAME', // replace with username from service key
-  password: 'PASSWORD', // replace with password from service key
-  path: { workspace_id: 'WORKSPACE_ID' }, // replace with workspace ID
+  username: 'USERNAME', // replace with service username
+  password: 'PASSWORD', // replace with service password
   version_date: '2017-05-26'
 });
 
+var workspace_id = 'WORKSPACE_ID'; // replace with workspace ID
+
 // Start conversation with empty message.
-conversation.message({}, processResponse);
+conversation.message({
+  workspace_id: workspace_id
+  }, processResponse);
 
 // Process the conversation response.
 function processResponse(err, response) {
@@ -71,7 +74,7 @@ function processResponse(err, response) {
     console.error(err); // something went wrong
     return;
   }
-
+  
   // Display the output from dialog, if any.
   if (response.output.text.length != 0) {
       console.log(response.output.text[0]);
@@ -157,14 +160,17 @@ var ConversationV1 = require('watson-developer-cloud/conversation/v1');
 
 // Set up Conversation service wrapper.
 var conversation = new ConversationV1({
-  username: 'USERNAME', // replace with username from service key
-  password: 'PASSWORD', // replace with password from service key
-  path: { workspace_id: 'WORKSPACE_ID' }, // replace with workspace ID
-  version_date: '2016-07-11'
+  username: 'USERNAME', // replace with service username
+  password: 'PASWORD', // replace with service password
+  version_date: '2017-05-26'
 });
 
+var workspace_id = 'WORKSPACE_ID'; // replace with workspace ID
+
 // Start conversation with empty message.
-conversation.message({}, processResponse);
+conversation.message({
+  workspace_id: workspace_id
+  }, processResponse);
 
 // Process the conversation response.
 function processResponse(err, response) {
@@ -186,6 +192,7 @@ function processResponse(err, response) {
   // Prompt for the next round of input.
   var newMessageFromUser = prompt('>> ');
   conversation.message({
+    workspace_id: workspace_id,
     input: { text: newMessageFromUser }
     }, processResponse)
 }
@@ -277,16 +284,19 @@ In addition to maintaining our place in the conversation, the context can also b
 var prompt = require('prompt-sync')();
 var ConversationV1 = require('watson-developer-cloud/conversation/v1');
 
-// Set up Conversation service.
+// Set up Conversation service wrapper.
 var conversation = new ConversationV1({
-  username: 'USERNAME', // replace with username from service key
-  password: 'PASSWORD', // replace with password from service key
-  path: { workspace_id: 'WORKSPACE_ID' }, // replace with workspace ID
+  username: 'USERNAME', // replace with service username
+  password: 'PASSWORD', // replace with service password
   version_date: '2017-05-26'
 });
 
+var workspace_id = 'WORKSPACE_ID'; // replace with workspace ID
+
 // Start conversation with empty message.
-conversation.message({}, processResponse);
+conversation.message({
+  workspace_id: workspace_id
+  }, processResponse);
 
 // Process the conversation response.
 function processResponse(err, response) {
@@ -299,7 +309,7 @@ function processResponse(err, response) {
   if (response.intents.length > 0) {
     console.log('Detected intent: #' + response.intents[0].intent);
   }
-
+  
   // Display the output from dialog, if any.
   if (response.output.text.length != 0) {
       console.log(response.output.text[0]);
@@ -309,6 +319,7 @@ function processResponse(err, response) {
     var newMessageFromUser = prompt('>> ');
     // Send back the context to maintain state.
     conversation.message({
+      workspace_id: workspace_id,
       input: { text: newMessageFromUser },
       context : response.context,
     }, processResponse)
@@ -425,16 +436,19 @@ But in our example, we're using a simple key/value pair that supports a single a
 var prompt = require('prompt-sync')();
 var ConversationV1 = require('watson-developer-cloud/conversation/v1');
 
-// Set up Conversation service.
+// Set up Conversation service wrapper.
 var conversation = new ConversationV1({
-  username: 'USERNAME', // replace with username from service key
-  password: 'PASSWORD', // replace with password from service key
-  path: { workspace_id: 'WORKSPACE_ID' }, // replace with workspace ID
+  username: 'USERNAME', // replace with service username
+  password: 'PASSWORD', // replace with service password
   version_date: '2017-05-26'
 });
 
+var workspace_id = 'WORKSPACE_ID'; // replace with workspace ID
+
 // Start conversation with empty message.
-conversation.message({}, processResponse);
+conversation.message({
+  workspace_id: workspace_id
+  }, processResponse);
 
 // Process the conversation response.
 function processResponse(err, response) {
@@ -444,7 +458,7 @@ function processResponse(err, response) {
   }
 
   var endConversation = false;
-
+  
   // Check for action flags.
   if (response.output.action === 'display_time') {
     // User asked what time it is, so we output the local system time.
@@ -464,6 +478,7 @@ function processResponse(err, response) {
   if (!endConversation) {
     var newMessageFromUser = prompt('>> ');
     conversation.message({
+      workspace_id: workspace_id,
       input: { text: newMessageFromUser },
       // Send back the context to maintain state.
       context : response.context,
