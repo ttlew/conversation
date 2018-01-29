@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-19"
+lastupdated: "2018-01-29"
 
 ---
 
@@ -379,7 +379,7 @@ Results in this output:
 ### com.google.gson.JsonArray support
 {: #com.google.gson.JsonArray}
 
-In addition to the built-in methods, you can use standard methods of the `com.google.gson.JsonArray` class also.
+In addition to the built-in methods, you can use standard methods of the `com.google.gson.JsonArray` class.
 
 #### New array
 
@@ -475,7 +475,7 @@ For example, this context variable definition creates a $time variable that save
 
 Format follows the Java [SimpleDateFormat ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html){: new_window} rules.
 
->Note: When trying to format time only, the date is treated as `1970-01-01`.
+**Note**: When trying to format time only, the date is treated as `1970-01-01`.
 
 ### .sameMoment(String date/time)
 
@@ -493,7 +493,7 @@ Format follows the Java [SimpleDateFormat ![External link icon](../../icons/laun
 ### java.util.Date support
 {: #java.util.Date}
 
-In addition to the built-in methods, you can use standard methods of the `java.util.Date` class also.
+In addition to the built-in methods, you can use standard methods of the `java.util.Date` class.
 
 #### Date calculations
 
@@ -534,13 +534,95 @@ For information about system entities that can recognize and extract numbers fro
 
 If you want the service to recognize specific number formats in user input, such as order number references, consider creating a pattern entity to capture it. See [Creating entities](entities.html#creating-entities) for more details.
 
-### Random()
+### toDouble()
 
-Returns a random number. Use one of the following syntax options:
+  Converts the object or field to the Double number type. You can call this method on any object or field. If the conversion fails, *null* is returned.
+
+### toInt()
+
+  Converts the object or field to the Integer number type. You can call this method on any object or field. If the conversion fails, *null* is returned.
+
+### toLong()
+
+  Converts the object or field to the Long number type. You can call this method on any object or field. If the conversion fails, *null* is returned.
+
+  If you specify a Long number type in a SpEL expression, you must append an `L` to the number to identify it as such. For example, `5000000000L`. This syntax is required for any numbers that do not fit into the 32-bit Integer type. For example, numbers that are greater than 2^31 (2,147,483,648) or lower than -2^31 (-2,147,483,648) are considered Long number types. Long number types have a minimum value of -2^63 and a maximum value of 2^63-1.
+
+### Java number support
+{: #java.lang.Number}
+
+### java.lang.Math()
+
+Performs basic numeric operations.
+
+You can use the the Class methods, including these:
+
+- max()
+
+```json
+{
+  "context": {
+    "bigger_number": "<? T(Math).max($number1,$number2) ?>"
+  },
+  "output": {
+    "text": {
+      "values": [
+        "The bigger number is $bigger_number."
+      ],
+      "selection_policy": "sequential"
+    }
+  }
+}
+```
+{: codeblock}
+
+- min()
+
+```json
+{
+  "context": {
+    "smaller_number": "<? T(Math).min($number1,$number2) ?>"
+  },
+  "output": {
+    "text": {
+      "values": [
+        "The smaller number is $smaller_number."
+      ],
+      "selection_policy": "sequential"
+    }
+  }
+}
+```
+{: codeblock}
+
+- pow()
+
+```json
+{
+  "context": {
+    "power_of_two": "<? T(Math).pow($base.toDouble(),2.toDouble()) ?>"
+  },
+  "output": {
+    "text": {
+      "values": [
+        "Your number $base to the second power is $power_of_two."
+      ],
+      "selection_policy": "sequential"
+    }
+  }
+}
+```
+{: codeblock}
+
+See the [java.lang.Math reference documentation](https://docs.oracle.com/javase/7/docs/api/java/lang/Math.html) for information about other methods.
+
+### java.util.Random()
+
+Returns a random number. You can use one of the following syntax options:
 
 - To return a random boolean value (true or false), use `<?new Random().nextBoolean()?>`.
 - To return a random double number between 0 (included) and 1 (excluded), use `<?new Random().nextDouble()?>`
-- To return a random integer between 0 (included) and a number you specify, use `<?new Random().nextInt(n)?>`  where n is the top of the number range you want + 1. 
+- To return a random integer between 0 (included) and a number you specify, use `<?new Random().nextInt(n)?>`  where n is the top of the number range you want + 1.
   For example, if you want to return a random number between 0 and 10, specify `<?new Random().nextInt(11)?>`.
 - To return a random integer from the full Integer value range (-2147483648 to 2147483648), use `<?new Random().nextInt()?>`.
 
@@ -564,24 +646,9 @@ Condition = @sys-number
 ```
 {: codeblock}
 
-### toDouble()
+See the [java.util.Random reference documentation](https://docs.oracle.com/javase/7/docs/api/java/util/Random.html) for information about other methods.
 
-  Converts the object or field to the Double number type. You can call this method on any object or field. If the conversion fails, *null* is returned.
-
-### toInt()
-
-  Converts the object or field to the Integer number type. You can call this method on any object or field. If the conversion fails, *null* is returned.
-
-### toLong()
-
-  Converts the object or field to the Long number type. You can call this method on any object or field. If the conversion fails, *null* is returned.
-
-  If you specify a Long number type in a SpEL expression, you must append an `L` to the number to identify it as such. For example, `5000000000L`. This syntax is required for any numbers that do not fit into the 32-bit Integer type. For example, numbers that are greater than 2^31 (2,147,483,648) or lower than -2^31 (-2,147,483,648) are considered Long number types. Long number types have a minimum value of -2^63 and a maximum value of 2^63-1.
-
-### Java number support
-{: #java.lang.Number}
-
-In addition to the built-in methods, you can use standard methods of the following classes also:
+You can use standard methods of the following classes also:
 
 - `java.lang.Byte`
 - `java.lang.Integer`
@@ -670,7 +737,7 @@ Result:
 ### com.google.gson.JsonObject support
 {: #com.google.gson.JsonObject}
 
-In addition to the built-in methods, you can use standard methods of the `com.google.gson.JsonObject` class also.
+In addition to the built-in methods, you can use standard methods of the `com.google.gson.JsonObject` class.
 
 ## Strings
 {: #strings}
@@ -1059,7 +1126,7 @@ Results in this output:
 ### java.lang.String support
 {: #java.lang.String}
 
-In addition to the built-in methods, you can use standard methods of the `java.lang.String` class also.
+In addition to the built-in methods, you can use standard methods of the `java.lang.String` class.
 
 #### java.lang.String.format()
 
