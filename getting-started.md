@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-24"
+lastupdated: "2018-01-30"
 
 ---
 
@@ -27,7 +27,7 @@ In this short tutorial, we introduce the {{site.data.keyword.conversationshort}}
 ## Before you begin
 {: #prerequisites}
 
-You'll need a service instance to start.
+The {{site.data.keyword.conversationshort}} service is hosted by [IBM Cloud](https://console.bluemix.net/docs/overview/ibm-cloud.html#overview), the IBM cloud computing platform. You'll need a service instance to start.
 
 <!-- Remove the text marked `download` after there's no g-s tab in the catalog dashboard -->
 
@@ -38,7 +38,7 @@ If you created a project with the {{site.data.keyword.conversationshort}} servic
 
 1.  Go to the {{site.data.keyword.watson}} Developer Console [Services ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.{DomainName}/developer/watson/services){: new_window} page.
 1.  Select {{site.data.keyword.conversationshort}}, click **Add Services**, and either sign up for a free {{site.data.keyword.Bluemix_notm}} account or log in.
-1.  Type `conversation-tutorial` as the project name and click **Create Project**.
+1.  Change the project name to `conversation-tutorial`, and then click **Create Project**.
 
 <!-- Remove this text after dedicated instances have the developer console: begin -->
 
