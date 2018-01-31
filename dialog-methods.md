@@ -534,7 +534,7 @@ The following expression calculates the time 3 hours from now.
 ```
 {: codeblock}
 
-The `(60*60*1000L)` value represents an hour in milliseconds. This expression adds 3 hours to the current time. It then recalculates the time from a UTC time zone to EST time zone by subtracing 5 hours from it. It also reformats the date values to include hours and minutes AM or PM.
+The `(60*60*1000L)` value represents an hour in milliseconds. This expression adds 3 hours to the current time. It then recalculates the time from a UTC time zone to EST time zone by subtracting 5 hours from it. It also reformats the date values to include hours and minutes AM or PM.
 
 ## Numbers
 {: #numbers}
