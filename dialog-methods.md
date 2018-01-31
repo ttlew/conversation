@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-29"
+lastupdated: "2018-01-31"
 
 ---
 
@@ -502,28 +502,39 @@ To get the date of the day that falls a week from today, you can use the followi
 ```json
 {
   "context": {
-    "week_from_today": "<? new Date(new Date().getTime() + (7 * (24*60*60*1000))) ?>"
+    "week_from_today": "<? new Date(new Date().getTime() + (7 * (24*60*60*1000L))) ?>"
   }
 }
 ```
 {: codeblock}
 
-This expression first gets the current date in milliseconds (since January 1, 1970, 00:00:00 GMT). It also calculates the number of milliseconds in 7 days. (The `(24*60*60*1000)` represents one day in milliseconds.) It then adds 7 days to the current date. The result is the full date of the day that falls a week from today. For example, `Fri Jan 26 16:30:37 UTC 2018`. Note that the time is in the UTC time zone.
+This expression first gets the current date in milliseconds (since January 1, 1970, 00:00:00 GMT). It also calculates the number of milliseconds in 7 days. (The `(24*60*60*1000L)` represents one day in milliseconds.) It then adds 7 days to the current date. The result is the full date of the day that falls a week from today. For example, `Fri Jan 26 16:30:37 UTC 2018`. Note that the time is in the UTC time zone. You can always change the 7 to a variable (`$number_of_days`, for example) that you can pass in. Just be sure that its value gets set before this expression is evaluated.
 
-You can always change the 7 to a variable (`$number_of_days`, for example) that you can pass in. Just be sure that its value gets set before this expression is evaluated.
+If you want to be able to subsequently compare the date with another date, you must reformat the date to use the yyyy-MM-dd format.
+
+```json
+{
+  "context": {
+    "week_from_today": "<? new Date(new Date().getTime() + (7 * (24*60*60*1000L))).format('yyyy-MM-dd') ?>"
+  }
+}
+```
+{: codeblock}
+
+After reformatting the date, the result is `2018-01-26`. Now, you can use an expression like `@sys-date.after($week_from_today)` in a response condition to compare a date specified in user input to the date saved in the context variable.
 
 The following expression calculates the time 3 hours from now.
 
 ```json
 {
   "context": {
-    "future_time": "<? new Date(new Date().getTime() + (3 * (60*60*1000)) - (5 * (60*60*1000))).toString().substring(0,19) ?>"
+    "future_time": "<? new Date(new Date().getTime() + (3 * (60*60*1000L)) - (5 * (60*60*1000L))).format('h:mm a') ?>"
   }
 }
 ```
 {: codeblock}
 
-The `(60*60*1000)` value represents an hour in milliseconds. This expression adds 3 hours to the current time. It then recalculates the time from a UTC time zone to EST time zone by subtracing 5 hours from it. It also reformats the date value that is returned by stripping the `UTC yyyy` value from the end of it. The result is formatted like this: `Fri Jan 19 19:30:37`.
+The `(60*60*1000L)` value represents an hour in milliseconds. This expression adds 3 hours to the current time. It then recalculates the time from a UTC time zone to EST time zone by subtracting 5 hours from it. It also reformats the date values to include hours and minutes AM or PM.
 
 ## Numbers
 {: #numbers}
