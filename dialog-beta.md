@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-25"
+lastupdated: "2018-02-01"
 
 ---
 
@@ -361,7 +361,7 @@ To change the digression behavior for an individual node, complete the following
 
 1.  Click **Customize**, and then click the **Digressions** tab.
 
-    The configuration options differ depending on the whether the node you are editing is a root node, a child node, a node with children, or a node with slots.
+    The configuration options differ depending on whether the node you are editing is a root node, a child node, a node with children, or a node with slots.
 
     **Digressions away from this node**
 

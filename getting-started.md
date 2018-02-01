@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-30"
+lastupdated: "2018-02-01"
 
 ---
 
@@ -27,7 +27,7 @@ In this short tutorial, we introduce the {{site.data.keyword.conversationshort}}
 ## Before you begin
 {: #prerequisites}
 
-The {{site.data.keyword.conversationshort}} service is hosted by [IBM Cloud](https://console.bluemix.net/docs/overview/ibm-cloud.html#overview), the IBM cloud computing platform. You'll need a service instance to start.
+You'll need a service instance to start.
 
 <!-- Remove the text marked `download` after there's no g-s tab in the catalog dashboard -->
 
