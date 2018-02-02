@@ -56,12 +56,8 @@ Conversation
 
     {: .navgroup id="reference"}
     [API reference](https://www.ibm.com/watson/developercloud/conversation/api/v1/)
-
-    {: .topicgroup}
-    Expression language
-        expression-language.md
-        dialog-methods.md
-
+    dialog-methods.md
+    expression-language.md
     filter-reference.md
     sample-applications.md
     lang-support.md
