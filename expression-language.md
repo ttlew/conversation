@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-09-15"
+  years: 2015, 2018
+lastupdated: "2018-02-01"
 
 ---
 
@@ -21,6 +21,63 @@ lastupdated: "2017-09-15"
 
 Valid expressions in conditions are written in the Spring Expression (SpEL) language. For more information, see [Spring Expression Language (SpEL) language ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html){: new_window}.
 {: shortdesc}
+
+## Shorthand syntax
+{: #shorthand-syntax}
+
+Learn how to quickly reference the following objects by using the SpEL shorthand syntax:
+
+- [Context variables](expression-language.html#shorthand-context)
+- [Entities](expression-language.html#shorthand-entities)
+- [Intents](expression-language.html#shorthand-intents)
+
+### Shorthand syntax for context variables
+{: #shorthand-context}
+
+The following table shows examples of the shorthand syntax that you can use to write context variables in condition expressions.
+
+| Shorthand syntax           | Full syntax in SpEL                     |
+|----------------------------|-----------------------------------------|
+| `$card_type`               | `context['card_type']`                  |
+| `$(card-type)`             | `context['card-type']`                  |
+| `$card_type:VISA`          | `context['card_type'] == 'VISA'`        |
+| `$card_type:(MASTER CARD)` | `context['card_type'] == 'MASTER CARD'` |
+
+You can include special characters, such as hyphens or periods, in context variable names. However, doing so can lead to problems when the SpEL expression is evaluated. The hyphen could be interpreted as a minus sign, for example. To avoid such problems, reference the variable by using either the full expression syntax or the shorthand syntax `$(variable-name)` and do not use the following special characters in the name:
+
+- Parentheses ()
+- More than one apostrophe ''
+- Quotation marks "
+
+### Shorthand syntax for entities
+{: #shorthand-entities}
+
+The following table shows examples of the shorthand syntax that you can use when referring to entities.
+
+| Shorthand syntax    | Full syntax in SpEL                      |
+|---------------------|------------------------------------------|
+| `@year`             | `entities['year']?.value`                |
+| `@year == 2016`     | `entities['year']?.value == 2016`        |
+| `@year != 2016`     | `entities['year']?.value != 2016`        |
+| `@city == 'Boston'` | `entities['city']?.value == 'Boston'`    |
+| `@city:Boston`      | `entities['city']?.contains('Boston')`   |
+| `@city:(New York)`  | `entities['city']?.contains('New York')` |
+
+In SpEL, the question mark `(?)` prevents a null pointer exception from being triggered when an entity object is null.
+
+If the entity value that you want to check for contains a `)` character, you cannot use the `:` operator for comparison.  For example, if you want to check whether the city entity is `Dublin (Ohio)`, you must use `@city == 'Dublin (Ohio)'` instead of `@city:(Dublin (Ohio))`.
+
+### Shorthand syntax for intents
+{: #shorthand-intents}
+
+The following table shows examples of the shorthand syntax that you can use when referring to intents.
+
+| Shorthand syntax        | Full syntax in SpEL |
+|-------------------------|---------------------|
+| `#help`                 | `intent == 'help'`  |
+| `! #help`               | `intent != 'help'`  |
+| `NOT #help`             | `intent != 'help'`  |
+| `#help` or `#i_am_lost` | <code>(intent == 'help' &#124;&#124; intent == 'I_am_lost')</code> |
 
 ## Built-in global variables
 
@@ -60,23 +117,6 @@ For the user input, *Hello now*, the service recognizes the @sys-date and @sys-t
 ]
 ```
 {: codeblock}
-
-### Shorthand syntax for entities
-
-The following table shows examples of the shorthand syntax that you can use when referring to entities.
-
-| Shorthand syntax    | Full syntax in SpEL                      |
-|---------------------|------------------------------------------|
-| `@year`             | `entities['year']?.value`                |
-| `@year == 2016`     | `entities['year']?.value == 2016`        |
-| `@year != 2016`     | `entities['year']?.value != 2016`        |
-| `@city == 'Boston'` | `entities['city']?.value == 'Boston'`    |
-| `@city:Boston`      | `entities['city']?.contains('Boston')`   |
-| `@city:(New York)`  | `entities['city']?.contains('New York')` |
-
-In SpEL, the question mark `(?)` prevents a null pointer exception from being triggered when an entity object is null.
-
-If the entity value that you want to check for contains a `)` character, you cannot use the `:` operator for comparison.  For example, if you want to check whether the city entity is `Dublin (Ohio)`, you must use `@city == 'Dublin (Ohio)'` instead of `@city:(Dublin (Ohio))`.
 
 ### When placement of entities in the input matters
 
@@ -158,17 +198,6 @@ The following examples show how to check for an intent value:
 
 `intent == 'help'` differs from `intents[0] == 'help'` because `intent == 'help'` does not throw an exception if no intent is detected. It is evaluated as true only if the intent confidence exceeds a threshold.  If you want to, you can specify a custom confidence level for a condition, for example, `intents.size() > 0 && intents[0] == 'help' && intents[0].confidence > 0.1`
 
-### Shorthand syntax for intents
-
-The following table shows examples of the shorthand syntax that you can use when referring to intents.
-
-| Shorthand syntax        | Full syntax in SpEL |
-|-------------------------|---------------------|
-| `#help`                 | `intent == 'help'`  |
-| `! #help`               | `intent != 'help'`  |
-| `NOT #help`             | `intent != 'help'`  |
-| `#help` or `#i_am_lost` | <code>(intent == 'help' &#124;&#124; intent == 'I_am_lost')</code> |
-
 ## Accessing input
 
 The input JSON object contains one property only: the text property. The text property represents the text of the user input.
@@ -185,23 +214,6 @@ You can use any of the [String methods](/docs/services/conversation/dialog-metho
 - To check whether the user input contains "Yes", use: `input.text.contains( 'Yes' )`.
 - Returns true if the user input is a number: `input.text.matches( '[0-9]+' )`.
 - To check whether the input string contains ten characters, use: `input.text.length() == 10`.
-
-## Shorthand syntax for context variables
-
-The following table shows examples of the shorthand syntax that you can use to write context variables in condition expressions.
-
-| Shorthand syntax           | Full syntax in SpEL                     |
-|----------------------------|-----------------------------------------|
-| `$card_type`               | `context['card_type']`                  |
-| `$(card-type)`             | `context['card-type']`                  |
-| `$card_type:VISA`          | `context['card_type'] == 'VISA'`        |
-| `$card_type:(MASTER CARD)` | `context['card_type'] == 'MASTER CARD'` |
-
-You can include special characters, such as hyphens or periods, in context variable names. However, doing so can lead to problems when the SpEL expression is evaluated. The hyphen could be interpreted as a minus sign, for example. To avoid such problems, reference the variable by using either the full expression syntax or the shorthand syntax `$(variable-name)` and do not use the following special characters in the name:
-
-- Parentheses ()
-- More than one apostrophe ''
-- Quotation marks "
 
 ## Evaluation
 
