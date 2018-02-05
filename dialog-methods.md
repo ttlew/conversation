@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-02-02"
+lastupdated: "2018-02-05"
 
 ---
 
@@ -31,7 +31,7 @@ To expand variable values inside other variables, or apply methods to output tex
 - **Invoking a method on an object**
     - `"context":{"toppings": "<? context.toppings.append( 'onions' ) ?>"}`
 
-The following sections describe methods you can use the process values. They are organized by data type:
+The following sections describe methods you can use to process values. They are organized by data type:
 
 - [Arrays](dialog-methods.html#arrays)
 - [Date and Time](dialog-methods.html#date-time)
