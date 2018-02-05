@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-02-01"
+lastupdated: "2018-02-05"
 
 ---
 
@@ -17,12 +17,27 @@ lastupdated: "2018-02-01"
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Methods to process values
+# Expression language methods
 
-Use these methods to process values extracted from user utterances that you want to reference in a context variable, condition, or elsewhere in the response.
+You can process values extracted from user utterances that you want to reference in a context variable, condition, or elsewhere in the response.
 {: shortdesc}
 
->**Note:** For methods that involve regular expressions, see [RE2 Syntax reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/google/re2/wiki/Syntax){: new_window} for details about the syntax to use when you specify the regular expression.
+## Evaluation syntax
+
+To expand variable values inside other variables, or apply methods to output text or context variables, use the `<? expression ?>` expression syntax. For example:
+
+- **Incrementing a numeric property**
+    - `"output":{"number":"<? output.number + 1 ?>"}`
+- **Invoking a method on an object**
+    - `"context":{"toppings": "<? context.toppings.append( 'onions' ) ?>"}`
+
+The following sections describe methods you can use to process values. They are organized by data type:
+
+- [Arrays](dialog-methods.html#arrays)
+- [Date and Time](dialog-methods.html#date-time)
+- [Numbers](dialog-methods.html#numbers)
+- [Objects](dialog-methods.html#objects)
+- [Strings](dialog-methods.html#strings)
 
 ## Arrays
 {: #arrays}
@@ -760,6 +775,8 @@ There methods help you work with text.
 
 For information about how to recognize and extract certain types of Strings, such as people names and locations, from user input, see [System entities](system-entities.html).
 
+**Note:** For methods that involve regular expressions, see [RE2 Syntax reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/google/re2/wiki/Syntax){: new_window} for details about the syntax to use when you specify the regular expression.
+
 ### String.append(object)
 
 This method appends an input object to the string as a string and returns a modified string.
@@ -1156,3 +1173,65 @@ For example, the following expression takes three decimal integers (1, 1, and 2)
 {: codeblock}
 
 Result: `1 + 1 equals 2`.
+
+## Indirect data type conversion
+
+When you include an expression within text, as part of a node response, for example, the value is rendered as a String. If you want the expression to be rendered in its original data type, then do not surround it with text.
+
+For example, you can add this expression to a dialog node response to return the entities that are recognized in the user input in String format:
+
+```json
+  The entities are <? entities ?>.
+```
+{: codeblock}
+
+If the user specifies *Hello now* as the input, then the @sys-date and @sys-time entities are triggered by the `now` reference. The entities object is an array, but because the expression is included in text, the entities are returned in String format, like this:
+
+```json
+  The entities are 2018-02-02, 14:34:56.
+```
+{: codeblock}
+
+If you do not include text in the response, then an array is returned instead. For example, if the response is specified as an expression only, not surrounded by text.
+
+```
+  <? entities ?>
+```
+{: codeblock}
+
+The entity information is returned in its native data type, as an array.
+
+```json
+[
+  {
+    "entity":"sys-date","location":[6,9],"value":"2018-02-02","confidence":1,"metadata":{"calendar_type":"GREGORIAN","timezone":"America/New_York"}
+  },
+  {
+    "entity":"sys-time","location":[6,9],"value":"14:33:22","confidence":1,"metadata":{"calendar_type":"GREGORIAN","timezone":"America/New_York"}
+  }
+  ]
+```
+{: codeblock}
+
+As another example, the following $array context variable is an array, but the $string_array context variable is a string.
+
+```json
+{
+  "context": {
+    "array": [
+      "one",
+      "two"
+    ],
+    "array_in_string": "this is my array: $array"
+  }
+}
+```
+{: codeblock}
+
+If you check the values of these context variables in the Try it out pane, you will see their values specified as follows:
+
+**$array** : `["one","two"]`
+
+**$array_in_string** : `"this is my array: [\"one\",\"two\"]"`
+
+You can subsequently perform array methods on the $array variable, such as `<? $array.removeValue('two') ?>`,but not the $array_in_string variable.

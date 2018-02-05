@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-24"
+lastupdated: "2018-02-02"
 
 ---
 
@@ -50,4 +50,4 @@ This app demonstrates the combination of {{site.data.keyword.conversationshort}}
 
 {{site.data.keyword.toneanalyzerfull}} uses linguistic analysis to detect three types of tones from written text: emotions, social tendencies, and writing style. The Watson Food Coach app is an example of {{site.data.keyword.toneanalyzershort}} integrated with {{site.data.keyword.conversationshort}}. In this app, depending on the kind of food the user ate and how he or she is feeling about it, the automated agent provides an appropriate coaching response to encourage the user to make healthy choices.
 
-[View the demo ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://food-coach.mybluemix.net/){: new_window} or [fork the code ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/food-coach){: new_window}
+[View the demo ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://food-coach.ng.bluemix.net/){: new_window} or [fork the code ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/food-coach){: new_window}

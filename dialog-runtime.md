@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-25"
+lastupdated: "2018-02-02"
 
 ---
 
@@ -435,6 +435,8 @@ The result is this context:
 ```
 {: codeblock}
 
+See [Expression language methods](dialog-methods.html#objects) for more information about methods you can perform on objects.
+
 ### Updating arrays
 
 If your dialog context data contains an array of values, you can update the array by appending values, removing a value, or replacing all the values.
@@ -583,25 +585,4 @@ Choose one of these actions to update the array. In each case, we see the array 
         ```
         {: codeblock}
 
-**Attention**: If you save the array as part of a string, it becomes a String object instead of an Array. For example, the following $array context variable is an array, but the $string_array context variable is a string.
-
-```json
-{
-  "context": {
-    "array": [
-      "one",
-      "two"
-    ],
-    "array_in_string": "this is my array: $array"
-  }
-}
-```
-{: codeblock}
-
-If you check the values of these context variables in the Try it out pane, you will see their values specified as follows:
-
-**$array** : `["one","two"]`
-
-**$array_in_string** : `"this is my array: [\"one\",\"two\"]"`
-
-You can subsequently perform array methods on the $array variable, such as `<? $array.removeValue('two') ?>` but not the $array_in_string variable.
+See [Expression language methods](dialog-methods.html#arrays) for more information about methods you can perform on arrays.
