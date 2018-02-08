@@ -45,7 +45,7 @@ Conversation
         logs_convo.md
         logs_recommend.md
 
-    plan-upgrade.md
+    upgrading.md
 
     {: .topicgroup}
     Tutorials
