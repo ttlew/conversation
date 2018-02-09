@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-30"
+lastupdated: "2018-02-09"
 
 ---
 
@@ -47,6 +47,11 @@ Existing models that you have trained will not be immediately impacted, but expi
 {: #change-log}
 
 The following new features and changes to the service are available.
+
+### 9 February 2018
+{: #9February2018}
+
+- **Dutch system entities (Beta)**: Dutch language support has been enhanced to include the availability of [System entities](system-entities.html) in beta release. See [Supported languages](lang-support.html) for details.
 
 ### 29 January 2018
 {: #29January2018}
