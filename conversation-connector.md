@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-24"
+lastupdated: "2018-02-01"
 
 ---
 
@@ -73,6 +73,6 @@ For example, if your workspace uses a context variable called `drink_order` to s
 ```
 {: codeblock}
 
-For more information about modifying context variable values, see [Updating a context variable value](dialog-overview.html#updating-a-context-variable-value).
+For more information about modifying context variable values, see [Updating a context variable value](dialog-runtime.html#context-update).
 
 You can also clear the context, or make other changes to the behavior of the bot, by editing the deployed {{site.data.keyword.openwhisk_short}} actions. For more information, see documentation provided in the [GitHub repository ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/conversation-connector){: new_window}.

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-09-15"
+  years: 2015, 2018
+lastupdated: "2018-02-01"
 
 ---
 
@@ -17,28 +17,95 @@ lastupdated: "2017-09-15"
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Accessing and evaluating objects
+# Expressions for accessing objects
 
-Valid expressions in conditions are written in the Spring Expression (SpEL) language. For more information, see [Spring Expression Language (SpEL) language ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html){: new_window}.
+You can write expressions that access objects and properties of objects by using the Spring Expression (SpEL) language. For more information, see [Spring Expression Language (SpEL) ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html){: new_window}.
 {: shortdesc}
 
-## Built-in global variables
+## Evaluation syntax
 
-The following global variables are available:
+To expand variable values inside other variables or invoke methods on properties and global objects, use the `<? expression ?>` expression syntax. For example:
+
+- **Expanding a property**
+    - `"output":{"text":"Your name is <? context.userName ?>"}`
+
+- **Invoking methods on properties of global objects**
+    - `"context":{"email": "<? @email.literal ?>"}`
+
+## Shorthand syntax
+{: #shorthand-syntax}
+
+Learn how to quickly reference the following objects by using the SpEL shorthand syntax:
+
+- [Context variables](expression-language.html#shorthand-context)
+- [Entities](expression-language.html#shorthand-entities)
+- [Intents](expression-language.html#shorthand-intents)
+
+### Shorthand syntax for context variables
+{: #shorthand-context}
+
+The following table shows examples of the shorthand syntax that you can use to write context variables in condition expressions.
+
+| Shorthand syntax           | Full syntax in SpEL                     |
+|----------------------------|-----------------------------------------|
+| `$card_type`               | `context['card_type']`                  |
+| `$(card-type)`             | `context['card-type']`                  |
+| `$card_type:VISA`          | `context['card_type'] == 'VISA'`        |
+| `$card_type:(MASTER CARD)` | `context['card_type'] == 'MASTER CARD'` |
+
+You can include special characters, such as hyphens or periods, in context variable names. However, doing so can lead to problems when the SpEL expression is evaluated. The hyphen could be interpreted as a minus sign, for example. To avoid such problems, reference the variable by using either the full expression syntax or the shorthand syntax `$(variable-name)` and do not use the following special characters in the name:
+
+- Parentheses ()
+- More than one apostrophe ''
+- Quotation marks "
+
+### Shorthand syntax for entities
+{: #shorthand-entities}
+
+The following table shows examples of the shorthand syntax that you can use when referring to entities.
+
+| Shorthand syntax    | Full syntax in SpEL                      |
+|---------------------|------------------------------------------|
+| `@year`             | `entities['year']?.value`                |
+| `@year == 2016`     | `entities['year']?.value == 2016`        |
+| `@year != 2016`     | `entities['year']?.value != 2016`        |
+| `@city == 'Boston'` | `entities['city']?.value == 'Boston'`    |
+| `@city:Boston`      | `entities['city']?.contains('Boston')`   |
+| `@city:(New York)`  | `entities['city']?.contains('New York')` |
+
+In SpEL, the question mark `(?)` prevents a null pointer exception from being triggered when an entity object is null.
+
+If the entity value that you want to check for contains a `)` character, you cannot use the `:` operator for comparison.  For example, if you want to check whether the city entity is `Dublin (Ohio)`, you must use `@city == 'Dublin (Ohio)'` instead of `@city:(Dublin (Ohio))`.
+
+### Shorthand syntax for intents
+{: #shorthand-intents}
+
+The following table shows examples of the shorthand syntax that you can use when referring to intents.
+
+| Shorthand syntax        | Full syntax in SpEL |
+|-------------------------|---------------------|
+| `#help`                 | `intent == 'help'`  |
+| `! #help`               | `intent != 'help'`  |
+| `NOT #help`             | `intent != 'help'`  |
+| `#help` or `#i_am_lost` | <code>(intent == 'help' &#124;&#124; intent == 'I_am_lost')</code> |
+
+## Built-in global variables
+{: #builtin-vars}
+
+You can use the expression language to extract property information for the following global variables:
 
 | Global variable      | Definition |
 |----------------------|------------|
-| *anything_else*      | The last node of the entire dialog. When user input cannot be matched to an intent, this node is executed. |
 | *context*            | JSON object part of the processed conversation message. |
-| *conversation_start* | A boolean value that is true in the first dialog conversation turn (can be used in a condition of a dialog node to define a dialog welcome message). |
 | *entities[ ]*        | List of entities that supports default access to 1st element. |
 | *input*              | JSON object part of the processed conversation message. |
 | *intents[ ]*         | List of intents that supports default access to first element. |
 | *output*             | JSON object part of the processed conversation message. |
 
 ## Accessing entities
+{: #access-entity}
 
-The entities array contains one or more entities.
+The entities array contains one or more entities that were recognized in user input.
 
 While testing your dialog, you can see details of the entities that are recognized in user input by specifying this expression in a dialog node response:
 
@@ -60,23 +127,6 @@ For the user input, *Hello now*, the service recognizes the @sys-date and @sys-t
 ]
 ```
 {: codeblock}
-
-### Shorthand syntax for entities
-
-The following table shows examples of the shorthand syntax that you can use when referring to entities.
-
-| Shorthand syntax    | Full syntax in SpEL                      |
-|---------------------|------------------------------------------|
-| `@year`             | `entities['year']?.value`                |
-| `@year == 2016`     | `entities['year']?.value == 2016`        |
-| `@year != 2016`     | `entities['year']?.value != 2016`        |
-| `@city == 'Boston'` | `entities['city']?.value == 'Boston'`    |
-| `@city:Boston`      | `entities['city']?.contains('Boston')`   |
-| `@city:(New York)`  | `entities['city']?.contains('New York')` |
-
-In SpEL, the question mark `(?)` prevents a null pointer exception from being triggered when an entity object is null.
-
-If the entity value that you want to check for contains a `)` character, you cannot use the `:` operator for comparison.  For example, if you want to check whether the city entity is `Dublin (Ohio)`, you must use `@city == 'Dublin (Ohio)'` instead of `@city:(Dublin (Ohio))`.
 
 ### When placement of entities in the input matters
 
@@ -132,8 +182,11 @@ In this example, the user input is *Are there places to exchange currency at JFK
   `You asked about these airports: JFK, Logan, O'Hare.`
 
 ## Accessing intents
+{: #access-intent}
 
-The intents array contains one or more intents that were recognized in the user input, sorted in descending order of confidence. Each intent has one property only: the confidence property. The confidence property is a decimal percentage that represents the service's confidence in the recognized intent.
+The intents array contains one or more intents that were recognized in the user input, sorted in descending order of confidence. 
+
+Each intent has one property only: the `confidence` property. The confidence property is a decimal percentage that represents the service's confidence in the recognized intent.
 
 While testing your dialog, you can see details of the intents that are recognized in user input by specifying this expression in a dialog node response:
 
@@ -158,18 +211,8 @@ The following examples show how to check for an intent value:
 
 `intent == 'help'` differs from `intents[0] == 'help'` because `intent == 'help'` does not throw an exception if no intent is detected. It is evaluated as true only if the intent confidence exceeds a threshold.  If you want to, you can specify a custom confidence level for a condition, for example, `intents.size() > 0 && intents[0] == 'help' && intents[0].confidence > 0.1`
 
-### Shorthand syntax for intents
-
-The following table shows examples of the shorthand syntax that you can use when referring to intents.
-
-| Shorthand syntax        | Full syntax in SpEL |
-|-------------------------|---------------------|
-| `#help`                 | `intent == 'help'`  |
-| `! #help`               | `intent != 'help'`  |
-| `NOT #help`             | `intent != 'help'`  |
-| `#help` or `#i_am_lost` | <code>(intent == 'help' &#124;&#124; intent == 'I_am_lost')</code> |
-
 ## Accessing input
+{: #access-input}
 
 The input JSON object contains one property only: the text property. The text property represents the text of the user input.
 
@@ -185,72 +228,3 @@ You can use any of the [String methods](/docs/services/conversation/dialog-metho
 - To check whether the user input contains "Yes", use: `input.text.contains( 'Yes' )`.
 - Returns true if the user input is a number: `input.text.matches( '[0-9]+' )`.
 - To check whether the input string contains ten characters, use: `input.text.length() == 10`.
-
-## Shorthand syntax for context variables
-
-The following table shows examples of the shorthand syntax that you can use to write context variables in condition expressions.
-
-| Shorthand syntax           | Full syntax in SpEL                     |
-|----------------------------|-----------------------------------------|
-| `$card_type`               | `context['card_type']`                  |
-| `$(card-type)`             | `context['card-type']`                  |
-| `$card_type:VISA`          | `context['card_type'] == 'VISA'`        |
-| `$card_type:(MASTER CARD)` | `context['card_type'] == 'MASTER CARD'` |
-
-You can include special characters, such as hyphens or periods, in context variable names. However, doing so can lead to problems when the SpEL expression is evaluated. The hyphen could be interpreted as a minus sign, for example. To avoid such problems, reference the variable by using either the full expression syntax or the shorthand syntax `$(variable-name)` and do not use the following special characters in the name:
-
-- Parentheses ()
-- More than one apostrophe ''
-- Quotation marks "
-
-## Evaluation
-
-To expand variable values inside other variables, or apply methods to variables, use the `<? expression ?>` expression syntax. For example:
-
-- **Expanding a property**
-    - `"output":{"text":"Your name is <? context.userName ?>"}`
-    or
-    - `"output":{"text":"Your name is $userName"}` in shorthand syntax
-- **Incrementing a numeric property**
-    - `"output":{"number":"<? output.number + 1 ?>"}`
-- **Invoking methods, such as append, on properties and global objects**
-    - `"context":{"toppings": "<? context.toppings.append( 'onions' ) ?>"}`
-
-### JSON Object or String format
-
-When you use the full SpEL syntax in the dialog response, enclose the expression in `<?` and `?>` to render it in String format.  When you use the full SpEL syntax in a condition, do not include the surrounding `<? ?>` syntax.
-
-If you specify one SpEL expression in a condition, the information is returned in object format so the resulting value can retain its data type and be used in equations or other expressions. If you specify more than one SpEL expression in a condition or include the expression as part of a string, then the information is returned in String format instead. 
-
-For example, you can add this expression to a dialog node response to return the entities that are recognized in the user input:
-
-```json
-The entities are <? entities ?>.
-```
-{: codeblock}
-
-If the user specifies *Hello now* as the input, the entity information is provided in String format.
-
-```json
-The entities are 2017-08-07, 15:09:49.
-```
-{: codeblock}
-
-You can add this expression to a dialog node response to return the intents that are recognized in the user input:
-
-```json
-The intents are <? intents ?>.
-```
-{: codeblock}
-
-If the user specifies *Hello now* as the input, the intent information is provided in String format.
-
-```json
-The intents are [
-{"intent":"greeting","confidence":0.9331061244010925},
-{"intent":"yes","confidence":0.06050306558609009},
-{"intent":"pizza-order","confidence":0.052069634199142456},
-...
-]
-```
-{: codeblock}

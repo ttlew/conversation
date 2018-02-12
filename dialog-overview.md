@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-26"
+lastupdated: "2018-02-01"
 
 ---
 
@@ -327,8 +327,6 @@ If you choose to jump to another node, you must specify whether the action targe
     - If the system processes all the siblings and none of the conditions evaluate to true, the basic fallback strategy is used, and the dialog evaluates the nodes at the base level of the dialog tree.
 
     Targeting the condition is useful for chaining the conditions of dialog nodes. For example, you might want to first check whether the input contains an intent, such as `#turn_on`, and if it does, you might want to check whether the input contains entities, such as `@lights`, `@radio`, or `@wipers`. Chaining conditions helps to structure larger dialog trees.
-
-**Note**: The processing of **Jump to** actions changed with the February 3, 2017 release. See [Upgrading your workspace ![External link icon](../../icons/launch-glyph.svg "External link icon")](upgrading.html){: new_window} for more details.
 
 ## More information
 

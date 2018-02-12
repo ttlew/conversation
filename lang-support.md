@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-25"
+lastupdated: "2018-02-07"
 
 ---
 
@@ -34,6 +34,7 @@ In the following table, the level of language and feature support is indicated b
 | **Chinese (Simplified) (zh-cn)**   | Beta | Beta | Beta |  |
 | **Chinese (Traditional) (zh-tw)**  | Beta | Beta |  |  |
 | **Czech (cs)**                     | Beta | Beta | Beta | Beta (Misspelling only) |
+| **Dutch (nl)**                     | Beta | Beta | Beta |  |
 | **French (fr)**                    | GA | GA | GA | Beta (Misspelling only) |
 | **German (de)**                    | GA | GA | GA | Beta (Misspelling only) |
 | **Italian (it)**                   | GA | GA | GA | Beta (Misspelling only) |
